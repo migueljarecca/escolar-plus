@@ -22,7 +22,7 @@ body{
     margin: auto;  /*Alinear al medio gracias al flexbox*/
     width: 90%;
     max-width: 400px;
-    padding: 4.5em 3em;    /*Espacio en los lados*/
+    padding: 2em 3em;    /*Espacio en los lados*/
     border-radius: 10px;
     box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 30%);  /*sombreado*/
     text-align: center;
@@ -45,7 +45,7 @@ body{
 .form__container{
     margin-top: 3em;  /*Espacio en la parte de arriba*/
     display: grid;
-    gap: 2.5em;  /*Espaciado entre cada elemento*/
+    gap: 2em;  /*Espaciado entre cada elemento*/
 }
 
 .form__group{

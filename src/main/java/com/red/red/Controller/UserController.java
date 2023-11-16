@@ -27,6 +27,12 @@ public class UserController {
     public String register(@RequestParam String name, @RequestParam String lastName,
                         @RequestParam String email, @RequestParam String password,
                         @RequestParam String password2, ModelMap model) {
+
+        System.out.println("--------------" +name);
+        System.out.println("--------------" +email);                    
+        System.out.println("--------------" +password);                    
+        System.out.println("--------------");                    
+                    
          
         try {
             userService.created(name, lastName, email, password, password2);
@@ -36,7 +42,7 @@ public class UserController {
             return "user_form";
         }  
         
-        return "redirect: / ";  
+        return "redirect:/";  
             
     }
 
