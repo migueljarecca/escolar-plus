@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.red.red.Service.UserService;
 import com.red.red.exception.MyException;
@@ -26,7 +27,8 @@ public class UserController {
     @PostMapping("/register")
     public String register(@RequestParam String name, @RequestParam String lastName,
                         @RequestParam String email, @RequestParam String password,
-                        @RequestParam String password2, ModelMap model) {
+                        @RequestParam String password2, MultipartFile archive,
+                        ModelMap model) {
 
         System.out.println("--------------" +name);
         System.out.println("--------------" +email);                    
@@ -35,7 +37,7 @@ public class UserController {
                     
          
         try {
-            userService.created(name, lastName, email, password, password2);
+            userService.created(name, lastName, email, password, password2, archive);
             model.put("exitUser", "se registro correctamente");
         } catch (MyException e) {
             model.put("errorUser", e.getMessage());      

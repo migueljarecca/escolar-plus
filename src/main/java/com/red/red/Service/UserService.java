@@ -5,7 +5,9 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.red.red.entidades.ImgUser;
 import com.red.red.entidades.User;
 import com.red.red.exception.MyException;
 import com.red.red.repositorio.UserRepository;
@@ -17,10 +19,13 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ImgUserService imgUserService;
     
     @Transactional
     public void created(String name, String lastName, String email, String password, 
-                        String password2) throws MyException {
+                        String password2, MultipartFile archive) throws MyException {
 
         validate(name, lastName, email, password, password2);
 
@@ -31,6 +36,10 @@ public class UserService {
         user.setEmail(email);
         user.setPassword(password);
         user.setDate(new Date());
+
+        ImgUser imgUser = imgUserService.create(archive);
+
+        user.setImgUser(imgUser);                    
 
         userRepository.save(user);  
     }

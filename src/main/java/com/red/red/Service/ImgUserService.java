@@ -13,7 +13,7 @@ public class ImgUserService {
     @Autowired
     ImgUserRepository imgUserRepository;
 
-    public void create(MultipartFile archive) {
+    public ImgUser create(MultipartFile archive) {
 
         if (archive != null) {
             try {
@@ -24,7 +24,7 @@ public class ImgUserService {
             imgUser.setImgName(archive.getName());
             imgUser.setContent(archive.getBytes());
 
-            imgUserRepository.save(imgUser);
+            return imgUserRepository.save(imgUser); 
 
             } catch (Exception e) {
                 System.err.println(e.getMessage());
@@ -33,5 +33,6 @@ public class ImgUserService {
         } else {
             
         }
+        return null;
     }
 }

@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -19,6 +20,9 @@ public class User {
     private String email;
     private String password;
     private Date creationDate;
+
+    @OneToOne
+    private ImgUser imgUser;
 
     public User() {
     }
@@ -69,6 +73,14 @@ public class User {
 
     public void setDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public ImgUser getImgUser() {
+        return imgUser;
+    }
+
+    public void setImgUser(ImgUser imgUser) {
+        this.imgUser = imgUser;
     }
 }
 
