@@ -3,6 +3,7 @@ package com.red.red.entidades;
 import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ public class ImgUser {
     private String imgName;
     
     @Lob @Basic(fetch = FetchType.LAZY)
+    @Column(name = "content", columnDefinition="LONGBLOB")
     private byte[] content;
 
     public ImgUser() {
