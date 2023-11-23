@@ -17,7 +17,7 @@ public class SecurityWeb {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
         .authorizeHttpRequests((authz) -> authz
-        .requestMatchers(new AntPathRequestMatcher( "/css/*")).permitAll()
+        .requestMatchers(new AntPathRequestMatcher( "/")).permitAll()
         
 
         .anyRequest().authenticated()
