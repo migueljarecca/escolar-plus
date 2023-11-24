@@ -17,10 +17,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-		<!--~~(https://repo.maven.apache.org/maven2: java.net.SocketTimeoutException: Connect timed out)~~>--><!--~~(org.springframework.boot:spring-boot-starter-data-jpa failed. Unable to download metadata. Tried repositories:org.springframework.boot:spring-boot-starter-data-jpa failed. Unable to download metadata. Tried repositories:
-https://repo.maven.apache.org/maven2: java.net.SocketTimeoutException: Connect timed out)~~>--><!--~~(org.springframework.boot:spring-boot-starter-data-jpa failed. Unable to download metadata. Tried repositories:
-
-https://repo.maven.apache.org/maven2: java.net.SocketTimeoutException: Connect timed out)~~>--><dependency>
+		<dependency>	
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>

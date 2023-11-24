@@ -1,4 +1,4 @@
-package com.red.red.entidades;
+package com.red.red.entity;
 
 import java.util.Date;
 

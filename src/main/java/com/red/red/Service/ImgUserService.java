@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.red.red.entidades.ImgUser;
-import com.red.red.repositorio.ImgUserRepository;
+import com.red.red.entity.ImgUser;
+import com.red.red.repository.ImgUserRepository;
 
 @Service
 public class ImgUserService {
