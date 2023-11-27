@@ -1,21 +1,30 @@
 package com.red.red.Service;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.red.red.entity.ImgUser;
 import com.red.red.entity.User;
+import com.red.red.enums.Rol;
 import com.red.red.exception.MyException;
 import com.red.red.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
@@ -34,8 +43,9 @@ public class UserService {
         user.setName(name);
         user.setLastName(lastName);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(new BCryptPasswordEncoder().encode(password));
         user.setDate(new Date());
+        user.setRol(Rol.USER);
 
         ImgUser imgUser = imgUserService.create(archive);
 
@@ -62,6 +72,25 @@ public class UserService {
 
         if (!password.equals(password2)) {
             throw new MyException("Las contraseñas ingresadas deben ser iguales");
+        }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    
+        User user = userRepository.findByEmail(email);
+
+        if (user != null) {
+        
+            List<GrantedAuthority> permissions = new ArrayList<>();
+    
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + user.getRol().toString());
+            permissions.add(p);
+    
+            return new User(user.getEmail(), user.getPassword(), permissions);
+
+        } else {
+            return null;
         }
     }
 }

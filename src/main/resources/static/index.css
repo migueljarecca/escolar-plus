@@ -28,7 +28,69 @@ html {
 
 /* =============== HEADER SECTION STYLE =============== */  
 
-.navbar {
-    display: flex;
-    align-items: center;
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 5%;
+  background-color: fuchsia;
+  display: flex;
+  align-items: center;
+  z-index: 100;
 }
+
+.logo {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  font-weight: 600;
+  cursor: default;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar a {
+  position: relative;
+  font-size: 1.5rem;
+  color: var(--white-color);
+  font-weight: 500;
+  /* margin-right: 3.5rem; */
+  text-decoration: none;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 5%;
+}
+
+aside {
+  background: rgb(127, 81, 173);
+  flex-basis: 25%;
+  position: sticky;
+  top: 70px;
+  align-self: flex-start;
+  position: sticky;
+  height: 100vh;
+}
+
+main {
+  background-color: rgb(133, 237, 237);
+
+}
+
+article {
+  background: rgb(108, 224, 118);
+  flex-basis: 25%;
+  position: sticky;
+  top: 70px;
+  align-self: flex-start;
+  position: sticky;
+  height: 100vh;
+}
+
+

@@ -14,8 +14,8 @@ public class PortalController {
         return "index.html";
     }    
 
-    @GetMapping("/register")
-    public String register() {
-        return "user_form";
-    }
+    // @GetMapping("/register")
+    // public String register() {
+    //     return "user_form";
+    // }
 }
