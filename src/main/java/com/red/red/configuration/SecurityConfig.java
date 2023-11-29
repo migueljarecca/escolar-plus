@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.red.red.Service.UserService;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+// import static org.springframework.security.config.Customizer.withDefaults;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,13 +38,20 @@ public class SecurityConfig {
             
             .authorizeHttpRequests(authRequest ->
                 authRequest
-                    .requestMatchers("/").permitAll()
+                    .requestMatchers("/css/*", "/").permitAll()
                     .requestMatchers("/user/**").permitAll()
                     .anyRequest().authenticated()
                     )  
              
-            .formLogin(withDefaults())
-            
+            .formLogin(authLogin ->
+                authLogin
+                    .loginPage("/user/login")
+                    .loginProcessingUrl("/logincheck")
+                    .usernameParameter("email")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/")
+                    .permitAll()
+                    )
             .build();
     }
 }

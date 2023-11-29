@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/auth")
 public class AuthController {
     
-    @PostMapping(value="login")
-    public String login() {
+    @PostMapping(value="logins")
+    public String logins() {
 
         return "Login from public endpoint";
     }
        
-    @PostMapping(value="register")
-    public String register() {
+    @PostMapping(value="registesr")
+    public String registers() {
 
         return "Register from public endpoint";
     }    

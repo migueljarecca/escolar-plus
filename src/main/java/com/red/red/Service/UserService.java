@@ -79,14 +79,22 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
     
         User user = userRepository.findByEmail(email);
+        System.out.println("############ " +user);
 
         if (user != null) {
+            System.out.println("************** dentro del if" + user);
         
             List<GrantedAuthority> permissions = new ArrayList<>();
     
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + user.getRol().toString());
             permissions.add(p);
-    
+
+            System.out.println("**********granted authority " +permissions);
+            System.out.println("************* " +user.getEmail());
+            System.out.println("************* " +user.getPassword());
+
+            User user1 = new User(user.getEmail(), user.getPassword(), permissions);
+            System.out.println("------------ " +user1) ;
             return new User(user.getEmail(), user.getPassword(), permissions);
 
         } else {
