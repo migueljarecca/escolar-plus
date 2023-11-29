@@ -19,9 +19,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/to-register")
+    @GetMapping("/register")
     public String toRegister() {
         return "user_form";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @PostMapping("/register")
@@ -47,5 +52,7 @@ public class UserController {
         return "redirect:/";  
             
     }
+
+
 
 }

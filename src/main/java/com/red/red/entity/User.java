@@ -1,16 +1,25 @@
 package com.red.red.entity;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.red.red.enums.Rol;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(generator = "uuid") 
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -24,7 +33,13 @@ public class User {
     @OneToOne
     private ImgUser imgUser;
 
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
     public User() {
+    }
+
+    public User(String email2, String password2, List<GrantedAuthority> permissions) {
     }
 
     public String getId() {
@@ -82,7 +97,46 @@ public class User {
     public void setImgUser(ImgUser imgUser) {
         this.imgUser = imgUser;
     }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority((rol.name())));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
+
 
 
 
