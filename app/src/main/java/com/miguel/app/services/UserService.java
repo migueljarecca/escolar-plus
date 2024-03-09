@@ -18,14 +18,14 @@ public class UserService {
     private UserRepository userRepository;
 
     @Transactional
-    public User create(String name, String lastname, String email, String password) {
+    public User create(User user) {
 
-        User user = new User();
+        // User user = new User();
 
-        user.setName(name);
-        user.setLastname(lastname);
-        user.setEmail(email);
-        user.setPassord(password);
+        // user.setName(name);
+        // user.setLastname(lastname);
+        // user.setEmail(email);
+        // user.setPassord(password);
 
         userRepository.save(user);
         return user;
@@ -39,7 +39,8 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<User> findByUser(Long id) {
+    public Optional<User> findByIdUser(Long id) {
+        //Como devuelve un optional, añadimos el .orElseThrow()
         return userRepository.findById(id);
     }
 
