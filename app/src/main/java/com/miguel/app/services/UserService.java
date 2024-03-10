@@ -45,6 +45,25 @@ public class UserService {
     }
 
     @Transactional
+    public Optional<User> update(User user, Long id) {
+
+        Optional<User> userOptional = findByIdUser(id);
+
+        if (userOptional.isPresent()) {
+            User userDb = userOptional.orElseThrow();
+            userDb.setName(user.getName());
+            userDb.setLastname(user.getLastname());
+            userDb.setEmail(user.getEmail());
+
+            User user1 = create(userDb);
+
+            return Optional.ofNullable(user1);
+        }
+    
+        return Optional.empty();
+    }
+
+    @Transactional
     public void remove(Long id) {
         userRepository.deleteById(id);
     }

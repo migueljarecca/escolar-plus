@@ -8,12 +8,12 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String lastname;
     private String email;
-    private String passord;
+    private String password;
 
     public User() {
     }
@@ -23,7 +23,7 @@ public class User {
         this.name = name;
         this.lastname = lastname;
         this.email = email;
-        this.passord = passord;
+        this.password = passord;
     }
     public Long getId() {
         return id;
@@ -49,11 +49,11 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getPassord() {
-        return passord;
+    public String getPassword() {
+        return password;
     }
-    public void setPassord(String passord) {
-        this.passord = passord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

@@ -10,7 +10,7 @@ import com.miguel.app.models.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     
-    @Query("SELECT u FROM User u WHERE u.id = :id") 
+    @Query("SELECT u FROM User u WHERE u.id = :id")
     public User findByIdUser(@Param("id") Long id);
     
 }
