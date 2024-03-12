@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useUsers } from "../hooks/useUsers";
 
 
 const initialUserForm = {
@@ -11,6 +12,8 @@ const initialUserForm = {
 }
 
 export const UserForm = () => {
+
+    const {handlerAddUser} = useUsers();
 
     const [userForm, setUserForm] = useState(initialUserForm);
 
@@ -26,7 +29,9 @@ export const UserForm = () => {
 
     const onSubmitUserChange = (event) => {
         event.preventDefault();
-        console.log("control ", userForm);
+        //Enviamos los datos del user al padre
+        handlerAddUser(userForm);
+
         setUserForm(initialUserForm);
     }
 
