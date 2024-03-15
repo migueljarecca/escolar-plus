@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { findAll, save } from "../services/userService";
+import { findAll, save, update } from "../services/userService";
 
 export const useUsers = () => {
 
@@ -31,11 +31,15 @@ export const useUsers = () => {
         return data;
     }
 
+    const handlerUpdateUser = (user) => {
+        update(user);
+    }
+
   return (
         {
             handlerAddUser,
             getUsers,
-            
+            handlerUpdateUser,
         }
     )
 }

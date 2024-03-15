@@ -28,3 +28,16 @@ export const findAll = async () => {
         console.log(error);
     }
 }
+
+//Actualizamos un usuario
+export const update = async ({id, name, lastname, email}) => {
+    try {
+        const response = await axios.put(`${BASE_URL}/${id}`,{
+            name,
+            lastname,
+            email,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}

@@ -24,11 +24,11 @@ export const UserList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => (<UserRow
+                    {users?.map((user) => (<UserRow
                         key = {user.id}
                         id = {user.id}
                         name = {user.name}
-                        lasname = {user.lasname}
+                        lastname = {user.lastname}
                         email = {user.email}
                         />
                     ))}
