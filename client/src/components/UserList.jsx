@@ -1,15 +1,21 @@
 
 import { useUsers } from './../hooks/useUsers';
 import { UserRow } from './UserRow';
-export const UserList = () => {
+
+export const UserList = ({ handlerSelectUser }) => {
 
     const { getUsers } = useUsers();
     
     const users = getUsers();;
-    console.log("control 3 ", users);
+
+    // const handlerSelectUser = (user) => {
+    //     console.log("fede ", user)
+    //     userSelectDas(user);
+    // }
+
     return (
         <div className='container-table-user'>
-            <h2>Lista de Uusuarios</h2>
+            <h2>Lista de Usuarios</h2>
 
             <table>
                 <thead>
@@ -30,6 +36,7 @@ export const UserList = () => {
                         name = {user.name}
                         lastname = {user.lastname}
                         email = {user.email}
+                        handlerSelectUser = {handlerSelectUser}
                         />
                     ))}
                 </tbody>

@@ -1,8 +1,8 @@
 
-export const UserRow = ({ id, name, lastname, email }) => {
+export const UserRow = ({ id, name, lastname, email, handlerSelectUser }) => {
 
     const onSelectedUser = (id, name, lastname, email) => {
-        
+        handlerSelectUser(id, name, lastname, email);
     }
 
     return (
@@ -16,7 +16,7 @@ export const UserRow = ({ id, name, lastname, email }) => {
                 <th>
                     <button
                         type="submit"
-                        onClick={() => onSelectedUser({name, lastname, email}) }
+                        onClick={() => onSelectedUser({id, name, lastname, email}) }
                         >
                         Actualizar
                     </button>

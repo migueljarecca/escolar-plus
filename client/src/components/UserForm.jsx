@@ -1,23 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useUsers } from "../hooks/useUsers";
 
 
-const initialUserForm = {
-    id: '',
-    name: '',
-    lastname: '',
-    email: '',
-    password: '',
+export const UserForm = ({ initialUserForm, userSelect }) => {
 
-}
-
-export const UserForm = () => {
-
-    const {handlerAddUser} = useUsers();
+    const { handlerAddUser, handlerUpdateUser } = useUsers();
 
     const [userForm, setUserForm] = useState(initialUserForm);
 
     const {name, lastname, email, password} = userForm;
+
+    //Utilizamos useEffect para gatillar y actualizar con el usuario seleccionado
+    useEffect(() => {
+        setUserForm({
+            ...userSelect,
+            password: '',
+        })
+    },[userSelect]);
 
     const onInputUserChange = ({target}) => {
         const {name, value} = target;
@@ -29,8 +28,14 @@ export const UserForm = () => {
 
     const onSubmitUserChange = (event) => {
         event.preventDefault();
-        //Enviamos los datos del user al padre
-        handlerAddUser(userForm);
+
+        if (userSelect.id === '') {
+            //Enviamos los datos del user al Hook useUsers
+            handlerAddUser(userForm);
+
+        } else {
+            handlerUpdateUser(userForm);
+        }
 
         setUserForm(initialUserForm);
     }
