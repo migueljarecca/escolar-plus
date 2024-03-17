@@ -41,3 +41,13 @@ export const update = async ({id, name, lastname, email}) => {
         console.log(error);
     }
 }
+
+//Eliminar un usuario
+export const remove = async (id) => {
+    console.log("controlll ", id);
+    try {
+        const response = await axios.delete(`${BASE_URL}/${id}`);
+    } catch (error) {
+        console.log(error);
+    }
+}

@@ -1,8 +1,12 @@
 
-export const UserRow = ({ id, name, lastname, email, handlerSelectUser }) => {
+export const UserRow = ({ id, name, lastname, email, handlerSelectUser, handlerRemoveUser }) => {
 
     const onSelectedUser = (id, name, lastname, email) => {
         handlerSelectUser(id, name, lastname, email);
+    }
+
+    const onSelectedIdUser = (id) => {
+        handlerRemoveUser(id);
     }
 
     return (
@@ -21,7 +25,12 @@ export const UserRow = ({ id, name, lastname, email, handlerSelectUser }) => {
                         Actualizar
                     </button>
                 </th>
-                <th>{"das"}</th>
+                <th><button
+                        type="submit"
+                        onClick={() => onSelectedIdUser(id) }
+                        >
+                        Eliminar
+                    </button></th>
             </tr>
         </>
     )

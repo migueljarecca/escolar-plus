@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { findAll, save, update } from "../services/userService";
+import { findAll, remove, save, update } from "../services/userService";
 
 export const useUsers = () => {
 
@@ -35,11 +35,16 @@ export const useUsers = () => {
         update(user);
     }
 
+    const handlerRemoveUser = (id) => {
+        remove(id);
+    }
+
   return (
         {
             handlerAddUser,
             getUsers,
             handlerUpdateUser,
+            handlerRemoveUser,
         }
     )
 }

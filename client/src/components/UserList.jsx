@@ -4,14 +4,9 @@ import { UserRow } from './UserRow';
 
 export const UserList = ({ handlerSelectUser }) => {
 
-    const { getUsers } = useUsers();
+    const { getUsers, handlerRemoveUser } = useUsers();
     
     const users = getUsers();;
-
-    // const handlerSelectUser = (user) => {
-    //     console.log("fede ", user)
-    //     userSelectDas(user);
-    // }
 
     return (
         <div className='container-table-user'>
@@ -37,6 +32,7 @@ export const UserList = ({ handlerSelectUser }) => {
                         lastname = {user.lastname}
                         email = {user.email}
                         handlerSelectUser = {handlerSelectUser}
+                        handlerRemoveUser= {handlerRemoveUser}
                         />
                     ))}
                 </tbody>
