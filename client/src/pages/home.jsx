@@ -10,7 +10,7 @@ export const Home = () => {
         <header className="header">
             <a href="#" className="logo">LOGO</a>
 
-            <nav>
+            <nav className='nav-center'>
                 <p>cole</p>
             </nav>
 

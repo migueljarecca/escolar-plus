@@ -22,10 +22,57 @@ html {
   top: 0;
   left: 0;
   width: 100%;
+  padding: 2rem 4%;
   background: var(--bg-color);
   display: flex;
   align-items: center;
   z-index: 100;
+  justify-content: space-between;
+  
 }
+
+.logo {
+  font-size: 2.5rem;
+  color: var(--with-color);
+  font-weight: 600;
+  /* margin-right: auto; */
+}
+
+.nav-center {
+  font-size: 1.7rem;
+  color: var(--with-color);
+}
+
+.nav-right {
+  display: flex;
+}
+
+.nav-right .search-box {
+  background: var(--with-color);
+  width: 35rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.nav-right .search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
+}
+
+.nav-right i {
+  font-size: 2.4rem;
+  color: var(--with-color);
+  cursor: pointer;
+}
+
+/* .container-table-user {
+  background: #da291c;
+  color: green;
+} */
 
 
