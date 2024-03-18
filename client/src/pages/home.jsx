@@ -1,5 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
+import {faUser} from '@fortawesome/free-regular-svg-icons'
+import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 
-export const home = () => {
+
+export const Home = () => {
 
     return (
         <header className="header">
@@ -11,11 +16,11 @@ export const home = () => {
 
             <div className="nav-right">
                 <div className="search-box">
-                    <p>Icon</p>
+                    <FontAwesomeIcon icon={faMagnifyingGlass}/>
                     <input type="text" placeholder="Buscar"/>
                 </div>
-                <p>icon</p>
-                <p>icon</p>
+                <FontAwesomeIcon icon={faUser}/>
+                <FontAwesomeIcon icon={faBagShopping}/>
             </div>
         </header>
     )
