@@ -17,6 +17,7 @@ html {
   overflow-x: hidden;
 }
 
+/* ===================== HEADER ==================== */
 .header {
   position: fixed;
   top: 0;
@@ -79,9 +80,33 @@ html {
   color: var(--with-color);
   cursor: pointer;
   padding-left: 2rem;
-
 }
 
+/* ===================== HOME ==================== */
 
+.container-home {
+  display: flex;
+  width: 100%;
+  margin-top: 8rem;
+  background-color: #e7e7e7;
+  height: 40rem;
+  align-items: center;
+}
+
+.container-home .div-left {
+  width: 25rem;
+  height: 38rem;
+  background: #a3a3a3;
+}
+
+.container-cole {
+  padding: 5rem 4%;
+}
+
+.container-cole .box-cole {
+  display: flex;
+  width: 37rem;
+  background: #a3a3a3;
+}
 
 

@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { UserForm } from './components/UserForm'
 import { UserList } from './components/UserList'
-import { Header } from './components/Header';
+import { Home } from './pages/Home';
 
 
 
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Home />
       <UserForm 
         initialUserForm={initialUserForm}
         userSelect={userSelect}
