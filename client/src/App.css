@@ -50,7 +50,7 @@ html {
 .nav-right .search-box {
   background: var(--with-color);
   width: 35rem;
-  border-radius: 2rem;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
@@ -62,17 +62,26 @@ html {
   padding: 1rem;
   outline: none;
   border: 0;
+  font-size: 1.7rem;
 }
 
-.nav-right i {
+.nav-right .search-box svg {
+  font-size: 1.7rem;
+}
+
+.nav-right .icon-box {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right .icon-box svg {
   font-size: 2.4rem;
   color: var(--with-color);
   cursor: pointer;
+  padding-left: 2rem;
+
 }
 
-/* .container-table-user {
-  background: #da291c;
-  color: green;
-} */
+
 
 
