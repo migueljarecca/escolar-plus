@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import com.miguel.app.models.entities.School;
 
 @Repository
-public interface SchoolRepository extends JpaRepository<SchoolRepository, Long> {
+public interface SchoolRepository extends JpaRepository<School, Long> {
 
     @Query("SELECT s FROM School s WHERE s.id = :id")
     public School findByIdSchool(@Param("id") Long id);

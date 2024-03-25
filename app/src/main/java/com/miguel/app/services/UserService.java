@@ -19,14 +19,6 @@ public class UserService {
 
     @Transactional
     public User create(User user) {
-
-        // User user = new User();
-
-        // user.setName(name);
-        // user.setLastname(lastname);
-        // user.setEmail(email);
-        // user.setPassord(password);
-
         userRepository.save(user);
         return user;
     }
