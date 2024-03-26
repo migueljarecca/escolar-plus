@@ -1,13 +1,13 @@
 import axios from "axios"
 
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/users`
+const BASE_URL_USER = `${import.meta.env.VITE_API_BASE_URL}/users`
 
 //COMUNICACION CON EL BACKEND
 
 //Creamos un usuario
 export const save = async ({name, lastname, email, password}) => {
     try {
-        const response = await axios.post(BASE_URL, {
+        const response = await axios.post(BASE_URL_USER,{
             name,
             lastname,
             email,
@@ -22,7 +22,7 @@ export const save = async ({name, lastname, email, password}) => {
 //Traemos todos los usuarios
 export const findAll = async () => {
     try {
-        const response = await axios.get(BASE_URL);
+        const response = await axios.get(BASE_URL_USER);
         return response;
     } catch (error) {
         console.log(error);
@@ -32,7 +32,7 @@ export const findAll = async () => {
 //Actualizamos un usuario
 export const update = async ({id, name, lastname, email}) => {
     try {
-        const response = await axios.put(`${BASE_URL}/${id}`,{
+        const response = await axios.put(`${BASE_URL_USER}/${id}`,{
             name,
             lastname,
             email,
@@ -46,7 +46,7 @@ export const update = async ({id, name, lastname, email}) => {
 export const remove = async (id) => {
     console.log("controlll ", id);
     try {
-        const response = await axios.delete(`${BASE_URL}/${id}`);
+        const response = await axios.delete(`${BASE_URL_USER}/${id}`);
     } catch (error) {
         console.log(error);
     }
