@@ -27,7 +27,7 @@ export const findAll = async() => {
     }
 }
 
-export const update = async({id, name, address, schoolCode}) => {
+export const updateSchool = async({id, name, address, schoolCode}) => {
     try {
         const response = await axios.put(`${BASE_URL_SCHOOL}/${id}`,{
             name,
