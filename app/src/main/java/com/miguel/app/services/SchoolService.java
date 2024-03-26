@@ -16,12 +16,6 @@ public class SchoolService {
     @Autowired
     private SchoolRepository schoolRepository;
 
-    @Transactional
-    public School create(School school) {
-        schoolRepository.save(school);
-        return school;
-    }
-
     @Transactional(readOnly = true)
     public List<School> findAllSchools() {
         List<School> schools = schoolRepository.findAll();
@@ -31,6 +25,12 @@ public class SchoolService {
     @Transactional(readOnly = true)
     public Optional<School> findByIdSchool(Long id) {
         return schoolRepository.findById(id);
+    }
+
+    @Transactional
+    public School create(School school) {
+        schoolRepository.save(school);
+        return school;
     }
 
     @Transactional

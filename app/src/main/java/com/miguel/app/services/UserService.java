@@ -17,12 +17,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Transactional
-    public User create(User user) {
-        userRepository.save(user);
-        return user;
-    }
-
     @Transactional(readOnly = true)
     public List<User> findAllUser() {
         List<User> users = new ArrayList<>();
@@ -34,6 +28,12 @@ public class UserService {
     public Optional<User> findByIdUser(Long id) {
         //Como devuelve un optional, añadimos el .orElseThrow()
         return userRepository.findById(id);
+    }
+
+    @Transactional
+    public User create(User user) {
+        userRepository.save(user);
+        return user;
     }
 
     @Transactional
