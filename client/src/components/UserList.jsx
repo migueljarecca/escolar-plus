@@ -6,7 +6,7 @@ export const UserList = ({ handlerSelectUser }) => {
 
     const { getUsers, handlerRemoveUser } = useUsers();
     
-    const users = getUsers();;
+    const users = getUsers();
 
     return (
         <div className='container-table-user'>

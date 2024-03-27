@@ -3,9 +3,9 @@ import { findAll, remove, save, updateSchool } from "../services/schoolService"
 
 export const useSchool = () => {
 
-    const handlerAddSchool = (school) => {
-        console.log("control 1", school);
-        save(school);
+    const handlerAddSchool = (School) => {
+        console.log("control 1", School);
+        save(School);
     }
 
     const getSchools = () => {

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useSchool } from "../hooks/useSchool";
 
-export const SchoolForm = (initialSchoolForm) => {
+export const SchoolForm = ({initialSchoolForm}) => {
 
     const {handlerAddSchool} = useSchool();
 
     const [schoolForm, setSchoolForm] = useState(initialSchoolForm);
 
-    const {id, name, address, schoolCode} = schoolForm;
+    const {name, address, schoolCode} = schoolForm;
 
     const onInputSchoolChange = ({target}) => {
         const {name, value} = target;
@@ -20,12 +20,10 @@ export const SchoolForm = (initialSchoolForm) => {
 
     const onSubmitSchoolChange = (event) => {
         event.preventDefault();
-
-        if (id == '') {
-            handlerAddSchool(schoolForm);
-        } else {
-            console.log("error");
-        }
+        
+        handlerAddSchool(schoolForm);
+       
+        setSchoolForm(initialSchoolForm);
     }
 
     return (
@@ -35,18 +33,21 @@ export const SchoolForm = (initialSchoolForm) => {
                 <input 
                     type="text"
                     placeholder="nombre"
+                    name="name"
                     value={name}
                     onChange={onInputSchoolChange}
                 />
                 <input 
                     type="text"
                     placeholder="dirección"
+                    name="address"
                     value={address}
                     onChange={onInputSchoolChange}
                 />
                 <input 
                     type="text"
                     placeholder="codigo"
+                    name="schoolCode"
                     value={schoolCode}
                     onChange={onInputSchoolChange}
                 />
