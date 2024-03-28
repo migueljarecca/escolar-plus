@@ -1,5 +1,6 @@
 import { Header } from "../components/Header"
-import insignia from '/src/images/insignia.png'
+import { SchoolList } from "../components/SchoolList"
+// import insignia from '/src/images/insignia.png'
 
 export const Home = () => {
 
@@ -16,16 +17,7 @@ export const Home = () => {
             </div>
 
             <aside className="container-cole">
-                <div className="box-cole">
-                    <div className="div-content">
-                        <h3>Colegio</h3>
-                        <h2>Jorge Chavez</h2>
-                        <p>Ver Catálogo</p>
-                    </div>
-                    <div className="div-img">
-                        <img src={insignia} alt="#" />
-                    </div>
-                </div>
+                <SchoolList />
             </aside>
         </>
     )
