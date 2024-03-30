@@ -99,14 +99,33 @@ html {
   background: #a3a3a3;
 }
 
+/* ------------------ cartas del colegio -------------*/
+
 .container-cole {
   padding: 5rem 4%;
+  display: flex;
 }
 
 .container-cole .box-cole {
   display: flex;
   width: 37rem;
+  padding: 2rem;
   background: #a3a3a3;
 }
 
+.container-cole .box-cole p {
+  color: #7d7d7d;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
 
+.container-cole .box-cole h2 {
+  color: #242424;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.container-cole .box-cole .div-img {
+  
+  background-color: #da291c;
+}

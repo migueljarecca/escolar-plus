@@ -7,6 +7,7 @@ export const UserList = ({ handlerSelectUser }) => {
     const { getUsers, handlerRemoveUser } = useUsers();
     
     const users = getUsers();
+    console.log("control de user ", users);
 
     return (
         <div className='container-table-user'>
