@@ -104,13 +104,16 @@ html {
 .container-cole {
   padding: 5rem 4%;
   display: flex;
+  gap: 2rem;
 }
 
 .container-cole .box-cole {
   display: flex;
   width: 37rem;
   padding: 2rem;
-  background: #a3a3a3;
+  background: var(--with-color);
+  border: 2px solid #704bb2;
+  background: #ecf2f2;
 }
 
 .container-cole .box-cole p {

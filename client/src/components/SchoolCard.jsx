@@ -1,4 +1,4 @@
-import insignia from '../images/insignia.png';
+import insignia from '../images/manuel-prado.png';
 // import { insignia } from '/src/images/insignia.png';
 
 export const SchoolCard = ({ school }) => {
@@ -11,6 +11,7 @@ export const SchoolCard = ({ school }) => {
                 <h2>{school.name}</h2>
                 {/* <h4>{school.address}</h4> */}
                 {/* <h5>{school.schoolCode}</h5> */}
+                
                 <p>Ver Catálogo</p>
             </div>
             <div className="div-img">
