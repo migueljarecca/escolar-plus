@@ -1,6 +1,5 @@
 package com.miguel.app.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +18,7 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public List<User> findAllUser() {
-        List<User> users = new ArrayList<>();
-        users = userRepository.findAll();
-        return users;
+        return userRepository.findAll();
     }
 
     @Transactional(readOnly = true)
