@@ -1,8 +1,8 @@
 package com.miguel.app.models.entities;
 
-import com.miguel.app.enums.Genero;
-import com.miguel.app.enums.Producto;
-import com.miguel.app.enums.Talla;
+import com.miguel.app.enums.Gender;
+import com.miguel.app.enums.Product;
+import com.miguel.app.enums.Size;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,13 +19,13 @@ public class Uniform {
     private Double price;
 
     @Enumerated(EnumType.STRING)
-    private Producto producto;
+    private Product product;
 
     @Enumerated(EnumType.STRING)
-    private Talla talla;
+    private Size size;
 
     @Enumerated(EnumType.STRING)
-    private Genero genero;
+    private Gender gender;
 
     @ManyToOne
     private School school;
@@ -33,12 +33,12 @@ public class Uniform {
     public Uniform() {
     }
 
-    public Uniform(Long id, Double price, Producto producto, Talla talla, Genero genero, School school) {
+    public Uniform(Long id, Double price, Product product, Size size, Gender gender, School school) {
         this.id = id;
         this.price = price;
-        this.producto = producto;
-        this.talla = talla;
-        this.genero = genero;
+        this.product = product;
+        this.size = size;
+        this.gender = gender;
         this.school = school;
     }
 
@@ -58,28 +58,28 @@ public class Uniform {
         this.price = price;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public Talla getTalla() {
-        return talla;
+    public Size getSize() {
+        return size;
     }
 
-    public void setTalla(Talla talla) {
-        this.talla = talla;
+    public void setSize(Size size) {
+        this.size = size;
     }
 
-    public Genero getGenero() {
-        return genero;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setGenero(Genero genero) {
-        this.genero = genero;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public School getSchool() {
@@ -92,7 +92,7 @@ public class Uniform {
 
     @Override
     public String toString() {
-        return "Uniforme [id=" + id + ", price=" + price + ", producto=" + producto + ", talla=" + talla + ", genero="
-                + genero + ", school=" + school + "]";
+        return "Uniforme [id=" + id + ", price=" + price + ", product=" + product + ", size=" + size + ", gender="
+                + gender + ", school=" + school + "]";
     }
 }

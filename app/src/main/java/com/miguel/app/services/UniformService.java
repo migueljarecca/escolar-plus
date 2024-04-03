@@ -32,21 +32,29 @@ public class UniformService {
     }
 
     @Transactional
-    public Uniform createUniform(Uniform uniform, Long idSchool) {
-        Optional<School> sOptional = schoolRepository.findById(idSchool);
+    public Uniform createUniform(Uniform uniform) {
+        System.out.println("Control de price: " +uniform.getPrice());
+        System.out.println("Control de producto: " +uniform.getProduct());
+        System.out.println("Control de talla: " +uniform.getSize());
+        System.out.println("Control de genero: " +uniform.getGender());
 
+        System.out.println("Control de id: " +uniform.getSchool().getId());
+        Optional<School> sOptional = schoolRepository.findById(uniform.getSchool().getId());
+
+        System.out.println("control de id de colegio: " +sOptional);
         School school = new School();
 
         if (sOptional.isPresent()) {
             school = sOptional.get();
+            System.out.println("control de la entidad colegio: " +school);
         }
 
         Uniform uni = new Uniform();
 
         uni.setPrice(uniform.getPrice());
-        uni.setProducto(uniform.getProducto());
-        uni.setTalla(uniform.getTalla());
-        uni.setGenero(uniform.getGenero());
+        uni.setProduct(uniform.getProduct());
+        uni.setSize(uniform.getSize());
+        uni.setGender(uniform.getGender());
         uni.setSchool(school);
 
         uniformRepository.save(uni);
@@ -69,9 +77,9 @@ public class UniformService {
             Uniform uniDb = uniOptional.orElseThrow();
 
             uniDb.setPrice(uniform.getPrice());
-            uniDb.setProducto(uniform.getProducto());
-            uniDb.setTalla(uniform.getTalla());
-            uniDb.setGenero(uniform.getGenero());
+            uniDb.setProduct(uniform.getProduct());
+            uniDb.setSize(uniform.getSize());
+            uniDb.setGender(uniform.getGender());
 
             uniDb.setSchool(school);
 

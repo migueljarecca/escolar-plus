@@ -12,7 +12,7 @@ import com.miguel.app.models.entities.Uniform;
 @Repository
 public interface UniformRepository extends JpaRepository<Uniform, Long> {
     
-    @Query("SELECT u FROM Uniform u u.school.name = :name")
+    @Query("SELECT u FROM Uniform u WHERE u.school.name = :name")
     public List<Uniform> findBySchool(@Param ("name") String name );
 
 }

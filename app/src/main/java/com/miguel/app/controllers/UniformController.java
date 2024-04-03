@@ -1,9 +1,7 @@
 package com.miguel.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,14 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.miguel.app.models.entities.Uniform;
 import com.miguel.app.services.UniformService;
 
-import jakarta.servlet.HttpConstraintElement;
-
-import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/school")
+@RequestMapping("/uniform")
 @CrossOrigin(originPatterns = "*")
 public class UniformController {
 
@@ -49,8 +44,8 @@ public class UniformController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Uniform uniform, Long idSchool) {
-        Uniform uni = uniformService.createUniform(uniform, idSchool);
+    public ResponseEntity<?> create(@RequestBody Uniform uniform) {
+        Uniform uni = uniformService.createUniform(uniform);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(uni);
     }
