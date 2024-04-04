@@ -39,6 +39,10 @@ public class UniformService {
         System.out.println("Control de genero: " +uniform.getGender());
 
         System.out.println("Control de id: " +uniform.getSchool().getId());
+        System.out.println("Control de name school: " +uniform.getSchool().getName());
+        System.out.println("Control de direccion school: " +uniform.getSchool().getAddress());
+        System.out.println("Control de codigo school: " +uniform.getSchool().getSchoolCode());
+
         Optional<School> sOptional = schoolRepository.findById(uniform.getSchool().getId());
 
         System.out.println("control de id de colegio: " +sOptional);
@@ -62,10 +66,10 @@ public class UniformService {
     }
 
     @Transactional
-    public Optional<Uniform> updateUniform(Uniform uniform, Long idUniform, Long idSchool) {
+    public Optional<Uniform> updateUniform(Uniform uniform, Long idUniform) {
 
         Optional<Uniform> uniOptional = uniformRepository.findById(idUniform);
-        Optional<School> sOptional = schoolRepository.findById(idSchool);
+        Optional<School> sOptional = schoolRepository.findById(uniform.getSchool().getId());
 
         School school = new School();
 

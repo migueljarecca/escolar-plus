@@ -51,9 +51,9 @@ public class UniformController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Uniform uniform, Long id) {
+    public ResponseEntity<?> update(@RequestBody Uniform uniform, @PathVariable Long id) {
 
-        Optional<Uniform> uOptional = uniformService.updateUniform(uniform, id, id);
+        Optional<Uniform> uOptional = uniformService.updateUniform(uniform, id);
 
         if (uOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(uOptional.orElseThrow());
