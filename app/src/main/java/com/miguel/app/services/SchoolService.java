@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.miguel.app.models.entities.Image;
 import com.miguel.app.models.entities.School;
 import com.miguel.app.resopitories.SchoolRepository;
 
@@ -15,6 +17,9 @@ public class SchoolService {
     
     @Autowired
     private SchoolRepository schoolRepository;
+
+    @Autowired
+    private ImageService imageService;
 
     @Transactional(readOnly = true)
     public List<School> findAllSchools() {
@@ -29,6 +34,8 @@ public class SchoolService {
 
     @Transactional
     public School create(School school) {
+        MultipartFile file = school.getImage();
+        Image image = imageService.createImage(file);
         schoolRepository.save(school);
         return school;
     }

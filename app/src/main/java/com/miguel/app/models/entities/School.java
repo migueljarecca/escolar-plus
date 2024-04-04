@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class School {
@@ -15,14 +16,18 @@ public class School {
     private String address;
     private String schoolCode;
 
+    @OneToOne
+    private Image image;
+
     public School () {
     }
 
-    public School(Long id, String name, String address, String schoolCode) {
+    public School(Long id, String name, String address, String schoolCode, Image image) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.schoolCode = schoolCode;
+        this.image = image;
     }
 
     public Long getId() {
@@ -55,6 +60,14 @@ public class School {
 
     public void setSchoolCode(String schoolCode) {
         this.schoolCode = schoolCode;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     @Override
