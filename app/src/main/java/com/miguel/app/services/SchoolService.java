@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.miguel.app.models.dto.SchoolDto;
 import com.miguel.app.models.entities.Image;
 import com.miguel.app.models.entities.School;
 import com.miguel.app.resopitories.SchoolRepository;
@@ -33,10 +34,21 @@ public class SchoolService {
     }
 
     @Transactional
-    public School create(School school) {
-        MultipartFile file = school.getImage();
+    public School create(SchoolDto schoolDto) {
+
+        School school = new School();
+
+        school.setName(schoolDto.getName());
+        school.setAddress(schoolDto.getAddress());
+        school.setSchoolCode(schoolDto.getSchoolCode());
+
+        MultipartFile file = schoolDto.getFile();
         Image image = imageService.createImage(file);
+
+        school.setImage(image);
+
         schoolRepository.save(school);
+        
         return school;
     }
 

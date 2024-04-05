@@ -18,16 +18,16 @@ public class Image {
     private String name;
 
     @Lob @Basic(fetch = FetchType.LAZY)
-    private byte[] conent;
+    private byte[] content;
 
     public Image() {
     }
 
-    public Image(Long id, String mime, String name, byte[] conent) {
+    public Image(Long id, String mime, String name, byte[] content) {
         this.id = id;
         this.mime = mime;
         this.name = name;
-        this.conent = conent;
+        this.content = content;
     }
 
     public Long getId() {
@@ -54,12 +54,12 @@ public class Image {
         this.name = name;
     }
 
-    public byte[] getConent() {
-        return conent;
+    public byte[] getContent() {
+        return content;
     }
 
-    public void setConent(byte[] conent) {
-        this.conent = conent;
+    public void setContent(byte[] content) {
+        this.content = content;
     }
     
 }

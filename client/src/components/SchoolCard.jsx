@@ -10,12 +10,12 @@ export const SchoolCard = ({ school }) => {
                 <p>COLEGIO</p>
                 <h2>{school.name}</h2>
                 {/* <h4>{school.address}</h4> */}
-                {/* <h5>{school.schoolCode}</h5> */}
+                <h5>{school.image.name}</h5>
                 
                 <p>Ver Catálogo</p>
             </div>
             <div className="div-img">
-                <img src={insignia} alt="#" />
+            <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
             </div>
         </div>
 
