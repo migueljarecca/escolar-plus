@@ -1,18 +1,16 @@
 import axios from "axios"
 
 const BASE_URL_SCHOOL = `${import.meta.env.VITE_API_BASE_URL}/school` 
-import { update } from './userService';
 
 //COMUNICACION CON EL BACKEND
 
-//Creamos un usuario
-export const save = async({name, address, schoolCode}) => {
+//Creamos un colegio
+export const save = async(formData) => {
     try {
-        const response = await axios.post(BASE_URL_SCHOOL,{
-            name,
-            address,
-            schoolCode
+        const response = await axios.post(BASE_URL_SCHOOL, formData, {
+ 
         });
+
     } catch (error) {
         console.log(error);
     }

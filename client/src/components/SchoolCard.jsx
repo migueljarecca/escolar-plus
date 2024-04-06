@@ -15,7 +15,7 @@ export const SchoolCard = ({ school }) => {
                 <p>Ver Catálogo</p>
             </div>
             <div className="div-img">
-            <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
+                <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
             </div>
         </div>
 

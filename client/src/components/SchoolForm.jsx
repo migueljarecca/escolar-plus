@@ -6,6 +6,7 @@ export const SchoolForm = ({initialSchoolForm}) => {
     const {handlerAddSchool} = useSchool();
 
     const [schoolForm, setSchoolForm] = useState(initialSchoolForm);
+    const [file, setFile] = useState(null);
 
     const {name, address, schoolCode} = schoolForm;
 
@@ -18,12 +19,28 @@ export const SchoolForm = ({initialSchoolForm}) => {
         });
     }
 
+    const onFileChange = (event) => {
+        setFile(event.target.files[0]);
+    }
+
     const onSubmitSchoolChange = (event) => {
         event.preventDefault();
+
+        const formData = new FormData();
+
+        formData.append('name', name);
+        formData.append('address', address);
+        formData.append('schoolCode', schoolCode);
+
+        if (file) {
+            formData.append('file', file);
+        }
         
-        handlerAddSchool(schoolForm);
+        //Enviamos al hook useSchool
+        handlerAddSchool(formData);
        
         setSchoolForm(initialSchoolForm);
+        setFile(null);
     }
 
     return (
@@ -51,7 +68,12 @@ export const SchoolForm = ({initialSchoolForm}) => {
                     value={schoolCode}
                     onChange={onInputSchoolChange}
                 />
-
+                <input 
+                    type="file"
+                    name="file"
+                    onChange={onFileChange}
+                />
+                
                 <button
                     type="submit"
                     >

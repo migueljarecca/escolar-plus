@@ -5,7 +5,7 @@ export const useSchool = () => {
     // Estado para almacenar los datos de las escuelas.
     const [schools, setSchools] = useState([]);
 
-    // Función para cargar los datos de las escuelas.
+    // Función para cargar los datos de las escuelas desde el backend.
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -18,9 +18,9 @@ export const useSchool = () => {
         fetchData();
     }, []);
 
-    const handlerAddSchool = (school) => {
-        console.log("control 1", school);
-        save(school).then(() => {
+    const handlerAddSchool = (formData) => {
+        console.log("control 1", formData);
+        save(formData).then(() => {
             // Opcional: Actualizar el estado local con la nueva escuela.
         });
     };

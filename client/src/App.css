@@ -129,6 +129,10 @@ html {
 }
 
 .container-cole .box-cole .div-img {
-  
+  width: 100%;
   background-color: #da291c;
+}
+
+.container-cole.box-cole .div-img img {
+  width: auto;
 }

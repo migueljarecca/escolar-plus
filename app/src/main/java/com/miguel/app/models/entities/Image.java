@@ -1,6 +1,7 @@
 package com.miguel.app.models.entities;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ public class Image {
     private String mime;
     private String name;
 
-    @Lob @Basic(fetch = FetchType.LAZY)
+    @Lob @Basic(fetch = FetchType.LAZY) @Column(columnDefinition = "LONGBLOB")
     private byte[] content;
 
     public Image() {
