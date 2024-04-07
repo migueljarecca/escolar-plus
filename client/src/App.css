@@ -116,6 +116,11 @@ html {
   background: #ecf2f2;
 }
 
+.box-cole .div-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .container-cole .box-cole p {
   color: #7d7d7d;
   font-size: 1.7rem;
@@ -126,11 +131,43 @@ html {
   color: #242424;
   font-size: 2.5rem;
   font-weight: 700;
+  margin-top: .5rem;
+}
+
+.box-cole .div-content button {
+  margin-top: .5rem;
+  padding: .5rem;
+  font-size: 1.7rem;
+  border: 2px solid #ff0808;
+  border-radius: 3px;
+  background: var(--with-color);
+  cursor: pointer;
+}
+
+.box-cole .div-content > a:nth-of-type(1) {
+  margin-top: .5rem;
+  padding: .5rem;
+  font-size: 1.7rem;
+  text-decoration: none;
+  border: 2px solid #10ff08;
+  border-radius: 3px;
+  background: var(--with-color);
+  cursor: pointer;
+}
+
+.box-cole .div-content > a:nth-of-type(2) {
+  margin-top: 2rem;
+  padding: .5rem;
+  font-size: 1.7rem;
+  text-decoration: none;
+  border: 2px solid #704bb2;
+  border-radius: 5px;
+  background: var(--with-color);
 }
 
 .container-cole .box-cole .div-img {
   width: 100%;
-  background-color: #da291c;
+  /* background-color: #da291c; */
   display: flex;
 }
 

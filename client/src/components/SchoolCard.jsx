@@ -11,7 +11,14 @@ export const SchoolCard = ({ school }) => {
                 <p>COLEGIO</p>
                 <h2>{school.name}</h2>
                 {/* <h4>{school.address}</h4> */}
-                <h5>{school.image.name}</h5>
+                {/* <h5>{school.image.name}</h5> */}
+
+                <NavLink to={"/school/update/" + school.id}> Actualizar</NavLink>
+
+                <button
+                    type='submit'>
+                    Eliminar
+                </button>
                 
                 <NavLink to={"/uniforms"}>Ver Catálogo </NavLink>
             </div>

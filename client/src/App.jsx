@@ -1,11 +1,9 @@
 
 import { useState } from 'react'
-import { UserForm } from './components/UserForm'
-import { UserList } from './components/UserList'
-import { SchoolForm } from './components/SchoolForm';
+// import { UserForm } from './components/UserForm'
+// import { UserList } from './components/UserList'
+// import { SchoolForm } from './components/SchoolForm';
 import { AppRoutes } from './AppRoutes';
-
-
 
   const initialUserForm = {
     id: '',
@@ -33,11 +31,14 @@ function App() {
 
   return (
     <>
-      <AppRoutes />
+      <AppRoutes 
+        initialSchoolForm={initialSchoolForm}
+        
+        />
 
-      {/* <SchoolForm initialSchoolForm={initialSchoolForm}/>
+      {/* <SchoolForm initialSchoolForm={initialSchoolForm}/> */}
 
-      <UserForm 
+      {/* <UserForm 
         initialUserForm={initialUserForm}
         userSelect={userSelect}
         />
