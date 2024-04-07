@@ -2,8 +2,8 @@
 import { useState } from 'react'
 import { UserForm } from './components/UserForm'
 import { UserList } from './components/UserList'
-import { Home } from './pages/Home';
 import { SchoolForm } from './components/SchoolForm';
+import { AppRoutes } from './AppRoutes';
 
 
 
@@ -33,14 +33,15 @@ function App() {
 
   return (
     <>
-      <Home />
-      <SchoolForm initialSchoolForm={initialSchoolForm}/>
+      <AppRoutes />
+
+      {/* <SchoolForm initialSchoolForm={initialSchoolForm}/>
 
       <UserForm 
         initialUserForm={initialUserForm}
         userSelect={userSelect}
         />
-      <UserList handlerSelectUser={handlerSelectUser}/>
+      <UserList handlerSelectUser={handlerSelectUser}/> */}
     </>
   )
 }

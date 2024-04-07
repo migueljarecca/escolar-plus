@@ -131,8 +131,10 @@ html {
 .container-cole .box-cole .div-img {
   width: 100%;
   background-color: #da291c;
+  display: flex;
 }
 
-.container-cole.box-cole .div-img img {
-  width: auto;
+.container-cole .box-cole .div-img img {
+  width: 17vw;
+  margin: auto;
 }
