@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,8 +53,8 @@ public class SchoolController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody School school, @PathVariable Long id) {
-        Optional<School> schoolOptional = schoolService.update(school, id);
+    public ResponseEntity<?> update(@ModelAttribute SchoolDto schoolDto, @PathVariable Long id) {
+        Optional<School> schoolOptional = schoolService.update(schoolDto, id);
         if (schoolOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(schoolOptional);
         } 

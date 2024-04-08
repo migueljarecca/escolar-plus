@@ -2,7 +2,7 @@ import { Header } from "../components/Header"
 import { SchoolList } from "../components/SchoolList"
 // import insignia from '/src/images/insignia.png'
 
-export const Home = () => {
+export const HomePage = () => {
 
     return (
         <>

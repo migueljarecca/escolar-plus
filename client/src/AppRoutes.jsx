@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import { Home } from './pages/Home'
-import { Uniforms } from './pages/Uniforms'
-import { SchoolFormPage } from './pages/SchoolFormPage'
+import { HomePage } from './pages/HomePage'
+import { UniformsPage } from './pages/UniformsPage'
+import { RegisterSchoolPage } from './pages/RegisterSchoolPage'
 
 
 export const AppRoutes = ({ initialSchoolForm }) => {
@@ -10,10 +10,10 @@ export const AppRoutes = ({ initialSchoolForm }) => {
 
     return (
         <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/uniforms' element={<Uniforms />}></Route>
-            <Route path='/school/register' element={<SchoolFormPage/>}></Route>
-            <Route path='/school/update/:id' element={<SchoolFormPage initialSchoolForm={initialSchoolForm}/>}></Route>
+            <Route path='/' element={<HomePage />}></Route>
+            <Route path='/uniforms' element={<UniformsPage />}></Route>
+            <Route path='/school/register' element={<RegisterSchoolPage initialSchoolForm={initialSchoolForm}/>}></Route>
+            <Route path='/school/update/:id' element={<RegisterSchoolPage initialSchoolForm={initialSchoolForm}/>}></Route>
         </Routes>
     )
 }

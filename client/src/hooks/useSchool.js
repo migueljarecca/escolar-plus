@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { findAll, remove, save, updateSchool } from "../services/schoolService";
+import { findAll, findById, remove, save, updateSchool } from "../services/schoolService";
 
 export const useSchool = () => {
     // Estado para almacenar los datos de las escuelas.
     const [schools, setSchools] = useState([]);
+    const [school, setSchool] = useState(null);
 
     // Función para cargar los datos de las escuelas desde el backend.
     useEffect(() => {
@@ -18,6 +19,17 @@ export const useSchool = () => {
         fetchData();
     }, []);
 
+    // Función para traer un solo colegio por ID
+    const fetchSchoolById = async (id) => {
+        try {
+            const response = await findById(id);
+            setSchool(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    //Funcion para crear el colegio
     const handlerAddSchool = (formData) => {
         console.log("control 1", formData);
         save(formData).then(() => {
@@ -25,8 +37,8 @@ export const useSchool = () => {
         });
     };
 
-    const handlerUpdateSchool = (school) => {
-        updateSchool(school).then(() => {
+    const handlerUpdateSchool = (formData) => {
+        updateSchool(formData).then(() => {
             // Opcional: Actualizar el estado local con los datos actualizados de la escuela.
         });
     };
@@ -40,6 +52,9 @@ export const useSchool = () => {
     // Devuelve los datos de las escuelas junto con las funciones para modificarlos.
     return {
         schools,
+        school,
+
+        fetchSchoolById,
         handlerAddSchool,
         handlerUpdateSchool,
         handlerRemoveSchool,

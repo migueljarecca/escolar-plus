@@ -53,14 +53,14 @@ public class SchoolService {
     }
 
     @Transactional
-    public Optional<School> update(School school, Long id) {
+    public Optional<School> update(SchoolDto schoolDto, Long id) {
         Optional<School> schoolOptional = schoolRepository.findById(id);
 
         if (schoolOptional.isPresent()) {
             School dbSchool = schoolOptional.orElseThrow();
-            dbSchool.setName(school.getName());
-            dbSchool.setAddress(school.getAddress());
-            dbSchool.setSchoolCode(school.getSchoolCode());
+            dbSchool.setName(schoolDto.getName());
+            dbSchool.setAddress(schoolDto.getAddress());
+            dbSchool.setSchoolCode(schoolDto.getSchoolCode());
 
             School requestSchool = schoolRepository.save(dbSchool);
 

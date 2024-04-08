@@ -1,5 +1,5 @@
 
-export const Uniforms = () => {
+export const UniformsPage = () => {
 
 
     return (

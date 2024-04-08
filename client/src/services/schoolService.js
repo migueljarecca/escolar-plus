@@ -16,6 +16,16 @@ export const save = async(formData) => {
     }
 }
 
+//Traemos un Colegio desde la base de datos
+export const findById = async(id) => {
+    try {
+        const response = await axios.get(`${BASE_URL_SCHOOL}/${id}`);
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const findAll = async() => {
     try {
         const response = await axios.get(BASE_URL_SCHOOL);
@@ -25,13 +35,10 @@ export const findAll = async() => {
     }
 }
 
-export const updateSchool = async({id, name, address, schoolCode}) => {
+export const updateSchool = async({ formData }) => {
     try {
-        const response = await axios.put(`${BASE_URL_SCHOOL}/${id}`,{
-            name,
-            address,
-            schoolCode,
-        });
+        const response = await axios.put(`${BASE_URL_SCHOOL}/${id}`, formData);
+        
     } catch (error) {
         console.log(error);
     }
