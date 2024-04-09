@@ -7,10 +7,8 @@ const BASE_URL_SCHOOL = `${import.meta.env.VITE_API_BASE_URL}/school`
 //Creamos un colegio
 export const save = async(formData) => {
     try {
-        const response = await axios.post(BASE_URL_SCHOOL, formData, {
- 
-        });
-
+        const response = await axios.post(BASE_URL_SCHOOL, formData);
+        return response;  
     } catch (error) {
         console.log(error);
     }
@@ -35,10 +33,10 @@ export const findAll = async() => {
     }
 }
 
-export const updateSchool = async({ formData }) => {
+export const update = async({ formData }) => {
     try {
         const response = await axios.put(`${BASE_URL_SCHOOL}/${id}`, formData);
-        
+        return response;
     } catch (error) {
         console.log(error);
     }

@@ -4,6 +4,8 @@ import { useState } from 'react'
 // import { UserList } from './components/UserList'
 // import { SchoolForm } from './components/SchoolForm';
 import { AppRoutes } from './AppRoutes';
+import { store } from './store/store';
+import { Provider } from '@react-redux'
 
   const initialUserForm = {
     id: '',
@@ -30,7 +32,7 @@ function App() {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <AppRoutes 
         initialSchoolForm={initialSchoolForm}
         
@@ -43,7 +45,7 @@ function App() {
         userSelect={userSelect}
         />
       <UserList handlerSelectUser={handlerSelectUser}/> */}
-    </>
+    </Provider>
   )
 }
 

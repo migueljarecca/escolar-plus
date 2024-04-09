@@ -1,61 +1,44 @@
 import { useEffect, useState } from "react";
-import { findAll, findById, remove, save, updateSchool } from "../services/schoolService";
+import { findAll, findById, remove, save, update } from "../services/schoolService";
+import { useDispatch, useSelector } from '@react-redux';
+import { addSchool, loadingSchools, removeSchool } from "../store/slices/schools/schoolsSlice";
 
 export const useSchool = () => {
-    // Estado para almacenar los datos de las escuelas.
-    const [schools, setSchools] = useState([]);
-    const [school, setSchool] = useState(null);
 
-    // Función para cargar los datos de las escuelas desde el backend.
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await findAll();
-                setSchools(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchData();
-    }, []);
+    const { schools } = useSelector(state => state.schools)
+    const dispatch = useDispatch();
 
-    // Función para traer un solo colegio por ID
-    const fetchSchoolById = async (id) => {
+    const getSchools = async() => {
         try {
-            const response = await findById(id);
-            setSchool(response.data);
+            const result = await findAll();
+            dispatch(loadingSchools(result.data));
+            
         } catch (error) {
             console.error(error);
         }
-    };
-
+    }
+    
     //Funcion para crear el colegio
-    const handlerAddSchool = (formData) => {
-        console.log("control 1", formData);
-        save(formData).then(() => {
-            // Opcional: Actualizar el estado local con la nueva escuela.
-        });
+    const handlerAddSchool = async(formData) => {
+        const response = await save(formData);
+        dispatch(addSchool({ ...response.data }));
+        };
     };
 
-    const handlerUpdateSchool = (formData) => {
-        updateSchool(formData).then(() => {
-            // Opcional: Actualizar el estado local con los datos actualizados de la escuela.
-        });
+    const handlerUpdateSchool = async(formData) => {
+        const response = await update(formData);
+        dispatch(updateSchool({ ...response.data }))
     };
 
-    const handlerRemoveSchool = (id) => {
-        remove(id).then(() => {
-            // Opcional: Actualizar el estado local para reflejar que la escuela ha sido eliminada.
-        });
+    const handlerRemoveSchool = async(id) => {
+        await remove(id);
+        dispatch(removeSchool(id));
     };
 
     // Devuelve los datos de las escuelas junto con las funciones para modificarlos.
     return {
-        schools,
-        school,
-
-        fetchSchoolById,
-        handlerAddSchool,
+        
+        getSchools,
         handlerUpdateSchool,
         handlerRemoveSchool,
     };
