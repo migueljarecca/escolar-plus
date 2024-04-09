@@ -1,11 +1,11 @@
 
-import { useState } from 'react'
+// import { useState } from 'react'
 // import { UserForm } from './components/UserForm'
 // import { UserList } from './components/UserList'
 // import { SchoolForm } from './components/SchoolForm';
 import { AppRoutes } from './AppRoutes';
 import { store } from './store/store';
-import { Provider } from '@react-redux'
+import { Provider } from 'react-redux'
 
   const initialUserForm = {
     id: '',
@@ -15,28 +15,17 @@ import { Provider } from '@react-redux'
     password: '',
   }
 
-  const initialSchoolForm = {
-    id: '',
-    name:'',
-    address: '',
-    schoolCode: '',
-  }
+ 
 
 function App() {
 
-  const [userSelect, setUserSelect] = useState(initialUserForm);
-  const [schoolSelect, setSchoolSelect] = useState(initialSchoolForm);
-
-  const handlerSelectUser = (user) => {
-    setUserSelect(user);
-  }
+  // const handlerSelectUser = (user) => {
+  //   setUserSelect(user);
+  // }
 
   return (
     <Provider store={store}>
-      <AppRoutes 
-        initialSchoolForm={initialSchoolForm}
-        
-        />
+      <AppRoutes />
 
       {/* <SchoolForm initialSchoolForm={initialSchoolForm}/> */}
 

@@ -4,43 +4,34 @@ import { SchoolForm } from "../components/SchoolForm"
 import { useParams } from "react-router-dom";
 import { useSchool } from "../hooks/useSchool";
 
-export const RegisterSchoolPage = ({ initialSchoolForm }) => {
+export const RegisterSchoolPage = () => {
 
-    const { school, fetchSchoolById } = useSchool();
-    const [schoolSelect, setSchoolSelect] = useState(initialSchoolForm);
+    const { schools, initialSchoolForm  } = useSchool();
+    const [schoolSelected, setSchoolSelected] = useState(initialSchoolForm);
 
     const { id } = useParams();
     console.log("control de id ", id);
 
     useEffect(() => {
         if (id) {
-            fetchSchoolById(id);
-        }
-    }, [id, fetchSchoolById]); // Solo reacciona a los cambios de ID
-    
-    useEffect(() => {
-        // Esta verificación asegura que no intentemos usar un `school` nulo o indefinido
-        if (school && school.id != null) { // Asegúrate de ajustar esta condición según sea necesario
-            console.log("control de school ", school);
-            setSchoolSelect(school);
-            
+            const school = schools.find(s => s.id == id)
+            setSchoolSelected(school);
         } else {
-            setSchoolSelect(initialSchoolForm);
+            setSchoolSelected(initialSchoolForm);
         }
-    }, [school]); // Este useEffect reacciona a los cambios en `school`    
+    },[id]);
 
-    // console.log("control de se llega aqui" + schoolSelect);
 
     return (
         <>
             {/* <Header /> */}
 
             <div className="container-form-School">
-                <h3>{schoolSelect.id > 0 ? 'Editar' : 'Registrar'} Colegio</h3>
+                <h3>{schoolSelected.id > 0 ? 'Editar' : 'Registrar'} Colegio</h3>
                 
             </div>
 
-            <SchoolForm schoolSelect={schoolSelect}></SchoolForm>
+            <SchoolForm schoolSelected={schoolSelected}></SchoolForm>
 
         </>
     )

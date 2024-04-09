@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import { Header } from "../components/Header"
 import { SchoolList } from "../components/SchoolList"
+import { useSchool } from "../hooks/useSchool";
 // import insignia from '/src/images/insignia.png'
 
 export const HomePage = () => {
+
+    const { getSchools, schools } = useSchool();
+
+    useEffect(() => {
+        getSchools();
+    },[]);
 
     return (
         <>
@@ -17,7 +25,7 @@ export const HomePage = () => {
             </div>
 
             <aside className="container-cole">
-                <SchoolList />
+                <SchoolList schools={schools}/>
             </aside>
         </>
     )
