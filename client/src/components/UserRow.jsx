@@ -25,12 +25,14 @@ export const UserRow = ({ id, name, lastname, email, handlerSelectUser, handlerR
                         Actualizar
                     </button>
                 </th>
-                <th><button
+                <th>
+                    <button
                         type="submit"
                         onClick={() => onSelectedIdUser(id) }
                         >
                         Eliminar
-                    </button></th>
+                    </button>
+                </th>
             </tr>
         </>
     )

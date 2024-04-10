@@ -175,3 +175,27 @@ html {
   width: 17vw;
   margin: auto;
 }
+
+/* -------------------REGISTER SCHOOL PAGE --------------------*/
+
+.container-form-school {
+  display: flex;
+  flex-direction: column;
+  margin: 12rem 4%;
+  padding: 4rem;
+  align-items: center;
+  background: #a3a3a3;
+}
+
+.form-school {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  padding-top: 2rem;
+}
+
+.form-school input {
+  margin: .5rem;
+  padding: 1rem;
+  border: none;
+}

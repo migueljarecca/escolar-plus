@@ -24,14 +24,14 @@ export const RegisterSchoolPage = () => {
 
     return (
         <>
-            {/* <Header /> */}
+            <Header />
 
-            <div className="container-form-School">
+            <div className="container-form-school">
                 <h3>{schoolSelected.id > 0 ? 'Editar' : 'Registrar'} Colegio</h3>
                 
-            </div>
 
-            <SchoolForm schoolSelected={schoolSelected}></SchoolForm>
+                <SchoolForm schoolSelected={schoolSelected}></SchoolForm>
+            </div>
 
         </>
     )

@@ -62,6 +62,10 @@ public class SchoolService {
             dbSchool.setAddress(schoolDto.getAddress());
             dbSchool.setSchoolCode(schoolDto.getSchoolCode());
 
+            MultipartFile file = schoolDto.getFile();
+            Image img = imageService.updateImage(file, dbSchool.getImage().getId());
+            dbSchool.setImage(img);
+
             School requestSchool = schoolRepository.save(dbSchool);
 
             return Optional.ofNullable(requestSchool);         
@@ -71,6 +75,15 @@ public class SchoolService {
     }
 
     public void remove(Long id) {
-        schoolRepository.deleteById(id);
+        Optional<School> schoolOptional = schoolRepository.findById(id);
+
+        if (schoolOptional.isPresent()) {
+            School school = schoolOptional.orElseThrow();
+
+            schoolRepository.deleteById(id);
+
+            imageService.removeImagen(school.getImage().getId());
+        }
     }
+
 }

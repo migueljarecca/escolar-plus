@@ -42,22 +42,23 @@ export const SchoolForm = ({ schoolSelected }) => {
             formData.append('file', file);
         }
         
-        if (schoolSelected.id == null) {
+        if (schoolSelected.id == 0) {
             //Enviamos al hook useSchool
             handlerAddSchool(formData);            
         } else {
             handlerUpdateSchool(formData, schoolSelected.id);
+            //Debugger para ver los datos
             for (let [key, value] of formData.entries()) {
                 console.log(key, value);
               }
         }
-
+        setSchoolForm(initialSchoolForm);
         setFile(null);
     }
 
     return (
         <>
-            <form onSubmit={onSubmitSchoolChange}>
+            <form className="form-school" onSubmit={onSubmitSchoolChange}>
 
                 <input 
                     type="text"

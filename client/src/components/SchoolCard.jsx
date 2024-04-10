@@ -1,8 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import insignia from '../images/manuel-prado.png';
-// import { insignia } from '/src/images/insignia.png';
+import { useSchool } from '../hooks/useSchool';
 
 export const SchoolCard = ({ school }) => {
+
+    const { handlerRemoveSchool } = useSchool();
+
+    const onSelectedSchool = (id) => {
+        handlerRemoveSchool(id);
+    }
 
     return (
 
@@ -16,12 +21,16 @@ export const SchoolCard = ({ school }) => {
                 <NavLink to={"/school/update/" + school.id}> Actualizar</NavLink>
 
                 <button
-                    type='submit'>
+                    type='submit'
+                    onClick={() => onSelectedSchool(school.id)}
+                    >
                     Eliminar
                 </button>
                 
                 <NavLink to={"/uniforms"}>Ver Catálogo </NavLink>
+
             </div>
+            
             <div className="div-img">
                 <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
             </div>
