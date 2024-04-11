@@ -119,7 +119,7 @@ public class UniformService {
 
             uniformRepository.deleteById(id);
             
-            
+            imageService.removeImagen(uniform.getImage().getId());
         }
     }
 }

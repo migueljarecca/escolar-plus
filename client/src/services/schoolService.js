@@ -39,7 +39,6 @@ export const update = async(formData, id) => {
         return response;
     } catch (error) {
         console.error(error);
-        return { data: null }; // Devuelve algo para manejar los errores de manera
     }
 }
 
