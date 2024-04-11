@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Uniform {
@@ -31,16 +32,20 @@ public class Uniform {
     @ManyToOne
     private School school;
 
+    @OneToOne
+    private Image image;
+
     public Uniform() {
     }
 
-    public Uniform(Long id, Double price, Product product, Size size, Gender gender, School school) {
+    public Uniform(Long id, Double price, Product product, Size size, Gender gender, School school, Image image) {
         this.id = id;
         this.price = price;
         this.product = product;
         this.size = size;
         this.gender = gender;
         this.school = school;
+        this.image = image;
     }
 
     public Long getId() {
@@ -91,9 +96,18 @@ public class Uniform {
         this.school = school;
     }
 
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
-        return "Uniforme [id=" + id + ", price=" + price + ", product=" + product + ", size=" + size + ", gender="
-                + gender + ", school=" + school + "]";
+        return "Uniform [id=" + id + ", price=" + price + ", product=" + product + ", size=" + size + ", gender="
+                + gender + ", school=" + school + ", image=" + image + "]";
     }
+      
 }

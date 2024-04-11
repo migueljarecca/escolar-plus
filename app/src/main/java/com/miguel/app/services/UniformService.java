@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.miguel.app.models.dto.UniformDto;
+import com.miguel.app.models.entities.Image;
 import com.miguel.app.models.entities.School;
 import com.miguel.app.models.entities.Uniform;
 import com.miguel.app.resopitories.SchoolRepository;
@@ -21,6 +24,9 @@ public class UniformService {
     @Autowired
     private SchoolRepository schoolRepository;
 
+    @Autowired
+    private ImageService imageService;
+
     @Transactional(readOnly = true)
     public List<Uniform> findAllUniform() {
         return uniformRepository.findAll();
@@ -32,44 +38,45 @@ public class UniformService {
     }
 
     @Transactional
-    public Uniform createUniform(Uniform uniform) {
-        System.out.println("Control de price: " +uniform.getPrice());
-        System.out.println("Control de producto: " +uniform.getProduct());
-        System.out.println("Control de talla: " +uniform.getSize());
-        System.out.println("Control de genero: " +uniform.getGender());
-
-        System.out.println("Control de id: " +uniform.getSchool().getId());
-        System.out.println("Control de name school: " +uniform.getSchool().getName());
-        System.out.println("Control de direccion school: " +uniform.getSchool().getAddress());
-        System.out.println("Control de codigo school: " +uniform.getSchool().getSchoolCode());
-
-        Optional<School> sOptional = schoolRepository.findById(uniform.getSchool().getId());
+    public Uniform createUniform(UniformDto uniformDto) {
+    
+        Optional<School> sOptional = schoolRepository.findById(uniformDto.getSchoolId());
 
         System.out.println("control de id de colegio: " +sOptional);
         School school = new School();
 
         if (sOptional.isPresent()) {
             school = sOptional.get();
-            System.out.println("control de la entidad colegio: " +school);
         }
+
+        MultipartFile file = uniformDto.getFile();
+        Image img = imageService.createImage(file);
 
         Uniform uni = new Uniform();
 
-        uni.setPrice(uniform.getPrice());
-        uni.setProduct(uniform.getProduct());
-        uni.setSize(uniform.getSize());
-        uni.setGender(uniform.getGender());
+        uni.setPrice(uniformDto.getPrice());
+        uni.setProduct(uniformDto.getProduct());
+        uni.setSize(uniformDto.getSize());
+        uni.setGender(uniformDto.getGender());
+
         uni.setSchool(school);
+        uni.setImage(img);
 
         uniformRepository.save(uni);
+
         return uni;
     }
 
     @Transactional
-    public Optional<Uniform> updateUniform(Uniform uniform, Long idUniform) {
+    public Optional<Uniform> updateUniform(UniformDto uniformDto, Long id) {
 
-        Optional<Uniform> uniOptional = uniformRepository.findById(idUniform);
-        Optional<School> sOptional = schoolRepository.findById(uniform.getSchool().getId());
+        System.out.println("control de id UNIFORM " +id);
+        Optional<Uniform> uniOptional = uniformRepository.findById(id);
+
+        System.out.println("control de id COLEGIO " +uniformDto.getSchoolId());
+
+        Optional<School> sOptional = schoolRepository.findById(uniformDto.getSchoolId());
+
 
         School school = new School();
 
@@ -77,16 +84,24 @@ public class UniformService {
             school = sOptional.get();
         }
 
+   
         if (uniOptional.isPresent()) {
-            Uniform uniDb = uniOptional.orElseThrow();
 
-            uniDb.setPrice(uniform.getPrice());
-            uniDb.setProduct(uniform.getProduct());
-            uniDb.setSize(uniform.getSize());
-            uniDb.setGender(uniform.getGender());
+            Uniform uniDb = uniOptional.orElseThrow();
+            System.out.println("control de id IMAGEN " +uniDb.getImage().getId());
+
+
+            MultipartFile file = uniformDto.getFile();
+            Image img = imageService.updateImage(file, uniDb.getImage().getId());
+    
+            uniDb.setPrice(uniformDto.getPrice());
+            uniDb.setProduct(uniformDto.getProduct());
+            uniDb.setSize(uniformDto.getSize());
+            uniDb.setGender(uniformDto.getGender());
 
             uniDb.setSchool(school);
-
+            uniDb.setImage(img);
+        
             Uniform uni = uniformRepository.save(uniDb);
 
             return Optional.ofNullable(uni);
@@ -96,6 +111,15 @@ public class UniformService {
 
     @Transactional
     public void deleteUniform(Long id) {
-        uniformRepository.deleteById(id);
+
+        Optional<Uniform> uni = uniformRepository.findById(id);
+
+        if (uni.isPresent()) {
+            Uniform uniform = uni.orElseThrow();
+
+            uniformRepository.deleteById(id);
+            
+            
+        }
     }
 }

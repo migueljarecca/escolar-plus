@@ -6,13 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.miguel.app.models.dto.UniformDto;
 import com.miguel.app.models.entities.Uniform;
 import com.miguel.app.services.UniformService;
 
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/uniform")
+@RequestMapping("/uniforms")
 @CrossOrigin(originPatterns = "*")
 public class UniformController {
 
@@ -44,16 +45,16 @@ public class UniformController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Uniform uniform) {
-        Uniform uni = uniformService.createUniform(uniform);
+    public ResponseEntity<?> create(@ModelAttribute UniformDto uniformDto) {
+        Uniform uniform = uniformService.createUniform(uniformDto);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(uni);
+        return ResponseEntity.status(HttpStatus.CREATED).body(uniform);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Uniform uniform, @PathVariable Long id) {
+    public ResponseEntity<?> update(@ModelAttribute UniformDto uniformDto, @PathVariable Long id) {
 
-        Optional<Uniform> uOptional = uniformService.updateUniform(uniform, id);
+        Optional<Uniform> uOptional = uniformService.updateUniform(uniformDto, id);
 
         if (uOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(uOptional.orElseThrow());

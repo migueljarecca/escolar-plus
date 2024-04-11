@@ -21,7 +21,7 @@ import com.miguel.app.models.entities.School;
 import com.miguel.app.services.SchoolService;
 
 @RestController
-@RequestMapping("/school")
+@RequestMapping("/schools")
 @CrossOrigin(originPatterns = "*")
 public class SchoolController {
     

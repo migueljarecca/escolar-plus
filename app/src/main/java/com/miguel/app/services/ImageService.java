@@ -52,7 +52,7 @@ public class ImageService {
                 }
 
                 img.setMime(file.getContentType());
-                img.setName(file.getName());
+                img.setName(file.getOriginalFilename());
                 img.setContent(file.getBytes());
 
                 return imageResposiory.save(img);
