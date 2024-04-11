@@ -33,9 +33,7 @@ export const useSchool = () => {
             // Maneja el caso donde la respuesta no es lo que esperabas
             console.error('La actualización falló o no devolvió datos');
         }
-        // console.log("paso or aqui 2", response.data);
-
-        // dispatch(updateSchool({ ...response.data }))
+      
     };
 
     const handlerRemoveSchool = async(id) => {
