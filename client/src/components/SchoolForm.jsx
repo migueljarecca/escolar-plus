@@ -24,7 +24,7 @@ export const SchoolForm = ({ schoolSelected }) => {
         });
     }
 
-    const onFileChange = (event) => {
+    const onInputFileChange = (event) => {
         setFile(event.target.files[0]);
     }
 
@@ -84,7 +84,7 @@ export const SchoolForm = ({ schoolSelected }) => {
                 <input 
                     type="file"
                     name="file"
-                    onChange={onFileChange}
+                    onChange={onInputFileChange}
                 />
                 
                 <button

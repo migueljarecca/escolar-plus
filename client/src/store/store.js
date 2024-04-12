@@ -6,6 +6,6 @@ import { uniformSlice } from './slices/schools/uniformSlice';
 export const store = configureStore({
     reducer: {
         schools: schoolSlice.reducer,
-        uniforms: uniformSlice,reducer,
+        uniforms: uniformSlice.reducer,
     }
 });

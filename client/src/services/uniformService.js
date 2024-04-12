@@ -1,5 +1,5 @@
 
-import { axios } from 'axios';
+import axios from 'axios';
 
 const BASE_URL_UNIFORM = `${import.meta.env.VITE_API_BASE_URL}/uniforms`
 

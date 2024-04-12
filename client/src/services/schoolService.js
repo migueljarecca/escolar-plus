@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BASE_URL_SCHOOL = `${import.meta.env.VITE_API_BASE_URL}/school` 
+const BASE_URL_SCHOOL = `${import.meta.env.VITE_API_BASE_URL}/schools` 
 
 //COMUNICACION CON EL BACKEND
 
