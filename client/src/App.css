@@ -82,7 +82,7 @@ html {
   padding-left: 2rem;
 }
 
-/* ===================== HOME ==================== */
+/* ======================= HOME PAGE ========================= */
 
 .container-home {
   display: flex;
@@ -99,7 +99,7 @@ html {
   background: #a3a3a3;
 }
 
-/* ------------------ cartas del colegio -------------*/
+/* --------------- cartas del colegio -------------*/
 
 .container-cole {
   padding: 5rem 4%;
@@ -176,7 +176,7 @@ html {
   margin: auto;
 }
 
-/* -------------------REGISTER SCHOOL PAGE --------------------*/
+/* ======================= REGISTER SCHOOL PAGE ================== */
 
 .container-form-school {
   display: flex;
@@ -198,4 +198,27 @@ html {
   margin: .5rem;
   padding: 1rem;
   border: none;
+}
+
+/* ======================== UNIFORMS PAGE ======================== */
+
+.container-uniform {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rem 4%;
+}
+
+.container-uniform .left-sidebar {
+  background: #cbdffa;
+  flex-basis: 25%;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+}
+
+.container-uniform .main-content {
+  background: #cbdffa;
+  flex-basis: 72%;
+  height: 100vh;
 }

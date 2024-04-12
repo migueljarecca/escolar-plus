@@ -1,3 +1,5 @@
+import { Header } from '../components/Header';
+
 
 export const UniformsPage = () => {
 
@@ -6,7 +8,15 @@ export const UniformsPage = () => {
 
     return (
         <>
-        <div className="div">Uniforms</div>
+            <Header />
+
+
+
+            <div className="container-uniform">
+                <div className="left-sidebar"></div>
+                <div className="main-content"></div>
+            
+            </div>
         </>
     )
 }
