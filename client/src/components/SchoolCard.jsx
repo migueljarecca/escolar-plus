@@ -27,7 +27,7 @@ export const SchoolCard = ({ school }) => {
                     Eliminar
                 </button>
                 
-                <NavLink to={"/uniforms"}>Ver Catálogo </NavLink>
+                <NavLink to={`/uniforms/${school.id}`}>Ver Catálogo </NavLink>
 
             </div>
             

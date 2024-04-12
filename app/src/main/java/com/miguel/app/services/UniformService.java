@@ -122,4 +122,9 @@ public class UniformService {
             imageService.removeImagen(uniform.getImage().getId());
         }
     }
+
+    //Consulta para traer todos los uniformes de un mismo colegio
+    public List<Uniform> findBySchool(Long id) {
+        return uniformRepository.findBySchool(id);
+    }
 }

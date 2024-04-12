@@ -11,7 +11,9 @@ export const AppRoutes = ({ initialSchoolForm }) => {
     return (
         <Routes>
             <Route path='/' element={<HomePage />}></Route>
-            <Route path='/uniforms' element={<UniformsPage />}></Route>
+
+            <Route path='/uniforms/:id' element={<UniformsPage />}></Route>
+
             <Route path='/school/register' element={<RegisterSchoolPage />}></Route>
             <Route path='/school/update/:id' element={<RegisterSchoolPage />}></Route>
         </Routes>

@@ -1,20 +1,12 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useUniform } from './../hooks/useUniform';
 
-
-// export const initialUniformForm = {
-//     id: '',
-//     price: '',
-//     product: '',
-//     size: '',
-//     gender: '',
-//     schoolId: '',
-// }
 export const UniformForm = () => {
 
     const { initialUniformForm, handlerAddUniform } = useUniform();
     const [uniformForm,  setUniformForm] = useState(initialUniformForm);
     const [file, setFile] = useState(null);
+    const fileInputRef = useRef();  // Crear la referencia
 
     const { price, product, size, gender, schoolId } = uniformForm;
 
@@ -39,15 +31,23 @@ export const UniformForm = () => {
         formData.append('product', product);
         formData.append('size',size);
         formData.append('gender', gender);
+        formData.append('schoolId', schoolId);
 
         if (file) {
             formData.append('file', file);
         }
 
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+          }
+
         handlerAddUniform(formData);
 
         setUniformForm(initialUniformForm);
         setFile(null);
+
+        // Reset the file input through the DOM API using the ref
+        fileInputRef.current.value = ""; 
 
     };
 
@@ -71,7 +71,8 @@ export const UniformForm = () => {
                     value={product}
                     onChange={onInputUniformChange}
                     >
-                    
+
+                    <option value="">Seleccionar producto</option>
                     <option value="POLO">POLO</option>
                     <option value="SHORT">SHORT</option>
                     <option value="PANTALON_BUZO">PANTALON BUZO</option>
@@ -86,7 +87,8 @@ export const UniformForm = () => {
                     value={size}
                     onChange={onInputUniformChange}
                     >
-                    
+
+                    <option value="">Seleccionar talla</option>
                     <option value="NUM_10">10</option>
                     <option value="NUM_12">12</option>
                     <option value="S">S</option>
@@ -95,7 +97,7 @@ export const UniformForm = () => {
                     <option value="XL">XL</option>
                 </select>
 
-                <label htmlFor="gender">Genero</label>
+                <label htmlFor="gender">Género</label>
               
                 <select 
                     name="gender" 
@@ -105,6 +107,7 @@ export const UniformForm = () => {
                     onChange={onInputUniformChange}
                     >
                     
+                    <option value="">Seleccionar género</option>
                     <option value="NIÑO">NIÑO</option>
                     <option value="NIÑA">NIÑA</option>
                     <option value="UNISEX">UNISEX</option>
@@ -112,7 +115,8 @@ export const UniformForm = () => {
 
                 <input 
                     type="file"
-                    name='file'
+                    name="file"
+                    ref={fileInputRef}
                     onChange={onInputFileChange}
                     />
 

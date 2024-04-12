@@ -75,4 +75,10 @@ public class UniformController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/by-school/{id}")
+    public List<Uniform>  getUniformsBySchoolId(@PathVariable Long id) {
+        return uniformService.findBySchool(id);
+        
+    }
+
 }
