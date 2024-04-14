@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 const BASE_URL_UNIFORM = `${import.meta.env.VITE_API_BASE_URL}/uniforms`
-import { axios } from 'axios';
 
 //COMUNICACION CON EL BACKEND
 

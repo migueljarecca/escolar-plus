@@ -4,7 +4,7 @@ import { UniformsPage } from './pages/UniformsPage'
 import { RegisterSchoolPage } from './pages/RegisterSchoolPage'
 
 
-export const AppRoutes = ({ initialSchoolForm }) => {
+export const AppRoutes = () => {
 
 
 

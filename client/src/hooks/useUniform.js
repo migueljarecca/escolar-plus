@@ -38,6 +38,7 @@ export const useUniform = () => {
     const uniformBySchoolId = async(id) => {
         const result = await getUniformBySchoolId(id);
         dispatch(loadingUniformBySchoolId(result.data));
+        console.log("contrl service ", result.data);
     }
  
 
