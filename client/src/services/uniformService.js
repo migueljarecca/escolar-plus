@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 const BASE_URL_UNIFORM = `${import.meta.env.VITE_API_BASE_URL}/uniforms`
+import { axios } from 'axios';
 
 //COMUNICACION CON EL BACKEND
 
@@ -43,6 +44,16 @@ export const remove = async(id) => {
         const response = await axios.delete(`${BASE_URL_UNIFORM}/${id}`);
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const getUniformBySchoolId = async(id) => {
+
+    try {
+        const response = await axios.get(`${BASE_URL_UNIFORM}/by-school/${id}`);
+        return response;
+    } catch (error) {
+        console.console.error(error);
     }
 }
 

@@ -15,6 +15,7 @@ export const uniformSlice = createSlice({
     initialState: {
         uniforms: [],
         uniformSelected: initialUniformForm,
+        filteredUniforms: [],
     },
     reducers: {
         addUniform: (state, action) => {
@@ -39,7 +40,14 @@ export const uniformSlice = createSlice({
         },
         loadingUniform: (state, action) => {
             state.uniforms = action.payload
-        }
+        },
+        //FILTRO para uniformes
+        loadingUniformBySchoolId: (state, action) => {
+            state.filteredUniforms = action.payload
+        },
+        clearFilteredUniforms: (state) => {
+            state.filteredUniforms = []; // Limpia la lista de uniformes filtrados
+        },
 
     }
 });
@@ -49,6 +57,9 @@ export const {
     removeUniform,
     updateUniform,
     loadingUniform,
+
+    loadingUniformBySchoolId,
+    clearFilteredUniforms,
 
 } = uniformSlice.actions;
  

@@ -205,7 +205,7 @@ html {
 .container-uniform {
   display: flex;
   justify-content: space-between;
-  padding: 8rem 4%;
+  padding: 9rem 4%;
 }
 
 .container-uniform .left-sidebar {

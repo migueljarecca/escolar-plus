@@ -1,10 +1,11 @@
-import { create, findAll, remove, update } from "../services/uniformService"
+import { create, findAll, getUniformBySchoolId, remove, update } from "../services/uniformService"
 import { useSelector, useDispatch } from 'react-redux';
-import { addUniform, initialUniformForm, loadingUniform, removeUniform, updateUniform } from "../store/slices/schools/uniformSlice";
+import { addUniform, initialUniformForm, loadingUniform, loadingUniformBySchoolId, removeUniform, updateUniform } from "../store/slices/schools/uniformSlice";
 
 export const useUniform = () => {
 
     const { uniforms } = useSelector(state => state.uniforms);
+    const { filteredUniforms } = useSelector(state => state.uniforms.filteredUniforms);
     const dispatch = useDispatch();
 
     const getAllUniform = async() => {
@@ -33,15 +34,25 @@ export const useUniform = () => {
         dispatch(removeUniform(id));
     }
 
+    //FILTRO traer todos los uniformes por ID de colegio
+    const uniformBySchoolId = async(id) => {
+        const result = await getUniformBySchoolId(id);
+        dispatch(loadingUniformBySchoolId(result.data));
+    }
+ 
+
     return (
         {
             uniforms,
             initialUniformForm,
+            filteredUniforms,
 
             getAllUniform,
             handlerAddUniform,
             handlerUpdateUniform,
             handlerRemoveSchool,
+
+            uniformBySchoolId,
 
         }
     );
