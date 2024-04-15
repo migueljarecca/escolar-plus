@@ -220,5 +220,28 @@ html {
 .container-uniform .main-content {
   background: #cbdffa;
   flex-basis: 72%;
-  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------------- card uniform ----------------*/
+.main-content .card-content {
+  display: flex;
+  flex-direction: column;
+  /* width: 21vw; */
+  border-radius: 5px;
+  border: 2px solid #704bb2;
+  /* max-width: 21vw; */
+  /* min-width: 16vw; */
+  /* flex-wrap: wrap; */
+
+}
+
+.main-content .card-content .div-img {
+  margin: auto;
+}
+
+.main-content .card-content img {
+  max-width: 100%;
 }
