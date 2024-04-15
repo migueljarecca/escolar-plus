@@ -1,9 +1,16 @@
 
 export const UniformFilteredCard = ( { filter }) => {
 
+    if (!filter) {
+        return <div>No hay información disponible.</div>;
+    }
+
+
+    // const { image, product, gender, size, price } = filter;
+
 
     return (
-        <card>
+        <article>
             <div>
              <img src={`data:${filter.image.mime};base64,${filter.image.content}`} alt={filter.image.name} />
 
@@ -14,8 +21,8 @@ export const UniformFilteredCard = ( { filter }) => {
                 {filter.size}
             </div>
             <div>
-                {filter.price}
+                <h2>{filter.price}</h2>
             </div>
-        </card>
+        </article>
     )
 }

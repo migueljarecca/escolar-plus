@@ -5,7 +5,7 @@ import { addUniform, initialUniformForm, loadingUniform, loadingUniformBySchoolI
 export const useUniform = () => {
 
     const { uniforms } = useSelector(state => state.uniforms);
-    const { filteredUniforms } = useSelector(state => state.uniforms.filteredUniforms);
+    const { filteredUniforms } = useSelector(state => state.uniforms);
     const dispatch = useDispatch();
 
     const getAllUniform = async() => {
@@ -38,9 +38,7 @@ export const useUniform = () => {
     const uniformBySchoolId = async(id) => {
         const result = await getUniformBySchoolId(id);
         dispatch(loadingUniformBySchoolId(result.data));
-        console.log("contrl service ", result.data);
     }
- 
 
     return (
         {
