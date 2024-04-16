@@ -69,7 +69,7 @@ public class UniformController {
 
         if (uni.isPresent()) {
             uniformService.deleteUniform(id);
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.noContent().build();
         }
 
         return ResponseEntity.notFound().build();

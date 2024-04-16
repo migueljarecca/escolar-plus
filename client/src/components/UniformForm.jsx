@@ -1,14 +1,19 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useUniform } from './../hooks/useUniform';
 
-export const UniformForm = () => {
+export const UniformForm = ( { uniformSelected }) => {
 
     const { initialUniformForm, handlerAddUniform } = useUniform();
+    
     const [uniformForm,  setUniformForm] = useState(initialUniformForm);
     const [file, setFile] = useState(null);
     const fileInputRef = useRef();  // Crear la referencia
 
     const { price, product, size, gender, schoolId } = uniformForm;
+
+    useEffect(() => {
+        setUniformForm(uniformSelected);
+    },[uniformSelected]);
 
     const onInputUniformChange = ({ target }) => {
         const {name, value} = target;

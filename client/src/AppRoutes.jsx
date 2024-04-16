@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { UniformsPage } from './pages/UniformsPage'
 import { RegisterSchoolPage } from './pages/RegisterSchoolPage'
+import { RegisterUniformPage } from './pages/RegisterUniformPage'
 
 
 export const AppRoutes = () => {
@@ -16,6 +17,10 @@ export const AppRoutes = () => {
 
             <Route path='/school/register' element={<RegisterSchoolPage />}></Route>
             <Route path='/school/update/:id' element={<RegisterSchoolPage />}></Route>
+
+            <Route path='/uniform/register' element={<RegisterUniformPage/>}></Route>
+            <Route path='/uniform/update/:id' element={<RegisterUniformPage/>}></Route>
+
         </Routes>
     )
 }

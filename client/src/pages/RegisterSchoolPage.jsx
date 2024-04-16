@@ -28,7 +28,6 @@ export const RegisterSchoolPage = () => {
 
             <div className="container-form-school">
                 <h3>{schoolSelected.id > 0 ? 'Editar' : 'Registrar'} Colegio</h3>
-                
 
                 <SchoolForm schoolSelected={schoolSelected}></SchoolForm>
             </div>

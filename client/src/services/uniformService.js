@@ -42,7 +42,7 @@ export const remove = async(id) => {
     try {
         const response = await axios.delete(`${BASE_URL_UNIFORM}/${id}`);
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 }
 
