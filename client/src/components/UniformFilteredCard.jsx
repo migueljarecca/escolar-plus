@@ -1,28 +1,48 @@
+import { NavLink } from "react-router-dom";
+import { useUniform } from "../hooks/useUniform";
 
 export const UniformFilteredCard = ( { filter }) => {
+
+    const { handlerRemoveUniform } = useUniform();
+
+    const { image, product, gender, size, price, id } = filter;
+
+    const onSelectedUniformId = (id) => {
+        handlerRemoveUniform(id);
+    }
 
     if (!filter) {
         return <div>No hay información disponible.</div>;
     }
 
 
-    // const { image, product, gender, size, price } = filter;
 
 
     return (
         <article className="card-content">
             <div className="div-img">
-             <img src={`data:${filter.image.mime};base64,${filter.image.content}`} alt={filter.image.name} />
+             <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
             </div>
 
-            <div>
-                {filter.product}
-                {filter.gender}
-                {filter.size}
+            <div className="div-text">
+                <h2>{product}</h2>
+                <p>{gender}</p>
+                <p>TALLA: {size}</p>
             </div>
 
-            <div>
-                <h2>{filter.price}</h2>
+            <div className="div-price">
+                <h3>S/. {price}</h3>
+            </div>
+            <div className="div-button">
+
+                <NavLink to={"/unifom/update/" + id}> Actualizar</NavLink>
+                <button
+                    type='submit'
+                    onClick={() => onSelectedUniformId(id)}
+                    >
+                    Eliminar
+                </button>
+
             </div>
         </article>
     )

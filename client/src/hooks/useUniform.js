@@ -29,7 +29,7 @@ export const useUniform = () => {
         dispatch(updateUniform( { ...result.data }))
     };
 
-    const handlerRemoveSchool = async(id) => {
+    const handlerRemoveUniform = async(id) => {
         await remove(id);
         dispatch(removeUniform(id));
     }
@@ -49,7 +49,7 @@ export const useUniform = () => {
             getAllUniform,
             handlerAddUniform,
             handlerUpdateUniform,
-            handlerRemoveSchool,
+            handlerRemoveUniform,
 
             uniformBySchoolId,
 
