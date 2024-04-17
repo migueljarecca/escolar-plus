@@ -9,7 +9,16 @@
 
 :root {
   --with-color: #fdfdfd;
-  --bg-color: #da291c; 
+  --main-color: #704bb2;
+
+  --bg-color: hsl(230, 50%, 90%);
+  --body--white-color: hsl(0, 0%, 100%);
+  --body-color: hsl(230, 100%, 96%);
+  --container-color: hsl(230, 100%, 97%);
+
+  --shadow-color: rgba(0, 0, 0, .2);
+
+
 }
 
 html {
@@ -24,24 +33,30 @@ html {
   left: 0;
   width: 100%;
   padding: 2rem 4%;
-  background: var(--bg-color);
+  /* background: transparent; */
   display: flex;
   align-items: center;
   z-index: 100;
   justify-content: space-between;
-  
+  background: var(--container-color);
+  box-shadow: 0 .1rem 1rem var(--shadow-color);
 }
+
+/* .header.sticky {
+  background: var(--bg-color);
+  box-shadow: 0 .1rem 1rem var(--shadow-color);
+} */
 
 .logo {
   font-size: 2.5rem;
-  color: var(--with-color);
+  color: var(--main-color);
   font-weight: 600;
   /* margin-right: auto; */
 }
 
 .nav-center {
   font-size: 1.7rem;
-  color: var(--with-color);
+  color: var(--main-color);
 }
 
 .nav-right {
@@ -51,16 +66,17 @@ html {
 .nav-right .search-box {
   background: var(--with-color);
   width: 35rem;
-  border-radius: 20px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
+  border: 1px solid var(--main-color);
 }
 
 .nav-right .search-box input {
   width: 100%;
   background: transparent;
-  padding: 1rem;
+  padding: .8rem;
   outline: none;
   border: 0;
   font-size: 1.7rem;
@@ -77,7 +93,7 @@ html {
 
 .nav-right .icon-box svg {
   font-size: 2.4rem;
-  color: var(--with-color);
+  color: var(--main-color);
   cursor: pointer;
   padding-left: 2rem;
 }
@@ -281,4 +297,26 @@ html {
   padding: 1rem;
 }
 
+/* ======================= REGISTER UNIFORM PAGE ================== */
 
+.container-form-uniform {
+  display: flex;
+  flex-direction: column;
+  margin: 12rem 4%;
+  padding: 4rem;
+  align-items: center;
+  background: #a3a3a3;
+}
+
+.container-form-uniform form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  padding-top: 2rem;
+}
+
+.container-form-uniform form input {
+  margin: .5rem;
+  padding: 1rem;
+  border: none;
+}

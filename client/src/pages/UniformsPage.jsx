@@ -28,7 +28,35 @@ export const UniformsPage = () => {
 
 
             <div className="container-uniform">
-                <div className="left-sidebar"></div>
+
+                <aside className="left-sidebar">
+                    <div>
+                        <h1>Jorge Chavez</h1>
+                    </div>
+
+                    <div>
+                        <h4>FILTROS</h4>
+                        <section class="catalog-facet">
+                            <h5>Marca <i class="fa fa-chevron-up" aria-hidden="true"></i></h5>
+                            <div>
+                                <ul>
+                                    <li class="facet-filter">
+                                        <div role="button" title="CASA HELENA" tabindex="0" class="">
+                                            <span class="ripley-checkbox">
+                                                <input id="casa-helena-checkbox" name="brand" type="checkbox" value="CASA_HELENA"/>
+                                                {/* <label for="casa-helena-checkbox">
+                                                    <span>CASA HELENA</span>
+                                                    <span class="badge-count">4</span>
+                                                </label> */}
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </aside>
+
                 <div className="main-content">
                     <UniformFilteredList  filteredUniforms={filteredUniforms}/>
                 </div>

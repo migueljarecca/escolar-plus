@@ -35,7 +35,7 @@ export const UniformFilteredCard = ( { filter }) => {
             </div>
             <div className="div-button">
 
-                <NavLink to={"/unifom/update/" + id}> Actualizar</NavLink>
+                <NavLink to={"/uniform/update/" + id}> Actualizar</NavLink>
                 <button
                     type='submit'
                     onClick={() => onSelectedUniformId(id)}

@@ -5,16 +5,20 @@ import { useEffect, useState } from 'react';
 import { UniformForm } from '../components/UniformForm';
 export const RegisterUniformPage = () => {
 
-const { uniformFiltered, initialUniformForm } = useUniform();
+const { filteredUniforms, initialUniformForm } = useUniform();
 
-cont [uniformSelected, setUniformSelected] = useState(initialUniformForm);
+const [uniformSelected, setUniformSelected] = useState(initialUniformForm);
 
 const { id } = useParams();
+// console.log("control de id ",id);
 
     useEffect(() => {
         if (id) {
-            const uniform = uniformFiltered.find((u) => u.id == id);
+
+            const uniform = filteredUniforms.find(u => u.id == id);
             setUniformSelected(uniform);
+            // console.log("control de uniform ", uniform);
+
         }else {
             setUniformSelected(initialUniformForm);
         }
@@ -23,7 +27,7 @@ const { id } = useParams();
     return (
         <>
             <div className="container-form-uniform">
-                <h3>{uniformSelected.id > 0 ?'Crear' : 'Editar'} uniforme"</h3>
+                <h3>{uniformSelected.id > 0 ? 'Editar' : 'Crear'} Uniforme</h3>
 
                 <UniformForm uniformSelected={uniformSelected}/>
             </div>

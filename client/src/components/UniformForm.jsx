@@ -10,6 +10,7 @@ export const UniformForm = ( { uniformSelected }) => {
     const fileInputRef = useRef();  // Crear la referencia
 
     const { price, product, size, gender, schoolId } = uniformForm;
+    console.log("cntrol de schoolId ", schoolId);
 
     useEffect(() => {
         setUniformForm(uniformSelected);
@@ -126,7 +127,7 @@ export const UniformForm = ( { uniformSelected }) => {
                     />
 
                 <input 
-                    type='number'
+                    type='text'
                     name='schoolId'
                     value={schoolId}
                     onChange={onInputUniformChange}
