@@ -34,25 +34,50 @@ export const UniformsPage = () => {
             <div className="container-uniform">
 
                 <aside className="left-sidebar">
-                    <div>
+                    <div className='div-cole-title'>
                         <h1>Jorge Chavez</h1>
                     </div>
 
-                    <div>
+                    <div className='div-cole-filtro'>
                         <h4>FILTROS</h4>
-                        <section class="catalog-facet">
+                        <section class="section-filter">
                             <h5>Marca <i class="fa fa-chevron-up" aria-hidden="true"></i></h5>
                             <div>
                                 <ul>
-                                    <li class="facet-filter">
-                                        <div role="button" title="CASA HELENA" tabindex="0" class="">
-                                            <span class="ripley-checkbox">
-                                                <input id="casa-helena-checkbox" name="brand" type="checkbox" value="CASA_HELENA"/>
-                                                {/* <label for="casa-helena-checkbox">
-                                                    <span>CASA HELENA</span>
-                                                    <span class="badge-count">4</span>
-                                                </label> */}
-                                            </span>
+                                    <li>
+                                        <div class="div-button" role="button" title="CASA HELENA" tabindex="0">
+                                            <input id="casa-helena-checkbox" name="brand" type="checkbox" value="CASA_HELENA"/>
+                                            <label for="casa-helena-checkbox">
+                                                <span>CASA HELENA</span>
+                                                <span class="badge-count">4</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="section-filter">
+                            <h5>Marca <i class="fa fa-chevron-up" aria-hidden="true"></i></h5>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <div class="div-button" role="button" title="CASA HELENA" tabindex="0">
+                                            <input id="casa-helena-checkbox" name="brand" type="checkbox" value="CASA_HELENA"/>
+                                            <label for="casa-helena-checkbox">
+                                                <span>CASA HELENA</span>
+                                                <span class="badge-count">4</span>
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="div-button" role="button" title="CASA HELENA" tabindex="0">
+                                            <input id="casa-helena-checkbox" name="brand" type="checkbox" value="CASA_HELENA"/>
+                                            <label for="casa-helena-checkbox">
+                                                <span>CASA HELENA</span>
+                                                <span class="badge-count">4</span>
+                                            </label>
                                         </div>
                                     </li>
                                 </ul>

@@ -244,6 +244,62 @@ body {
   height: 100vh;
 }
 
+.left-sidebar .div-cole-title {
+  display: flex;
+  padding: 4rem 1rem;
+  background: #5a189a;
+  color: #fdfdfd;
+}
+
+.left-sidebar .div-cole-title h1 {
+  font-size: 3rem;
+}
+
+.left-sidebar .div-cole-filtro {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #5a189a;
+  font-size: 2rem;
+}
+
+.left-sidebar .section-filter h5 {
+  padding-top: 2rem;
+}
+
+.left-sidebar .section-filter ul {
+  list-style: none;
+}
+
+.left-sidebar .section-filter .div-button {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  background: #9d4edd;
+  cursor: pointer;
+}
+
+.section-filter .div-button input {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  border-radius: 6px;
+  margin-right: 1rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  /* background: #fff */
+}
+
+.section-filter .div-button label {
+  display: flex;
+  font-size: 1.7rem;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+}
+
+
+
 .container-uniform .main-content {
   /* background: #cbdffa; */
   flex-basis: 75%;
