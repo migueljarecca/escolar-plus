@@ -17,7 +17,8 @@ export const HomePage = () => {
             <Header />
             <div className="container-home">
                 <div className="div-left">
-
+                    <h1>¡Explora nuestra tienda y descubre la diferencia de
+                         <span> RopaLap</span> hoy mismo!</h1>
                 </div>
                 <div className="div-right">
 

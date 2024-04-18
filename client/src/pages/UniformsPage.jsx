@@ -25,6 +25,10 @@ export const UniformsPage = () => {
         <>
             <Header />
 
+            <section>
+                
+            </section>
+
 
 
             <div className="container-uniform">

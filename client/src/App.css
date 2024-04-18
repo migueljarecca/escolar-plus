@@ -26,6 +26,10 @@ html {
   overflow-x: hidden;
 }
 
+body {
+  background: #f7f7f7;
+}
+
 /* ===================== HEADER ==================== */
 .header {
   position: fixed;
@@ -38,7 +42,7 @@ html {
   align-items: center;
   z-index: 100;
   justify-content: space-between;
-  background: var(--container-color);
+  background: #7b2cbf;
   box-shadow: 0 .1rem 1rem var(--shadow-color);
 }
 
@@ -49,7 +53,7 @@ html {
 
 .logo {
   font-size: 2.5rem;
-  color: var(--main-color);
+  color: #fdfdfd;
   font-weight: 600;
   /* margin-right: auto; */
 }
@@ -93,7 +97,7 @@ html {
 
 .nav-right .icon-box svg {
   font-size: 2.4rem;
-  color: var(--main-color);
+  color: #fdfdfd;
   cursor: pointer;
   padding-left: 2rem;
 }
@@ -104,15 +108,21 @@ html {
   display: flex;
   width: 100%;
   margin-top: 8rem;
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
   height: 40rem;
   align-items: center;
 }
 
 .container-home .div-left {
-  width: 25rem;
+  width: 50rem;
   height: 38rem;
-  background: #a3a3a3;
+  padding: 2rem 4%;
+  font-size: 2rem ;
+  /* background: #fdfdfd; */
+}
+
+.container-home .div-left h1 span {
+  color: #7b2cbf;
 }
 
 /* --------------- cartas del colegio -------------*/
@@ -125,11 +135,12 @@ html {
 
 .container-cole .box-cole {
   display: flex;
-  width: 37rem;
+  width: 40rem;
   padding: 2rem;
-  background: var(--with-color);
-  border: 2px solid #704bb2;
-  background: #ecf2f2;
+  background: #e0aaff;
+  /* border: 2px solid #704bb2; */
+  border-radius: 10px;
+  /* background: #ecf2f2; */
 }
 
 .box-cole .div-content {
