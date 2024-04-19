@@ -269,12 +269,6 @@ body {
 
 /* prueba ------------------------ */
 
-.box {
-  position: relative;
-  width: 100%;
-  /* background: #10ff08; */
-}
-
 .dropdown {
   display: flex;
   justify-content: space-between;
@@ -317,6 +311,7 @@ body {
 } */
 
 .dropdown .items {
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
@@ -335,30 +330,14 @@ body {
 }
 
 .dropdown .items .div-button {
-  display: flex;
-  justify-content: space-between;
   position: relative;
-  left: 100%;
-  font-size: 2rem;
-  /* background: #fff; */
-  color: purple;
-  text-decoration: none;
-  padding-top: 1.5rem;
-  margin-top: .2rem;
-  z-index: 1;
-  overflow: hidden;
-  transition: .5s;
-  transition-delay: calc(60ms * var(--i));
-}
-
-.dropdown.active .items .div-button {
   display: flex;
   justify-content: space-between;
-  left: 0;
-}
-
-.dropdown .items .div-button:hover {
-  color: #fff;
+  align-items: center;
+  font-size: 1.7rem;
+  background: #fdfdfd;
+  color: #5a189a;
+  padding-top: 1.5rem;  
 }
 
 .dropdown .items .div-button input {
@@ -366,29 +345,68 @@ body {
   height: 2rem;
 }
 
+.dropdown .items .div-button .div-span {
+  display: flex;
+  justify-content: space-between;
+  background: #10ff08;
+}
+
+.dropdown .items .div-button span {
+  color: #5a189a;
+}
+
+
+
+/* .dropdown .items .div-button {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  left: 100%;
+  font-size: 1rem;
+  align-items: center;
+  background: #fff;
+  color: purple;
+  text-decoration: none;
+  padding-top: 1.5rem;
+  z-index: 1;
+  overflow: hidden;
+  transition: .5s;
+  transition-delay: calc(60ms * var(--i));
+} */
+
+.dropdown.active .items .div-button {
+  left: 0;
+}
+
+.dropdown .items .div-button:hover {
+  color: #fff;
+}
+
+
 .dropdown .items .div-button label {
-  /* display: flex; */
-  /* justify-content: space-between; */
+  display: flex;
+  justify-content: space-between;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  padding-left: 2.5rem;
+  font-size: 1rem;
   background: rgb(130, 14, 130);
   z-index: -1;
   border-radius: inherit;
   transform: rotate(160deg);
   transform-origin: right;
   transition: .5s;
+  align-items: center;
 }
 
 .dropdown .items .div-button:hover label {
   transform: rotate(0deg);
 }
 
-.dropdown .items span {
-  font-size: 1.7rem;
-}
+
 
 .container-uniform .main-content {
   /* background: #cbdffa; */

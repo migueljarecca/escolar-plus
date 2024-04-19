@@ -53,43 +53,31 @@ export const UniformsPage = () => {
                     <div className='div-cole-filtro'>
                         <h5>FILTROS</h5>
                         
-                        <div className="box">
                         <div onClick={handleFilterClick} className={`dropdown ${isActive ? 'active' : ''}`}>Button
                             {/* <span className='left-icon'><FontAwesomeIcon icon={faCaretDown}/></span> */}
                             {/* <span className='right-icon'><FontAwesomeIcon icon={faCaretUp}/></span> */}
 
                             <span ><FontAwesomeIcon icon={isActive ? faCaretUp : faCaretDown}/></span>
                             <div className="items">
+                                    
+                                <div className="div-button" role="button" title="CASA HELENA">
+                                    <input type="checkbox" value="CASA_HELENA"/>
+                                    <div className='div-span'>
+                                        <span>CASA HELENA</span>
+                                        <span>4</span>
+                                    </div>
+                                </div>    
+    
+                            </div>
 
-                                <ul>
-                                    <li>
-                                        <div className="div-button" role="button" title="CASA HELENA">
-                                            <input id="casa-helena-checkbox" name="brand" type="checkbox" value="CASA_HELENA"/>
-                                            <label htmlFor="casa-helena-checkbox">
-                                                <span>CASA HELENA</span>
-                                                <span className="badge-count">4</span>
-                                            </label>
-                                        </div>
-
-                                        <div className="div-button" role="button" title="CASA HELENA">
-                                            <input id="casa-helena-checkbox" name="brand" type="checkbox" value="CASA_HELENA"/>
-                                            <label htmlFor="casa-helena-checkbox">
-                                                <span>CASA HELENA</span>
-                                                <span className="badge-count">4</span>
-                                            </label>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        
+                                    
+                                
                             {/* <a href="#" style={{ "--i": "1" }}><span>HTML</span></a>
                             <a href="#" style={{ "--i": "2" }}><span>CSS</span></a>
                             <a href="#" style={{ "--i": "3" }}><span>JAVA</span></a> */}
 
-                            </div>    
                         </div>
-                    </div>
-                        
-
-                             
                     </div>
 
                     
