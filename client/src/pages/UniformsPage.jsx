@@ -50,14 +50,21 @@ export const UniformsPage = () => {
                         <h1>Jorge Chavez</h1>
                     </div>
 
-                    <div className='div-cole-filtro'>
+                    <div className='box'>
                         <h5>FILTROS</h5>
+
+                        <div className="dropdown"> BUTTON
+                            <span className='left-icon'></span>
+                            <span className='right-icon'></span>
+                        </div>
+
+
                         
-                        <div onClick={handleFilterClick} className={`dropdown ${isActive ? 'active' : ''}`}>Button
+                        {/* <div onClick={handleFilterClick} className={`dropdown ${isActive ? 'active' : ''}`}>Button */}
                             {/* <span className='left-icon'><FontAwesomeIcon icon={faCaretDown}/></span> */}
                             {/* <span className='right-icon'><FontAwesomeIcon icon={faCaretUp}/></span> */}
 
-                            <span ><FontAwesomeIcon icon={isActive ? faCaretUp : faCaretDown}/></span>
+                            {/* <span ><FontAwesomeIcon icon={isActive ? faCaretUp : faCaretDown}/></span>
                             <div className="items">
                                     
                                 <div className="div-button" role="button" title="CASA HELENA">
@@ -68,7 +75,7 @@ export const UniformsPage = () => {
                                     </div>
                                 </div>    
     
-                            </div>
+                            </div> */}
 
                                         
                                     
@@ -77,7 +84,7 @@ export const UniformsPage = () => {
                             <a href="#" style={{ "--i": "2" }}><span>CSS</span></a>
                             <a href="#" style={{ "--i": "3" }}><span>JAVA</span></a> */}
 
-                        </div>
+                        {/* </div> */}
                     </div>
 
                     
