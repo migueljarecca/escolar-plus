@@ -53,9 +53,36 @@ export const UniformsPage = () => {
                     <div className='box'>
                         <h5>FILTROS</h5>
 
-                        <div className="dropdown"> BUTTON
-                            <span className='left-icon'></span>
-                            <span className='right-icon'></span>
+                        <div className={`dropdown ${isActive ? 'active' : ''}`} >
+
+                            <div className="filter-title" onClick={handleFilterClick}>
+                                <h3>BUTTON</h3>
+                                <div className='filter-icon'>
+                                    <span className='left-icon'></span>
+                                    <span className='right-icon'></span>
+                                </div>
+                            </div>
+                   
+                            <div className="items">
+                                <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
+                                        <span className='span'></span>
+                                        <input type="checkbox" value="CASA_HELENA"/>
+                                        <div className='div-span'>
+                                            <span>CASA HELENA</span>
+                                            <span>4</span>
+                                        </div>
+                                </div>
+                                <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "2" }}>
+                                        <span className='span'></span>
+                                        <input type="checkbox" value="CASA_HELENA"/>
+                                        <div className='div-span'>
+                                            <span>CASA HELENA</span>
+                                            <span>4</span>
+                                        </div>
+                                </div> 
+                            </div>
+
+                                                      
                         </div>
 
 

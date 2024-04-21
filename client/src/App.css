@@ -260,7 +260,7 @@ body {
   position: relative;
   width: 25rem;
   height: 25rem;
-  background: yellowgreen;
+  /* background: yellowgreen; */
 }
 
 .box .dropdown {
@@ -274,29 +274,120 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  /* cursor: pointer; */
+}
+
+.box .dropdown .filter-title {
+  display: flex;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  justify-content: space-between;
+}
+
+.box .dropdown .filter-title .filter-icon {
+  display: flex;
 }
 
 .dropdown .left-icon,
 .dropdown .right-icon {
   position: relative;
-  top: 2px;
   display: inline-block;
   width: 15px;
   height: 5px;
   background: #fdfdfd;
   border-radius: 40px;
+  transition: .5s;
 }
 
 .dropdown .left-icon {
   left: 7px;
   transform: rotate(45deg);
 }
+.dropdown.active .left-icon {
+  transform: rotate(135deg);
+}
 
 .dropdown .right-icon {
   transform: rotate(-45deg);
 }
 
+.dropdown.active .right-icon {
+  transform: rotate(-135deg);
+} 
+
+.dropdown .items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 16rem;
+  margin-top: 6.3rem;
+  overflow: hidden;
+  visibility: hidden;
+  transition: .5s;
+}
+
+.dropdown.active .items {
+  visibility: visible;
+}
+
+.dropdown .items .filter-button {
+  position: relative;
+  left: 100%;
+  display: flex;
+  font-size: 2rem;
+  background: #fdfdfd;
+  color: #5a189a;
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+  margin-top: 2.5px;
+  z-index: 1;
+  overflow: hidden;
+  transition: .5s;
+  transition-delay: calc(60ms * var(--i));
+}
+
+.dropdown.active .items .filter-button {
+  left: 0;
+}
+
+.dropdown .items .filter-button:hover {
+  color: #fdfdfd;
+}
+
+.dropdown .items .filter-button input {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+.dropdown .items .filter-button .div-span {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dropdown .items .filter-button .span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #62269e;
+  z-index: -1;
+  border-radius: inherit;
+  transform: rotate(160deg);
+  transform-origin: right;
+  transition: .5s;
+}
+
+.dropdown .items .filter-button:hover .span {
+  transform: rotate(0deg);
+}
 
 
 
