@@ -12,12 +12,16 @@ export const SchoolCard = ({ school }) => {
     return (
 
          <div className="box-cole">
-            <div className="div-content">
-                <p>COLEGIO</p>
-                <h2>{school.name}</h2>
+
+            <div className="div-img">
+                <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
+            </div>
+
+            <h2>{`Colegio ${school.name}`}</h2>
                 {/* <h4>{school.address}</h4> */}
                 {/* <h5>{school.image.name}</h5> */}
 
+            <div className='div-button-cole'>
                 <NavLink to={"/school/update/" + school.id}> Actualizar</NavLink>
 
                 <button
@@ -26,15 +30,11 @@ export const SchoolCard = ({ school }) => {
                     >
                     Eliminar
                 </button>
-                
-                <NavLink to={`/uniforms/${school.id}`}>Ver Catálogo </NavLink>
+            </div>
+                      
+            <NavLink to={`/uniforms/${school.id}`} className='cole-enlace'>Ver Catálogo </NavLink>
 
-            </div>
-            
-            <div className="div-img">
-                <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
-            </div>
         </div>
-
+            
     )
 }

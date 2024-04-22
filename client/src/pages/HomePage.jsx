@@ -24,6 +24,8 @@ export const HomePage = () => {
 
                 </div>
             </div>
+            
+            <h3>Elige tu colegio</h3>
 
             <aside className="container-cole">
                 <SchoolList schools={schools}/>
