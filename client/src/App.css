@@ -246,8 +246,126 @@ body {
 /* ======================== UNIFORMS PAGE ======================== */
 
 .filter-nav-uniform {
+  display: flex;
   margin: 9rem 4%;
+  border-bottom: 1px solid #5a189a;
+  background: #fdfdfd;
+  padding: 1rem 0;
+  justify-content: space-between;
 }
+
+.order-box {
+  position: relative;
+  width: 25rem;
+  height: 25rem;
+  background: yellow;
+}
+
+.order-box .order-dropdown {
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  background: #fdfdfd;
+  font-size: 2rem;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #5a189a;
+}
+
+.order-dropdown .order-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+.order-dropdown .order-title h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.order-title .order-icon {
+  display: flex;
+  align-items: center;
+}
+
+.order-dropdown .left-icon,
+.order-dropdown .right-icon {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 3px;
+  background: #5a189a;
+  border-radius: 40px;
+  transition: .5s;
+}
+
+.order-dropdown .left-icon {
+  left: 6px;
+  transform: rotate(45deg);
+}
+
+.order-dropdown.active .left-icon {
+  transform: rotate(-35deg);
+}
+
+.order-dropdown .right-icon {
+  transform: rotate(-35deg);
+}
+
+.order-dropdown.active .right-icon {
+  transform: rotate(35deg);
+}
+
+.order-dropdown .order-items {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 16rem;
+  background: #6a6a6a;
+  margin-top: 4rem;
+}
+
+.order-dropdown .order-items h4 {
+  position: relative;
+  left: 100%;
+  display: flex;
+  font-size: 2rem;
+  background: #fdfdfd;
+  color: #5a189a;
+  padding: 1rem;
+  margin-top: 2.5px;
+  z-index: 1;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.order-dropdown .order-items h4:hover {
+  color: #fdfdfd;
+}
+
+.order-dropdown .order-items span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #62269e;
+  z-index: -1;
+  transform: rotate(160deg);
+  transform-origin: right;
+  transition: .5s;
+}
+
+.order-dropdown .order-items h4:hover span {
+  transform: rotate(0deg);
+}
+
+
+
 
 
 

@@ -32,11 +32,12 @@ export const UniformsPage = () => {
         setIsActiveSecond(!isActiveSecond);
     }
 
+    const [isActiveOrder, setIsActiveOrder] = useState(false); // Estado para controlar la clase "active"
 
-    
-   
+    const handleFilterClickOrder = () => {
+        setIsActiveOrder(!isActiveOrder);
+    }
 
-   
     return (
         <>
             <Header />
@@ -48,26 +49,28 @@ export const UniformsPage = () => {
             <nav className='filter-nav-uniform'>
                 <h4>COLEGIO JORGE CHAVEZ</h4>
 
-                <div className='box'>
+                <div className='order-box'>
 
-                    <div className={`dropdown-first ${isActiveFirst ? 'active' : ''}`} >
+                    <div className={`order-dropdown ${isActiveOrder ? 'active' : ''}`} >
 
-                        <div className="filter-title" onClick={handleFilterClickFirst}>
+                        <div className="order-title" onClick={handleFilterClickOrder}>
                             <h3>Ordenar</h3>
-                            <div className='filter-icon'>
+                            <div className='order-icon'>
                                 <span className='left-icon'></span>
                                 <span className='right-icon'></span>
                             </div>
                         </div>
                    
-                        <div className="items">
-                            <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
-                                    <span className='span'></span>
-                                    <input type="checkbox" value="CASA_HELENA"/>
-                                    <div className='div-span'>
-                                        <span>Pantalon buzo</span>
-                                        <span>4</span>
-                                    </div>
+                        <div className="order-items">
+                            <div className="order-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
+                                    {/* <span className='order-span'></span> */}
+                                    <h4>Pantalon buzo <span></span></h4>
+                            </div>
+                            <div className="order-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
+                                    <h4>Pantalon buzo <span></span></h4>
+                            </div>
+                            <div className="order-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
+                                    <h4>Pantalon buzo <span></span></h4>
                             </div>
                         </div>
 
