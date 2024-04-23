@@ -125,13 +125,24 @@ body {
   color: #7b2cbf;
 }
 
+ .subtitle-h3 {
+  margin: 2rem 4%;
+  font-size: 2rem;
+  background: #fdfdfd;
+  border-bottom: 2px solid #5a189a;
+  padding: 1.5rem 0;
+  color: #6a6a6a;
+  font-weight: 400;
+  border-radius: 5px;
+}
+
 /* --------------- cartas del colegio -------------*/
 
 .container-cole {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   gap: 2rem;
-  padding: 5rem 4%;
+  padding: 2rem 4%;
 
 }
 
@@ -153,30 +164,36 @@ body {
   font-weight: 400;
 } */
 
-.container-cole .box-cole h2 {
+.container-cole .content-cole {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.container-cole .box-cole .content-cole h2 {
   color: #242424;
   font-size: 2.5rem;
   font-weight: 500;
   margin-top: .5rem;
 }
 
-.container-cole .box-cole .div-button-cole {
+.box-cole .content-cole .div-button-cole {
   display: flex;
-  justify-content: space-between;
-  padding: .5rem;
+  margin-top: .5rem;
+  gap: 3rem;
 }
 
 .box-cole .div-button-cole a {
   text-decoration: none;
   font-size: 1.7rem;
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .box-cole .div-button-cole button {
   font-size: 1.7rem;
-  padding: 1rem;
+  padding: .5rem;
 }
-
 
 .box-cole .cole-enlace {
   margin-top: .5rem;
@@ -187,20 +204,19 @@ body {
   border-radius: 3px;
   background: var(--with-color);
   cursor: pointer;
+  text-align: center;
 
-  width: 15rem;
+  /* width: 15rem; */
   
 }
 
-.container-cole .box-cole .div-img {
-  width: 100%;
+.container-cole .box-cole .figure-cole {
+  text-align: center;
   /* background-color: #da291c; */
-  display: flex;
 }
 
-.container-cole .box-cole .div-img img {
-  width: 17vw;
-  margin: auto;
+.container-cole .box-cole .figure-cole img {
+  width: 100%;
 }
 
 /* ======================= REGISTER SCHOOL PAGE ================== */
@@ -228,6 +244,14 @@ body {
 }
 
 /* ======================== UNIFORMS PAGE ======================== */
+
+.filter-nav-uniform {
+  margin: 9rem 4%;
+}
+
+
+
+/*---------container uniform ---------*/
 
 .container-uniform {
   display: flex;

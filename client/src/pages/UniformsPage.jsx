@@ -45,6 +45,36 @@ export const UniformsPage = () => {
                 
             </section>
 
+            <nav className='filter-nav-uniform'>
+                <h4>COLEGIO JORGE CHAVEZ</h4>
+
+                <div className='box'>
+
+                    <div className={`dropdown-first ${isActiveFirst ? 'active' : ''}`} >
+
+                        <div className="filter-title" onClick={handleFilterClickFirst}>
+                            <h3>Ordenar</h3>
+                            <div className='filter-icon'>
+                                <span className='left-icon'></span>
+                                <span className='right-icon'></span>
+                            </div>
+                        </div>
+                   
+                        <div className="items">
+                            <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
+                                    <span className='span'></span>
+                                    <input type="checkbox" value="CASA_HELENA"/>
+                                    <div className='div-span'>
+                                        <span>Pantalon buzo</span>
+                                        <span>4</span>
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>    
+                </div>
+            </nav>
+
             <div className="container-uniform">
 
                 <aside className="left-sidebar">
