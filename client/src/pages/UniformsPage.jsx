@@ -63,14 +63,13 @@ export const UniformsPage = () => {
                    
                         <div className="order-items">
                             <div className="order-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
-                                    {/* <span className='order-span'></span> */}
-                                    <h4>Pantalon buzo <span></span></h4>
+                                    <h4 style={{ "--i": "1" }}>Pantalon buzo <span></span></h4>
                             </div>
                             <div className="order-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
-                                    <h4>Pantalon buzo <span></span></h4>
+                                    <h4 style={{ "--i": "2" }}>Pantalon buzo <span></span></h4>
                             </div>
                             <div className="order-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
-                                    <h4>Pantalon buzo <span></span></h4>
+                                    <h4 style={{ "--i": "3" }}>Pantalon buzo <span></span></h4>
                             </div>
                         </div>
 
@@ -168,7 +167,14 @@ export const UniformsPage = () => {
                         </div>
                 
                     </div>
-                {/* </div> */}
+
+                    <button
+                        type='submit'
+                        className='sidebar-button'
+                        >
+                        Aplicar filtros
+                    </button>
+                
                     
 
                 </aside>

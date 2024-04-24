@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage'
 import { UniformsPage } from './pages/UniformsPage'
 import { RegisterSchoolPage } from './pages/RegisterSchoolPage'
 import { RegisterUniformPage } from './pages/RegisterUniformPage'
+import { UniformDetailsPage } from './pages/UniformDetailsPage'
 
 
 export const AppRoutes = () => {
@@ -14,6 +15,8 @@ export const AppRoutes = () => {
             <Route path='/' element={<HomePage />}></Route>
 
             <Route path='/uniforms/:id' element={<UniformsPage />}></Route>
+
+            <Route path='/uniform/details' element={<UniformDetailsPage />}></Route>
 
             <Route path='/school/register' element={<RegisterSchoolPage />}></Route>
             <Route path='/school/update/:id' element={<RegisterSchoolPage />}></Route>

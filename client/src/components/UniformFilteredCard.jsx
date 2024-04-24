@@ -15,14 +15,14 @@ export const UniformFilteredCard = ( { filter }) => {
         return <div>No hay información disponible.</div>;
     }
 
-
-
-
     return (
         <article className="card-content">
-            <div className="div-img">
-             <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
-            </div>
+
+            <NavLink to={"/uniform/details"}>
+                <div className="div-img">
+                <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
+                </div>
+            </NavLink>
 
             <div className="div-text">
                 <h2>{product}</h2>
@@ -33,6 +33,7 @@ export const UniformFilteredCard = ( { filter }) => {
             <div className="div-price">
                 <h3>S/. {price}</h3>
             </div>
+
             <div className="div-button">
 
                 <NavLink to={"/uniform/update/" + id}> Actualizar</NavLink>
