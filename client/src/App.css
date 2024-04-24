@@ -810,3 +810,21 @@ body {
   padding: 1rem;
   border: none;
 }
+
+/* ======================= UNIFORM DETAILS ================== */
+
+.uniform-details {
+  display: flex;
+  margin: 15rem 4% 1rem 4%;
+  height: 25rem;
+  background: #fdfdfd;
+}
+
+.uniform-details .container-image-elem1 {
+  width: 40%;
+  border-right: 1.5px solid #c5cbc8;
+}
+
+/* .container-image-elem1 img {
+
+} */

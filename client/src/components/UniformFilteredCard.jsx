@@ -18,7 +18,7 @@ export const UniformFilteredCard = ( { filter }) => {
     return (
         <article className="card-content">
 
-            <NavLink to={"/uniform/details"}>
+            <NavLink to={"/uniform/details/" +id}>
                 <div className="div-img">
                 <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
                 </div>
