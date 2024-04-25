@@ -6,11 +6,15 @@ export const UniformDetailsCard = ({ uniformDetails }) => {
     }
 
     const { image, product, gender, size, price } = uniformDetails;
+    if (!image) {
+        return <div>Información de imagen no disponible.</div>;
+    }
+
 
     return (
         <>
             <div className="container-image-elem1">
-                <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
+                <img src={`data:${image.mime};base64,${image.content}`} alt={"uniforme"} />
             </div>
 
             <article className="container-content-elem2">
@@ -29,13 +33,11 @@ export const UniformDetailsCard = ({ uniformDetails }) => {
 
                 </div>
 
-                {/* <div> */}
                     <button
                         type="submit"
                         >
                         Agregar al carrito    
                     </button>
-                {/* </div>   */}
 
             </article>
 

@@ -21,9 +21,6 @@ export const UniformDetailsPage = () => {
         }
     },[id]);
 
-    // console.log("lolololo" +id);
-
-
     return (
         <>
             <Header />
