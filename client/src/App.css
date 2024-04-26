@@ -18,6 +18,8 @@
 
   --shadow-color: rgba(0, 0, 0, .2);
 
+  /*-----------------*/
+  --line-color: #c5cbc8;
 
 }
 
@@ -31,29 +33,62 @@ body {
 }
 
 /* ===================== HEADER ==================== */
+
+.header-article {
+  display: flex;
+  width: 100%;
+  padding: 1.7rem 4%;
+  justify-content: space-between;
+  border-bottom: 1px solid #c5cbc8;
+  align-items: center;
+}
+
+.header-article-content {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+}
+
+.header-article-content span {
+  color: #c5cbc8;
+}
+
+.header-article-content a {
+  text-decoration: none;
+  color: #242424;
+}
+
+.header-article-h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #242424;
+} 
+
 .header {
-  position: fixed;
+  /* position: fixed;
   top: 0;
-  left: 0;
+  left: 0; */
   width: 100%;
   padding: 2rem 4%;
-  /* background: transparent; */
+  background: transparent;
   display: flex;
   align-items: center;
   z-index: 100;
   justify-content: space-between;
-  background: #7b2cbf;
-  box-shadow: 0 .1rem 1rem var(--shadow-color);
+  /* background: #7b2cbf; */
 }
 
-/* .header.sticky {
-  background: var(--bg-color);
+.header.sticky {
+  background: #fdfdfd;
   box-shadow: 0 .1rem 1rem var(--shadow-color);
-} */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 
 .logo {
   font-size: 2.5rem;
-  color: #fdfdfd;
+  color: #5a189a;
   font-weight: 600;
   /* margin-right: auto; */
 }
@@ -70,10 +105,10 @@ body {
 .nav-right .search-box {
   background: var(--with-color);
   width: 35rem;
-  border-radius: 15px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: .5rem 1.5rem;
   border: 1px solid var(--main-color);
 }
 
@@ -88,6 +123,7 @@ body {
 
 .nav-right .search-box svg {
   font-size: 1.7rem;
+  color: #5a189a;
 }
 
 .nav-right .icon-box {
@@ -96,12 +132,19 @@ body {
 }
 
 .nav-right .icon-box svg {
-  font-size: 2.4rem;
-  color: #fdfdfd;
+  font-size: 2.5rem;
+  color: #5a189a;
   cursor: pointer;
   padding-left: 2rem;
+  padding-right: 1rem;
 }
 
+.nav-right .icon-box span {
+  font-size: 1.5rem;
+  color: #242424;
+  font-weight: 400;
+
+}
 /* ======================= HOME PAGE ========================= */
 
 .container-home {
