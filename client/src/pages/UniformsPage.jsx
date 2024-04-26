@@ -47,7 +47,7 @@ export const UniformsPage = () => {
             </section>
 
             <nav className='filter-nav-uniform'>
-                <h4>COLEGIO JORGE CHAVEZ</h4>
+                <h4>5 productos encontrados</h4>
 
                 <div className='order-box'>
 
@@ -83,7 +83,7 @@ export const UniformsPage = () => {
                     <div className='div-cole-title'>
                         <h1> COLEGIO JORGE CHAVEZ</h1>
                     </div>
-                    <h5>FILTROS</h5>
+                    <h5>Mostrar resultado por:</h5>
 
                     <div className='box'>
 
@@ -100,7 +100,7 @@ export const UniformsPage = () => {
                             <div className="items">
                                 <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
                                         <span className='span'></span>
-                                        <input type="checkbox" value="CASA_HELENA"/>
+                                        {/* <input type="checkbox" value="CASA_HELENA"/> */}
                                         <div className='div-span'>
                                             <span>Pantalon buzo</span>
                                             <span>4</span>
@@ -108,7 +108,7 @@ export const UniformsPage = () => {
                                 </div>
                                 <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "2" }}>
                                         <span className='span'></span>
-                                        <input type="checkbox" value="CASA_HELENA"/>
+                                        {/* <input type="checkbox" value="CASA_HELENA"/> */}
                                         <div className='div-span'>
                                             <span>Polo</span>
                                             <span>4</span>
@@ -116,7 +116,7 @@ export const UniformsPage = () => {
                                 </div> 
                                 <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "2" }}>
                                         <span className='span'></span>
-                                        <input type="checkbox" value="CASA_HELENA"/>
+                                        {/* <input type="checkbox" value="CASA_HELENA"/> */}
                                         <div className='div-span'>
                                             <span>Short</span>
                                             <span>4</span>
@@ -125,6 +125,7 @@ export const UniformsPage = () => {
                             </div>
                         </div>
                     </div>
+                    <h5>Filtrar por:</h5>
 
                     <div className='box'>
                         <div className={`dropdown-second ${isActiveSecond ? 'active' : ''}`} >
