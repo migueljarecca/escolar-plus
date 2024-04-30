@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { useUniform } from './../hooks/useUniform';
+import { useSchool } from '../hooks/useSchool';
 
 export const UniformForm = ( { uniformSelected }) => {
 
-    const { initialUniformForm, handlerAddUniform } = useUniform();
+    const { initialUniformForm, handlerAddUniform, handlerUpdateUniform } = useUniform();
+    const { schools } = useSchool();
+    console.log("control de colegios ", schools);
     
     const [uniformForm,  setUniformForm] = useState(initialUniformForm);
     const [file, setFile] = useState(null);
     const fileInputRef = useRef();  // Crear la referencia
 
-    const { price, product, size, gender, schoolId } = uniformForm;
-    console.log("cntrol de schoolId ", schoolId);
+    const { id, price, product, size, gender, schoolId } = uniformForm;
 
     useEffect(() => {
         setUniformForm(uniformSelected);
@@ -45,9 +47,17 @@ export const UniformForm = ( { uniformSelected }) => {
 
         for (let [key, value] of formData.entries()) {
             console.log(key, value);
-          }
+        }
 
-        handlerAddUniform(formData);
+        if (id == 0) {
+            handlerAddUniform(formData);
+            
+        } else {
+            handlerUpdateUniform(formData, id);
+            console.log("cntrol de Id uni ", id);
+
+        }
+
 
         setUniformForm(initialUniformForm);
         setFile(null);
@@ -126,12 +136,25 @@ export const UniformForm = ( { uniformSelected }) => {
                     onChange={onInputFileChange}
                     />
 
-                <input 
-                    type='text'
-                    name='schoolId'
+                <select 
+                    name="schoolId" 
+                    type="text" 
+                    // id="gender"
                     value={schoolId}
                     onChange={onInputUniformChange}
-                />
+                    >
+                    
+                    <option value="">Seleccionar Colegio</option>
+
+                    {schools.map((school) => (
+                        <option 
+                            key={school.id} 
+                            value={school.id}
+                            >
+                            Colegio {school.name}
+                        </option>
+                    ))}
+                </select>
 
                 <button 
                     type="submit"

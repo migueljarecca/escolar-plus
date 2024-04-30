@@ -761,6 +761,7 @@ body {
 }
 
 .main-content .card-content .div-img {
+  background: #6a6a6a;
   margin: auto;
   /* padding: .5rem; */
 }
