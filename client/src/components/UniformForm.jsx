@@ -70,15 +70,8 @@ export const UniformForm = ( { uniformSelected }) => {
     return (
         <>
             <form onSubmit={onSubmitUniformChange}>
-                
-                <input 
-                    type='number'
-                    name= 'price'
-                    value={price}
-                    onChange={onInputUniformChange}
-                />
 
-                <label htmlFor="product">Producto</label>
+                <label htmlFor="product">Categoría</label>
               
                 <select 
                     name="product" 
@@ -129,6 +122,16 @@ export const UniformForm = ( { uniformSelected }) => {
                     <option value="UNISEX">UNISEX</option>
                 </select>
 
+                <label htmlFor="price">Precio en s/.</label>
+
+                <input 
+                    type='number'
+                    name= 'price'
+                    id='price'
+                    value={price}
+                    onChange={onInputUniformChange}
+                />
+
                 <input 
                     type="file"
                     name="file"
@@ -139,7 +142,6 @@ export const UniformForm = ( { uniformSelected }) => {
                 <select 
                     name="schoolId" 
                     type="text" 
-                    // id="gender"
                     value={schoolId}
                     onChange={onInputUniformChange}
                     >

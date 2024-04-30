@@ -809,10 +809,15 @@ body {
 .container-form-uniform {
   display: flex;
   flex-direction: column;
-  margin: 12rem 4%;
+  margin: 3rem 4%;
   padding: 4rem;
   align-items: center;
-  background: #a3a3a3;
+  background: #fdfdfd;
+}
+
+.container-form-uniform h3 {
+  font-size: 3rem;
+  font-weight: 400;
 }
 
 .container-form-uniform form {
@@ -820,12 +825,39 @@ body {
   flex-direction: column;
   width: 50vw;
   padding-top: 2rem;
+  gap: 1rem;
+}
+
+.container-form-uniform form label {
+  font-size: 1.7rem;
+}
+
+.container-form-uniform form select {
+  cursor: pointer;
+  border: 1px solid var(--line-color);
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.container-form-uniform form select:hover {
+  border-color: #6a6a6a;
+}
+
+.container-form-uniform form select:focus {
+  outline: none;
 }
 
 .container-form-uniform form input {
-  margin: .5rem;
   padding: 1rem;
-  border: none;
+  border: 1px solid var(--line-color);
+  font-size: 1.5rem;
+}
+
+.container-form-uniform form button {
+  position: relative;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.7rem;
 }
 
 /* ======================= UNIFORM DETAILS ================== */

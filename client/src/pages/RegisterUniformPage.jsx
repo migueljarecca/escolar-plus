@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useUniform } from '../hooks/useUniform';
 import { useEffect, useState } from 'react';
 import { UniformForm } from '../components/UniformForm';
+import { Header } from '../components/Header'
+
 export const RegisterUniformPage = () => {
 
 const { filteredUniforms, initialUniformForm } = useUniform();
@@ -26,6 +28,8 @@ const { id } = useParams();
 
     return (
         <>
+            <Header />
+
             <div className="container-form-uniform">
                 <h3>{uniformSelected.id > 0 ? 'Editar' : 'Crear'} Uniforme</h3>
 
