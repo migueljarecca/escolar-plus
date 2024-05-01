@@ -267,10 +267,15 @@ body {
 .container-form-school {
   display: flex;
   flex-direction: column;
-  margin: 12rem 4%;
+  margin: 4rem 4%;
   padding: 4rem;
   align-items: center;
-  background: #a3a3a3;
+  background: #fdfdfd;
+}
+
+.container-form-school h3 {
+  font-size: 3rem;
+  font-weight: 400;
 }
 
 .form-school {
@@ -278,12 +283,21 @@ body {
   flex-direction: column;
   width: 50vw;
   padding-top: 2rem;
+  gap: 1rem;
 }
 
 .form-school input {
-  margin: .5rem;
   padding: 1rem;
-  border: none;
+  border: 1px solid var(--line-color);
+  font-size: 1.5rem ;
+}
+
+.form-school button {
+  padding: 1rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-top: 2rem;
+  cursor: pointer;
 }
 
 /* ======================== UNIFORMS PAGE ======================== */
