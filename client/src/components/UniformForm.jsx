@@ -5,7 +5,14 @@ import { useSchool } from '../hooks/useSchool';
 export const UniformForm = ( { uniformSelected }) => {
 
     const { initialUniformForm, handlerAddUniform, handlerUpdateUniform } = useUniform();
-    const { schools } = useSchool();
+    const {  getSchools, schools } = useSchool();
+
+    useEffect(() => {
+        getSchools();
+    console.log("control de useeffect ");
+
+    },[]);
+
     console.log("control de colegios ", schools);
     
     const [uniformForm,  setUniformForm] = useState(initialUniformForm);
@@ -82,9 +89,21 @@ export const UniformForm = ( { uniformSelected }) => {
                     >
 
                     <option value="">Seleccionar producto</option>
-                    <option value="POLO">POLO</option>
+                    <option value="BLUZA_MANGA_CORTA">BLUZA MANGA CORTA</option>
+                    <option value="BLUZA_MANGA_LARGA">BLUZA MANGA LARGA</option>
+                    <option value="CAMISA_MANGA_CORTA">CAMISA MANGA CORTA</option>
+                    <option value="CAMISA_MANGA_LARGA">CAMISA MANGA LARGA</option>
+                    <option value="CASACA">CASACA</option>
+                    <option value="CHALECO">CHALECO</option>
+                    <option value="CHOMPA">CHOMPA</option>
+                    <option value="POLO_MANGA_CORTA">POLO MANGA CORTA</option>
+                    <option value="POLO_MANGA_LARGA">POLO MANGA LARGA</option>
+                    <option value="FALDA">FALDA</option>
+                    <option value="JUMPER">JUMPER</option>
                     <option value="SHORT">SHORT</option>
                     <option value="PANTALON_BUZO">PANTALON BUZO</option>
+                    <option value="PANTALON">PANTALON</option>
+
                 </select>
 
                 <label htmlFor="size">Talla</label>
@@ -117,8 +136,8 @@ export const UniformForm = ( { uniformSelected }) => {
                     >
                     
                     <option value="">Seleccionar género</option>
-                    <option value="NIÑO">NIÑO</option>
-                    <option value="NIÑA">NIÑA</option>
+                    <option value="HOMBRE">HOMBRE</option>
+                    <option value="MUJER">MUJER</option>
                     <option value="UNISEX">UNISEX</option>
                 </select>
 

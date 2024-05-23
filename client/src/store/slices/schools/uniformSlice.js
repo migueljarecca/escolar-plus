@@ -9,6 +9,11 @@ export const initialUniformForm = {
     schoolId: '',
 }
 
+const initialFilter = {
+    category: '',
+    minPrice: '',
+}
+
 export const uniformSlice = createSlice({
 
     name: 'uniforms',
@@ -16,6 +21,7 @@ export const uniformSlice = createSlice({
         uniforms: [],
         uniformSelected: initialUniformForm,
         filteredUniforms: [],
+        filterProduc: initialFilter,
     },
     reducers: {
         addUniform: (state, action) => {
@@ -49,6 +55,10 @@ export const uniformSlice = createSlice({
         clearFilteredUniforms: (state) => {
             state.filteredUniforms = []; // Limpia la lista de uniformes filtrados
         },
+        //FILTRO DE PRODUCTOS
+        filterProduct: (state, action) => {
+            state.filterProduc = action.payload
+        }
 
     }
 });
