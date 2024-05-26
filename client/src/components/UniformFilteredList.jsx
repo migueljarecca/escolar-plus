@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UniformFilteredCard } from './UniformFilteredCard';
+import { useSelector } from 'react-redux';
 
 export const UniformFilteredList = ( { filteredUniforms }) => {
 
+    const { filterProd } = useSelector(state => state.uniforms);
+
     const [filters, setFilters] = useState({
         category:'all',
-        minPrice: 70
+        minPrice: 0
     })
+
+    useEffect(()=> {
+        setFilters(filterProd);
+    },[filterProd])
 
     const filterProducts = (filteredUniforms) => {
         return filteredUniforms.filter(product => {

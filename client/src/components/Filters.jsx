@@ -1,11 +1,32 @@
 import { useState } from "react";
+import { useUniform } from "../hooks/useUniform";
 
 export const Filters = () => {
 
+    const { handlerFilterProduct } = useUniform();
+
     const [minPrice, setMinPrice] = useState(0);
 
-    const handleChangePrice = (event) => {
-        setMinPrice(event.target.value)        
+    const onInputPriceChange = (event) => {
+        setMinPrice(event.target.value)   
+
+            const newState = (prevState) => ({
+                ...prevState,
+                minPrice: event.target.value
+            });
+            console.log("control de price " +newState);
+
+            handlerFilterProduct(newState);
+    }
+
+    const onInputCategoryChange = (category) => {
+        
+        const newState = (prevState) => ({
+            ...prevState,
+            category: category
+        })
+
+        handlerFilterProduct(newState);
     }
 
     const [isActiveFirst, setIsActiveFirst] = useState(false); // Estado para controlar la clase "active"
@@ -41,24 +62,40 @@ export const Filters = () => {
                     </div>
                    
                     <div className="items">
-                        <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "1" }}
+                            onClick={() => onInputCategoryChange('casaca')}>
+                                
+
                             <span className='span'></span>
                             <div className='div-span'>
-                                <span>Pantalon buzo</span>
+                                <span>Casaca</span>
                                 <span>5</span>
                             </div>
                         </div>
-                        <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "2" }}>
-                            <span className='span'></span>
-                            <div className='div-span'>
-                                <span>Polo</span>
-                                <span>4</span>
-                            </div>
-                        </div> 
-                        <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "2" }}>
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "2" }}
+                            onClick={() => onInputCategoryChange('short')}>
+
                             <span className='span'></span>
                             <div className='div-span'>
                                 <span>Short</span>
+                                <span>4</span>
+                            </div>
+                        </div> 
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "2" }}
+                            onClick={() => onInputCategoryChange('chompa')}>
+
+                            <span className='span'></span>
+                            <div className='div-span'>
+                                <span>Chompa</span>
                                 <span>4</span>
                             </div>
                         </div> 
@@ -77,7 +114,7 @@ export const Filters = () => {
                     id="price"
                     min='0'
                     max='1000'
-                    onChange={handleChangePrice}
+                    onChange={onInputPriceChange}
                     />
                 <span>S/.{minPrice}</span>    
             </div>

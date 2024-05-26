@@ -21,7 +21,7 @@ export const uniformSlice = createSlice({
         uniforms: [],
         uniformSelected: initialUniformForm,
         filteredUniforms: [],
-        filterProduc: initialFilter,
+        filterProd: initialFilter,
     },
     reducers: {
         addUniform: (state, action) => {
@@ -57,7 +57,7 @@ export const uniformSlice = createSlice({
         },
         //FILTRO DE PRODUCTOS
         filterProduct: (state, action) => {
-            state.filterProduc = action.payload
+            state.filterProd = action.payload
         }
 
     }
@@ -73,6 +73,8 @@ export const {
 
     loadingUniformBySchoolId,
     clearFilteredUniforms,
+
+    filterProduct,
 
 } = uniformSlice.actions;
  
