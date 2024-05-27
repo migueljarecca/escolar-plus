@@ -1,33 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUniform } from "../hooks/useUniform";
+import { initialFilter } from "../store/slices/schools/uniformSlice";
 
 export const Filters = () => {
 
     const { handlerFilterProduct } = useUniform();
 
-    const [minPrice, setMinPrice] = useState(0);
+    const [filterState, setFilterState] = useState(initialFilter);
+    const { minPrice } = filterState;
 
     const onInputPriceChange = (event) => {
-        setMinPrice(event.target.value)   
+            const { value } = event.target;  
 
-            const newState = (prevState) => ({
+            setFilterState(prevState => ({
                 ...prevState,
-                minPrice: event.target.value
-            });
-            console.log("control de price " +newState);
-
-            handlerFilterProduct(newState);
+                minPrice: value,
+            }));    
     }
 
     const onInputCategoryChange = (category) => {
         
-        const newState = (prevState) => ({
+        setFilterState(prevState => ({
             ...prevState,
-            category: category
-        })
-
-        handlerFilterProduct(newState);
+            category: category,
+        }));
     }
+
+    useEffect(() => {
+        console.log("control de price " + JSON.stringify(filterState));
+        handlerFilterProduct(filterState);
+    }, [filterState]);
+
 
     const [isActiveFirst, setIsActiveFirst] = useState(false); // Estado para controlar la clase "active"
 
@@ -66,7 +69,20 @@ export const Filters = () => {
                             className="filter-button" 
                             role="button" 
                             style={{ "--i": "1" }}
-                            onClick={() => onInputCategoryChange('casaca')}>
+                            onClick={() => onInputCategoryChange('all')}>
+                                
+
+                            <span className='span'></span>
+                            <div className='div-span'>
+                                <span>Todos</span>
+                                {/* <span>5</span> */}
+                            </div>
+                        </div>
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "1" }}
+                            onClick={() => onInputCategoryChange('CASACA')}>
                                 
 
                             <span className='span'></span>
@@ -79,7 +95,7 @@ export const Filters = () => {
                             className="filter-button" 
                             role="button" 
                             style={{ "--i": "2" }}
-                            onClick={() => onInputCategoryChange('short')}>
+                            onClick={() => onInputCategoryChange('SHORT')}>
 
                             <span className='span'></span>
                             <div className='div-span'>
@@ -91,7 +107,7 @@ export const Filters = () => {
                             className="filter-button" 
                             role="button" 
                             style={{ "--i": "2" }}
-                            onClick={() => onInputCategoryChange('chompa')}>
+                            onClick={() => onInputCategoryChange('CHOMPA')}>
 
                             <span className='span'></span>
                             <div className='div-span'>
@@ -113,10 +129,11 @@ export const Filters = () => {
                     type="range" 
                     id="price"
                     min='0'
-                    max='1000'
+                    max='500'
+                    value={filterState.minPrice}
                     onChange={onInputPriceChange}
                     />
-                <span>S/.{minPrice}</span>    
+                <span>S/.{minPrice}</span>
             </div>
             
             <div className='box'>
