@@ -52,12 +52,13 @@ export const uniformSlice = createSlice({
         loadingUniformBySchoolId: (state, action) => {
             state.filteredUniforms = action.payload
         },
+        // Limpia la lista de uniformes filtrados
         clearFilteredUniforms: (state) => {
-            state.filteredUniforms = []; // Limpia la lista de uniformes filtrados
+            state.filteredUniforms = [];
         },
         //ESTADO PARA LOS FILTROS DE PRODUCTOS
         filterProduct: (state, action) => {
-            console.log('filterProduct action.payload:', action.payload); // Agrega este log
+            console.log('filterProduct action.payload:', action.payload);
             state.filterProd = action.payload
         }
 
