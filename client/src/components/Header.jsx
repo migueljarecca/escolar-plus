@@ -6,7 +6,6 @@ import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 
-
 export const Header = () => {
 
         const [isSticky, setIsSticky] = useState(false);
@@ -55,8 +54,12 @@ export const Header = () => {
                         <span>Cuenta</span>
                         <FontAwesomeIcon icon={faHeart}/>
                         <span>Favoritos</span>
-                        <FontAwesomeIcon icon={faBagShopping}/>
-                        <span>Carrito</span>
+
+                        <NavLink to={'/cart'}>
+                            <FontAwesomeIcon icon={faBagShopping}/>
+                            <span>Carrito</span>
+                        </NavLink>
+                        
                     </div>
                 </div>
             </header>

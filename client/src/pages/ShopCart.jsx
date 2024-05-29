@@ -1,23 +1,27 @@
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/useCart"
 
-export const UniformDetailsCard = ({ uniformDetails }) => {
+export const ShopCart = () => {
 
-    const { handlerAddCart } = useCart();
+    const { cart, handlerRemoveCart } = useCart();
+    console.log('000000000 '+JSON.stringify(cart));
 
-    if (!uniformDetails) {
+    const { id, product, gender, size, price } = cart;
+
+    if (!cart) {
         return <div>No hay información disponible.</div>;
     }
 
-    const { image, product, gender, size, price } = uniformDetails;
-    if (!image) {
-        return <div>Información de imagen no disponible.</div>;
-    }
+    // if (!image) {
+    //     return <div>Información de imagen no disponible.</div>;
+    // }
 
-    return (
+
+    return(
+
         <>
-            <div className="container-image-elem1">
+            {/* <div className="container-image-elem1">
                 <img src={`data:${image.mime};base64,${image.content}`} alt={"uniforme"} />
-            </div>
+            </div> */}
 
             <article className="container-content-elem2">
                 <div className="div-details">
@@ -37,9 +41,9 @@ export const UniformDetailsCard = ({ uniformDetails }) => {
 
                     <button
                         type="submit"
-                        onClick={() => handlerAddCart(uniformDetails)}
+                        onClick={() => handlerRemoveCart(id)}
                         >
-                        Agregar al carrito    
+                        Eliminar   
                     </button>
 
             </article>

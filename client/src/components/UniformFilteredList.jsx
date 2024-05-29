@@ -21,13 +21,15 @@ export const UniformFilteredList = ( { filteredUniforms }) => {
 
     const filteredProducts = filterProducts(filteredUniforms);
 
-    const result = filteredProducts.map((filter) => ( 
-        <UniformFilteredCard key={filter.id} filter={filter}/>));
+    // const result = filteredProducts.map((filter) => ( 
+    //     <UniformFilteredCard key={filter.id} filter={filter}/>));
     
 
     return (
         <>
-            {result}
+            {/* {result} */}
+            {filteredProducts.map((filter) => ( 
+        <UniformFilteredCard key={filter.id} filter={filter}/>))}
         </>
     )
 }

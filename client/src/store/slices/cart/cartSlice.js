@@ -14,10 +14,19 @@ export const cartSlice = createSlice ({
 
             if(productInCartIndex >= 0) {
                 //usamos structuredClon
-                const newCart = structuredClone(state.cart)
-                newCart[productInCartIndex].quantity += 1
+                // const newCart = structuredClone(state.cart)
+                // newCart[productInCartIndex].quantity += 1
 
-                state.cart = newCart;
+                // state.cart = newCart;
+                state.cart = state.cart.map(item => {
+                    if (item.id == action.payload.id) {
+                        return {
+                            ...action.payload,
+                            quantity: action.payload.quantity + 1
+                        }
+                    }
+                    return item;
+                })
             }
 
             //Si el producto no esta en el carro
@@ -29,6 +38,9 @@ export const cartSlice = createSlice ({
 
             ];
         },
+        removeCart: (state, action) => {
+            state.cart = state.cart.filter(item => item.id !== action.id);
+        },
         clearCart: (state) => {
             state.cart = [];
         }
@@ -38,5 +50,6 @@ export const cartSlice = createSlice ({
 export const {
     addToCart,
     clearCart,
+    removeCart,
 
 } = cartSlice.actions;

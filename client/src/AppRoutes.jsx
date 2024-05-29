@@ -4,6 +4,7 @@ import { UniformsPage } from './pages/UniformsPage'
 import { RegisterSchoolPage } from './pages/RegisterSchoolPage'
 import { RegisterUniformPage } from './pages/RegisterUniformPage'
 import { UniformDetailsPage } from './pages/UniformDetailsPage'
+import { ShopCart } from './pages/ShopCart'
 
 
 export const AppRoutes = () => {
@@ -23,6 +24,8 @@ export const AppRoutes = () => {
 
             <Route path='/uniform/register' element={<RegisterUniformPage/>}></Route>
             <Route path='/uniform/update/:id' element={<RegisterUniformPage/>}></Route>
+
+            <Route path='/cart' element={<ShopCart/>}></Route>
 
         </Routes>
     )
