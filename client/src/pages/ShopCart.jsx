@@ -1,6 +1,7 @@
 import { useCart } from "../hooks/useCart"
 // import { Header } from "../components/Header";
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 
 export const ShopCart = () => {
 
@@ -12,7 +13,7 @@ export const ShopCart = () => {
         return <div>No hay información disponible.</div>;
     }
 
-    const { id, product, price, image, quantity } = cart[0];
+    const { id, product, price, image, quantity, school } = cart[0];
     console.log('quantity ' +quantity);
 
     if (!image) {
@@ -31,31 +32,30 @@ export const ShopCart = () => {
 
     return(
 
-        <>
+        <section className="container-cart">
             {/* <Header /> */}
-            <div>
-                <h2>CARRO DE COMPRA</h2>
-            </div>
-            <section>
-                <main>
-                    <div className="container-image-elem1">
+            <h2 className="title">CARRO DE COMPRA</h2>
+
+            <main className="main">
+                <article className="article">
+                    <div className="div-img">
                         <img src={`data:${image.mime};base64,${image.content}`} alt={"uniforme"} />
                     </div>
-                    <div>
+                    <div className="div">
                         <h3>{product}</h3>
                     </div>
-                    <div>
-                        <h2>precio</h2>
-                        <h3>{price}</h3>
+                    <div className="div">
+                        <h3>precio</h3>
+                        <h3>S/. {price}</h3>
                     </div>
-                    <div>
+                    <div className="div">
                         <h3>cantidad</h3>
                             <button onClick={handleIncreaseQuantity}>+</button>
                             <span>{productQuantity}</span>
                             <button onClick={handleDecreaseQuantity}>-</button>
 
                     </div>
-                    <div>
+                    <div className="div">
                         <h3>total</h3>
 
                     </div>
@@ -66,18 +66,27 @@ export const ShopCart = () => {
                         Eliminar   
                     </button>
 
-                </main>
-                <summary>
-
-                </summary>
-            </section>
-            
-
-                
-
+                </article>
+                <summary className="summary">
+                    <h2>RESUMEN</h2>
+                    <div className="sub-total">
+                        <h3>Sub Total</h3>
+                    </div>
+                    <div className="total">
+                        <h4>TOTAL</h4>
+                    </div>
+                    <div className="div">
+                        <NavLink to={"/school/update/" + school.id}>Continuar Comprando</NavLink>
+                        <button
+                            className="button"
+                            type="submit"
+                            >
+                            continuar
+                        </button>
+                    </div>
                     
-
-            
-        </>
+                </summary>
+            </main>  
+        </section>
     )
 }

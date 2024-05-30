@@ -948,3 +948,81 @@ body {
   margin: auto;
   cursor: pointer;
 }
+
+/* ======================== SHOP CART PAGE ======================== */
+
+.container-cart {
+  padding: 1.7rem 4%;
+}
+
+.container-cart .title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  padding: 3rem 0;
+}
+
+.container-cart .main {
+  display: flex;
+  gap: 2rem;
+}
+
+.container-cart .main .article {
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+  border: 1px solid var(--line-color);
+  padding: 2rem;
+  /* font-size: 1.5rem; */
+}
+
+.article .div h3 {
+  font-size: 1.7rem;
+  padding-bottom: 1.5rem;
+}
+
+.article .div-img {
+  width: 8rem;
+  /* height: 10rem; */
+  background-color: #5a189a;
+}
+
+.article .div-img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.container-cart .main .summary {
+  padding: 2rem;
+  border: 1px solid var(--line-color);
+  width: 35%;
+}
+
+.summary h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  padding-bottom: 2rem;
+}
+
+.summary .sub-total {
+  font-size: 1.4rem;
+  padding: 1rem;
+  border: 1px solid var(--line-color);
+}
+
+.summary .total {
+  margin-top: .5rem;
+  font-size: 1.7rem;
+  padding: 1rem;
+  border: 1px solid var(--line-color);
+  margin-bottom: 3rem;
+}
+
+.summary .button {
+  /* margin-top: 3rem; */
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 400;
+  width: 20rem;
+  margin: auto;
+  cursor: pointer;
+}
