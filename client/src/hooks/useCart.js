@@ -4,7 +4,6 @@ import { addToCart, removeCart } from "../store/slices/cart/cartSlice";
 export const useCart = () => {
 
     const { cart } = useSelector(state => state.cart);
-    console.log('contro de car ' +JSON.stringify(cart));
 
     const dispatch = useDispatch();
 

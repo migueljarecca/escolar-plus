@@ -11,12 +11,10 @@ export const UniformDetailsPage = () => {
     const [uniformDetails, setuniformDetails] = useState(initialUniformForm);
 
     const {id} = useParams();
-    console.log("aaaaaaa" +id);
 
     useEffect(() => {
         if (id) {
             const uniform = filteredUniforms.find(u => u.id == id);
-            console.log("dfdfdf " +uniform)
             setuniformDetails(uniform);
         }
     },[id]);

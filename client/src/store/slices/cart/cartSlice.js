@@ -13,11 +13,7 @@ export const cartSlice = createSlice ({
             const productInCartIndex = state.cart.findIndex(item => item.id === action.payload.id);
 
             if(productInCartIndex >= 0) {
-                //usamos structuredClon
-                // const newCart = structuredClone(state.cart)
-                // newCart[productInCartIndex].quantity += 1
-
-                // state.cart = newCart;
+                
                 state.cart = state.cart.map(item => {
                     if (item.id == action.payload.id) {
                         return {
@@ -39,6 +35,7 @@ export const cartSlice = createSlice ({
             ];
         },
         removeCart: (state, action) => {
+            console.log('fered ' +action.id);
             state.cart = state.cart.filter(item => item.id !== action.id);
         },
         clearCart: (state) => {
