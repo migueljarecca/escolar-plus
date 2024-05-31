@@ -4,6 +4,9 @@ import { addToCart, removeCart } from "../store/slices/cart/cartSlice";
 export const useCart = () => {
 
     const { cart } = useSelector(state => state.cart);
+    // console.log('Cart data: ' + JSON.stringify(cart));
+    console.log('Cart data: ' + cart);
+
 
     const dispatch = useDispatch();
 
@@ -11,7 +14,7 @@ export const useCart = () => {
         dispatch(addToCart(product));
     }
 
-    const handlerRemoveCart = (id) => {
+    const handleRemoveCart = (id) => {
         dispatch(removeCart(id));
     }
 
@@ -20,7 +23,7 @@ export const useCart = () => {
             cart,
 
             handlerAddCart,
-            handlerRemoveCart,
+            handleRemoveCart,
         }
     );
 };

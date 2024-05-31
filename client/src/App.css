@@ -968,11 +968,18 @@ body {
 
 .container-cart .main .article {
   display: flex;
+  flex-direction: column;
   width: 65%;
-  justify-content: space-between;
+  gap: 2rem;
+}
+
+.container-cart .main .article .cart-item {
+  display: flex;
   border: 1px solid var(--line-color);
   padding: 2rem;
-  /* font-size: 1.5rem; */
+  justify-content: space-between;
+
+
 }
 
 .article .div h3 {
@@ -995,6 +1002,7 @@ body {
   padding: 2rem;
   border: 1px solid var(--line-color);
   width: 35%;
+  height: 30rem;
 }
 
 .summary h2 {

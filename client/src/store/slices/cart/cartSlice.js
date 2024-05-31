@@ -11,6 +11,7 @@ export const cartSlice = createSlice ({
 
             //Revisamos si el producto ya esta en el carro
             const productInCartIndex = state.cart.findIndex(item => item.id === action.payload.id);
+            console.log('cntrol del slice ' +productInCartIndex);
 
             if(productInCartIndex >= 0) {
                 

@@ -1,11 +1,10 @@
 import { useCart } from "../hooks/useCart"
-// import { Header } from "../components/Header";
-import { useState } from "react";
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import { CartListItems } from "../components/CartListItems";
 
 export const ShopCart = () => {
 
-    const { cart, handlerRemoveCart } = useCart();
+    const { cart, handleRemoveCart } = useCart();
     // console.log('Cart data: ' + JSON.stringify(cart));
 
     //Check if the cart is empty or not properly structured
@@ -13,60 +12,35 @@ export const ShopCart = () => {
         return <div>No hay información disponible.</div>;
     }
 
-    const { id, product, price, image, quantity, school } = cart[0];
-    console.log('quantity ' +quantity);
+    // const { school } = cart;
+    // console.log('quantity ' +quantity);
 
-    if (!image) {
-        return <div>Información de imagen no disponible.</div>;
-    }
-
-    const { productQuantity, setProductQuantity } = useState(quantity || 1);
-
-    const handleIncreaseQuantity = () => {
-        setProductQuantity(prevState => prevState + 1);
-    }
-    const handleDecreaseQuantity = () => {
-        setProductQuantity(prevState => prevState -1);
-    }
-
+    // if (!image) {
+    //     return <div>Información de imagen no disponible.</div>;
+    // }
 
     return(
 
         <section className="container-cart">
-            {/* <Header /> */}
+           
             <h2 className="title">CARRO DE COMPRA</h2>
 
             <main className="main">
+               
                 <article className="article">
-                    <div className="div-img">
-                        <img src={`data:${image.mime};base64,${image.content}`} alt={"uniforme"} />
-                    </div>
-                    <div className="div">
-                        <h3>{product}</h3>
-                    </div>
-                    <div className="div">
-                        <h3>precio</h3>
-                        <h3>S/. {price}</h3>
-                    </div>
-                    <div className="div">
-                        <h3>cantidad</h3>
-                            <button onClick={handleIncreaseQuantity}>+</button>
-                            <span>{productQuantity}</span>
-                            <button onClick={handleDecreaseQuantity}>-</button>
-
-                    </div>
-                    <div className="div">
-                        <h3>total</h3>
-
-                    </div>
-                    <button
-                        type="submit"
-                        onClick={() => handlerRemoveCart(id)}
-                        >
-                        Eliminar   
-                    </button>
-
+                    {cart.map(({ id, product, price, image }) =>
+                        (
+                            <CartListItems 
+                                key={id}
+                                product={product}
+                                price={price}
+                                image={image}
+                                handleRemoveCart={handleRemoveCart}
+                            />
+                        )
+                    )}
                 </article>
+            
                 <summary className="summary">
                     <h2>RESUMEN</h2>
                     <div className="sub-total">
@@ -76,7 +50,7 @@ export const ShopCart = () => {
                         <h4>TOTAL</h4>
                     </div>
                     <div className="div">
-                        <NavLink to={"/school/update/" + school.id}>Continuar Comprando</NavLink>
+                        {/* <NavLink to={"/school/update/" + school.id}>Continuar Comprando</NavLink> */}
                         <button
                             className="button"
                             type="submit"
@@ -86,7 +60,8 @@ export const ShopCart = () => {
                     </div>
                     
                 </summary>
-            </main>  
+            </main>
+             
         </section>
     )
 }
