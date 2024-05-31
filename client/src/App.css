@@ -1018,6 +1018,8 @@ body {
 }
 
 .summary .total {
+  display: flex;
+  justify-content: space-between;
   margin-top: .5rem;
   font-size: 1.7rem;
   padding: 1rem;

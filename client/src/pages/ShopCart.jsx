@@ -1,10 +1,11 @@
 import { useCart } from "../hooks/useCart"
 // import { NavLink } from 'react-router-dom';
 import { CartListItems } from "../components/CartListItems";
+import { useEffect } from "react";
 
 export const ShopCart = () => {
 
-    const { cart, handleRemoveCart } = useCart();
+    const { cart, priceTotal, handleRemoveCart, HandleCalculateTotal, handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
     // console.log('Cart data: ' + JSON.stringify(cart));
 
     //Check if the cart is empty or not properly structured
@@ -12,8 +13,11 @@ export const ShopCart = () => {
         return <div>No hay información disponible.</div>;
     }
 
+   useEffect(() => {
+        HandleCalculateTotal();
+    },[handleIncreaseQuantity, handleDecreaseQuantity]); 
+
     // const { school } = cart;
-    // console.log('quantity ' +quantity);
 
     // if (!image) {
     //     return <div>Información de imagen no disponible.</div>;
@@ -28,14 +32,19 @@ export const ShopCart = () => {
             <main className="main">
                
                 <article className="article">
-                    {cart.map(({ id, product, price, image }) =>
+                    {cart.map(({ id, product, price, image, quantity }) =>
                         (
                             <CartListItems 
                                 key={id}
+                                id={id}
                                 product={product}
                                 price={price}
                                 image={image}
+                                quantity={quantity}
                                 handleRemoveCart={handleRemoveCart}
+                                handleIncreaseQuantity={handleIncreaseQuantity}
+                                handleDecreaseQuantity={handleDecreaseQuantity}
+
                             />
                         )
                     )}
@@ -48,6 +57,7 @@ export const ShopCart = () => {
                     </div>
                     <div className="total">
                         <h4>TOTAL</h4>
+                        <h3>S/. {priceTotal}</h3>
                     </div>
                     <div className="div">
                         {/* <NavLink to={"/school/update/" + school.id}>Continuar Comprando</NavLink> */}

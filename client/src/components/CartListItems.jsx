@@ -1,19 +1,24 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { useCart } from "../hooks/useCart";
 
-export const CartListItems = ({ image, product, price, quatity, handleRemoveCart }) => {
+export const CartListItems = ({ id, image, product, price, quantity, handleRemoveCart, handleIncreaseQuantity, handleDecreaseQuantity }) => {
 
-    const { productQuantity, setProductQuantity } = useState(quatity || 1);
+    // const { handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
 
-    const handleIncreaseQuantity = () => {
-        setProductQuantity(prevState => prevState + 1);
+    // const [ productQuantity, setProductQuantity ] = useState(quantity);
+
+    const onIncreaseQuantity = (id) => {
+        handleIncreaseQuantity(id);
     }
-    const handleDecreaseQuantity = () => {
-        setProductQuantity(prevState => prevState -1);
+
+    const onDecreaseQuantity = (id) => {
+        handleDecreaseQuantity(id);
     }
     
-    const onRemoveCart = (id) => {
+    const onRemoveCart = (id) => {  
         handleRemoveCart(id);
     }
+    console.log('quantity ' +quantity);
     
     return (
         <div className="cart-item">
@@ -29,9 +34,9 @@ export const CartListItems = ({ image, product, price, quatity, handleRemoveCart
                     </div>
                     <div className="div">
                         <h3>cantidad</h3>
-                            <button onClick={handleIncreaseQuantity}>+</button>
-                            <span>{productQuantity}</span>
-                            <button onClick={handleDecreaseQuantity}>-</button>
+                            <button onClick={() => onIncreaseQuantity (id)}>+</button>
+                            <span>{quantity}</span>
+                            <button onClick={() => onDecreaseQuantity (id)}>-</button>
 
                     </div>
                     <div className="div">
