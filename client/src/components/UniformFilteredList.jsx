@@ -8,7 +8,6 @@ export const UniformFilteredList = ( { filteredUniforms }) => {
 
     const filterProducts = (filteredUniforms) => {
         return filteredUniforms.filter(product => {
-            console.log('control 01 ' +product.product);
             return (
                 product.price >= filterProd.minPrice  &&
                 (
@@ -21,15 +20,14 @@ export const UniformFilteredList = ( { filteredUniforms }) => {
 
     const filteredProducts = filterProducts(filteredUniforms);
 
-    // const result = filteredProducts.map((filter) => ( 
-    //     <UniformFilteredCard key={filter.id} filter={filter}/>));
-    
-
     return (
         <>
-            {/* {result} */}
-            {filteredProducts.map((filter) => ( 
-        <UniformFilteredCard key={filter.id} filter={filter}/>))}
+            {filteredProducts.map((filter) => 
+            ( 
+                <UniformFilteredCard 
+                    key={filter.id} 
+                    filter={filter}/>
+            ))}
         </>
     )
 }

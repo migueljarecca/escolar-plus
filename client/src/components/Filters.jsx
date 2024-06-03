@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUniform } from "../hooks/useUniform";
 import { initialFilter } from "../store/slices/schools/uniformSlice";
 
-export const Filters = () => {
+export const Filters = ({ filteredUniforms }) => {
 
     const { handlerFilterProduct } = useUniform();
 
@@ -47,7 +47,7 @@ export const Filters = () => {
     return (
         <>
             <div className='div-cole-title'>
-                <h1> COLEGIO JORGE CHAVEZ</h1>
+                <h1>Colegio {filteredUniforms.length > 0 ? filteredUniforms[0].school.name : ''} </h1>
             </div>
 
             <h5>Mostrar resultado por:</h5>

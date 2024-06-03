@@ -18,7 +18,6 @@ export const UniformsPage = () => {
         }
     },[]);     
 
-    console.log("control -1 ", filteredUniforms);
 
     const [isActiveOrder, setIsActiveOrder] = useState(false); // Estado para controlar la clase "active"
 
@@ -68,7 +67,7 @@ export const UniformsPage = () => {
             <div className="container-uniform">
 
                 <aside className="left-sidebar">
-                    <Filters />
+                    <Filters filteredUniforms={filteredUniforms}/>
                 </aside>
 
                 <main className="main-content">

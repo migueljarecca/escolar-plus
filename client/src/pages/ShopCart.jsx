@@ -1,17 +1,13 @@
 import { useCart } from "../hooks/useCart"
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { CartListItems } from "../components/CartListItems";
 import { useEffect } from "react";
 
 export const ShopCart = () => {
 
-    const { cart, priceTotal, handleRemoveCart, HandleCalculateTotal, handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
+    const { cart, priceTotal, handleRemoveCart, HandleCalculateTotal, 
+        handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
     // console.log('Cart data: ' + JSON.stringify(cart));
-
-    //Check if the cart is empty or not properly structured
-    if (!cart || !cart.length) {
-        return <div>No hay información disponible.</div>;
-    }
 
    useEffect(() => {
         HandleCalculateTotal();
@@ -32,22 +28,27 @@ export const ShopCart = () => {
             <main className="main">
                
                 <article className="article">
-                    {cart.map(({ id, product, price, image, quantity }) =>
-                        (
-                            <CartListItems 
-                                key={id}
-                                id={id}
-                                product={product}
-                                price={price}
-                                image={image}
-                                quantity={quantity}
-                                handleRemoveCart={handleRemoveCart}
-                                handleIncreaseQuantity={handleIncreaseQuantity}
-                                handleDecreaseQuantity={handleDecreaseQuantity}
-
-                            />
+                    {cart && cart.length > 0 ? (
+                            cart.map(({ id, product, price, image, quantity }) =>
+                                (
+                                    <CartListItems 
+                                        key={id}
+                                        id={id}
+                                        product={product}
+                                        price={price}
+                                        image={image}
+                                        quantity={quantity}
+                                        handleRemoveCart={handleRemoveCart}
+                                        handleIncreaseQuantity={handleIncreaseQuantity}
+                                        handleDecreaseQuantity={handleDecreaseQuantity}
+        
+                                    />
+                                )
+                            )
+                        ) : (
+                            <div>El carro esta vacío</div>
                         )
-                    )}
+                    }
                 </article>
             
                 <summary className="summary">
@@ -60,7 +61,7 @@ export const ShopCart = () => {
                         <h3>S/. {priceTotal}</h3>
                     </div>
                     <div className="div">
-                        {/* <NavLink to={"/school/update/" + school.id}>Continuar Comprando</NavLink> */}
+                        <NavLink to={"/uniforms/" + (cart.length > 0 ? cart[0].school.id : '')}>Continuar Comprando</NavLink>
                         <button
                             className="button"
                             type="submit"
