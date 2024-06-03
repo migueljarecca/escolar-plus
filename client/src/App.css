@@ -559,9 +559,9 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 15rem;
+  height: 23rem;
   margin-top: 4.5rem;
-  overflow: hidden;
+  overflow-y: auto; /* Cambiado a 'auto' para permitir desplazamiento vertical */
   visibility: hidden;
   transition: .2s ease-in-out;
  
@@ -572,7 +572,7 @@ body {
 }
 
 .dropdown-first.active {
-  margin-bottom: 14rem;
+  margin-bottom: 22.5rem;
 }
 
 .dropdown-first .items .filter-button {
@@ -624,6 +624,16 @@ body {
 
 .dropdown-first .items .filter-button:hover .span {
   transform: rotate(0deg);
+}
+
+.box .div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box .content-span {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ------------------ second button ----------------*/

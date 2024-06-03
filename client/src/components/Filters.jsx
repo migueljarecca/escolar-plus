@@ -7,7 +7,27 @@ export const Filters = ({ filteredUniforms }) => {
     const { handlerFilterProduct } = useUniform();
 
     const [filterState, setFilterState] = useState(initialFilter);
+    const [highestMayor, setHighestMayor] = useState(0);
+
     const { minPrice } = filterState;
+
+    const capitalizeWords = (str) => {
+        return str
+            .toLowerCase()               // Convierte toda la cadena a minúsculas.
+            .replace(/_/g, ' ')          // Reemplaza los guiones bajos con espacios.
+            .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitaliza la primera letra de cada palabra.
+    };    
+    
+    // Usar un Set para extraer productos únicos
+    const uniqueProducts = Array.from(new Set(filteredUniforms.map(item => item.product)));
+        
+    // Ordenar los productos alfabéticamente
+    uniqueProducts.sort();
+
+    filteredUniforms.forEach(uniform => {
+        if (uniform.price > highestMayor)
+            setHighestMayor(uniform.price);
+    });
 
     const onInputPriceChange = (event) => {
             const { value } = event.target;  
@@ -78,43 +98,23 @@ export const Filters = ({ filteredUniforms }) => {
                                 {/* <span>5</span> */}
                             </div>
                         </div>
-                        <div 
+                            {uniqueProducts.map((product, index) => (
+                            <div 
+                            key={index}
                             className="filter-button" 
                             role="button" 
                             style={{ "--i": "1" }}
-                            onClick={() => onInputCategoryChange('CASACA')}>
+                            onClick={() => onInputCategoryChange(product)}>
                                 
 
                             <span className='span'></span>
                             <div className='div-span'>
-                                <span>Casaca</span>
-                                <span>5</span>
+                                <span>{capitalizeWords(product)}</span>
+                                {/* <span>5</span> */}
                             </div>
                         </div>
-                        <div 
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "2" }}
-                            onClick={() => onInputCategoryChange('SHORT')}>
-
-                            <span className='span'></span>
-                            <div className='div-span'>
-                                <span>Short</span>
-                                <span>4</span>
-                            </div>
-                        </div> 
-                        <div 
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "2" }}
-                            onClick={() => onInputCategoryChange('CHOMPA')}>
-
-                            <span className='span'></span>
-                            <div className='div-span'>
-                                <span>Chompa</span>
-                                <span>4</span>
-                            </div>
-                        </div> 
+                        ))}
+                        
                     </div>
                 </div>
             </div>
@@ -122,18 +122,25 @@ export const Filters = ({ filteredUniforms }) => {
             <h5>Filtrar por:</h5>
             
             <div className='box'>
-                <h3>Precio</h3>
+                <div className="div">
+                    <h3>Precio a partir de:</h3>
+                    <h3>hasta</h3>
+                </div>
 
                 {/* <label htmlFor="price">precio</label> */}
                 <input 
                     type="range" 
                     id="price"
                     min='0'
-                    max='500'
+                    max={highestMayor}
                     value={filterState.minPrice}
                     onChange={onInputPriceChange}
                     />
-                <span>S/.{minPrice}</span>
+
+                <div className="content-span">
+                    <span>S/.{minPrice}</span>
+                    <span>S/. {highestMayor}</span>
+                </div>    
             </div>
             
             <div className='box'>
