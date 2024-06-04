@@ -24,11 +24,20 @@ export const Filters = ({ filteredUniforms }) => {
     // Ordenar los productos alfabéticamente
     uniqueProducts.sort();
 
-    filteredUniforms.forEach(uniform => {
-        if (uniform.price > highestMayor)
-            setHighestMayor(uniform.price);
-    });
+    let num =  0;
 
+    useEffect (() => {
+
+        filteredUniforms.forEach(uniform => {
+            if (uniform.price > highestMayor)
+                num = uniform.price;
+        });
+
+        setHighestMayor(num);
+    
+    },[])
+
+    
     const onInputPriceChange = (event) => {
             const { value } = event.target;  
 

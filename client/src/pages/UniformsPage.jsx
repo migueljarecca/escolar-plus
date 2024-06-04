@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import { useUniform } from '../hooks/useUniform';
 import { useParams } from 'react-router-dom';
 import { UniformFilteredList } from '../components/UniformFilteredList';
 import { Filters } from '../components/Filters';
+import { useSelector } from 'react-redux';
 
 export const UniformsPage = () => {
+
+    const { filterProd } = useSelector(state => state.uniforms);
 
     const { filteredUniforms, uniformBySchoolId } = useUniform();
     
@@ -16,8 +19,21 @@ export const UniformsPage = () => {
         if (id) {
             uniformBySchoolId(id);         
         }
-    },[]);     
+    },[]); 
 
+    const filterProducts = (filteredUniforms) => {
+        return filteredUniforms.filter(product => {
+            return (
+                product.price >= filterProd.minPrice  &&
+                (
+                    filterProd.category == 'all' ||
+                    product.product == filterProd.category
+                )
+            )
+        })
+    }
+
+    const filteredProducts = filterProducts(filteredUniforms);   
 
     const [isActiveOrder, setIsActiveOrder] = useState(false); // Estado para controlar la clase "active"
 
@@ -71,7 +87,7 @@ export const UniformsPage = () => {
                 </aside>
 
                 <main className="main-content">
-                    <UniformFilteredList filteredUniforms={filteredUniforms}/>
+                    <UniformFilteredList filteredProducts={filteredProducts}/>
                 </main>
             
             </div>
