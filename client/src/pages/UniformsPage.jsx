@@ -33,7 +33,14 @@ export const UniformsPage = () => {
         })
     }
 
-    const filteredProducts = filterProducts(filteredUniforms);   
+    const filteredProducts = filterProducts(filteredUniforms);
+    
+    const prices = filteredProducts.map(item => item.price);
+
+    const productsName = filteredUniforms.map(item => ({
+        product: item.product,
+        schoolName: item.school.name,
+    }));
 
     const [isActiveOrder, setIsActiveOrder] = useState(false); // Estado para controlar la clase "active"
 
@@ -83,7 +90,7 @@ export const UniformsPage = () => {
             <div className="container-uniform">
 
                 <aside className="left-sidebar">
-                    <Filters filteredUniforms={filteredUniforms}/>
+                    <Filters productsName={productsName} prices={prices}/>
                 </aside>
 
                 <main className="main-content">

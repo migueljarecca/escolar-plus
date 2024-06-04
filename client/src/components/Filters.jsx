@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUniform } from "../hooks/useUniform";
 import { initialFilter } from "../store/slices/schools/uniformSlice";
 
-export const Filters = ({ filteredUniforms }) => {
+export const Filters = ({ productsName, prices }) => {
 
     const { handlerFilterProduct } = useUniform();
 
@@ -19,25 +19,18 @@ export const Filters = ({ filteredUniforms }) => {
     };    
     
     // Usar un Set para extraer productos únicos
-    const uniqueProducts = Array.from(new Set(filteredUniforms.map(item => item.product)));
+    const uniqueProducts = Array.from(new Set(productsName.map(item => item.product)));
         
     // Ordenar los productos alfabéticamente
     uniqueProducts.sort();
 
-    let num =  0;
-
     useEffect (() => {
 
-        filteredUniforms.forEach(uniform => {
-            if (uniform.price > highestMayor)
-                num = uniform.price;
-        });
+        const maxPrice = Math.max(...prices);        
+        setHighestMayor(maxPrice);    
 
-        setHighestMayor(num);
-    
-    },[])
+    },[prices])
 
-    
     const onInputPriceChange = (event) => {
             const { value } = event.target;  
 
@@ -76,7 +69,7 @@ export const Filters = ({ filteredUniforms }) => {
     return (
         <>
             <div className='div-cole-title'>
-                <h1>Colegio {filteredUniforms.length > 0 ? filteredUniforms[0].school.name : ''} </h1>
+                <h1>Colegio {productsName.length > 0 ? productsName[0].schoolName : ''} </h1>
             </div>
 
             <h5>Mostrar resultado por:</h5>
