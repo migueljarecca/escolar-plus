@@ -14,6 +14,8 @@ export const initialFilter = {
     minPrice: '0',
 }
 
+export const initialFilterGender = 'all'
+
 export const uniformSlice = createSlice({
 
     name: 'uniforms',
@@ -22,6 +24,7 @@ export const uniformSlice = createSlice({
         uniformSelected: initialUniformForm,
         filteredUniforms: [],
         filterProd: initialFilter,
+        filterProdGender: initialFilterGender,
     },
     reducers: {
         addUniform: (state, action) => {
@@ -58,10 +61,13 @@ export const uniformSlice = createSlice({
         },
         //ESTADO PARA LOS FILTROS DE PRODUCTOS
         filterProduct: (state, action) => {
-            console.log('filterProduct action.payload:', action.payload);
             state.filterProd = action.payload
-        }
-
+        },
+        //ESTADO PARA LOS FILTROS DE GENERO
+        filterProductGender: (state, action) => {
+            console.log('filterProductGender:', action.payload);
+            state.filterProdGender = action.payload
+        },
     }
 });
 
@@ -77,6 +83,7 @@ export const {
     clearFilteredUniforms,
 
     filterProduct,
+    filterProductGender,
 
 } = uniformSlice.actions;
  

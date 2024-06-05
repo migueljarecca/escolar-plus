@@ -1,7 +1,9 @@
 import { create, findAll, getUniformBySchoolId, remove, update } from "../services/uniformService"
 import { useSelector, useDispatch } from 'react-redux';
 import { addUniform, initialUniformForm, loadingUniform, loadingUniformBySchoolId, 
-        removeUniform, updateUniform, filterProduct } from "../store/slices/schools/uniformSlice";
+        removeUniform, updateUniform, filterProduct, 
+        filterProductGender,
+        initialFilterGender} from "../store/slices/schools/uniformSlice";
 
 export const useUniform = () => {
 
@@ -43,9 +45,13 @@ export const useUniform = () => {
     }
 
     //FILTRO por producto
-
     const handlerFilterProduct = (filter) => {
         dispatch(filterProduct(filter));
+    }
+
+    //FILTRO por producto
+    const handleFilterGender =(gender) => {
+        dispatch(filterProductGender(gender));
     }
 
     return (
@@ -53,6 +59,7 @@ export const useUniform = () => {
             uniforms,
             initialUniformForm,
             filteredUniforms,
+            initialFilterGender,
 
             getAllUniform,
             handlerAddUniform,
@@ -61,6 +68,7 @@ export const useUniform = () => {
 
             uniformBySchoolId,
             handlerFilterProduct,
+            handleFilterGender,
 
         }
     );

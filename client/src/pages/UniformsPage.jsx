@@ -9,10 +9,12 @@ import { useSelector } from 'react-redux';
 export const UniformsPage = () => {
 
     const { filterProd } = useSelector(state => state.uniforms);
+    const { filterProdGender } = useSelector(state => state.uniforms);
 
     const { filteredUniforms, uniformBySchoolId } = useUniform();
     
     const { id } = useParams();
+    console.log('filter desde unifor page:' +filterProdGender);
 
     //traer todos los uniformes realacionado a un colegio   
     useEffect(() => {
@@ -90,7 +92,7 @@ export const UniformsPage = () => {
             <div className="container-uniform">
 
                 <aside className="left-sidebar">
-                    <Filters productsName={productsName} prices={prices}/>
+                    <Filters productsName={productsName} prices={prices} filterProd={filterProd}/>
                 </aside>
 
                 <main className="main-content">

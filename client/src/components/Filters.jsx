@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useUniform } from "../hooks/useUniform";
 import { initialFilter } from "../store/slices/schools/uniformSlice";
 
-export const Filters = ({ productsName, prices }) => {
+export const Filters = ({ productsName, prices, filterProd }) => {
 
-    const { handlerFilterProduct } = useUniform();
+    const { handlerFilterProduct, handleFilterGender } = useUniform();
 
     const [filterState, setFilterState] = useState(initialFilter);
     const [highestMayor, setHighestMayor] = useState(0);
+    // const [filterStateGender, setFilterStateGender] = useState('all');
 
     const { minPrice } = filterState;
 
@@ -49,10 +50,15 @@ export const Filters = ({ productsName, prices }) => {
     }
 
     useEffect(() => {
-        console.log("control de price " + JSON.stringify(filterState));
         handlerFilterProduct(filterState);
     }, [filterState]);
 
+    const onInputGenderChange = (gender) => {
+        // setFilterStateGender(gender)
+        handleFilterGender(gender);
+    };
+
+    // console.log('cntrol de gender ' +JSON.stringify(filterStateGender));
 
     const [isActiveFirst, setIsActiveFirst] = useState(false); // Estado para controlar la clase "active"
 
@@ -145,7 +151,8 @@ export const Filters = ({ productsName, prices }) => {
                 </div>    
             </div>
             
-            <div className='box'>
+            {filterProd.category == 'all' ? (
+                <div className='box'>
                 <div className={`dropdown-second ${isActiveSecond ? 'active' : ''}`} >
 
                     <div className="filter-title" onClick={handleFilterClickSecond}>
@@ -157,42 +164,77 @@ export const Filters = ({ productsName, prices }) => {
                     </div>
 
                     <div className="items">
-                        <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "1" }}>
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "1" }}
+                            onClick={()=>onInputGenderChange('all')}
+                            >
+                            
                             <span className='span'></span>
                             <input type="checkbox" value="CASA_HELENA"/>
                                 <div className='div-span'>
-                                    <span>Unisex</span>
-                                    <span>4</span>
+                                    <span>Todos</span>
+                                    {/* <span>4</span> */}
                                 </div>
                         </div>
-                        <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "2" }}>
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "1" }}
+                            onClick={()=>onInputGenderChange('hombre')}
+                            >
+                            
+                            <span className='span'></span>
+                            <input type="checkbox" value="CASA_HELENA"/>
+                                <div className='div-span'>
+                                    <span>Hombre</span>
+                                    {/* <span>4</span> */}
+                                </div>
+                        </div>
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "2" }}
+                            onClick={()=>onInputGenderChange('mujer')}
+                            >
+                            
                             <span className='span'></span>
                                 <input type="checkbox" value="CASA_HELENA"/>
                                 <div className='div-span'>
-                                    <span>Niña</span>
-                                    <span>4</span>
+                                    <span>Mujer</span>
+                                    {/* <span>4</span> */}
                                 </div>
                         </div> 
-                        <div className="filter-button" role="button" title="CASA HELENA" style={{ "--i": "2" }}>
+                        <div 
+                            className="filter-button" 
+                            role="button" 
+                            style={{ "--i": "2" }}
+                            onClick={()=>onInputGenderChange('unisex')}
+                            >
+                            
                             <span className='span'></span>
                             <input type="checkbox" value="CASA_HELENA"/>
                             <div className='div-span'>
-                                <span>Niño</span>
-                                <span>4</span>
+                                <span>Unisex</span>
+                                {/* <span>4</span> */}
                             </div>
                         </div>
                     </div>
                                                     
                 </div>
-                
+        
             </div>
+            ) : ('')
+            }
+            
 
-            <button
+            {/* <button
                 type='submit'
                 className='sidebar-button'
                 >
                 Aplicar filtros
-            </button>
+            </button> */}
         </>
     )
 }
