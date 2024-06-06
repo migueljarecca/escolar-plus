@@ -23,6 +23,7 @@ export const UniformsPage = () => {
         }
     },[]); 
 
+    //Filtramos los uniformes por precio y categoría
     const filterProducts = (filteredUniforms) => {
         return filteredUniforms.filter(product => {
             return (
@@ -35,14 +36,30 @@ export const UniformsPage = () => {
         })
     }
 
-    const filteredProducts = filterProducts(filteredUniforms);
+    let filteredProducts = filterProducts(filteredUniforms);
+
+    //Filtramos los uniformes por género
+    const filterProductsByGender = (filteredProducts) => {
+        return filteredProducts.filter(product => {
+            return (
+                filterProdGender == 'all' ||
+                product.gender == filterProdGender
+            )
+        })
+    }
+
+    filteredProducts = filterProductsByGender(filteredProducts);
     
+    //Obtenemos solo los precios y nombres para mostrar al cliente
     const prices = filteredProducts.map(item => item.price);
 
     const productsName = filteredUniforms.map(item => ({
         product: item.product,
         schoolName: item.school.name,
     }));
+
+    //Obtenemos solo las géneros disponibles para mostrar al cliente
+    const availableGenders = Array.from(new Set(filteredProducts.map(item => item.gender)));
 
     const [isActiveOrder, setIsActiveOrder] = useState(false); // Estado para controlar la clase "active"
 
@@ -92,7 +109,12 @@ export const UniformsPage = () => {
             <div className="container-uniform">
 
                 <aside className="left-sidebar">
-                    <Filters productsName={productsName} prices={prices} filterProd={filterProd}/>
+                    <Filters 
+                        productsName={productsName} 
+                        prices={prices} 
+                        filterProd={filterProd}
+                        availableGenders={availableGenders}
+                        />
                 </aside>
 
                 <main className="main-content">

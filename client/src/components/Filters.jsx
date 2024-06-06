@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUniform } from "../hooks/useUniform";
 import { initialFilter } from "../store/slices/schools/uniformSlice";
 
-export const Filters = ({ productsName, prices, filterProd }) => {
+export const Filters = ({ productsName, prices, availableGenders }) => {
 
     const { handlerFilterProduct, handleFilterGender } = useUniform();
 
@@ -11,6 +11,8 @@ export const Filters = ({ productsName, prices, filterProd }) => {
     // const [filterStateGender, setFilterStateGender] = useState('all');
 
     const { minPrice } = filterState;
+    console.log('generos ' +JSON.stringify(availableGenders));
+
 
     const capitalizeWords = (str) => {
         return str
@@ -106,8 +108,9 @@ export const Filters = ({ productsName, prices, filterProd }) => {
                                 {/* <span>5</span> */}
                             </div>
                         </div>
-                            {uniqueProducts.map((product, index) => (
-                            <div 
+
+                        {uniqueProducts.map((product, index) => (
+                        <div 
                             key={index}
                             className="filter-button" 
                             role="button" 
@@ -151,7 +154,7 @@ export const Filters = ({ productsName, prices, filterProd }) => {
                 </div>    
             </div>
             
-            {filterProd.category == 'all' ? (
+            {/* {filterProd.category == 'all' ? ( */}
                 <div className='box'>
                 <div className={`dropdown-second ${isActiveSecond ? 'active' : ''}`} >
 
@@ -172,61 +175,38 @@ export const Filters = ({ productsName, prices, filterProd }) => {
                             >
                             
                             <span className='span'></span>
-                            <input type="checkbox" value="CASA_HELENA"/>
+                            {/* <input type="checkbox" value="CASA_HELENA"/> */}
                                 <div className='div-span'>
                                     <span>Todos</span>
                                     {/* <span>4</span> */}
                                 </div>
                         </div>
+
+                        {availableGenders.map((item, index) => (
                         <div 
+                            key={index}
                             className="filter-button" 
                             role="button" 
                             style={{ "--i": "1" }}
-                            onClick={()=>onInputGenderChange('hombre')}
+                            onClick={()=>onInputGenderChange(item)}
                             >
                             
                             <span className='span'></span>
-                            <input type="checkbox" value="CASA_HELENA"/>
+                            {/* <input type="checkbox" value="CASA_HELENA"/> */}
                                 <div className='div-span'>
-                                    <span>Hombre</span>
+                                    <span>{capitalizeWords(item)}</span>
                                     {/* <span>4</span> */}
                                 </div>
                         </div>
-                        <div 
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "2" }}
-                            onClick={()=>onInputGenderChange('mujer')}
-                            >
-                            
-                            <span className='span'></span>
-                                <input type="checkbox" value="CASA_HELENA"/>
-                                <div className='div-span'>
-                                    <span>Mujer</span>
-                                    {/* <span>4</span> */}
-                                </div>
-                        </div> 
-                        <div 
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "2" }}
-                            onClick={()=>onInputGenderChange('unisex')}
-                            >
-                            
-                            <span className='span'></span>
-                            <input type="checkbox" value="CASA_HELENA"/>
-                            <div className='div-span'>
-                                <span>Unisex</span>
-                                {/* <span>4</span> */}
-                            </div>
-                        </div>
+                        ))}
+                        
                     </div>
                                                     
                 </div>
         
             </div>
-            ) : ('')
-            }
+            {/* ) : ('')
+            } */}
             
 
             {/* <button

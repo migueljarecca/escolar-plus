@@ -65,7 +65,6 @@ export const uniformSlice = createSlice({
         },
         //ESTADO PARA LOS FILTROS DE GENERO
         filterProductGender: (state, action) => {
-            console.log('filterProductGender:', action.payload);
             state.filterProdGender = action.payload
         },
     }
