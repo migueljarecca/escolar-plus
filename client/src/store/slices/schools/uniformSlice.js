@@ -16,6 +16,8 @@ export const initialFilter = {
 
 export const initialFilterGender = 'all'
 
+export const initialFilterOrder = ''
+
 export const uniformSlice = createSlice({
 
     name: 'uniforms',
@@ -25,6 +27,7 @@ export const uniformSlice = createSlice({
         filteredUniforms: [],
         filterProd: initialFilter,
         filterProdGender: initialFilterGender,
+        filterProdOrder: initialFilterOrder,
     },
     reducers: {
         addUniform: (state, action) => {
@@ -67,6 +70,10 @@ export const uniformSlice = createSlice({
         filterProductGender: (state, action) => {
             state.filterProdGender = action.payload
         },
+        //ESTADO PARA LOS FILTROS PARA ORDERNAR
+        filterProductOrder: (state, action) => {
+            state.filterProdOrder = action.payload
+        }
     }
 });
 
@@ -83,6 +90,7 @@ export const {
 
     filterProduct,
     filterProductGender,
+    filterProductOrder,
 
 } = uniformSlice.actions;
  

@@ -11,8 +11,6 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
     // const [filterStateGender, setFilterStateGender] = useState('all');
 
     const { minPrice } = filterState;
-    console.log('generos ' +JSON.stringify(availableGenders));
-
 
     const capitalizeWords = (str) => {
         return str

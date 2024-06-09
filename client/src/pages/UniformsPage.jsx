@@ -11,11 +11,11 @@ export const UniformsPage = () => {
 
     const { filterProd } = useSelector(state => state.uniforms);
     const { filterProdGender } = useSelector(state => state.uniforms);
+    const { filterProdOrder } = useSelector(state => state.uniforms);
 
     const { filteredUniforms, uniformBySchoolId } = useUniform();
     
     const { id } = useParams();
-    console.log('filter desde unifor page:' +filterProdGender);
 
     //traer todos los uniformes realacionado a un colegio   
     useEffect(() => {
@@ -62,6 +62,30 @@ export const UniformsPage = () => {
     //Obtenemos solo las géneros disponibles para mostrar al cliente
     const availableGenders = Array.from(new Set(filteredProducts.map(item => item.gender)));
 
+    //Ordenamos los uniformes por precio y alfabeto
+    console.log('control de order ' +filterProdOrder);
+    const orderByUniforms = (filteredProducts) => {
+        if (!filterProdOrder) {
+            return filteredProducts;
+        }
+
+        return filteredProducts.sort((a,b) => {
+            if(filterProdOrder == 'price-asc')
+                return a.price - b.price;
+            else if (filterProdOrder == 'price-desc') {
+                return b.price - a.price;
+            } else if (filterProdOrder == 'alfa-asc') {
+                return a.product.localeCompare(b.product);
+            } else if (filterProdOrder == 'alfa-desc') {
+                return b.product.localeCompare(a.product);
+            }
+        });
+    };
+
+    filteredProducts = orderByUniforms(filteredProducts);
+
+    const numUniforms = filteredProducts.length;
+
     return (
         <>
             <Header />
@@ -71,7 +95,7 @@ export const UniformsPage = () => {
             </section>
 
             <nav className='filter-nav-uniform'>
-                <UniformOrderBy />
+                <UniformOrderBy numUniforms={numUniforms}/>
             </nav>
 
             <div className="container-uniform">

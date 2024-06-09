@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useUniform } from "../hooks/useUniform";
 
-export const UniformOrderBy = () => {
+export const UniformOrderBy = ({ numUniforms }) => {
+
+    const { handleFilterOrder } = useUniform();
 
     const onInputOrderChange = (order) => {
-
+        handleFilterOrder(order);
     }
 
     const [isActiveOrder, setIsActiveOrder] = useState(false); // Estado para controlar la clase "active"
@@ -14,7 +17,7 @@ export const UniformOrderBy = () => {
 
     return (
         <>
-            <h4>5 productos encontrados</h4>
+            <h4>{numUniforms} {numUniforms > 1 ? 'productos encontrados' : 'producto encontrado'} </h4>
 
             <div className='order-box'>
 
@@ -31,33 +34,11 @@ export const UniformOrderBy = () => {
                     <div className="order-items">
                         <div 
                             className="order-button" 
-                            role="button"
-                            >
-                                <h4 
-                                    style={{ "--i": "1" }}
-                                    onClick={()=> onInputOrderChange()}
-                                    >
-                                    Alfabéticamente, A-Z 
-                                    <span></span>
-                                </h4>
-                        </div>
-                        <div 
-                            className="order-button" 
-                            role="button" 
-                            >
-                                <h4 
-                                    style={{ "--i": "2" }}
-                                    >
-                                    Alfabéticamente, Z-A 
-                                    <span></span>
-                                </h4>
-                        </div>
-                        <div 
-                            className="order-button" 
                             role="button" 
                             >
                                 <h4 
                                     style={{ "--i": "3" }}
+                                    onClick={()=> onInputOrderChange('price-asc')}
                                     >
                                     Precio, menor a mayor
                                     <span></span>
@@ -69,11 +50,37 @@ export const UniformOrderBy = () => {
                             >
                                 <h4 
                                     style={{ "--i": "3" }}
+                                    onClick={()=> onInputOrderChange('price-desc')}
                                     >
                                     Precio, mayor a menor
                                     <span></span>
                                 </h4>
                         </div>
+                        <div 
+                            className="order-button" 
+                            role="button"
+                            >
+                                <h4 
+                                    style={{ "--i": "1" }}
+                                    onClick={()=> onInputOrderChange('alfa-asc')}
+                                    >
+                                    Alfabéticamente, A-Z 
+                                    <span></span>
+                                </h4>
+                        </div>
+                        <div 
+                            className="order-button" 
+                            role="button" 
+                            >
+                                <h4 
+                                    style={{ "--i": "2" }}
+                                    onClick={()=> onInputOrderChange('alfa-desc')}
+                                    >
+                                    Alfabéticamente, Z-A 
+                                    <span></span>
+                                </h4>
+                        </div>
+                        
                     </div>
 
                 </div>    

@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addUniform, initialUniformForm, loadingUniform, loadingUniformBySchoolId, 
         removeUniform, updateUniform, filterProduct, 
         filterProductGender,
-        initialFilterGender} from "../store/slices/schools/uniformSlice";
+        initialFilterGender,
+        filterProductOrder,
+        initialFilterOrder} from "../store/slices/schools/uniformSlice";
 
 export const useUniform = () => {
 
@@ -49,10 +51,16 @@ export const useUniform = () => {
         dispatch(filterProduct(filter));
     }
 
-    //FILTRO por producto
+    //FILTRO por género
     const handleFilterGender =(gender) => {
         dispatch(filterProductGender(gender));
     }
+
+    const handleFilterOrder = (order) => {
+        dispatch(filterProductOrder(order));
+    }
+
+
 
     return (
         {
@@ -60,6 +68,7 @@ export const useUniform = () => {
             initialUniformForm,
             filteredUniforms,
             initialFilterGender,
+            initialFilterOrder,
 
             getAllUniform,
             handlerAddUniform,
@@ -69,6 +78,7 @@ export const useUniform = () => {
             uniformBySchoolId,
             handlerFilterProduct,
             handleFilterGender,
+            handleFilterOrder,
 
         }
     );
