@@ -4,6 +4,8 @@ import { addToWishlist, removeToWishlist } from "../store/slices/wishlist/wishli
 export const wishlist = () => {
     
     const { wishlist } = useSelector(state => state.wishlist);
+
+    console.log("control de la lista de deseros" +JSON.stringify(wishlist));
     
     const dispatch = useDispatch();
 

@@ -1,9 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { useUniform } from "../hooks/useUniform";
+import { useWishlist } from "../hooks/useWishlist";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+// import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const UniformFilteredCard = ( { filter }) => {
 
     const { handlerRemoveUniform } = useUniform();
+    const { handleAddToWishlist, handleRemoveToWishlist } = useWishlist();
+    const [ iconFavorite, setIconFavorite ] = useState(false);  
 
     const { image, product, gender, size, price, id } = filter;
 
@@ -15,12 +22,37 @@ export const UniformFilteredCard = ( { filter }) => {
         return <div>No hay información disponible.</div>;
     }
 
+    const onChangeWishlist = (item) => {
+        if (iconFavorite) {
+            handleRemoveToWishlist(item)
+            setIconFavorite(false);
+        } else {
+            handleAddToWishlist(item);
+            setIconFavorite(true); 
+        }
+    }
+
     return (
         <article className="card-content">
 
             <NavLink to={"/uniform/details/" +id}>
                 <div className="div-img">
                 <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
+                
+                {
+                    iconFavorite ?
+                    <FontAwesomeIcon 
+                        onClick={()=> onChangeWishlist(id)} 
+                        className="icon-heart-solid"
+                        icon={faHeart}
+                    />
+                :
+                    <FontAwesomeIcon 
+                        onClick={()=> onChangeWishlist({image, product, gender, size, price, id})} 
+                        className="icon-heart"
+                        icon={faHeart}
+                    /> }
+                
                 </div>
             </NavLink>
 
