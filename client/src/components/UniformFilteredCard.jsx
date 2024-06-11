@@ -23,14 +23,15 @@ export const UniformFilteredCard = ( { filter }) => {
     }
 
     const onChangeWishlist = (item) => {
+
         if (iconFavorite) {
-            handleRemoveToWishlist(item)
+            handleRemoveToWishlist(item.id)
             setIconFavorite(false);
         } else {
             handleAddToWishlist(item);
             setIconFavorite(true); 
         }
-    }
+    };
 
     return (
         <article className="card-content">
@@ -38,20 +39,6 @@ export const UniformFilteredCard = ( { filter }) => {
             <NavLink to={"/uniform/details/" +id}>
                 <div className="div-img">
                 <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
-                
-                {
-                    iconFavorite ?
-                    <FontAwesomeIcon 
-                        onClick={()=> onChangeWishlist(id)} 
-                        className="icon-heart-solid"
-                        icon={faHeart}
-                    />
-                :
-                    <FontAwesomeIcon 
-                        onClick={()=> onChangeWishlist({image, product, gender, size, price, id})} 
-                        className="icon-heart"
-                        icon={faHeart}
-                    /> }
                 
                 </div>
             </NavLink>
@@ -77,6 +64,19 @@ export const UniformFilteredCard = ( { filter }) => {
                 </button>
 
             </div>
+            {
+                    iconFavorite ?
+                    <FontAwesomeIcon 
+                        onClick={()=> onChangeWishlist(filter)} 
+                        className="icon-heart-solid"
+                        icon={faHeart}
+                    />
+                :
+                    <FontAwesomeIcon 
+                        onClick={()=> onChangeWishlist(filter)} 
+                        className="icon-heart"
+                        icon={faHeart}
+                    /> }
         </article>
     )
 }

@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
 import { addToWishlist, removeToWishlist } from "../store/slices/wishlist/wishlistSlice";
 
-export const wishlist = () => {
+export const useWishlist = () => {
     
     const { wishlist } = useSelector(state => state.wishlist);
 
-    console.log("control de la lista de deseros" +JSON.stringify(wishlist));
+    console.log("control de la lista de deseos" +wishlist);
     
     const dispatch = useDispatch();
 

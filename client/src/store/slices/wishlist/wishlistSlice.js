@@ -17,7 +17,10 @@ export const wishlistSlice = createSlice({
             ]
         },
         removeToWishlist: (state, action) => {
-            state.wishlist = state.wishlist.filter(item => item.id !== action.id)
+            console.log("control de id " +action.payload);
+
+            state.wishlist = state.wishlist.filter(item => item.id !== action.payload)
+            // state.wishlist = []
         }
     }
 }); 
