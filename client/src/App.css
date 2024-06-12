@@ -829,18 +829,11 @@ body {
 }
 
 .card-content .icon-heart {
-  color: red;
   height: 30px;
   width: 30px;
   cursor: pointer;
 }
 
-.card-content .icon-heart-solid {
-  color: blue;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-}
 
 /* ======================= REGISTER UNIFORM PAGE ================== */
 

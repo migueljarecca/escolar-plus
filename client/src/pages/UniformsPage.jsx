@@ -63,7 +63,7 @@ export const UniformsPage = () => {
     const availableGenders = Array.from(new Set(filteredProducts.map(item => item.gender)));
 
     //Ordenamos los uniformes por precio y alfabeto
-    console.log('control de order ' +filterProdOrder);
+    // console.log('control de order ' +filterProdOrder);
     const orderByUniforms = (filteredProducts) => {
         if (!filterProdOrder) {
             return filteredProducts;

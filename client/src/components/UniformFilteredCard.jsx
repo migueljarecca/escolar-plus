@@ -1,37 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { useUniform } from "../hooks/useUniform";
-import { useWishlist } from "../hooks/useWishlist";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-// import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-export const UniformFilteredCard = ( { filter }) => {
+export const UniformFilteredCard = ( { prod, onSelectedUniformId, onChangeWishlist, isProductInWishlist }) => {
 
-    const { handlerRemoveUniform } = useUniform();
-    const { handleAddToWishlist, handleRemoveToWishlist } = useWishlist();
-    const [ iconFavorite, setIconFavorite ] = useState(false);  
+    const { image, product, gender, size, price, id } = prod;
 
-    const { image, product, gender, size, price, id } = filter;
-
-    const onSelectedUniformId = (id) => {
-        handlerRemoveUniform(id);
-    }
-
-    if (!filter) {
+    if (!prod) {
         return <div>No hay información disponible.</div>;
     }
-
-    const onChangeWishlist = (item) => {
-
-        if (iconFavorite) {
-            handleRemoveToWishlist(item.id)
-            setIconFavorite(false);
-        } else {
-            handleAddToWishlist(item);
-            setIconFavorite(true); 
-        }
-    };
 
     return (
         <article className="card-content">
@@ -64,19 +42,13 @@ export const UniformFilteredCard = ( { filter }) => {
                 </button>
 
             </div>
-            {
-                    iconFavorite ?
-                    <FontAwesomeIcon 
-                        onClick={()=> onChangeWishlist(filter)} 
-                        className="icon-heart-solid"
-                        icon={faHeart}
-                    />
-                :
-                    <FontAwesomeIcon 
-                        onClick={()=> onChangeWishlist(filter)} 
-                        className="icon-heart"
-                        icon={faHeart}
-                    /> }
+
+            <FontAwesomeIcon 
+                onClick={() => onChangeWishlist(prod)} 
+                className="icon-heart"
+                icon={isProductInWishlist ? fasHeart : farHeart} 
+            />
+            
         </article>
     )
 }
