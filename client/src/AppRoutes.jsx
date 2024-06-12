@@ -5,6 +5,7 @@ import { RegisterSchoolPage } from './pages/RegisterSchoolPage'
 import { RegisterUniformPage } from './pages/RegisterUniformPage'
 import { UniformDetailsPage } from './pages/UniformDetailsPage'
 import { ShopCart } from './pages/ShopCart'
+import { Wishlist } from './pages/Wishlist'
 
 
 export const AppRoutes = () => {
@@ -26,6 +27,8 @@ export const AppRoutes = () => {
             <Route path='/uniform/update/:id' element={<RegisterUniformPage/>}></Route>
 
             <Route path='/cart' element={<ShopCart/>}></Route>
+
+            <Route path='/wishlist' element={<Wishlist/>}></Route>
 
         </Routes>
     )

@@ -52,9 +52,12 @@ export const Header = () => {
                     <div className='icon-box'>
                         <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
                         <span>Cuenta</span>
-                        <FontAwesomeIcon icon={faHeart}/>
-                        <span>Favoritos</span>
 
+                        <NavLink to={'/wishlist'}>
+                            <FontAwesomeIcon icon={faHeart}/>
+                            <span>Favoritos</span>
+                        </NavLink>
+                        
                         <NavLink to={'/cart'}>
                             <FontAwesomeIcon icon={faBagShopping}/>
                             <span>Carrito</span>
