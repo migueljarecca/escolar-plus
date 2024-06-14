@@ -1,11 +1,6 @@
-// import { useState } from "react";
-import { useCart } from "../hooks/useCart";
 
-export const CartListItems = ({ id, image, product, price, quantity, handleRemoveCart, handleIncreaseQuantity, handleDecreaseQuantity }) => {
-
-    // const { handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
-
-    // const [ productQuantity, setProductQuantity ] = useState(quantity);
+export const CartListItems = ({ id, image, product, price, school, quantity, handleRemoveCart, 
+    handleIncreaseQuantity, handleDecreaseQuantity, onClickAddWishlist }) => {
 
     const onIncreaseQuantity = (id) => {
         handleIncreaseQuantity(id);
@@ -23,8 +18,14 @@ export const CartListItems = ({ id, image, product, price, quantity, handleRemov
     return (
         <div className="cart-item">
             <div className="div-img">
-                        <img src={`data:${image.mime};base64,${image.content}`} alt={"uniforme"} />
-                    </div>
+                <img src={`data:${image.mime};base64,${image.content}`} alt={"uniforme"} />
+                <button
+                    type="submit"
+                    onClick={()=> onClickAddWishlist({id, image, product, price, school})}
+                >
+                    añadir a favoritos
+                </button>
+            </div>
                     <div className="div">
                         <h3>{product}</h3>
                     </div>

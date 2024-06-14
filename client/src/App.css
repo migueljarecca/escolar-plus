@@ -1057,7 +1057,7 @@ body {
 .wishlist-main {
   padding: 1.7rem 4%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 2.5rem;
 }
 
@@ -1086,18 +1086,12 @@ body {
 }
 
 .wishlist-box .div-text {
-  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.wishlist-box .div-text h2, p {
+.wishlist-box .div-text h2, h3, p {
   font-size: 1.7rem;
   color: #6a6a6a;
-}
-
-.wishlist-box .div-price {
-  padding: .5rem;
-}
-
-.wishlist-box .div-price h3 {
-  font-size: 1.7rem;
 }

@@ -2,23 +2,24 @@ import { useCart } from "../hooks/useCart"
 import { NavLink } from 'react-router-dom';
 import { CartListItems } from "../components/CartListItems";
 import { useEffect } from "react";
+import { useWishlist } from "../hooks/useWishlist";
 
 export const ShopCart = () => {
 
     const { cart, priceTotal, handleRemoveCart, HandleCalculateTotal, 
         handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
-    // console.log('Cart data: ' + JSON.stringify(cart));
 
+    const { handleAddToWishlist } = useWishlist();
+    
+    const onClickAddWishlist = (item) => {
+        handleAddToWishlist(item);//falta colegio
+        handleRemoveCart(item.id);
+    }
    useEffect(() => {
         HandleCalculateTotal();
     },[handleIncreaseQuantity, handleDecreaseQuantity]); 
 
-    // const { school } = cart;
-
-    // if (!image) {
-    //     return <div>Información de imagen no disponible.</div>;
-    // }
-
+    console.log('control de cart' +JSON.stringify(cart, null, 2));
     return(
 
         <section className="container-cart">
@@ -29,7 +30,7 @@ export const ShopCart = () => {
                
                 <article className="article">
                     {cart && cart.length > 0 ? (
-                            cart.map(({ id, product, price, image, quantity }) =>
+                            cart.map(({ id, product, price, image, quantity, school }) =>
                                 (
                                     <CartListItems 
                                         key={id}
@@ -37,11 +38,12 @@ export const ShopCart = () => {
                                         product={product}
                                         price={price}
                                         image={image}
+                                        school={school}
                                         quantity={quantity}
                                         handleRemoveCart={handleRemoveCart}
                                         handleIncreaseQuantity={handleIncreaseQuantity}
                                         handleDecreaseQuantity={handleDecreaseQuantity}
-        
+                                        onClickAddWishlist={onClickAddWishlist}
                                     />
                                 )
                             )
