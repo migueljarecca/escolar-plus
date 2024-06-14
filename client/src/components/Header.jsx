@@ -28,9 +28,9 @@ export const Header = () => {
         <>
             <article className="header-article">
                 <div className="header-article-content">
-                    <NavLink to={"/"}>Inicia sesión</NavLink>
+                    <NavLink to={"/user/login"}>Inicia sesión</NavLink>
                     <span>|</span>
-                    <NavLink to={"/"}>Crea una cuenta</NavLink>
+                    <NavLink to={"/user/register"}>Crea una cuenta</NavLink>
                 </div>
 
                 <h4 className='header-article-h4'>Dirección de la tienda</h4>
