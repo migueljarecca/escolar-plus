@@ -3,6 +3,7 @@ import { schoolSlice } from './slices/schools/schoolsSlice';
 import { uniformSlice } from './slices/schools/uniformSlice';
 import { cartSlice } from './slices/cart/cartSlice';
 import { wishlistSlice } from './slices/wishlist/wishlistSlice';
+import { userSlice } from './slices/users/userSlice';
 
 
 export const store = configureStore({
@@ -11,5 +12,6 @@ export const store = configureStore({
         uniforms: uniformSlice.reducer,
         cart: cartSlice.reducer,
         wishlist: wishlistSlice.reducer,
+        users: userSlice.reducer,
     }
 });
