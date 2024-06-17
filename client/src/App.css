@@ -1148,3 +1148,78 @@ body {
   color: #e51c1f;
   font-size: 1.2rem;
 }
+
+/* ======================= LOGIN-USER ================== */
+
+.section-login {
+  display: flex;
+  margin: 2rem 10%;
+  background-color: #e8ebe9;
+}
+
+.container-login {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1.5px solid #c5cbc8;
+}
+
+.container-login h3 {
+  font-size: 4rem;
+  padding: 3rem;
+  text-align: center;
+  color: #1a5350;
+}
+
+.container-login form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 7rem 3rem 7rem;
+  font-size: 2rem;
+}
+
+.container-login form input {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.container-login form button {
+  font-size: 2rem;
+  color: #ffffff;
+  margin: 2rem auto;
+  padding: 1rem 5rem;
+  border: none;
+  background-color: #008a00;
+  border-radius: 4px;
+}
+
+.container-login form button:hover {
+  cursor: pointer;
+} 
+
+.container-register {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 3rem 7rem;
+}
+
+.container-register h3 {
+  font-size: 3rem;
+}
+
+.container-register p {
+  font-size: 2rem;
+  padding: 2rem 0;
+}
+
+.container-register a {
+  margin: 2rem auto;
+  font-size: 2rem;
+  color: #008a00;
+  padding: 1rem 5rem;
+  border: 1px solid #008a00;
+  border-radius: 4px;
+  text-decoration: none;
+}
