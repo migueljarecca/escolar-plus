@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { findAll, remove, save, update } from "../services/userService";
 import { useDispatch, useSelector } from 'react-redux';
-import { addToUser, loadingToUsers, removeToUser, updateToUser } from "../store/slices/users/userSlice";
+import { addToUser, initialUserForm, loadingToUsers, removeToUser, updateToUser } from "../store/slices/users/userSlice";
 
 export const useUsers = () => {
 
@@ -36,6 +35,7 @@ export const useUsers = () => {
   return (
         {
             users,
+            initialUserForm,
 
             handlerAddUser,
             getUsers,

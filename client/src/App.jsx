@@ -7,13 +7,7 @@ import { AppRoutes } from './AppRoutes';
 import { store } from './store/store';
 import { Provider } from 'react-redux'
 
-  const initialUserForm = {
-    id: '',
-    name: '',
-    lastname: '',
-    email: '',
-    password: '',
-  }
+
 
 function App() {
 

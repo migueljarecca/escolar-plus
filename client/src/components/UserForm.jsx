@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import { useUsers } from "../hooks/useUsers";
 
 
-export const UserForm = ({ initialUserForm, userSelect }) => {
+export const UserForm = ({ userSelect }) => {
 
     const { handlerAddUser, handlerUpdateUser } = useUsers();
 
-    const [userForm, setUserForm] = useState(initialUserForm);
+    const [userForm, setUserForm] = useState(userSelect);
 
     const {name, lastname, email, password} = userForm;
 
@@ -37,7 +37,7 @@ export const UserForm = ({ initialUserForm, userSelect }) => {
             handlerUpdateUser(userForm);
         }
 
-        setUserForm(initialUserForm);
+        setUserForm(userSelect);
     }
 
     return (
