@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { Header } from "../components/Header"
 import { NavLink } from 'react-router-dom';
+import { useAuth } from "../hooks/useAuth";
 
 
 const initialLoginForm = {
-    username: '',
+    email: '',
     password: '',
 }
 
 export const UserLoginPage = () => {
 
+    const { handleLogin } = useAuth();
     const [loginForm, setLoginForm] = useState(initialLoginForm);
   
-    const { username, password } = loginForm;
+    const { email, password } = loginForm;
 
     const onInputChange = ({ target }) => {
         const {name,value} = target;
@@ -25,6 +27,15 @@ export const UserLoginPage = () => {
     const onSubmit = async(event) => {
         event.preventDefault();
 
+        try {
+            await handleLogin(loginForm);
+
+            setLoginForm(initialLoginForm);
+            
+        } catch (error) {
+            console.log('error de inicio de sesion');
+        }
+
     }
 
     return(
@@ -36,11 +47,11 @@ export const UserLoginPage = () => {
                     <h3>Inicia Sesión</h3>
 
                     <form onSubmit={onSubmit}>
-                        <label>Nombre:</label>
+                        <label>Correo electrónico</label>
                         <input 
-                            type="text"
-                            name="username"
-                            value={username}
+                            type="email"
+                            name="email"
+                            value={email}
                             onChange={onInputChange}
                             />
 
