@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const initialLogin = {
     isAuth: false,
     isAdmin: false,
-    user: undefined,
+    username: undefined,
 }
 
 export const authSlice = createSlice({
@@ -20,11 +20,11 @@ export const authSlice = createSlice({
                 isAuth: true,
             }
         },
-        onLogout: (state, action) => {
+        onLogout: (state) => {
             state.login = {
                 isAuth: false,
                 isAdmin: false,
-                user: undefined,
+                username: undefined,
             }
         }
     }
@@ -34,5 +34,5 @@ export const {
 
     onLogin,
     onLogout,
-    
+
 } = authSlice.actions;
