@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-// paso dos crear para poder logearnos
+// SEGUNDO PASO crear para poder logearnos
 // UsernamePasswordAuthenticationFilter -> esto por debajo maneja una ruta post con
 // la ruta login
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -69,18 +69,19 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
             Authentication authResult) throws IOException, ServletException {
 
-        String username =((org.springframework.security.core.userdetails.User) 
+        // Recuperamos el email del authResult        
+        String email =((org.springframework.security.core.userdetails.User) 
             authResult.getPrincipal()).getUsername();
 
-        String originalInput = "token_creado_por_mi." + username;
+        String originalInput = "token_creado_por_mi." + email;
         String token = Base64.getEncoder().encodeToString(originalInput.getBytes());
         
         response.addHeader("Authorization", "Bearer " + token);
 
         Map<String, Object> body = new HashMap<>();
         body.put("token",token);
-        body.put("message", String.format("Hola %s, has iniciado sesion con exito", username)); 
-        body.put("username", username);
+        body.put("message", String.format("Hola %s, has iniciado sesion con exito", email)); 
+        body.put("email", email);
 
         //Escribimos al cuerpo y lo convertimos a JSON
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
