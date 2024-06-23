@@ -25,7 +25,13 @@ public class JpaUserDetailsService implements UserDetailsService{
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        return new User(email, "12345", true, true, true, true, authorities);
+        return new User(email,
+            "$2a$10$DOMDxjYyfZ/e7RcBfUpzqeaCs8pLgcizuiQWXPkU35nOhZlFcE9MS",
+            true,
+            true,
+            true,
+            true,
+            authorities);
     }
     
 }
