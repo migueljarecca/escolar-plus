@@ -21,6 +21,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import static com.miguel.app.auth.filters.TokenJwtConfig.*;
+
 
 // SEGUNDO PASO crear para poder logearnos
 // UsernamePasswordAuthenticationFilter -> esto por debajo maneja una ruta post con
@@ -75,10 +77,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String email =((org.springframework.security.core.userdetails.User) 
             authResult.getPrincipal()).getUsername();
 
-        String originalInput = "token_creado_por_mi." + email;
+        String originalInput = SECRET_KEY +"." + email;
         String token = Base64.getEncoder().encodeToString(originalInput.getBytes());
         
-        response.addHeader("Authorization", "Bearer " + token);
+        response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
 
         Map<String, Object> body = new HashMap<>();
         body.put("token",token);

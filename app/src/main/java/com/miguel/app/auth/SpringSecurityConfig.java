@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.miguel.app.auth.filters.JwtAuthenticationFilter;
+import com.miguel.app.auth.filters.JwtValidationFilter;
 
 //Primer paso para security crear los filtros
 @Configuration
@@ -41,7 +42,9 @@ public class SpringSecurityConfig {
             // Se agrega después de crear JwtAuthenticationFilter
             // Es filtro para el login
             .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager()))
-
+            // Se agrega despues de teminar JwtValidationFilter
+            .addFilter(new JwtValidationFilter(authenticationConfiguration.getAuthenticationManager()))
+            
             .csrf(config -> config.disable()) //cuando usamos apiREST se desabilita csrf
             
             .sessionManagement(management -> 
