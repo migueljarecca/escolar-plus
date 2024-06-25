@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Transactional(readOnly = true)
     public List<User> findAllUser() {
         return userRepository.findAll();
@@ -27,8 +31,11 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    // QUINTO PASO en security encriptar la contraseña
     @Transactional
     public User create(User user) {
+        String passwordBCrypt = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passwordBCrypt);
         userRepository.save(user);
         return user;
     }
