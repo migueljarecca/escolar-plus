@@ -1,9 +1,12 @@
 package com.miguel.app.models.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -15,16 +18,21 @@ public class User {
     private String email;
     private String password;
 
+    @ManyToMany
+    private List<Role> roles;
+
     public User() {
     }
 
-    public User(Long id, String name, String lastname, String email, String passord) {
+    public User(Long id, String name, String lastname, String email, String password, List<Role> roles) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.email = email;
-        this.password = passord;
+        this.password = password;
+        this.roles = roles;
     }
+
     public Long getId() {
         return id;
     }
@@ -54,6 +62,14 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
 }
