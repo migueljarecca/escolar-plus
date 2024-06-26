@@ -24,7 +24,7 @@ public class JpaUserDetailsService implements UserDetailsService{
     private UserRepository userRepository;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true) //cuando usamos JPA importante el transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         
         // SEPTIMO PASO logeamos con JPA. antes estaba de forma estática

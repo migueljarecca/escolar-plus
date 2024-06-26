@@ -2,7 +2,6 @@ package com.miguel.app.auth.filters;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +15,10 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -49,16 +52,25 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
         }
 
         String token = header.replace(PREFIX_TOKEN, "");
-        byte[] tokenDecodeBytes = Base64.getDecoder().decode(token);
-        String tokenDecode = new String(tokenDecodeBytes);
+        // byte[] tokenDecodeBytes = Base64.getDecoder().decode(token);
+        // String tokenDecode = new String(tokenDecodeBytes);
+        // String[] tokenArr = tokenDecode.split("\\.");
+        // String tokenSecret = tokenArr[0];
+        // String email = tokenArr[1];
 
-        String[] tokenArr = tokenDecode.split("\\.");
+        // DECIMO PASO cambiamos el if por try catch
+        Jws<Claims> jws;
 
+        try {
+            // Verificamos si la firma es igual
+            jws = Jwts
+                .parser()
+                .verifyWith(SECRET_KEY)
+                .build()
+                .parseSignedClaims(token);
 
-        String tokenSecret = tokenArr[0];
-        String email = tokenArr[1];
+            String email = jws.toString();
 
-        if (SECRET_KEY.equals(tokenSecret)) {
             
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
@@ -69,10 +81,11 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             
             chain.doFilter(request, response);
-        } else {
+        } catch (JwtException e){
             
             Map<String, String> body = new HashMap<>();
             body.put("message", "El token JWT no es válido");
+            body.put("error", e.getMessage());
 
             response.getWriter().write(new ObjectMapper().writeValueAsString(body));
             response.setStatus(403);

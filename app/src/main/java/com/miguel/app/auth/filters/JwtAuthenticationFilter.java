@@ -1,7 +1,7 @@
 package com.miguel.app.auth.filters;
 
 import java.io.IOException;
-import java.util.Base64;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,18 +16,16 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miguel.app.models.entities.User;
 
+import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import static com.miguel.app.auth.filters.TokenJwtConfig.*;
-
-
 // SEGUNDO PASO crear para poder logearnos
 // UsernamePasswordAuthenticationFilter -> esto por debajo maneja una ruta post con
 // la ruta login
-public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter implements TokenJwtConfig {
 
     private AuthenticationManager authenticationManager;
 
@@ -77,9 +75,20 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String email =((org.springframework.security.core.userdetails.User) 
             authResult.getPrincipal()).getUsername();
 
-        String originalInput = SECRET_KEY +"." + email;
-        String token = Base64.getEncoder().encodeToString(originalInput.getBytes());
+        // Este token superficial lo comentamos
+        // String originalInput = SECRET_KEY +"." + email;
+        // String token = Base64.getEncoder().encodeToString(originalInput.getBytes());
         
+        // NOVENO PASO creamos el nuevo token
+        // Creamos el token jws
+            String token = Jwts.builder()
+                    //new ObjectMapper convertimos a json
+                    .subject(email)
+                    .signWith(SECRET_KEY)
+                    .issuedAt(new Date())
+                    .expiration(new Date(System.currentTimeMillis() + 3600000))
+                    .compact(); 
+
         response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
 
         Map<String, Object> body = new HashMap<>();
