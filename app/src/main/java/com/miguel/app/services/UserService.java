@@ -1,5 +1,6 @@
 package com.miguel.app.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.miguel.app.models.entities.Role;
 import com.miguel.app.models.entities.User;
+import com.miguel.app.resopitories.RoleRepository;
 import com.miguel.app.resopitories.UserRepository;
 
 @Service
@@ -19,6 +22,9 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Transactional(readOnly = true)
     public List<User> findAllUser() {
@@ -36,6 +42,16 @@ public class UserService {
     public User create(User user) {
         String passwordBCrypt = passwordEncoder.encode(user.getPassword());
         user.setPassword(passwordBCrypt);
+
+        //ONCEAVO PASO. crear el repo de ROLE, traer y seteamos al usuario
+        Optional<Role> roleOptional = roleRepository.getRoleByName("ROLE_USER");
+        List<Role> roles = new ArrayList<>();
+
+        if (roleOptional.isPresent()) {
+            roles.add(roleOptional.orElseThrow());
+        }
+
+        user.setRoles(roles);
         userRepository.save(user);
         return user;
     }
