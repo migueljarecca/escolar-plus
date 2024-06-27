@@ -1,6 +1,7 @@
 package com.miguel.app.auth.filters;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -60,7 +62,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             e.printStackTrace();
         }
 
-        //Reallizamos la autenticacion
+        // Aqui se usa UserDetailsService por dentro
+        // Reallizamos la autenticacion
         UsernamePasswordAuthenticationToken authToken = 
             new UsernamePasswordAuthenticationToken(email, password);
             
@@ -75,6 +78,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String email =((org.springframework.security.core.userdetails.User) 
             authResult.getPrincipal()).getUsername();
 
+        // TRECEAVO PASO. añadimos los roles al token    
+        Collection<? extends GrantedAuthority> roles = authResult.getAuthorities(); 
+    
+        boolean isAdmin = roles.stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
+
         // Este token superficial lo comentamos
         // String originalInput = SECRET_KEY +"." + email;
         // String token = Base64.getEncoder().encodeToString(originalInput.getBytes());
@@ -83,6 +91,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         // Creamos el token jws
             String token = Jwts.builder()
                     //new ObjectMapper convertimos a json
+                    .claim("authorities", new ObjectMapper().writeValueAsString(roles))
+                    .claim("isAdmin", isAdmin)
                     .subject(email)
                     .signWith(SECRET_KEY)
                     .issuedAt(new Date())

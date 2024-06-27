@@ -1,9 +1,9 @@
 package com.miguel.app.auth.filters;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -72,8 +72,18 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             String email = jws.toString();
 
             
-            List<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            // List<GrantedAuthority> authorities = new ArrayList<>();
+            // authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+
+            // TRECEAVO PASO. crear la clase SimpleGrantedAuthorityJsonCreator
+            // Comentar y cambiar los authorityes
+            Object authoritiesClaims = jws.getPayload().get("authorities", Object.class);
+
+            Collection<? extends GrantedAuthority> authorities = Arrays
+            .asList(new ObjectMapper()
+            .addMixIn(SimpleGrantedAuthority.class, SimpleGrantedAuthorityJsonCreator.class)
+                .readValue(authoritiesClaims.toString().getBytes(), SimpleGrantedAuthority[].class));
+
 
             UsernamePasswordAuthenticationToken authentication = 
                 new UsernamePasswordAuthenticationToken(email, null, authorities);
