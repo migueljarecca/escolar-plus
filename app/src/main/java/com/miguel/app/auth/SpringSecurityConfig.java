@@ -37,6 +37,11 @@ public class SpringSecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(andRules -> andRules
             .requestMatchers(HttpMethod.GET, "/users").permitAll()
+            // CATORCEAVO PASO añadir reglas de acceso
+            .requestMatchers(HttpMethod.GET, "/users/{id}").hasAnyRole("USER", "ADMIN")
+            .requestMatchers(HttpMethod.POST, "/users").permitAll()
+            .requestMatchers(HttpMethod.DELETE, "/users/{id}").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.PUT, "/users/{id}").hasRole("ADMIN")
             .anyRequest().authenticated())
 
             // Se agrega después de crear JwtAuthenticationFilter
