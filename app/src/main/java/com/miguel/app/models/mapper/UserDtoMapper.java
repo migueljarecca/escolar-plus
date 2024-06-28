@@ -7,20 +7,18 @@ import com.miguel.app.models.entities.User;
 
 public class UserDtoMapper {
     
-    private static UserDtoMapper mapper;
     private User user;
 
     private UserDtoMapper() {
     }
 
     public static UserDtoMapper builder() {
-        mapper = new UserDtoMapper();
-        return mapper;
+        return new UserDtoMapper();
     }
 
     public UserDtoMapper setUser(User user) {
         this.user = user;
-        return mapper;
+        return this;
     }
 
     public UserDto build() {

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.miguel.app.models.dto.UserDto;
 import com.miguel.app.models.entities.User;
 import com.miguel.app.services.UserService;
 
@@ -29,14 +30,14 @@ public class UserController {
 
     //Traemos todos los usuarios
     @GetMapping
-    public List<User> list() {
+    public List<UserDto> list() {
         return userService.findAllUser();
     }
 
     //traemos solo un usuario
     @GetMapping("/{id}")
     public ResponseEntity<?> show(@PathVariable Long id) {
-        Optional<User> userOptional = userService.findByIdUser(id);
+        Optional<UserDto> userOptional = userService.findByIdUser(id);
 
         //Realizamos la consulta si existe el usuario
         if (userOptional.isPresent()) {
@@ -50,14 +51,14 @@ public class UserController {
     //Crear usuario
     @PostMapping
     public ResponseEntity<?> create(@RequestBody User user) {
-        User userDb = userService.create(user);
+        UserDto userDb = userService.create(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(userDb);
     }
 
     //Actualizar usuario
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody User user, @PathVariable Long id ) {
-        Optional<User> userOptional = userService.update(user, id);
+        Optional<UserDto> userOptional = userService.update(user, id);
 
         if (userOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(userOptional);
@@ -69,7 +70,7 @@ public class UserController {
     //Eliminar usuario
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        Optional<User> userOptional = userService.findByIdUser(id);
+        Optional<UserDto> userOptional = userService.findByIdUser(id);
 
         if (userOptional.isPresent()) {
             userService.remove(id);

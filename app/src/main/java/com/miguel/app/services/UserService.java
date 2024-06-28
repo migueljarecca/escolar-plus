@@ -3,14 +3,17 @@ package com.miguel.app.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.miguel.app.models.dto.UserDto;
 import com.miguel.app.models.entities.Role;
 import com.miguel.app.models.entities.User;
+import com.miguel.app.models.mapper.UserDtoMapper;
 import com.miguel.app.resopitories.RoleRepository;
 import com.miguel.app.resopitories.UserRepository;
 
@@ -26,20 +29,36 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
 
+    // DTO -- TERCER PASO --  cambiar todo lo que devuelve por UserDto
     @Transactional(readOnly = true)
-    public List<User> findAllUser() {
-        return userRepository.findAll();
+    public List<UserDto> findAllUser() {
+        List<User> users = userRepository.findAll();
+        return users
+            .stream()
+            .map(u -> UserDtoMapper.builder().setUser(u).build())
+            .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public Optional<User> findByIdUser(Long id) {
-        //Como devuelve un optional, añadimos el .orElseThrow()
-        return userRepository.findById(id);
+    public Optional<UserDto> findByIdUser(Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            return Optional.of(
+                UserDtoMapper
+                .builder()
+                .setUser(userOptional.orElseThrow())
+                .build()
+            );
+        } else {
+            return Optional.empty();
+        }
+    
     }
 
     // QUINTO PASO en security encriptar la contraseña
     @Transactional
-    public User create(User user) {
+    public UserDto create(User user) {
         String passwordBCrypt = passwordEncoder.encode(user.getPassword());
         user.setPassword(passwordBCrypt);
 
@@ -52,14 +71,14 @@ public class UserService {
         }
 
         user.setRoles(roles);
-        userRepository.save(user);
-        return user;
+
+        return UserDtoMapper.builder().setUser(userRepository.save(user)).build();
     }
 
     @Transactional
-    public Optional<User> update(User user, Long id) {
+    public Optional<UserDto> update(User user, Long id) {
 
-        Optional<User> userOptional = findByIdUser(id);
+        Optional<User> userOptional = userRepository.getUserById(id);
 
         if (userOptional.isPresent()) {
             User userDb = userOptional.orElseThrow();
@@ -67,9 +86,9 @@ public class UserService {
             userDb.setLastname(user.getLastname());
             userDb.setEmail(user.getEmail());
 
-            User user1 = create(userDb);
+            User user1 = userRepository.save(userDb);
 
-            return Optional.ofNullable(user1);
+            return Optional.ofNullable(UserDtoMapper.builder().setUser(user1).build());
         }
     
         return Optional.empty();
