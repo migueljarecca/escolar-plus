@@ -1,5 +1,7 @@
 package com.miguel.app.models.dto;
 
+// DTO -- PASO UNO crear entidad
+
 public class UserDto {
 
     private Long id;
@@ -14,6 +16,7 @@ public class UserDto {
         this.username = username;
         this.email = email;
     }
+    
     public Long getId() {
         return id;
     }

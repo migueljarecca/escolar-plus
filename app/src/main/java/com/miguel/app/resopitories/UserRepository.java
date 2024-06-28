@@ -13,7 +13,7 @@ import com.miguel.app.models.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     
     @Query("SELECT u FROM User u WHERE u.id = :id")
-    public User findByIdUser(@Param("id") Long id);
+    public Optional<User> getUserById(@Param("id") Long id);
 
     // SEXTO PASO en security crear una consulta JPA para traer un usuario por email
     @Query("SELECT u FROM User u WHERE u.email = :email")
