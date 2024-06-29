@@ -1,13 +1,15 @@
 import { authService } from "../services/authService"
 import { useDispatch, useSelector } from 'react-redux';
 import { onLogin, onLogout } from "../store/slices/auth/authSlice";
+// import { useNavigate } from 'react-router-dom';
 
 export const useAuth = () => {
 
     const { login } = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
-    console.log('control de login' +login);
+    console.log('control de login' +JSON.stringify(login, null, 2));
+    // const navigate = useNavigate();
 
     const handleLogin = async ({email, password}) => {
 
@@ -17,9 +19,18 @@ export const useAuth = () => {
 
             const claims = JSON.parse(window.atob(token.split(".")[1]));
 
-            const username = {username: response.data.username};
+            const userLogin = {email: response.data.email};
 
-            dispatch(onLogin({username, isAdmin: claims.isAdmin}));
+            dispatch(onLogin({userLogin, isAdmin: claims.isAdmin}));
+
+            sessionStorage.setItem('login', JSON.stringify({
+                isAuth: true,
+                isAdmin: claims.isAdmin,
+                userLogin: userLogin,
+            }));
+    
+            sessionStorage.setItem('token', `Bearer ${token}`)
+            // navigate('/');
 
         } catch (error) {
             if (error.response?.status == 401) {

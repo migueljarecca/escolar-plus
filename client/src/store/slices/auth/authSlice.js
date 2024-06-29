@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const initialLogin = {
     isAuth: false,
     isAdmin: false,
-    username: undefined,
+    useremail: undefined,
 }
 
 export const authSlice = createSlice({
@@ -24,7 +24,7 @@ export const authSlice = createSlice({
             state.login = {
                 isAuth: false,
                 isAdmin: false,
-                username: undefined,
+                useremail: undefined,
             }
         }
     }

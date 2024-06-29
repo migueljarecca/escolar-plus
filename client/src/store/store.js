@@ -4,6 +4,7 @@ import { uniformSlice } from './slices/schools/uniformSlice';
 import { cartSlice } from './slices/cart/cartSlice';
 import { wishlistSlice } from './slices/wishlist/wishlistSlice';
 import { userSlice } from './slices/users/userSlice';
+import { authSlice } from './slices/auth/authSlice';
 
 
 export const store = configureStore({
@@ -13,5 +14,6 @@ export const store = configureStore({
         cart: cartSlice.reducer,
         wishlist: wishlistSlice.reducer,
         users: userSlice.reducer,
+        auth: authSlice.reducer,
     }
 });
