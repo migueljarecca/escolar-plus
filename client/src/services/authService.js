@@ -1,11 +1,11 @@
 
 import { axios } from 'axios';
 
-export const authService = async({username, password}) => {
+export const authService = async({email, password}) => {
 
     try {
         return await axios.post(`${import.meta.env.VITE_API_BASE_URL}/login`), {
-            username,
+            email,
             password,
         }
     } catch (error) {
