@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useUsers } from "../hooks/useUsers";
-
+import { useAuth } from "../hooks/useAuth";
 
 export const UserForm = ({ userSelect }) => {
 
     const { handlerAddUser, handlerUpdateUser } = useUsers();
+    const { handleLogin } = useAuth();
 
     const [userForm, setUserForm] = useState(userSelect);
 
@@ -26,12 +27,14 @@ export const UserForm = ({ userSelect }) => {
         })
     }
 
-    const onSubmitUserChange = (event) => {
+    const onSubmitUserChange = async (event) => {
         event.preventDefault();
 
         if (userSelect.id === '') {
             //Enviamos los datos del user al Hook useUsers
-            handlerAddUser(userForm);
+            await handlerAddUser(userForm);
+
+            handleLogin({email: userForm.email, password: userForm.password});
 
         } else {
             handlerUpdateUser(userForm);

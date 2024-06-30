@@ -1,7 +1,7 @@
 import { authService } from "../services/authService"
 import { useDispatch, useSelector } from 'react-redux';
 import { onLogin, onLogout } from "../store/slices/auth/authSlice";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const useAuth = () => {
 
@@ -9,7 +9,7 @@ export const useAuth = () => {
     const dispatch = useDispatch();
 
     console.log('control de login' +JSON.stringify(login, null, 2));
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleLogin = async ({email, password}) => {
 
@@ -30,7 +30,7 @@ export const useAuth = () => {
             }));
     
             sessionStorage.setItem('token', `Bearer ${token}`)
-            // navigate('/');
+            navigate('/');
 
         } catch (error) {
             if (error.response?.status == 401) {

@@ -1,13 +1,22 @@
 import axios from "axios"
 
-const BASE_URL_SCHOOL = `${import.meta.env.VITE_API_BASE_URL}/schools` 
+const BASE_URL_SCHOOL = `${import.meta.env.VITE_API_BASE_URL}/schools`
+
+const config = () => {
+    return {
+        headers: {
+            "Authorization": sessionStorage.getItem('token'),
+            "Content-type": "application/json",
+        }
+    }
+}
 
 //COMUNICACION CON EL BACKEND
 
 //Creamos un colegio
 export const save = async(formData) => {
     try {
-        const response = await axios.post(BASE_URL_SCHOOL, formData);
+        const response = await axios.post(BASE_URL_SCHOOL, formData, config());
         return response;  
     } catch (error) {
         console.log(error);
