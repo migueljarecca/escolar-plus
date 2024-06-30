@@ -30,7 +30,7 @@ export const useAuth = () => {
             }));
     
             sessionStorage.setItem('token', `Bearer ${token}`)
-            navigate('/');
+            navigate('/perfil');
 
         } catch (error) {
             if (error.response?.status == 401) {

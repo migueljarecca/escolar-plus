@@ -5,9 +5,11 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
 
 export const Header = () => {
 
+        const { login } = useAuth();
         const [isSticky, setIsSticky] = useState(false);
       
         const handleScroll = () => {
@@ -50,8 +52,20 @@ export const Header = () => {
                         <input type="text" placeholder="Buscar"/>
                     </div>
                     <div className='icon-box'>
-                        <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
-                        <span>Cuenta</span>
+
+                    {
+                        login.isAuth 
+                        ?
+                        <NavLink to={'/perfil'}>
+                            <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
+                            <span>Cuenta</span>
+                        </NavLink>
+                        :
+                        <NavLink to={'/user/login'}>
+                            <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
+                            <span>Cuenta</span>
+                        </NavLink>
+                    }   
 
                         <NavLink to={'/wishlist'}>
                             <FontAwesomeIcon icon={faHeart}/>

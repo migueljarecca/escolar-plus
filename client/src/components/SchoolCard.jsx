@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSchool } from '../hooks/useSchool';
 
-export const SchoolCard = ({ school }) => {
+export const SchoolCard = ({ school, login }) => {
 
     const { handlerRemoveSchool } = useSchool();
 
@@ -22,16 +22,22 @@ export const SchoolCard = ({ school }) => {
                     {/* <h4>{school.address}</h4> */}
                     {/* <h5>{school.image.name}</h5> */}
 
-                <div className='div-button-cole'>
-                    <NavLink to={"/school/update/" + school.id}> Actualizar</NavLink>
+                {
+                    login.isAdmin 
+                    ?
+                        <div className='div-button-cole'>
+                            <NavLink to={"/school/update/" + school.id}> Actualizar</NavLink>
 
-                    <button
-                        type='submit'
-                        onClick={() => onSelectedSchool(school.id)}
-                        >
-                        Eliminar
-                    </button>
-                </div>
+                            <button
+                                type='submit'
+                                onClick={() => onSelectedSchool(school.id)}
+                                >
+                                Eliminar
+                            </button>
+                        </div>
+                    : ''    
+                }
+                
                         
                 <NavLink to={`/uniforms/${school.id}`} className='cole-enlace'>Ver Catálogo </NavLink>
 

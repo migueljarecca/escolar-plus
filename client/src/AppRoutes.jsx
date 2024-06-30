@@ -8,6 +8,7 @@ import { ShopCart } from './pages/ShopCart'
 import { Wishlist } from './pages/Wishlist'
 import { UserLoginPage } from './pages/UserLoginPage'
 import { UserRegisterPage } from './pages/UserRegisterPage'
+import { Perfil } from './pages/Perfil'
 
 
 export const AppRoutes = () => {
@@ -33,7 +34,9 @@ export const AppRoutes = () => {
             <Route path='/wishlist' element={<Wishlist />}></Route>
 
             <Route path='/user/login' element={<UserLoginPage />}></Route>
-            <Route path='/user/register' element={<UserRegisterPage />}></Route>    
+            <Route path='/user/register' element={<UserRegisterPage />}></Route>
+
+            <Route path='/perfil' element={<Perfil />}></Route>    
 
         </Routes>
     )

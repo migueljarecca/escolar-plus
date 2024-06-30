@@ -1,3 +1,4 @@
+import { useAuth } from '../hooks/useAuth';
 import { useUniform } from '../hooks/useUniform';
 import { useWishlist } from '../hooks/useWishlist';
 import { UniformFilteredCard } from './UniformFilteredCard';
@@ -7,6 +8,7 @@ export const UniformFilteredList = ( { filteredProducts }) => {
 
     const { wishlist, handleAddToWishlist, handleRemoveToWishlist } = useWishlist();
     const { handlerRemoveUniform } = useUniform();
+    const { login } = useAuth();
 
     const onSelectedUniformId = (id) => {
         handlerRemoveUniform(id);
@@ -35,6 +37,7 @@ export const UniformFilteredList = ( { filteredProducts }) => {
                         onSelectedUniformId={onSelectedUniformId}
                         onChangeWishlist={onChangeWishlist}
                         isProductInWishlist={isProductInWishlist}
+                        login={login}
                     />
                 );
             })}

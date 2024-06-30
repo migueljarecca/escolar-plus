@@ -29,7 +29,7 @@ export const UserForm = ({ userSelect }) => {
 
     const onSubmitUserChange = async (event) => {
         event.preventDefault();
-
+        console.log('hols')
         if (userSelect.id === '') {
             //Enviamos los datos del user al Hook useUsers
             await handlerAddUser(userForm);
