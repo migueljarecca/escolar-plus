@@ -1,25 +1,35 @@
 import { Header } from "../components/Header"
 
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export const Perfil = () => {
 
     return (
         <>
             <Header />
 
-            <section>
-                <nav>
-                    <h2>
-                        Hola miguel
-                    </h2>
-                    <h3>
-                        Mi perfil
-                    </h3>
+            <section className="section-perfil">
+                <nav className="nav-perfil">
+                    <div className="div-perfil">
+                        <h2>
+                            Hola miguel
+                        </h2>
+                        <div className="div-icon">
+                            <span>M</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Mi perfil</h3>
+                    <h3>Editar perfil</h3>
+
                     <h4>
+                        <FontAwesomeIcon icon={faRightFromBracket}/>
                         Cerrar Sesión
                     </h4>
                 </nav>
 
-                <main>
+                <main className="main-perfil">
 
                 </main>
             </section>
