@@ -30,7 +30,12 @@ export const Perfil = () => {
                 </nav>
 
                 <main className="main-perfil">
+                    <h2>Perfil</h2>
 
+                    <div>
+                        <h3>Mis datos personales</h3>
+                        
+                    </div>
                 </main>
             </section>
         </>

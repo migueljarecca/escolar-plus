@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miguel.app.models.entities.User;
+import com.miguel.app.resopitories.UserRepository;
 
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
@@ -31,9 +33,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private AuthenticationManager authenticationManager;
 
+    private UserRepository userRepository;
+
     //creamos el constructor
-    public JwtAuthenticationFilter (AuthenticationManager authenticationManager) {
+    public JwtAuthenticationFilter (AuthenticationManager authenticationManager, UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -88,12 +93,25 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         // String originalInput = SECRET_KEY +"." + email;
         // String token = Base64.getEncoder().encodeToString(originalInput.getBytes());
         
+        System.out.println("control del email " +email);
+        Optional<User> userOptional = userRepository.getUserByEmail(email);
+        System.out.println("control de user " +userOptional);
+
+        User userDB = new User();
+
+        if (userOptional.isPresent()) {
+            userDB = userOptional.orElseThrow();
+        }
+
         // NOVENO PASO creamos el nuevo token
         // Creamos el token jws
             String token = Jwts.builder()
                     //new ObjectMapper convertimos a json
                     .claim("authorities", new ObjectMapper().writeValueAsString(roles))
                     .claim("isAdmin", isAdmin)
+                    .claim("userId", userDB.getId())
+                    .claim("name", userDB.getName())
+                    .claim("lastname", userDB.getLastname())
                     .subject(email)
                     .signWith(SECRET_KEY)
                     .issuedAt(new Date())

@@ -22,6 +22,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import com.miguel.app.auth.filters.JwtAuthenticationFilter;
 import com.miguel.app.auth.filters.JwtValidationFilter;
+import com.miguel.app.resopitories.UserRepository;
 
 //Primer paso para security crear los filtros
 @Configuration
@@ -29,6 +30,9 @@ public class SpringSecurityConfig {
 
     @Autowired
     private AuthenticationConfiguration authenticationConfiguration;
+
+    @Autowired
+    private UserRepository userRepository;
     
     // Encripta la contraseña que ingresa el usuario
     @Bean
@@ -67,7 +71,7 @@ public class SpringSecurityConfig {
 
             // Se agrega después de crear JwtAuthenticationFilter
             // Es filtro para el login
-            .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager()))
+            .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager(), userRepository))
             // Se agrega despues de teminar JwtValidationFilter
             .addFilter(new JwtValidationFilter(authenticationConfiguration.getAuthenticationManager()))
             
