@@ -1290,3 +1290,35 @@ body {
   font-weight: 500;
   cursor: pointer;
 }
+
+.section-perfil .main-perfil {
+  margin-left: 8rem;
+}
+
+.section-perfil .main-perfil h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+}
+
+.main-perfil .main-perfil-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.main-perfil-content .content-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.content-text h5 {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.content-text p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}

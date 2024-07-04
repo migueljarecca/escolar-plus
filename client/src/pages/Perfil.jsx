@@ -3,6 +3,7 @@ import { Header } from "../components/Header"
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuth } from "../hooks/useAuth";
+import { NavLink } from "react-router-dom";
 
 export const Perfil = () => {
 
@@ -30,9 +31,12 @@ export const Perfil = () => {
                             <span>{getFirstLetter(login.userLogin.name)}</span>
                         </div>
                     </div>
-                    
+
                     <h3>Mi perfil</h3>
-                    <h3>Editar perfil</h3>
+
+                    <NavLink to={'/user/update/' + login.userLogin.userId}>
+                        <h3>Editar perfil</h3>
+                    </NavLink>
 
                     <h4 onClick={handleLogout}>
                         <FontAwesomeIcon icon={faRightFromBracket}/>
@@ -43,8 +47,19 @@ export const Perfil = () => {
                 <main className="main-perfil">
                     <h2>Perfil</h2>
 
-                    <div>
+                    <div className="main-perfil-content">
                         <h3>Mis datos personales</h3>
+
+                        <div className="content-text">
+                            <h5>Nombre:</h5>
+                            <p>{login.userLogin.name}</p>
+
+                            <h5>Apellido:</h5>
+                            <p>{login.userLogin.lastname}</p>
+
+                            <h5>Correo Electrónico:</h5>
+                            <p>{login.userLogin.email}</p>
+                        </div>
                         
                     </div>
                 </main>

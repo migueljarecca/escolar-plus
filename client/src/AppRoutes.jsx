@@ -35,6 +35,7 @@ export const AppRoutes = () => {
 
             <Route path='/user/login' element={<UserLoginPage />}></Route>
             <Route path='/user/register' element={<UserRegisterPage />}></Route>
+            <Route path='/user/update/:id' element={<UserRegisterPage />}></Route>
 
             <Route path='/perfil' element={<Perfil />}></Route>    
 
