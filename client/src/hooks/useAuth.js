@@ -19,7 +19,9 @@ export const useAuth = () => {
 
             const claims = JSON.parse(window.atob(token.split(".")[1]));
 
-            const userLogin = {email: response.data.email};
+            const userLogin = {email: response.data.email, 
+                    userId: response.data.userId, name: response.data.name, 
+                    lastname: response.data.lastname};
 
             dispatch(onLogin({userLogin, isAdmin: claims.isAdmin}));
 
@@ -43,6 +45,10 @@ export const useAuth = () => {
 
     const handleLogout = () => {
         dispatch(onLogout());
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('login')
+        sessionStorage.clear
+        navigate('/')
     };
 
     return {

@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -76,11 +77,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
+    @Transactional(readOnly = true)
     protected void successfulAuthentication(HttpServletRequest request,
             HttpServletResponse response, FilterChain chain,
             Authentication authResult) throws IOException, ServletException {
-
-        // Recuperamos el email del authResult        
+ 
+        // Recuperamos el email del authResult       
         String email =((org.springframework.security.core.userdetails.User) 
             authResult.getPrincipal()).getUsername();
 
@@ -93,7 +95,20 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         // String originalInput = SECRET_KEY +"." + email;
         // String token = Base64.getEncoder().encodeToString(originalInput.getBytes());
         
-        System.out.println("control del email " +email);
+        // NOVENO PASO creamos el nuevo token
+        // Creamos el token jws
+            String token = Jwts.builder()
+                    //new ObjectMapper convertimos a json
+                    .claim("authorities", new ObjectMapper().writeValueAsString(roles))
+                    .claim("isAdmin", isAdmin)
+                    .subject(email)
+                    .signWith(SECRET_KEY)
+                    .issuedAt(new Date())
+                    .expiration(new Date(System.currentTimeMillis() + 3600000))
+                    .compact(); 
+
+        response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
+
         Optional<User> userOptional = userRepository.getUserByEmail(email);
         System.out.println("control de user " +userOptional);
 
@@ -103,27 +118,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             userDB = userOptional.orElseThrow();
         }
 
-        // NOVENO PASO creamos el nuevo token
-        // Creamos el token jws
-            String token = Jwts.builder()
-                    //new ObjectMapper convertimos a json
-                    .claim("authorities", new ObjectMapper().writeValueAsString(roles))
-                    .claim("isAdmin", isAdmin)
-                    .claim("userId", userDB.getId())
-                    .claim("name", userDB.getName())
-                    .claim("lastname", userDB.getLastname())
-                    .subject(email)
-                    .signWith(SECRET_KEY)
-                    .issuedAt(new Date())
-                    .expiration(new Date(System.currentTimeMillis() + 3600000))
-                    .compact(); 
-
-        response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
-
         Map<String, Object> body = new HashMap<>();
         body.put("token",token);
         body.put("message", String.format("Hola %s, has iniciado sesion con exito", email)); 
+        body.put("userId", userDB.getId());
         body.put("email", email);
+        body.put("lastname", userDB.getLastname());
+        body.put("name", userDB.getName());
 
         //Escribimos al cuerpo y lo convertimos a JSON
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
@@ -131,8 +132,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setContentType("application/json");
 
     }
-
-
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,

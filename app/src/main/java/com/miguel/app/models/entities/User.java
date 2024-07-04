@@ -3,6 +3,7 @@ package com.miguel.app.models.entities;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,7 +23,7 @@ public class User {
     private String password;
 
     // DECIMO PASO crear la tabla de intersección, luego modificar la BD
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
     name = "users_roles", 
     joinColumns = @JoinColumn(name = "user_id"), 
@@ -81,10 +82,10 @@ public class User {
         this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", name=" + name + ", lastname=" + lastname + ", email=" + email + ", password="
-                + password + ", roles=" + roles + "]";
-    }
+    // @Override
+    // public String toString() {
+    //     return "User [id=" + id + ", name=" + name + ", lastname=" + lastname + ", email=" + email + ", password="
+    //             + password + ", roles=" + roles + "]";
+    // }
 
 }
