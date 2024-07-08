@@ -9,6 +9,7 @@ export const UserRegisterPage = () => {
 
     const { users, initialUserForm } = useUsers();
     const [ userSelect, setUserSelect ] = useState(initialUserForm);
+    console.log(' control de users ' +JSON.stringify(users, null, 2))
 
     const { id } = useParams();
 

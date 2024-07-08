@@ -25,6 +25,7 @@ export const userSlice = createSlice({
             ]
         },
         updateToUser: (state, action) => {
+            console.log('contrl de action ' +JSON.stringify(action.payload))
             state.users = state.users.map(item => {
                 if (item.id == action.payload.id) {
                     return {

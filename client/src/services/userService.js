@@ -2,6 +2,15 @@ import axios from "axios"
 
 const BASE_URL_USER = `${import.meta.env.VITE_API_BASE_URL}/users`
 
+const config = () => {
+    return {
+        headers: {
+            "Authorization": sessionStorage.getItem('token'),
+            "Content-type": "application/json",
+        }
+    }
+}
+
 //COMUNICACION CON EL BACKEND
 
 //Creamos un usuario
@@ -12,7 +21,7 @@ export const save = async ({name, lastname, email, password}) => {
             lastname,
             email,
             password,
-        });
+        },config());
         
     } catch (error) {
         console.error(error);

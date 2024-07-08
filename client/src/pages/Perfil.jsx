@@ -38,7 +38,7 @@ export const Perfil = () => {
                         <h3>Editar perfil</h3>
                     </NavLink>
 
-                    <h4 onClick={handleLogout}>
+                    <h4 onClick={handleLogout(login.userLogin.userId)}>
                         <FontAwesomeIcon icon={faRightFromBracket}/>
                         Cerrar Sesión
                     </h4>

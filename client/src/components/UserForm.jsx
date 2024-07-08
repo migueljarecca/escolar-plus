@@ -4,10 +4,10 @@ import { useAuth } from "../hooks/useAuth";
 
 export const UserForm = ({ userSelect }) => {
 
-    const { handlerAddUser, handlerUpdateUser } = useUsers();
+    const { initialUserForm, handlerAddUser, handlerUpdateUser } = useUsers();
     const { handleLogin } = useAuth();
 
-    const [userForm, setUserForm] = useState(userSelect);
+    const [userForm, setUserForm] = useState(initialUserForm);
 
     const {name, lastname, email, password} = userForm;
 
@@ -29,7 +29,6 @@ export const UserForm = ({ userSelect }) => {
 
     const onSubmitUserChange = async (event) => {
         event.preventDefault();
-        console.log('hols')
         if (userSelect.id === '') {
             //Enviamos los datos del user al Hook useUsers
             await handlerAddUser(userForm);
@@ -37,6 +36,8 @@ export const UserForm = ({ userSelect }) => {
             handleLogin({email: userForm.email, password: userForm.password});
 
         } else {
+            console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
+
             handlerUpdateUser(userForm);
         }
 
