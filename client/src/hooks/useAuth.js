@@ -24,12 +24,12 @@ export const useAuth = () => {
                     lastname: response.data.lastname, 
                     email: response.data.email};
                    
-                    const userLog = {id: response.data.userId, name: response.data.name,
-                        lastname: response.data.lastname, 
-                        email: response.data.email, password: ''};                    
+                    // const userLog = {id: response.data.userId, name: response.data.name,
+                    //     lastname: response.data.lastname, 
+                    //     email: response.data.email, password: ''};                    
 
             dispatch(onLogin({userLogin, isAdmin: claims.isAdmin}));
-            dispatch(addToUser(userLog));
+            // dispatch(addToUser(userLog));
 
             sessionStorage.setItem('login', JSON.stringify({
                 isAuth: true,

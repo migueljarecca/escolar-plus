@@ -13,18 +13,26 @@ export const useUsers = () => {
     const handlerAddUser = async (user) => {
         console.log("control 1", user);
         const item = await save(user);
-        dispatch(addToUser(item));
+        dispatch(addToUser(item.data));
     }
 
     //Traemos todos los usuarios
     const getUsers = async () => {
-        const item = await findAll();
-        dispatch(loadingToUsers(item));
+        try {
+            const item = await findAll();
+            console.log("Datos recibidos de la API:" +JSON.stringify(item.data, null, 2)); // Verifica aquí qué datos están llegando
+    
+            dispatch(loadingToUsers(item.data));
+            console.log("Datos enviados al estado de Redux");
+
+        } catch (error) {
+            console.error("Error al cargar los usuarios:", error);
+        }
     }
 
     const handlerUpdateUser = async (user) => {
         const item = await update(user);
-        dispatch(updateToUser(item));
+        dispatch(updateToUser(item.data));
     }
 
     const handlerRemoveUser = (id) => {

@@ -6,14 +6,16 @@ public class UserDto {
 
     private Long id;
     private String username;
+    private String lastname;
     private String email;
 
     public UserDto() {
     }
     
-    public UserDto(Long id, String username, String email) {
+    public UserDto(Long id, String username, String lastname, String email) {
         this.id = id;
         this.username = username;
+        this.lastname = lastname;
         this.email = email;
     }
     
@@ -29,6 +31,14 @@ public class UserDto {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getLastname() {
+        return lastname;
+    }
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     public String getEmail() {
         return email;
     }

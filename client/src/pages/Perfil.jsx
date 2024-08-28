@@ -17,6 +17,12 @@ export const Perfil = () => {
         return '';
       };
 
+    console.log(JSON.stringify(login.userLogin, null, 2))
+      
+    if (!login.userLogin) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <>
             <Header />
@@ -38,7 +44,7 @@ export const Perfil = () => {
                         <h3>Editar perfil</h3>
                     </NavLink>
 
-                    <h4 onClick={handleLogout(login.userLogin.userId)}>
+                    <h4 onClick={() => handleLogout(login.userLogin.userId)}>
                         <FontAwesomeIcon icon={faRightFromBracket}/>
                         Cerrar Sesión
                     </h4>

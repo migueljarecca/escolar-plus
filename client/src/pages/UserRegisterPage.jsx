@@ -7,20 +7,33 @@ import { UserForm } from "../components/UserForm";
 
 export const UserRegisterPage = () => {
 
-    const { users, initialUserForm } = useUsers();
+    const { users, initialUserForm, getUsers, isLoading } = useUsers();
+
     const [ userSelect, setUserSelect ] = useState(initialUserForm);
-    console.log(' control de users ' +JSON.stringify(users, null, 2))
 
     const { id } = useParams();
 
+    useEffect(()=>{
+        getUsers();
+    },[]);
+
     useEffect(()=> {
-        if (id) {
+        if (id && users.length > 0) {
             const user = users.find(item => item.id == id);
+
             setUserSelect(user);
         } else {
             setUserSelect(initialUserForm);
         }
     },[id]);
+
+    // Inportante! estoy nos ayuda a esperar que esten listos los datos,
+    // antes de que users este vacio.
+    if (isLoading) {
+        return(
+          <div>Cargando...</div>
+        )
+      }
 
     return(
         <>

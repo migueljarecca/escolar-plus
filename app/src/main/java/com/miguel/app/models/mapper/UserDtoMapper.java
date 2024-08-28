@@ -26,7 +26,8 @@ public class UserDtoMapper {
             throw new RuntimeException("Debe pasar el entity user!");
         }
 
-        UserDto userDto = new UserDto(this.user.getId(), user.getName(), user.getEmail());
+        UserDto userDto = new UserDto(this.user.getId(), 
+                            user.getName(), user.getLastname(), user.getEmail());
         return userDto;
     }
 

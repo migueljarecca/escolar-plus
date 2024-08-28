@@ -13,7 +13,8 @@ export const userSlice = createSlice({
     name: 'users',
     initialState: {
         users: [],
-        userSelected: initialUserForm
+        userSelected: initialUserForm,
+        isLoading: true,
     },
 
     reducers: {
@@ -39,7 +40,8 @@ export const userSlice = createSlice({
             state.users = state.users.filter(item => item.id !== action.payload);
         },
         loadingToUsers: (state, action) => {
-            state.users = action.payload
+            state.users = action.payload;
+            state.isLoading = false;
         },
     }
 });
@@ -49,5 +51,6 @@ export const {
     removeToUser,
     updateToUser,
     loadingToUsers,
+    isLoading,
 
 } = userSlice.actions;
