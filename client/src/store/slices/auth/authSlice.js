@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const initialLogin = {
+export const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
     isAuth: false,
     isAdmin: false,
-    useremail: undefined,
+    userLogin: undefined,
 }
 
 export const authSlice = createSlice({

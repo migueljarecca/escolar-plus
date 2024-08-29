@@ -16,7 +16,7 @@ const config = () => {
 //Creamos un usuario
 export const save = async ({name, lastname, email, password}) => {
     try {
-        const response = await axios.post(BASE_URL_USER,{
+        return await axios.post(BASE_URL_USER,{
             name,
             lastname,
             email,
@@ -40,12 +40,17 @@ export const findAll = async () => {
 
 //Actualizamos un usuario
 export const update = async ({id, name, lastname, email}) => {
+    console.log("url ", `${BASE_URL_USER}/${id}`);
+    console.log("url ", name, lastname, email);
+    console.log("url ", config());
+
     try {
-        const response = await axios.put(`${BASE_URL_USER}/${id}`,{
+        return await axios.put(`${BASE_URL_USER}/${id}`,{
             name,
             lastname,
             email,
-        });
+        },config());
+
     } catch (error) {
         console.log(error);
     }
@@ -55,7 +60,7 @@ export const update = async ({id, name, lastname, email}) => {
 export const remove = async (id) => {
     console.log("controlll ", id);
     try {
-        const response = await axios.delete(`${BASE_URL_USER}/${id}`);
+        return await axios.delete(`${BASE_URL_USER}/${id}`);
     } catch (error) {
         console.log(error);
     }

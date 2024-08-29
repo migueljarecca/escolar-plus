@@ -29,11 +29,17 @@ export const Header = () => {
     return (
         <>
             <article className="header-article">
+
+                {login.isAuth 
+                ? ''
+                : 
                 <div className="header-article-content">
                     <NavLink to={"/user/login"}>Inicia sesión</NavLink>
                     <span>|</span>
                     <NavLink to={"/user/register"}>Crea una cuenta</NavLink>
                 </div>
+                }
+                
 
                 <h4 className='header-article-h4'>Dirección de la tienda</h4>
             </article>
@@ -58,7 +64,7 @@ export const Header = () => {
                         ?
                         <NavLink to={'/perfil'}>
                             <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
-                            <span>Cuenta</span>
+                            <span>Hola! {login.userLogin.name}</span>
                         </NavLink>
                         :
                         <NavLink to={'/user/login'}>

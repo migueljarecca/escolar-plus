@@ -29,7 +29,7 @@ export const UserRegisterPage = () => {
 
     // Inportante! estoy nos ayuda a esperar que esten listos los datos,
     // antes de que users este vacio.
-    if (isLoading) {
+    if (!users) {
         return(
           <div>Cargando...</div>
         )

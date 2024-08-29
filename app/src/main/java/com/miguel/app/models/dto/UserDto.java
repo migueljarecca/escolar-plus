@@ -5,16 +5,16 @@ package com.miguel.app.models.dto;
 public class UserDto {
 
     private Long id;
-    private String username;
+    private String name;
     private String lastname;
     private String email;
 
     public UserDto() {
     }
     
-    public UserDto(Long id, String username, String lastname, String email) {
+    public UserDto(Long id, String name, String lastname, String email) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.lastname = lastname;
         this.email = email;
     }
@@ -25,11 +25,11 @@ public class UserDto {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastname() {
@@ -48,7 +48,7 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return "UserDto [id=" + id + ", username=" + username + ", email=" + email + "]";
+        return "UserDto [id=" + id + ", name=" + name + ", email=" + email + "]";
     }
     
 }

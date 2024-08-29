@@ -9,7 +9,7 @@ export const UserForm = ({ userSelect }) => {
 
     const [userForm, setUserForm] = useState(initialUserForm);
 
-    const {name, lastname, email, password} = userForm;
+    const {id, name, lastname, email, password} = userForm;
 
     //Utilizamos useEffect para gatillar y actualizar con el usuario seleccionado
     useEffect(() => {
@@ -29,7 +29,7 @@ export const UserForm = ({ userSelect }) => {
 
     const onSubmitUserChange = async (event) => {
         event.preventDefault();
-        if (userSelect.id === '') {
+        if (id === '') {
             //Enviamos los datos del user al Hook useUsers
             await handlerAddUser(userForm);
 
@@ -41,7 +41,7 @@ export const UserForm = ({ userSelect }) => {
             handlerUpdateUser(userForm);
         }
 
-        setUserForm(userSelect);
+        setUserForm(initialUserForm);
     }
 
     return (
@@ -72,18 +72,22 @@ export const UserForm = ({ userSelect }) => {
                     value={email}
                 />
 
+                {id > 0 
+                ? '' 
+                : 
                 <input 
                     type="text"
                     placeholder="Contraseña"
                     name="password"
                     onChange={onInputUserChange}
                     value={password}
-                />
-
+                />}
+                
                 <button
                     type="submit"
                 >
-                    crear
+                    {id > 0 ? 'Actualizar' : 'Crear'}
+                    
                 </button>
    
             </form>

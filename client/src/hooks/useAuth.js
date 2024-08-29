@@ -2,7 +2,6 @@ import { authService } from "../services/authService"
 import { useDispatch, useSelector } from 'react-redux';
 import { onLogin, onLogout } from "../store/slices/auth/authSlice";
 import { useNavigate } from 'react-router-dom';
-import { addToUser, removeToUser } from "../store/slices/users/userSlice";
 
 export const useAuth = () => {
 
@@ -22,14 +21,9 @@ export const useAuth = () => {
 
             const userLogin = {userId: response.data.userId, name: response.data.name,
                     lastname: response.data.lastname, 
-                    email: response.data.email};
-                   
-                    // const userLog = {id: response.data.userId, name: response.data.name,
-                    //     lastname: response.data.lastname, 
-                    //     email: response.data.email, password: ''};                    
+                    email: response.data.email};                    
 
             dispatch(onLogin({userLogin, isAdmin: claims.isAdmin}));
-            // dispatch(addToUser(userLog));
 
             sessionStorage.setItem('login', JSON.stringify({
                 isAuth: true,
@@ -55,7 +49,6 @@ export const useAuth = () => {
         sessionStorage.removeItem('login')
         sessionStorage.clear
 
-        // dispatch(removeToUser(id));
         navigate('/')
     };
 

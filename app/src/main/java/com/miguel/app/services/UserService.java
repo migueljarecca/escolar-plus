@@ -80,6 +80,9 @@ public class UserService {
 
         Optional<User> userOptional = userRepository.getUserById(id);
 
+        System.out.println("control de ingreso " +user.getEmail());
+        System.out.println("control de ingreso " +user.getName());
+
         if (userOptional.isPresent()) {
             User userDb = userOptional.orElseThrow();
             userDb.setName(user.getName());
