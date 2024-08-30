@@ -9,7 +9,7 @@ import { useAuth } from '../hooks/useAuth'
 
 export const Header = () => {
 
-        const { login } = useAuth();
+        const { login, user } = useAuth();
         const [isSticky, setIsSticky] = useState(false);
       
         const handleScroll = () => {
@@ -64,7 +64,7 @@ export const Header = () => {
                         ?
                         <NavLink to={'/perfil'}>
                             <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
-                            <span>Hola! {login.userLogin.name}</span>
+                            <span>Hola! {user.name}</span>
                         </NavLink>
                         :
                         <NavLink to={'/user/login'}>

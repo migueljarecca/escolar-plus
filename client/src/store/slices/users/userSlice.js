@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialUserForm = {
-    id: '',
+    id: 0,
     name: '',
     lastname: '',
     email: '',
     password: '',
-  }
+}
 
 export const userSlice = createSlice({
 
     name: 'users',
     initialState: {
         users: [],
-        userSelected: initialUserForm,
+        initialUserForm: initialUserForm,
         isLoading: true,
     },
 

@@ -1,11 +1,12 @@
 import { findAll, remove, save, update } from "../services/userService";
 import { useDispatch, useSelector } from 'react-redux';
-import { addToUser, initialUserForm, loadingToUsers, removeToUser, updateToUser } from "../store/slices/users/userSlice";
+import { addToUser, loadingToUsers, removeToUser, updateToUser } from "../store/slices/users/userSlice";
 import { useNavigate } from 'react-router-dom';
+import { addUser } from "../store/slices/auth/authSlice";
 
 export const useUsers = () => {
 
-    const { users } = useSelector(state => state.users);
+    const { users, initialUserForm } = useSelector(state => state.users);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -32,7 +33,8 @@ export const useUsers = () => {
 
     const handlerUpdateUser = async (user) => {
         const item = await update(user);
-        dispatch(updateToUser(item.data));
+        // dispatch(updateToUser(item.data));
+        dispatch(addUser(item.data));
 
         navigate('/perfil');
     }

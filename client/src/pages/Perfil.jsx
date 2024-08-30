@@ -7,8 +7,7 @@ import { NavLink } from "react-router-dom";
 
 export const Perfil = () => {
 
-    const { login, handleLogout } = useAuth();
-    
+    const { login, user, handleLogout } = useAuth();
 
     const getFirstLetter = (name) => {
         if (name && name.length > 0) {
@@ -17,9 +16,9 @@ export const Perfil = () => {
         return '';
       };
 
-    console.log(JSON.stringify(login.userLogin, null, 2))
+    // console.log(JSON.stringify(login.userLogin, null, 2))
       
-    if (!login.userLogin) {
+    if (!user) {
         return <div>Loading...</div>;
     }
 
@@ -31,20 +30,20 @@ export const Perfil = () => {
                 <nav className="nav-perfil">
                     <div className="div-perfil">
                         <h2>
-                            Hola {login.userLogin.name}
+                            Hola {user.name}
                         </h2>
                         <div className="div-icon">
-                            <span>{getFirstLetter(login.userLogin.name)}</span>
+                            <span>{getFirstLetter(user.name)}</span>
                         </div>
                     </div>
 
                     <h3>Mi perfil</h3>
 
-                    <NavLink to={'/user/update/' + login.userLogin.userId}>
+                    <NavLink to={'/user/update/' + user.id}>
                         <h3>Editar perfil</h3>
                     </NavLink>
 
-                    <h4 onClick={() => handleLogout(login.userLogin.userId)}>
+                    <h4 onClick={() => handleLogout(user.id)}>
                         <FontAwesomeIcon icon={faRightFromBracket}/>
                         Cerrar Sesión
                     </h4>
@@ -58,13 +57,13 @@ export const Perfil = () => {
 
                         <div className="content-text">
                             <h5>Nombre:</h5>
-                            <p>{login.userLogin.name}</p>
+                            <p>{user.name}</p>
 
                             <h5>Apellido:</h5>
-                            <p>{login.userLogin.lastname}</p>
+                            <p>{user.name}</p>
 
                             <h5>Correo Electrónico:</h5>
-                            <p>{login.userLogin.email}</p>
+                            <p>{user.email}</p>
                         </div>
                         
                     </div>

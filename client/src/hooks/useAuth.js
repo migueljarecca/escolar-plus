@@ -1,14 +1,16 @@
 import { authService } from "../services/authService"
 import { useDispatch, useSelector } from 'react-redux';
-import { onLogin, onLogout } from "../store/slices/auth/authSlice";
+import { onLogin, onLogout, addUser, removeUser } from "../store/slices/auth/authSlice";
 import { useNavigate } from 'react-router-dom';
 
 export const useAuth = () => {
 
-    const { login } = useSelector(state => state.auth);
+    const { login, user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
-    console.log('control de login' +JSON.stringify(login, null, 2));
+    // console.log('control de login' +JSON.stringify(login, null, 2));
+    console.log('control de login user' +JSON.stringify(user, null, 2));
+
     const navigate = useNavigate();
 
     const handleLogin = async ({email, password}) => {
@@ -19,11 +21,12 @@ export const useAuth = () => {
 
             const claims = JSON.parse(window.atob(token.split(".")[1]));
 
-            const userLogin = {userId: response.data.userId, name: response.data.name,
+            const userLogin = {id: response.data.userId, name: response.data.name,
                     lastname: response.data.lastname, 
                     email: response.data.email};                    
 
             dispatch(onLogin({userLogin, isAdmin: claims.isAdmin}));
+            dispatch(addUser(userLogin));
 
             sessionStorage.setItem('login', JSON.stringify({
                 isAuth: true,
@@ -45,6 +48,7 @@ export const useAuth = () => {
 
     const handleLogout = () => {
         dispatch(onLogout());
+        dispatch(removeUser());
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('login')
         sessionStorage.clear
@@ -54,7 +58,8 @@ export const useAuth = () => {
 
     return {
         login,
-        
+        user,
+
         handleLogin,
         handleLogout,
     }

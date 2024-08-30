@@ -11,6 +11,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState: {
         login: initialLogin, 
+        user: undefined,
     },
 
     reducers: {
@@ -26,7 +27,17 @@ export const authSlice = createSlice({
                 isAdmin: false,
                 useremail: undefined,
             }
+        },
+        addUser: (state, action) => {
+            state.user = action.payload;
+        },
+        removeUser: (state) => {
+            state.user = undefined;
+        },
+        updateUser: (state, action) => {
+            state.user = action.payload;
         }
+
     }
 });
 
@@ -34,5 +45,8 @@ export const {
 
     onLogin,
     onLogout,
+    addUser,
+    removeUser,
+    updateUser,
 
 } = authSlice.actions;
