@@ -9,11 +9,10 @@ import { Wishlist } from './pages/Wishlist'
 import { UserLoginPage } from './pages/UserLoginPage'
 import { UserRegisterPage } from './pages/UserRegisterPage'
 import { Perfil } from './pages/Perfil'
+import { UserUpdatePage } from './pages/UserUpdatePage'
 
 
 export const AppRoutes = () => {
-
-
 
     return (
         <Routes>
@@ -35,7 +34,7 @@ export const AppRoutes = () => {
 
             <Route path='/user/login' element={<UserLoginPage />}></Route>
             <Route path='/user/register' element={<UserRegisterPage />}></Route>
-            <Route path='/user/update/:id' element={<UserRegisterPage />}></Route>
+            <Route path='/user/update/:id' element={<UserUpdatePage />}></Route>
 
             <Route path='/user/update/:id' element={<UserRegisterPage />}></Route>
 

@@ -65,7 +65,7 @@ export const Header = () => {
                         <NavLink to={'/perfil'}>
                             <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
                             <span>Hola! {user.name}</span>
-                        </NavLink>
+                        </NavLink> 
                         :
                         <NavLink to={'/user/login'}>
                             <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
