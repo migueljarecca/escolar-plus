@@ -11,6 +11,9 @@ export const Header = () => {
 
         const { login, user } = useAuth();
         const [isSticky, setIsSticky] = useState(false);
+
+        // console.log('control header login ' +JSON.stringify(login, null, 2));
+        console.log('control header user ' +JSON.stringify(user, null, 2));
       
         const handleScroll = () => {
           const shouldBeSticky = window.scrollY > 50;
@@ -46,7 +49,7 @@ export const Header = () => {
     
             <header className={`header ${isSticky ? 'sticky' : ''}`}>
 
-                <a href="#" className="logo">LOGO</a>
+                <a href="/" className="logo">LOGO</a>
 
                 <nav className='nav-center'>
                     <p>cole</p>
@@ -64,7 +67,7 @@ export const Header = () => {
                         ?
                         <NavLink to={'/perfil'}>
                             <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
-                            <span>Hola! {user.name}</span>
+                            <span>Hola! {user.userLogged.name}</span>
                         </NavLink> 
                         :
                         <NavLink to={'/user/login'}>

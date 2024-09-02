@@ -9,7 +9,7 @@ export const useAuth = () => {
     const dispatch = useDispatch();
 
     // console.log('control de login' +JSON.stringify(login, null, 2));
-    console.log('control de login user' +JSON.stringify(user, null, 2));
+    // console.log('control de login user' +JSON.stringify(user, null, 2));
 
     const navigate = useNavigate();
 
@@ -21,17 +21,20 @@ export const useAuth = () => {
 
             const claims = JSON.parse(window.atob(token.split(".")[1]));
 
-            const userLogin = {id: response.data.userId, name: response.data.name,
+            const userLogged = {id: response.data.userId, name: response.data.name,
                     lastname: response.data.lastname, 
                     email: response.data.email};                    
 
-            dispatch(onLogin({userLogin, isAdmin: claims.isAdmin}));
-            dispatch(addUser(userLogin));
+            dispatch(onLogin(claims.isAdmin));
+            dispatch(addUser({userLogged:userLogged}));
 
             sessionStorage.setItem('login', JSON.stringify({
                 isAuth: true,
                 isAdmin: claims.isAdmin,
-                userLogin: userLogin,
+            }));
+
+            sessionStorage.setItem('user', JSON.stringify({
+                userLogged: userLogged,
             }));
     
             sessionStorage.setItem('token', `Bearer ${token}`)
@@ -51,6 +54,8 @@ export const useAuth = () => {
         dispatch(removeUser());
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('login')
+        sessionStorage.removeItem('user')
+
         sessionStorage.clear
 
         navigate('/')

@@ -2,7 +2,7 @@ import { findAll, remove, save, update } from "../services/userService";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToUser, loadingToUsers, removeToUser, updateToUser } from "../store/slices/users/userSlice";
 import { useNavigate } from 'react-router-dom';
-import { addUser } from "../store/slices/auth/authSlice";
+import { addUser, updateUser } from "../store/slices/auth/authSlice";
 
 export const useUsers = () => {
 
@@ -16,7 +16,10 @@ export const useUsers = () => {
     const handlerAddUser = async (user) => {
         console.log("control 1", user);
         const item = await save(user);
-        dispatch(addToUser(item.data));
+        // dispatch(addToUser(item.data));
+        dispatch(addUser(item.data));
+
+        // navigate('/perfil');
     }
 
     //Traemos todos los usuarios
@@ -34,7 +37,7 @@ export const useUsers = () => {
     const handlerUpdateUser = async (user) => {
         const item = await update(user);
         // dispatch(updateToUser(item.data));
-        dispatch(addUser(item.data));
+        dispatch(updateUser(item.data));
 
         navigate('/perfil');
     }
