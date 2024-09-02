@@ -3,21 +3,34 @@ import { NavLink } from "react-router-dom";
 import { Header } from "../components/Header"
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist"
+import { useEffect, useState } from "react";
 
 export const Wishlist = () => {
 
     const { wishlist, handleRemoveToWishlist } = useWishlist();
     const{ handlerAddCart } = useCart();
 
+    const [schoolId, setSchoolId] = useState('null');
+
+    useEffect(() => {
+        if (wishlist.length > 0) {
+            const schoolId = wishlist[wishlist.length -1].school.id;
+            setSchoolId(schoolId);
+            sessionStorage.setItem('schoolId', schoolId);
+        } else {
+            const savedSchoolId = sessionStorage.getItem('schoolId')
+            if (savedSchoolId) {
+                setSchoolId(savedSchoolId);
+            }
+        }
+    },[wishlist]);
+
     const onClickAddCart = (item) => {
         handlerAddCart(item);
         handleRemoveToWishlist(item.id);
     }
-    // const navegate = useNavigate();
-
-    // const onCatalog = () => {
-    //     navegate('/catalog');
-    // }
+   
+    console.log('contrl de school id ' + schoolId);
 
     return(
         <>
@@ -71,15 +84,18 @@ export const Wishlist = () => {
 
             </main>
 
-            <div className="wishlist-button">
-                {/* <button 
-                    onClick={onCatalog}
-                    >
-                    Seguir comprando
-                </button>                 */}
-                <NavLink to={"/uniforms/" + (wishlist.length > 0 ? wishlist[0].school.id : '')}>Continuar Comprando</NavLink>
+           
+                <div className="wishlist-button">  
+                    {schoolId > 0
+                    ? 
+                        (     
+                        <NavLink to={"/uniforms/" + schoolId}>Continuar Comprando</NavLink>
+                        ) 
+                    :
+                        ''
+                    }
+                </div> 
 
-            </div>
         </>
     )
 }

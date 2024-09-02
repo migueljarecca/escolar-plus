@@ -22,7 +22,7 @@ export const UniformsPage = () => {
         if (id) {
             uniformBySchoolId(id);         
         }
-    },[]); 
+    },[id]); 
 
     //Filtramos los uniformes por precio y categoría
     const filterProducts = (filteredUniforms) => {

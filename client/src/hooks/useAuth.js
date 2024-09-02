@@ -55,6 +55,7 @@ export const useAuth = () => {
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('login')
         sessionStorage.removeItem('user')
+        sessionStorage.removeItem('schoolId')
 
         sessionStorage.clear
 
