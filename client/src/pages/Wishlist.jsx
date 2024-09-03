@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { json, NavLink } from "react-router-dom";
 import { Header } from "../components/Header"
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist"
@@ -10,27 +10,12 @@ export const Wishlist = () => {
     const { wishlist, handleRemoveToWishlist } = useWishlist();
     const{ handlerAddCart } = useCart();
 
-    const [whishlistData, setWishlistData] = useState([]);
-
-    useEffect(() => {
-
-        if (wishlist.length > 0) {
-            
-            setWishlistData(wishlist)
-            sessionStorage.setItem('whishlistData', JSON.stringify(wishlist));
-        } else {
-            const savedWishlistData = sessionStorage.getItem('whishlistData')
-            if (savedWishlistData) {
-                setWishlistData(JSON.parse(savedWishlistData));
-            }
-        }
-
-    },[wishlist]);
-
     const onClickAddCart = (item) => {
         handlerAddCart(item);
         handleRemoveToWishlist(item.id);
     }
+
+    console.log('cpn ' +JSON.stringify(wishlist, null, 2));
    
     return(
         <>
@@ -39,9 +24,9 @@ export const Wishlist = () => {
 
             <main className="wishlist-main">
 
-                { whishlistData && whishlistData.length > 0 ? 
+                { wishlist && wishlist.length > 0 ? 
 
-                    whishlistData.map(item => (
+                    wishlist.map(item => (
                         <div key={item.id} className="wishlist-box">
                             
                             <div className="div-img">
@@ -86,10 +71,10 @@ export const Wishlist = () => {
 
            
                 <div className="wishlist-button">  
-                    {whishlistData.length > 0
+                    {wishlist.length > 0
                     ? 
                         (     
-                        <NavLink to={`/uniforms/${whishlistData[whishlistData.length -1].school.id}` }>Continuar Comprando</NavLink>
+                        <NavLink to={`/uniforms/${wishlist[wishlist.length -1].school.id}` }>Continuar Comprando</NavLink>
                         ) 
                     :
                         ''
