@@ -1,7 +1,7 @@
 import { useCart } from "../hooks/useCart"
 import { NavLink } from 'react-router-dom';
 import { CartListItems } from "../components/CartListItems";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useWishlist } from "../hooks/useWishlist";
 
 export const ShopCart = () => {
@@ -10,6 +10,21 @@ export const ShopCart = () => {
         handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
 
     const { handleAddToWishlist } = useWishlist();
+
+    const [schoolId, setSchoolId] = useState('null');
+
+    useEffect(() => {
+        if (cart.length > 0) {
+            const schoolId = cart[cart.length -1].school.id;
+            setSchoolId(schoolId);
+            sessionStorage.setItem('schoolId', schoolId);
+        } else {
+            const savedSchoolId = sessionStorage.getItem('schoolIdOfCart');
+            if (savedSchoolId) {
+                setSchoolId(savedSchoolId);
+            }
+        }
+    },[cart]);
     
     const onClickAddWishlist = (item) => {
         handleAddToWishlist(item);//falta colegio
@@ -63,7 +78,14 @@ export const ShopCart = () => {
                         <h3>S/. {priceTotal}</h3>
                     </div>
                     <div className="div">
-                        <NavLink to={"/uniforms/" + (cart.length > 0 ? cart[0].school.id : '')}>Continuar Comprando</NavLink>
+                        {schoolId > 0
+                        ? 
+                            (     
+                            <NavLink to={"/uniforms/" + schoolId}>Continuar Comprando</NavLink>
+                            ) 
+                        :
+                            ''
+                        }
                         <button
                             className="button"
                             type="submit"

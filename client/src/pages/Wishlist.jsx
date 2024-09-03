@@ -10,19 +10,21 @@ export const Wishlist = () => {
     const { wishlist, handleRemoveToWishlist } = useWishlist();
     const{ handlerAddCart } = useCart();
 
-    const [schoolId, setSchoolId] = useState('null');
+    const [whishlistData, setWishlistData] = useState([]);
 
     useEffect(() => {
+
         if (wishlist.length > 0) {
-            const schoolId = wishlist[wishlist.length -1].school.id;
-            setSchoolId(schoolId);
-            sessionStorage.setItem('schoolId', schoolId);
+            
+            setWishlistData(wishlist)
+            sessionStorage.setItem('whishlistData', JSON.stringify(wishlist));
         } else {
-            const savedSchoolId = sessionStorage.getItem('schoolId')
-            if (savedSchoolId) {
-                setSchoolId(savedSchoolId);
+            const savedWishlistData = sessionStorage.getItem('whishlistData')
+            if (savedWishlistData) {
+                setWishlistData(JSON.parse(savedWishlistData));
             }
         }
+
     },[wishlist]);
 
     const onClickAddCart = (item) => {
@@ -30,8 +32,6 @@ export const Wishlist = () => {
         handleRemoveToWishlist(item.id);
     }
    
-    console.log('contrl de school id ' + schoolId);
-
     return(
         <>
             <Header />
@@ -39,9 +39,9 @@ export const Wishlist = () => {
 
             <main className="wishlist-main">
 
-                { wishlist && wishlist.length > 0 ? 
+                { whishlistData && whishlistData.length > 0 ? 
 
-                    wishlist.map(item => (
+                    whishlistData.map(item => (
                         <div key={item.id} className="wishlist-box">
                             
                             <div className="div-img">
@@ -86,10 +86,10 @@ export const Wishlist = () => {
 
            
                 <div className="wishlist-button">  
-                    {schoolId > 0
+                    {whishlistData.length > 0
                     ? 
                         (     
-                        <NavLink to={"/uniforms/" + schoolId}>Continuar Comprando</NavLink>
+                        <NavLink to={`/uniforms/${whishlistData[whishlistData.length -1].school.id}` }>Continuar Comprando</NavLink>
                         ) 
                     :
                         ''
