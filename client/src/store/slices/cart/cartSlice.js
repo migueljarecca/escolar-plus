@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialCartData = JSON.parse(sessionStorage.getItem('cartData')) || [];
+
 export const cartSlice = createSlice ({
 
     name: 'cart',
     initialState: {
-        cart: [],
+        cart: initialCartData,
         priceTotal: 0,
     },
     reducers: {
@@ -12,7 +14,7 @@ export const cartSlice = createSlice ({
 
             //Revisamos si el producto ya esta en el carro
             const productInCartIndex = state.cart.findIndex(item => item.id === action.payload.id);
-            console.log('cntrol del slice ' +productInCartIndex);
+            // console.log('cntrol del slice ' +productInCartIndex);
 
             if(productInCartIndex >= 0) {
                 
@@ -34,18 +36,25 @@ export const cartSlice = createSlice ({
                     }
 
                 ];
-                }
+            }
+            sessionStorage.setItem('cartData', JSON.stringify(state.cart));
+
         },
         removeCart: (state, action) => {
-            console.log('eliminar id ' +action.payload);
+            // console.log('eliminar id ' +action.payload);
             state.cart = state.cart.filter(item => item.id !== action.payload);
+            sessionStorage.setItem('cartData', JSON.stringify(state.cart));
+
         },
         clearCart: (state) => {
             state.cart = [];
+            sessionStorage.setItem('cartData', JSON.stringify(state.cart));
+
         },
         calculateTotal: (state) => {
             state.priceTotal = state.cart.map(items => items.price * items.quantity)
             .reduce((acumulador, currentAcumulator) => acumulador + currentAcumulator, 0);
+
         },
         updateIncreaseQuantity: (state, action) => {
             state.cart = state.cart.map(item => {
@@ -57,6 +66,7 @@ export const cartSlice = createSlice ({
                 }
                 return item;
             })
+
         },
         updateDecreaseQuantity: (state, action) => {
             state.cart = state.cart.map(item => {

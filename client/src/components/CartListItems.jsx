@@ -42,7 +42,7 @@ export const CartListItems = ({ id, image, product, price, school, quantity, han
                     </div>
                     <div className="div">
                         <h3>total</h3>
-
+                        <h3>S/. {quantity * price}</h3>
                     </div>
                     <button
                         type="submit"

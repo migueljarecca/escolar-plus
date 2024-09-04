@@ -10,31 +10,19 @@ export const ShopCart = () => {
         handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
 
     const { handleAddToWishlist } = useWishlist();
-
-    const [schoolId, setSchoolId] = useState('null');
-
-    useEffect(() => {
-        if (cart.length > 0) {
-            const schoolId = cart[cart.length -1].school.id;
-            setSchoolId(schoolId);
-            sessionStorage.setItem('schoolId', schoolId);
-        } else {
-            const savedSchoolId = sessionStorage.getItem('schoolIdOfCart');
-            if (savedSchoolId) {
-                setSchoolId(savedSchoolId);
-            }
-        }
-    },[cart]);
     
     const onClickAddWishlist = (item) => {
         handleAddToWishlist(item);//falta colegio
         handleRemoveCart(item.id);
     }
-   useEffect(() => {
+
+    useEffect(() => {
         HandleCalculateTotal();
+        
     },[handleIncreaseQuantity, handleDecreaseQuantity]); 
 
-    console.log('control de cart' +JSON.stringify(cart, null, 2));
+    // console.log('control de cart' +JSON.stringify(cart, null, 2));
+
     return(
 
         <section className="container-cart">
@@ -78,10 +66,10 @@ export const ShopCart = () => {
                         <h3>S/. {priceTotal}</h3>
                     </div>
                     <div className="div">
-                        {schoolId > 0
+                        {cart.length > 0
                         ? 
                             (     
-                            <NavLink to={"/uniforms/" + schoolId}>Continuar Comprando</NavLink>
+                            <NavLink to={`/uniforms/${cart[cart.length -1].school.id}`}>Continuar Comprando</NavLink>
                             ) 
                         :
                             ''

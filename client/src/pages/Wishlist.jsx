@@ -15,7 +15,7 @@ export const Wishlist = () => {
         handleRemoveToWishlist(item.id);
     }
 
-    console.log('cpn ' +JSON.stringify(wishlist, null, 2));
+    // console.log('cpn ' +JSON.stringify(wishlist, null, 2));
    
     return(
         <>

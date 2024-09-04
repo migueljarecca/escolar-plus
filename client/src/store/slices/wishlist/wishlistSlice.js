@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialWishlistData = JSON.parse(sessionStorage.getItem('whishlistData')) || [];
 
-
 export const wishlistSlice = createSlice({
 
     name: 'wishlist',
