@@ -10,6 +10,9 @@ import { UserLoginPage } from './pages/UserLoginPage'
 import { UserRegisterPage } from './pages/UserRegisterPage'
 import { Perfil } from './pages/Perfil'
 import { UserUpdatePage } from './pages/UserUpdatePage'
+import { AdminDashboard } from './components/admin/AdminDashboard'
+import { User } from './components/admin/User'
+import { Schools } from './components/admin/School'
 
 
 export const AppRoutes = () => {
@@ -39,6 +42,13 @@ export const AppRoutes = () => {
             <Route path='/user/update/:id' element={<UserRegisterPage />}></Route>
 
             <Route path='/perfil' element={<Perfil />}></Route>    
+
+            <Route path='/admin/dashboard' element={<AdminDashboard />}></Route>
+
+            <Route path='/admin/users' element={<User />}></Route>
+
+            <Route path='/admin/schools' element={<Schools />}></Route>
+
 
         </Routes>
     )

@@ -6,14 +6,21 @@ import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
+import { useSchool } from '../hooks/useSchool'
 
 export const Header = () => {
 
         const { login, user } = useAuth();
+        const { schools } = useSchool();
         const [isSticky, setIsSticky] = useState(false);
 
+        // useEffect(() => {
+        //     getSchools();
+        // },[]);
+
         // console.log('control header login ' +JSON.stringify(login, null, 2));
-        console.log('control header user ' +JSON.stringify(user, null, 2));
+        // console.log('control header user ' +JSON.stringify(user, null, 2));
+        // console.log('control header user ' +JSON.stringify(schools, null, 2));
       
         const handleScroll = () => {
           const shouldBeSticky = window.scrollY > 50;
@@ -53,6 +60,7 @@ export const Header = () => {
 
                 <nav className='nav-center'>
                     <p>cole</p>
+                    {schools.map((item) => (<NavLink key={item.id} to={`/uniforms/${item.id}`}>{item.name}</NavLink>))}
                 </nav>
 
                 <div className="nav-right">

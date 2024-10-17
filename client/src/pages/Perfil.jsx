@@ -10,9 +10,11 @@ export const Perfil = () => {
 
     const { login, user, handleLogout } = useAuth();
 
-    const [userPerfil, setUserPerfil] = useState(user.logged); 
+    const [userPerfil, setUserPerfil] = useState(null); 
 
     const navigate = useNavigate();
+
+    // console.log(JSON.stringify(login, null, 2));
 
     useEffect(() => {
         if (user) {
@@ -29,13 +31,13 @@ export const Perfil = () => {
         return '';
       };
 
-    // console.log(JSON.stringify(user, null, 2))
+    // console.log(JSON.stringify(user, null, 2));
       
     if (!userPerfil) {
         return <div>Loading...</div>;
     }
 
-    console.log("Rendering with userPerfil:", userPerfil);
+    // console.log("Rendering with userPerfil:", userPerfil);
 
 
     return (
@@ -58,6 +60,16 @@ export const Perfil = () => {
                     <NavLink to={'/user/update/' + userPerfil.id}>
                         <h3>Editar perfil</h3>
                     </NavLink>
+
+                    {login.isAdmin ?
+                    
+                        <NavLink to='/admin/dashboard'>
+                            <h3>Administrador</h3>
+                        </NavLink>
+                    : null
+                    }
+
+                    
 
                     <h4 onClick={() => handleLogout(userPerfil.id)}>
                         <FontAwesomeIcon icon={faRightFromBracket}/>
