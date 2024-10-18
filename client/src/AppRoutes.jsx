@@ -13,6 +13,7 @@ import { UserUpdatePage } from './pages/UserUpdatePage'
 import { AdminDashboard } from './components/admin/AdminDashboard'
 import { User } from './components/admin/User'
 import { Schools } from './components/admin/School'
+import { Uniform } from './components/admin/Uniform'
 
 
 export const AppRoutes = () => {
@@ -43,11 +44,15 @@ export const AppRoutes = () => {
 
             <Route path='/perfil' element={<Perfil />}></Route>    
 
-            <Route path='/admin/dashboard' element={<AdminDashboard />}></Route>
+            <Route path='/admin/dashboard' element={<AdminDashboard />}>
 
-            <Route path='/admin/users' element={<User />}></Route>
+                <Route path='users' element={<User />}></Route>
+                <Route path='schools' element={<Schools />}></Route>
+                <Route path='uniforms' element={<Uniform />}></Route>
 
-            <Route path='/admin/schools' element={<Schools />}></Route>
+            </Route>
+
+ 
 
 
         </Routes>

@@ -4,11 +4,11 @@ import { Sidebar } from "./Sidebar"
 export const AdminDashboard = () => {
 
     return (
-        <section>
+        <section className="section-admin">
             
             <Sidebar />
 
-            <div className="admin-content">
+            <div className="content-admin">
                 <Outlet />
             </div>
         </section>

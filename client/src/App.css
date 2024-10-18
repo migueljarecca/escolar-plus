@@ -1322,3 +1322,61 @@ body {
   font-size: 1.5rem;
   font-weight: 500;
 }
+
+/* ======================= ADMIN-PANEL ================== */
+
+.section-admin {
+  display: flex;
+}
+
+.section-admin .section-sidebar {
+  display: flex;
+  flex-direction: column;
+  background: #6a6a6a;
+  width: 15%;
+  height: 100vh;
+}
+
+.section-sidebar .top-menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
+.section-sidebar .top-menu a {
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.section-sidebar .top-menu svg {
+  font-size: 2rem;
+  color: #c5cbc8;
+}
+
+.section-sidebar .nav-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  gap: 2.5rem;
+}
+
+.section-sidebar .nav-menu div {
+  display: flex;
+  gap: 1rem;
+
+}
+
+.section-sidebar .nav-menu div .menu-div-icon {
+  width: 3rem;
+}
+
+.section-sidebar .nav-menu div svg {
+  font-size: 1.7rem;
+}
+
+.section-sidebar .nav-menu div a {
+  font-size: 1.7rem;
+  text-decoration: none;
+}
+
+

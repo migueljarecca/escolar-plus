@@ -3,7 +3,7 @@ export const User = () => {
 
     return (
         <>
-        users
+         <h2>usres</h2>
         </>
     )
 }
