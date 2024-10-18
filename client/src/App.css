@@ -1326,21 +1326,35 @@ body {
 /* ======================= ADMIN-PANEL ================== */
 
 .section-admin {
-  display: flex;
+  outline: 2px solid;
+  width: 100%;
+  height: auto;
+  
+  display: grid;
+  grid-template-columns:18% 82%;
+  grid-template-rows: 10% 90%;
+  grid-template-areas: 
+  "element1 element2"
+  "element1 element3"
+  ;
+  gap: 2px;
+
 }
 
-.section-admin .section-sidebar {
+.section-admin .div-sidebar {
   display: flex;
   flex-direction: column;
   background: #6a6a6a;
-  width: 15%;
   height: 100vh;
+
+  grid-area: element1;
+
 }
 
 .section-sidebar .top-menu {
   display: flex;
   justify-content: space-between;
-  padding: 2rem 1.5rem;
+  padding: 2rem 2rem;
 }
 
 .section-sidebar .top-menu a {
@@ -1356,14 +1370,13 @@ body {
 .section-sidebar .nav-menu {
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2rem;
   gap: 2.5rem;
 }
 
 .section-sidebar .nav-menu div {
   display: flex;
   gap: 1rem;
-
 }
 
 .section-sidebar .nav-menu div .menu-div-icon {
@@ -1377,6 +1390,43 @@ body {
 .section-sidebar .nav-menu div a {
   font-size: 1.7rem;
   text-decoration: none;
+}
+
+/* ======================= ADMIN-HEADER ================== */
+
+.div-admin-header {
+  display: flex;
+  align-items: center;
+  background: red;
+}
+
+.div-admin-header nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.div-admin-header nav a {
+  text-decoration: none;
+  font-size: 1.7rem;
+  font-weight: 300;
+}
+
+.div-admin-header nav svg {
+  margin-right: 2rem;
+}
+
+.div-admin-header nav h4 {
+  font-size: 1.7rem;
+  font-size: 300;
+}
+
+/* ======================= ADMIN-CONTETN ================== */
+
+.div-content {
+  display: flex;
+  padding: 0 2rem;
 }
 
 

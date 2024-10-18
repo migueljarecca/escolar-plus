@@ -69,8 +69,6 @@ export const Perfil = () => {
                     : null
                     }
 
-                    
-
                     <h4 onClick={() => handleLogout(userPerfil.id)}>
                         <FontAwesomeIcon icon={faRightFromBracket}/>
                         Cerrar Sesión
