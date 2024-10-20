@@ -1398,6 +1398,8 @@ body {
   display: flex;
   align-items: center;
   background: red;
+
+  grid-area: element2;
 }
 
 .div-admin-header nav {
@@ -1427,6 +1429,34 @@ body {
 .div-content {
   display: flex;
   padding: 0 2rem;
+
+  grid-area: element3;
 }
 
+/* --------------------- admin-content-user --------------- */
+
+.main-user {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-user .div-user {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0rem;
+
+}
+
+.main-user .div-user-list {
+  display: flex;
+  
+}
+
+.main-user .container-table-user {
+  width: 100%;
+}
+
+.container-table-user table {
+  width: 100%;
+}
 

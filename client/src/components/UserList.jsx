@@ -1,17 +1,20 @@
 
+import { useEffect } from 'react';
 import { useUsers } from './../hooks/useUsers';
 import { UserRow } from './UserRow';
 
 export const UserList = ({ handlerSelectUser }) => {
 
-    const { getUsers, handlerRemoveUser } = useUsers();
+    const { users, getUsers, handlerRemoveUser } = useUsers();
     
-    const users = getUsers();
+    useEffect (()=>{
+        getUsers();
+    },[]);
+
     console.log("control de user ", users);
 
     return (
         <div className='container-table-user'>
-            <h2>Lista de Usuarios</h2>
 
             <table>
                 <thead>
