@@ -38,7 +38,7 @@ export const UserForm = ({ userSelect }) => {
         } else {
             console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
 
-            handlerUpdateUser(userForm);
+            await handlerUpdateUser(userForm);
         }
 
         setUserForm(initialUserForm);

@@ -24,7 +24,7 @@ export const UserUpdatePage = () => {
 
     useEffect(() => {
         if (id) {
-            setUserSelect(user);
+            setUserSelect(user.userLogged);
         } else {
             setUserSelect(initialUserForm);
         }
