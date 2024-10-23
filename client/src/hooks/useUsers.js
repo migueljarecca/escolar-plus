@@ -16,8 +16,8 @@ export const useUsers = () => {
     const handlerAddUser = async (user) => {
         console.log("control 1", user);
         const item = await save(user);
-        // dispatch(addToUser(item.data));
-        dispatch(addUser(item.data));
+        dispatch(addToUser(item.data));
+        // dispatch(addUser(item.data));
 
         // navigate('/perfil');
     }
@@ -36,13 +36,14 @@ export const useUsers = () => {
 
     const handlerUpdateUser = async (user) => {
         const item = await update(user);
-        // dispatch(updateToUser(item.data));
-        dispatch(updateUser(item.data));
+        dispatch(updateToUser(item.data));
+        // dispatch(updateUser(item.data));
 
-        navigate('/perfil');
+        // navigate('/perfil');
     }
 
     const handlerRemoveUser = (id) => {
+        console.log("control de hanldle remove ademin " + JSON.stringify(id, null, 2))
         remove(id);
         dispatch(removeToUser(id));
     }

@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useUsers } from "../../hooks/useUsers";
 
 export const UserFormAdmin = ({userSelectedAd}) => {
+
+    const { handlerAddUser, handlerUpdateUser, initialUserForm } = useUsers();
 
     const [userFormAd, setUserFormAd] = useState(userSelectedAd);
 
@@ -18,7 +21,16 @@ export const UserFormAdmin = ({userSelectedAd}) => {
 
         event.preventDefault();
 
-        console.log("control de user admin " + userFormAd)
+        if (id === 0) {
+            handlerAddUser(userFormAd);
+
+        } else {
+            handlerUpdateUser(userFormAd);
+        }
+
+        console.log("control de user admin " + JSON.stringify(userFormAd, null, 2));
+
+        setUserFormAd(initialUserForm);
         
 
     }

@@ -10,7 +10,6 @@ const initialUserForm = {
     lastname: '',
     email: '',
     password: '',
-    password: '',
 }
 
 export const User = () => {
@@ -32,8 +31,8 @@ export const User = () => {
         getUsers();
     },[]);
 
-    console.log("control de hanldle remove ademin " + JSON.stringify(handlerRemoveUser, null, 2))
-    console.log("control de user selected admin  " + JSON.stringify(handlerSelectUser, null, 2))
+
+    console.log("control de user selected admin  " + JSON.stringify(userSelectedAd, null, 2))
 
 
     return (
