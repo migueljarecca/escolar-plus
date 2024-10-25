@@ -1,13 +1,17 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useUsers } from "../../hooks/useUsers";
 
 export const UserFormAdmin = ({userSelectedAd}) => {
 
     const { handlerAddUser, handlerUpdateUser, initialUserForm } = useUsers();
 
-    const [userFormAd, setUserFormAd] = useState(userSelectedAd);
+    const [userFormAd, setUserFormAd] = useState(initialUserForm);
 
     const {id, name, lastname, email, password} = userFormAd; 
+
+    useEffect(()=>{
+        setUserFormAd(userSelectedAd);
+    },[userSelectedAd]);
 
     const onInputUserAd = ({target}) => {
         const {name, value} = target;
@@ -21,7 +25,7 @@ export const UserFormAdmin = ({userSelectedAd}) => {
 
         event.preventDefault();
 
-        if (id === 0) {
+        if (id === '') {
             handlerAddUser(userFormAd);
 
         } else {
@@ -62,20 +66,22 @@ export const UserFormAdmin = ({userSelectedAd}) => {
                     value={email}
                     onChange={onInputUserAd}
                 />
-
+                {id > 0 ? ""
+                : 
                 <input 
                     type="password"
                     placeholder="Contraseña"
                     name="password"
                     value={password}
                     onChange={onInputUserAd}
-                />
+                />}
+                
 
                 <button
                     type="submit"
 
                 >
-                    Crear usuario
+                    {id > 0 ? "Actualizar": "Crear" }
                 </button>
 
             </form>

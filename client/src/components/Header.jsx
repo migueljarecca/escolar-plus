@@ -14,6 +14,12 @@ export const Header = () => {
         const { schools } = useSchool();
         const [isSticky, setIsSticky] = useState(false);
 
+        const [userState, setUserState] = useState(user);
+
+        useEffect(() => {
+            setUserState(user.userLogged);
+        },[user]);
+
         // useEffect(() => {
         //     getSchools();
         // },[]);
@@ -75,7 +81,7 @@ export const Header = () => {
                         ?
                         <NavLink to={'/perfil'}>
                             <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
-                            <span>Hola! {user.userLogged.name}</span>
+                            <span>Hola! {userState.name}</span>
                         </NavLink> 
                         :
                         <NavLink to={'/user/login'}>

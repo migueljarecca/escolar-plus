@@ -11,17 +11,6 @@ export const useUsers = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    //Recibimos el usuario del UserForm
-    //comunicacion con el userService-backend guardar
-    const handlerAddUser = async (user) => {
-        console.log("control 1", user);
-        const item = await save(user);
-        dispatch(addToUser(item.data));
-        // dispatch(addUser(item.data));
-
-        // navigate('/perfil');
-    }
-
     //Traemos todos los usuarios
     const getUsers = async () => {
         try {
@@ -34,12 +23,30 @@ export const useUsers = () => {
         }
     }
 
+    //Recibimos el usuario del UserForm
+    //comunicacion con el userService-backend guardar
+    const handlerAddUser = async (user) => {
+        const item = await save(user);
+        dispatch(addUser(item.data));
+
+        navigate('/perfil');
+    }
+
     const handlerUpdateUser = async (user) => {
         const item = await update(user);
-        dispatch(updateToUser(item.data));
-        // dispatch(updateUser(item.data));
+        dispatch(updateUser(item.data));
 
-        // navigate('/perfil');
+        navigate('/perfil');
+    }
+
+    const handlerAddUserFromAdmin = async (user) => {
+        const item = await save(user);
+        dispatch(addToUser(item.data));
+    }
+
+    const handlerUpdateUserFromAdmin = async (user) => {
+        const item = await update(user);
+        dispatch(updateToUser(item.data));
     }
 
     const handlerRemoveUser = (id) => {

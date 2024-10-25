@@ -60,7 +60,7 @@ export const update = async ({id, name, lastname, email}) => {
 export const remove = async (id) => {
     console.log("controlll ", id);
     try {
-        return await axios.delete(`${BASE_URL_USER}/${id}`);
+        axios.delete(`${BASE_URL_USER}/${id}`,config());
     } catch (error) {
         console.log(error);
     }

@@ -10,11 +10,9 @@ export const Perfil = () => {
 
     const { login, user, handleLogout } = useAuth();
 
-    const [userPerfil, setUserPerfil] = useState(null); 
+    const [userPerfil, setUserPerfil] = useState(user); 
 
     const navigate = useNavigate();
-
-    // console.log(JSON.stringify(login, null, 2));
 
     useEffect(() => {
         if (user) {
@@ -24,6 +22,8 @@ export const Perfil = () => {
         }
     },[user]);
 
+    console.log("conrol de user " +JSON.stringify(userPerfil, null, 2))
+
     const getFirstLetter = (name) => {
         if (name && name.length > 0) {
           return name.charAt(0).toUpperCase();
@@ -31,14 +31,9 @@ export const Perfil = () => {
         return '';
       };
 
-    // console.log(JSON.stringify(user, null, 2));
-      
     if (!userPerfil) {
         return <div>Loading...</div>;
     }
-
-    // console.log("Rendering with userPerfil:", userPerfil);
-
 
     return (
         <>

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialUserForm = {
-    id: 0,
+    id: '',
     name: '',
     lastname: '',
     email: '',

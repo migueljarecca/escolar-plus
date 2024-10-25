@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react"
 import { useUsers } from "../hooks/useUsers";
 import { useAuth } from "../hooks/useAuth";
-import { useDispatch } from "react-redux";
-import { addUser } from "../store/slices/auth/authSlice";
 
 export const UserForm = ({ userSelect }) => {
 
     const { initialUserForm, handlerAddUser, handlerUpdateUser } = useUsers();
     const { handleLogin } = useAuth();
-
-    const dispatch = useDispatch();
 
     const [userForm, setUserForm] = useState(initialUserForm);
 
@@ -39,14 +35,10 @@ export const UserForm = ({ userSelect }) => {
 
             handleLogin({email: userForm.email, password: userForm.password});
 
-            useDispatch(addUser(userForm));
-
         } else {
             console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
 
             await handlerUpdateUser(userForm);
-
-            dispatch(updateUser(item.data));
 
         }
 

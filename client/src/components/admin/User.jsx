@@ -14,17 +14,16 @@ const initialUserForm = {
 
 export const User = () => {
 
-    const { users, getUsers, handlerRemoveUser, handlerUpdateUser } = useUsers();
+    const { users, getUsers, handlerRemoveUser } = useUsers();
 
     const [showFormUser, setShowFormUser] = useState(false);
     const [userSelectedAd, setUserSelectedAd] = useState(initialUserForm);
 
-    const [idUserAd, setIdUserAd] = useState(null);
-
-    // Definir handlerSelectUser para seleccionar un usuario y mostrar su información en el formulario
+    // Definir handlerSelectUser para seleccionar un usuario y mostrar su información
+    // en el formulario
     const handlerSelectUser = (user) => {
         setUserSelectedAd(user);
-        //setShowFormUser(true); // Mostrar el formulario cuando se seleccione un usuario
+        setShowFormUser(true); // Mostrar el formulario cuando se seleccione un usuario
     };
 
     useEffect (()=>{
@@ -40,8 +39,14 @@ export const User = () => {
             <div className="div-user">
                 <h2>Usuarios</h2>
                 <button 
-                    onClick={() => setShowFormUser(!showFormUser)}>
-                    {showFormUser ? 'Cancelar' : 'Nuevo usuario'}
+                    onClick={() =>{ 
+                        setShowFormUser(!showFormUser)
+                        if (showFormUser) { // Si ya está visible, al ocultarlo, limpiamos el formulario
+                            setUserSelectedAd(initialUserForm);
+                        }
+                    }}
+                    >
+                    {showFormUser ? 'Ocultar formulario' : 'Nuevo usuario'}
                 </button>
             </div>
 
@@ -49,7 +54,6 @@ export const User = () => {
                 <UserList 
                     users={users} 
                     handlerRemoveUser={handlerRemoveUser}
-                    // handlerUpdateUser={handlerUpdateUser}
                     handlerSelectUser={handlerSelectUser}
                 />
 

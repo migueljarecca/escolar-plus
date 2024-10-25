@@ -6,7 +6,7 @@ export const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
 }
 
 export const initialUser = JSON.parse(sessionStorage.getItem('user')) || {
-    userLogged: undefined
+    user: undefined
 }
 
 export const authSlice = createSlice({
