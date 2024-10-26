@@ -31,7 +31,7 @@ export const User = () => {
     },[]);
 
 
-    console.log("control de user selected admin  " + JSON.stringify(userSelectedAd, null, 2))
+    // console.log("control de user selected admin  " + JSON.stringify(userSelectedAd, null, 2))
 
 
     return (

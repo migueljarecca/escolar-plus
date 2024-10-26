@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useSchool } from '../hooks/useSchool'
+import { initialUserForm } from './../store/slices/users/userSlice';
 
 export const Header = () => {
 
@@ -14,10 +15,10 @@ export const Header = () => {
         const { schools } = useSchool();
         const [isSticky, setIsSticky] = useState(false);
 
-        const [userState, setUserState] = useState(user);
+        const [userState, setUserState] = useState(user?.userLogged || initialUserForm);
 
         useEffect(() => {
-            setUserState(user.userLogged);
+            setUserState(user?.userLogged || initialUserForm);
         },[user]);
 
         // useEffect(() => {

@@ -49,6 +49,8 @@ export const useAuth = () => {
         }
     };
 
+    // console.log("userr " +JSON.stringify(user, null, 2));
+
     const handleLogout = () => {
         dispatch(onLogout());
         dispatch(removeUser());

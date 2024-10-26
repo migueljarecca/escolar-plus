@@ -27,14 +27,28 @@ export const useUsers = () => {
     //comunicacion con el userService-backend guardar
     const handlerAddUser = async (user) => {
         const item = await save(user);
-        dispatch(addUser(item.data));
 
         navigate('/perfil');
     }
 
     const handlerUpdateUser = async (user) => {
         const item = await update(user);
-        dispatch(updateUser(item.data));
+        const userLogged = {
+            id: item.data.id, 
+            name: item.data.name,
+            lastname: item.data.lastname, 
+            email: item.data.email
+        };
+
+        dispatch(updateUser({userLogged:userLogged}));
+
+        sessionStorage.setItem('user', JSON.stringify({
+            userLogged: userLogged,
+        }));
+
+        // console.log("id desde useUsers " +item.data.userId);
+        // console.log("user desde useUsers " +JSON.stringify(userLogged, null, 2));
+
 
         navigate('/perfil');
     }
@@ -64,6 +78,8 @@ export const useUsers = () => {
             getUsers,
             handlerUpdateUser,
             handlerRemoveUser,
+            handlerAddUserFromAdmin,
+            handlerUpdateUserFromAdmin,
         }
     )
 }
