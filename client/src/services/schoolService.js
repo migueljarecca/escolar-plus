@@ -6,7 +6,7 @@ const config = () => {
     return {
         headers: {
             "Authorization": sessionStorage.getItem('token'),
-            "Content-type": "application/json",
+            "Content-type": 'multipart/form-data',
         }
     }
 }
@@ -15,6 +15,7 @@ const config = () => {
 
 //Creamos un colegio
 export const save = async(formData) => {
+
     try {
         const response = await axios.post(BASE_URL_SCHOOL, formData, config());
         return response;  
@@ -43,8 +44,13 @@ export const findAll = async() => {
 }
 
 export const update = async(formData, id) => {
+    console.log("control form school service update");
+
+    for (let pair of formData.entries()) {
+        console.log(`${pair[0]}: ${pair[1]}`);
+    }
     try {
-        const response = await axios.put(`${BASE_URL_SCHOOL}/${id}`, formData);
+        const response = await axios.put(`${BASE_URL_SCHOOL}/${id}`, formData, config());
         return response;
     } catch (error) {
         console.error(error);

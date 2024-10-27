@@ -2,13 +2,17 @@
 import { useSchool } from './../../hooks/useSchool';
 import { SchoolListAdmin } from './SchoolListAdmin';
 import { SchoolForm } from './../SchoolForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Schools = () => {
 
     const{ getSchools, schools, initialSchoolForm } = useSchool();
     const [schoolSelected, setSchoolSelected] = useState(initialSchoolForm);
     const [showFormSchool, setShowFormSchool] = useState(false);
+
+    useEffect(() => {
+        getSchools()
+    },[]);
 
 
     const handlerSelectedSchool = (school) => {

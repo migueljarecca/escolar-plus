@@ -1,7 +1,8 @@
 
 import { findAll, remove, save, update } from "../services/schoolService";
 import { useDispatch, useSelector } from 'react-redux';
-import { addSchool, initialSchoolForm, removeSchool, updateSchool, loadingSchools } from "../store/slices/schools/schoolsSlice";
+import { addSchool, initialSchoolForm, removeSchool, updateSchool, 
+    loadingSchools } from "../store/slices/schools/schoolsSlice";
 
 export const useSchool = () => {
 
@@ -23,6 +24,7 @@ export const useSchool = () => {
     const handlerAddSchool = async(formData) => {
         const response = await save(formData);
         dispatch(addSchool({ ...response.data }));
+        console.log("control handler school " +JSON.stringify(response.data, null, 2));
     };
 
     const handlerUpdateSchool = async(formData, id) => {

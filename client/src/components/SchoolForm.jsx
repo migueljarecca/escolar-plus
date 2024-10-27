@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSchool } from "../hooks/useSchool";
 
 export const SchoolForm = ({ schoolSelected }) => {
@@ -6,9 +6,10 @@ export const SchoolForm = ({ schoolSelected }) => {
     const {initialSchoolForm, handlerAddSchool, handlerUpdateSchool} = useSchool();
 
     const [schoolForm, setSchoolForm] = useState(initialSchoolForm);
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(schoolForm.file);
+    const fileInputRef = useRef();  // Crear la referencia
 
-    const {name, address, schoolCode} = schoolForm;
+    const {id, name, address, schoolCode} = schoolForm;
 
     //Colegio seleccionado recibimos del RegisterSchoolPage
     useEffect(() => {
@@ -42,23 +43,34 @@ export const SchoolForm = ({ schoolSelected }) => {
             formData.append('file', file);
         }
         
-        if (schoolSelected.id == 0) {
+        if (id === '') {
             //Enviamos al hook useSchool
+            console.log("control form school create");
+
+            // Mostrar los valores del FormData en consola
+            // for (let pair of formData.entries()) {
+            //     console.log(`${pair[0]}: ${pair[1]}`);
+            // }
             handlerAddSchool(formData);            
         } else {
             handlerUpdateSchool(formData, schoolSelected.id);
             //Debugger para ver los datos
-            for (let [key, value] of formData.entries()) {
-                console.log(key, value);
-              }
+            // for (let [key, value] of formData.entries()) {
+            //     console.log(key, value);
+            //   }
         }
+
         setSchoolForm(initialSchoolForm);
         setFile(null);
+        // Reset the file input through the DOM API using the ref
+        fileInputRef.current.value = ""; 
     }
 
     return (
         <>
             <form className="form-school" onSubmit={onSubmitSchoolChange}>
+
+                <h3>{id === '' ? "Crear colegio" : "Editar colegio"}</h3>
 
                 <input 
                     type="text"

@@ -3,13 +3,22 @@ import axios from 'axios';
 
 const BASE_URL_UNIFORM = `${import.meta.env.VITE_API_BASE_URL}/uniforms`
 
+const config = () => {
+    return {
+        headers: {
+            "Authorization": sessionStorage.getItem('token'),
+            "Content-type": "application/json",
+        }
+    }
+}
+
 //COMUNICACION CON EL BACKEND
 
 //Creamos un uniforme
 export const create = async(formData) => {
 
     try {
-        const response = await axios.post(BASE_URL_UNIFORM, formData);
+        const response = await axios.post(BASE_URL_UNIFORM, formData, config());
         return response;
         
     } catch (error) {

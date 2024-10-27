@@ -281,9 +281,12 @@ body {
 .form-school {
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  /* width: 30%; */
   padding-top: 2rem;
   gap: 1rem;
+  position: relative;
+  right: 0;
+
 }
 
 .form-school input {
@@ -1460,3 +1463,25 @@ body {
   width: 100%;
 }
 
+/* --------------------- admin-content-school --------------- */
+
+.main-school-admin {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-school-admin .div-school-admin {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0rem;
+
+}
+
+.main-school-admin .div-school-list-admin {
+  display: flex;
+}
+
+.div-school-list-admin .aside-cole-admin {
+  width: 100%;
+  background: #008a00;
+}
