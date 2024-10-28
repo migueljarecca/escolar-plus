@@ -26,7 +26,7 @@ export const Schools = () => {
 
     return (
         <main className='main-school-admin'>
-            <div className="div-school-admin">
+            <nav className="nav-school">
                 <h2>Colegios</h2>
 
                 <button 
@@ -40,18 +40,22 @@ export const Schools = () => {
                     {showFormSchool ? 'Ocultar formulario' : 'Nuevo colegio'}
                 </button>
 
-            </div>
+            </nav>
 
-            <div className="div-school-list-admin">
+            <section className="section-school">
 
-                <SchoolListAdmin 
-                    schools={schools}
-                    handlerSelectedSchool={handlerSelectedSchool}
+                <div className="container-school-list">
+                    <SchoolListAdmin 
+                        schools={schools}
+                        handlerSelectedSchool={handlerSelectedSchool}
                     />
-                {showFormSchool && <SchoolForm schoolSelected={schoolSelected}/>}
-                {/* <SchoolForm /> */}
+                </div>
 
-            </div>
+                <div className='content-form-school'>
+                    {showFormSchool && <SchoolForm schoolSelected={schoolSelected}/>}
+                </div>
+
+            </section>
 
 
         </main>

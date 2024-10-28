@@ -5,19 +5,24 @@ import { AdminHeader } from "./AdminHeader"
 export const AdminDashboard = () => {
 
     return (
-        <section className="section-admin">
-            
-            <div className="div-sidebar">
+        <main className="main-admin">
+          
+            <sidebar className="sidebar-admin">
                 <Sidebar />
-            </div>
+            </sidebar>
 
-            <div className="div-admin-header">
-                <AdminHeader />
-            </div>
-            <div className="div-content">
-                <Outlet />
-            </div>
+            <section className="section-admin">
 
-        </section>
+                <header className="header-admin">
+                    <AdminHeader />
+                </header>
+
+                <div className="div-content">
+                    <Outlet />
+                </div>
+            </section>
+            
+
+        </main>
     )
 }

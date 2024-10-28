@@ -1328,101 +1328,97 @@ body {
 
 /* ======================= ADMIN-PANEL ================== */
 
-.section-admin {
-  outline: 2px solid;
-  width: 100%;
-  height: auto;
-  
-  display: grid;
-  grid-template-columns:18% 82%;
-  grid-template-rows: 10% 90%;
-  grid-template-areas: 
-  "element1 element2"
-  "element1 element3"
-  ;
-  gap: 2px;
-
+.main-admin {
+  display: flex;
 }
 
-.section-admin .div-sidebar {
+.main-admin .sidebar-admin {
   display: flex;
   flex-direction: column;
   background: #6a6a6a;
+  flex-basis: 20%;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
   height: 100vh;
-
-  grid-area: element1;
-
 }
 
-.section-sidebar .top-menu {
+.sidebar-admin .top-menu {
   display: flex;
   justify-content: space-between;
   padding: 2rem 2rem;
 }
 
-.section-sidebar .top-menu a {
+.sidebar-admin .top-menu a {
   text-decoration: none;
   font-size: 2rem;
 }
 
-.section-sidebar .top-menu svg {
+.sidebar-admin .top-menu svg {
   font-size: 2rem;
   color: #c5cbc8;
 }
 
-.section-sidebar .nav-menu {
+.sidebar-admin .nav-menu {
   display: flex;
   flex-direction: column;
   padding: 1rem 2rem;
   gap: 2.5rem;
 }
 
-.section-sidebar .nav-menu div {
+.sidebar-admin .nav-menu div {
   display: flex;
   gap: 1rem;
 }
 
-.section-sidebar .nav-menu div .menu-div-icon {
+.sidebar-admin .nav-menu div .menu-div-icon {
   width: 3rem;
 }
 
-.section-sidebar .nav-menu div svg {
+.sidebar-admin .nav-menu div svg {
   font-size: 1.7rem;
 }
 
-.section-sidebar .nav-menu div a {
+.sidebar-admin .nav-menu div a {
   font-size: 1.7rem;
   text-decoration: none;
 }
 
 /* ======================= ADMIN-HEADER ================== */
 
-.div-admin-header {
+.main-admin .section-admin {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.section-admin .header-admin {
   display: flex;
   align-items: center;
   background: red;
-
-  grid-area: element2;
+  padding: 2rem 2rem;
+  position: sticky;
+  z-index: 10;
 }
 
-.div-admin-header nav {
+.header-admin nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 2rem;
 }
 
-.div-admin-header nav a {
+.header-admin nav a {
   text-decoration: none;
   font-size: 1.7rem;
   font-weight: 300;
 }
 
-.div-admin-header nav svg {
+.header-admin nav svg {
   margin-right: 2rem;
 }
 
-.div-admin-header nav h4 {
+.header-admin nav h4 {
   font-size: 1.7rem;
   font-size: 300;
 }
@@ -1433,7 +1429,6 @@ body {
   display: flex;
   padding: 0 2rem;
 
-  grid-area: element3;
 }
 
 /* --------------------- admin-content-user --------------- */
@@ -1470,18 +1465,28 @@ body {
   flex-direction: column;
   width: 100%;
 }
-.main-school-admin .div-school-admin {
+.main-school-admin .nav-school {
   display: flex;
   justify-content: space-between;
   padding: 2rem 0rem;
 
 }
 
-.main-school-admin .div-school-list-admin {
+.main-school-admin .section-school {
   display: flex;
+  width: 100%;
+  gap: 2rem;
+
 }
 
-.div-school-list-admin .aside-cole-admin {
+.section-school .container-school-list {
   width: 100%;
   background: #008a00;
+}
+
+.section-school .content-form-school {
+  flex-basis: 30%;
+  position: sticky;
+  align-self: flex-start;
+  background: #6a6a6a;
 }
