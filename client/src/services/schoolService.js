@@ -59,7 +59,7 @@ export const update = async(formData, id) => {
 
 export const remove = async(id) => {
     try {
-        const response = await axios.delete(`${BASE_URL_SCHOOL}/${id}`);
+        const response = await axios.delete(`${BASE_URL_SCHOOL}/${id}`,config());
     } catch (error) {
         console.log(error);
     }

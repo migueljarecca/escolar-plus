@@ -5,6 +5,7 @@ export const initialSchoolForm = {
     name:'',
     address: '',
     schoolCode: '',
+    image: '',
   }
 
 export const schoolSlice = createSlice({

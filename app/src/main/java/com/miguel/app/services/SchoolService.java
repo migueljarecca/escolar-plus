@@ -62,9 +62,14 @@ public class SchoolService {
             dbSchool.setAddress(schoolDto.getAddress());
             dbSchool.setSchoolCode(schoolDto.getSchoolCode());
 
+             // Verificar si hay un archivo nuevo para actualizar la imagen
             MultipartFile file = schoolDto.getFile();
-            Image img = imageService.updateImage(file, dbSchool.getImage().getId());
-            dbSchool.setImage(img);
+            if (file != null && !file.isEmpty()) {
+                // Si hay un archivo nuevo, actualizamos la imagen
+                Image img = imageService.updateImage(file, dbSchool.getImage().getId());
+                dbSchool.setImage(img);
+            }
+            // Si no hay archivo, mantenemos la imagen existente
 
             School requestSchool = schoolRepository.save(dbSchool);
 
