@@ -87,8 +87,6 @@ export const SchoolForm = ({ schoolSelected }) => {
         <>
             <form className="form-school" onSubmit={onSubmitSchoolChange}>
 
-                <h3>{id === '' ? "Crear colegio" : "Editar colegio"}</h3>
-
                 <input 
                     type="text"
                     placeholder="nombre"

@@ -49,10 +49,17 @@ export const Schools = () => {
                         schools={schools}
                         handlerSelectedSchool={handlerSelectedSchool}
                     />
+
                 </div>
 
                 <div className='content-form-school'>
-                    {showFormSchool && <SchoolForm schoolSelected={schoolSelected}/>}
+                    {showFormSchool && (
+                        <>
+                            <h3>{schoolSelected.id === '' ? "Crear colegio" : "Editar colegio"}</h3>
+                            <SchoolForm schoolSelected={schoolSelected}/>
+                        </>
+                    )}
+                        
                 </div>
 
             </section>
