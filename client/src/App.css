@@ -837,63 +837,6 @@ body {
   cursor: pointer;
 }
 
-
-/* ======================= REGISTER UNIFORM PAGE ================== */
-
-.container-form-uniform {
-  display: flex;
-  flex-direction: column;
-  margin: 3rem 4%;
-  padding: 4rem;
-  align-items: center;
-  background: #fdfdfd;
-}
-
-.container-form-uniform h3 {
-  font-size: 3rem;
-  font-weight: 400;
-}
-
-.container-form-uniform form {
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  padding-top: 2rem;
-  gap: 1rem;
-}
-
-.container-form-uniform form label {
-  font-size: 1.7rem;
-}
-
-.container-form-uniform form select {
-  cursor: pointer;
-  border: 1px solid var(--line-color);
-  padding: 1rem;
-  font-size: 1.5rem;
-}
-
-.container-form-uniform form select:hover {
-  border-color: #6a6a6a;
-}
-
-.container-form-uniform form select:focus {
-  outline: none;
-}
-
-.container-form-uniform form input {
-  padding: 1rem;
-  border: 1px solid var(--line-color);
-  font-size: 1.5rem;
-}
-
-.container-form-uniform form button {
-  position: relative;
-  margin-top: 1rem;
-  padding: 1rem;
-  font-size: 1.7rem;
-}
-
 /* ======================= UNIFORM DETAILS ================== */
 
 .uniform-details {
@@ -1709,4 +1652,83 @@ body {
 
 .content-uniform button:nth-child(2):hover {
   background-color: #c82333; /* Rojo más oscuro */
+}
+
+/* ===================== FORM-REGISTER-UNIFORM  ===================== */
+
+.section-uniform .content-form-uniform {
+  position: sticky;
+  align-self: flex-start;
+  z-index: 10;
+  top: 14rem;
+}
+
+.content-form-uniform {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  background: #fdfdfd;
+}
+
+.content-form-uniform h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.content-form-uniform form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  padding-top: 2rem;
+  gap: 1rem;
+}
+
+.content-form-uniform form .input-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.content-form-uniform form .input-cont {
+  display: flex;
+  flex-direction: column;
+  width: 48.5%;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.content-form-uniform form label {
+  font-size: 1.7rem;
+}
+
+.content-form-uniform form select {
+  cursor: pointer;
+  border: 1px solid var(--line-color);
+  padding: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.content-form-uniform form select:hover {
+  border-color: #6a6a6a;
+}
+
+.content-form-uniform form select:focus {
+  outline: none;
+}
+
+.content-form-uniform form input {
+  padding: 1rem;
+  border: 1px solid var(--line-color);
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+.content-form-uniform form button {
+  position: relative;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.7rem;
 }

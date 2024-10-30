@@ -95,81 +95,91 @@ export const UniformForm = ( { uniformSelected }) => {
     };
 
     return (
-        <>
-            <form onSubmit={onSubmitUniformChange}>
+        <form onSubmit={onSubmitUniformChange}>
 
-                <label htmlFor="product">Categoría</label>
+            <div className="input-box"> 
+
+                <div className='input-cont'>
+                    {/* <label htmlFor="product">Categoría</label> */}
               
-                <select 
-                    name="product" 
-                    type="text" 
-                    id="product"
-                    value={product}
-                    onChange={onInputUniformChange}
+                    <select 
+                        name="product" 
+                        type="text" 
+                        id="product"
+                        value={product}
+                        onChange={onInputUniformChange}
                     >
 
-                    <option value="">Seleccionar producto</option>
-                    <option value="BLUZA_MANGA_CORTA">BLUZA MANGA CORTA</option>
-                    <option value="BLUZA_MANGA_LARGA">BLUZA MANGA LARGA</option>
-                    <option value="CAMISA_MANGA_CORTA">CAMISA MANGA CORTA</option>
-                    <option value="CAMISA_MANGA_LARGA">CAMISA MANGA LARGA</option>
-                    <option value="CASACA">CASACA</option>
-                    <option value="CHALECO">CHALECO</option>
-                    <option value="CHOMPA">CHOMPA</option>
-                    <option value="POLO_MANGA_CORTA">POLO MANGA CORTA</option>
-                    <option value="POLO_MANGA_LARGA">POLO MANGA LARGA</option>
-                    <option value="FALDA">FALDA</option>
-                    <option value="JUMPER">JUMPER</option>
-                    <option value="SHORT">SHORT</option>
-                    <option value="PANTALON_BUZO">PANTALON BUZO</option>
-                    <option value="PANTALON">PANTALON</option>
+                        <option value="">Seleccionar producto</option>
+                        <option value="BLUZA_MANGA_CORTA">BLUZA MANGA CORTA</option>
+                        <option value="BLUZA_MANGA_LARGA">BLUZA MANGA LARGA</option>
+                        <option value="CAMISA_MANGA_CORTA">CAMISA MANGA CORTA</option>
+                        <option value="CAMISA_MANGA_LARGA">CAMISA MANGA LARGA</option>
+                        <option value="CASACA">CASACA</option>
+                        <option value="CHALECO">CHALECO</option>
+                        <option value="CHOMPA">CHOMPA</option>
+                        <option value="POLO_MANGA_CORTA">POLO MANGA CORTA</option>
+                        <option value="POLO_MANGA_LARGA">POLO MANGA LARGA</option>
+                        <option value="FALDA">FALDA</option>
+                        <option value="JUMPER">JUMPER</option>
+                        <option value="SHORT">SHORT</option>
+                        <option value="PANTALON_BUZO">PANTALON BUZO</option>
+                        <option value="PANTALON">PANTALON</option>
 
-                </select>
+                    </select>
 
-                <label htmlFor="size">Talla</label>
+                    {/* <label htmlFor="size">Talla</label> */}
               
-                <select 
-                    name="size" 
-                    type="text" 
-                    id="size"
-                    value={size}
-                    onChange={onInputUniformChange}
+                    <select 
+                        name="size" 
+                        type="text" 
+                        id="size"
+                        value={size}
+                        onChange={onInputUniformChange}
                     >
 
-                    <option value="">Seleccionar talla</option>
-                    <option value="NUM_10">10</option>
-                    <option value="NUM_12">12</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="X">X</option>
-                    <option value="XL">XL</option>
-                </select>
+                        <option value="">Seleccionar talla</option>
+                        <option value="NUM_10">10</option>
+                        <option value="NUM_12">12</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="X">X</option>
+                        <option value="XL">XL</option>
 
-                <label htmlFor="gender">Género</label>
-              
-                <select 
-                    name="gender" 
-                    type="text" 
-                    id="gender"
-                    value={gender}
-                    onChange={onInputUniformChange}
-                    >
-                    
-                    <option value="">Seleccionar género</option>
-                    <option value="HOMBRE">HOMBRE</option>
-                    <option value="MUJER">MUJER</option>
-                    <option value="UNISEX">UNISEX</option>
-                </select>
+                    </select>
 
-                <label htmlFor="price">Precio en s/.</label>
+                </div>
 
-                <input 
-                    type='number'
-                    name= 'price'
-                    id='price'
-                    value={price}
-                    onChange={onInputUniformChange}
-                />
+                <div className='input-cont'>
+
+                    {/* <label htmlFor="gender">Género</label> */}
+                
+                    <select 
+                        name="gender" 
+                        type="text" 
+                        id="gender"
+                        value={gender}
+                        onChange={onInputUniformChange}
+                        >
+                        
+                        <option value="">Seleccionar género</option>
+                        <option value="HOMBRE">HOMBRE</option>
+                        <option value="MUJER">MUJER</option>
+                        <option value="UNISEX">UNISEX</option>
+                    </select>
+
+                    {/* <label htmlFor="price">Precio en s/.</label> */}
+
+                    <input 
+                        type='number'
+                        name= 'price'
+                        placeholder='Precio S/.'
+                        id='price'
+                        value={price}
+                        onChange={onInputUniformChange}
+                    />
+                </div>
+            </div>
 
                 {/* Mostrar la previsualización de la imagen si existe */}
                 {imagePreview && (
@@ -211,6 +221,5 @@ export const UniformForm = ( { uniformSelected }) => {
                 </button>
 
             </form>
-        </>
     )
 }
