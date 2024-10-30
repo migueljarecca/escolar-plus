@@ -7,7 +7,7 @@ const config = () => {
     return {
         headers: {
             "Authorization": sessionStorage.getItem('token'),
-            "Content-type": "application/json",
+            "Content-type": 'multipart/form-data',
         }
     }
 }
@@ -39,7 +39,7 @@ export const findAll = async() => {
 export const update = async(formData, id) => {
 
     try {
-        const response = await axios.put(`${BASE_URL_UNIFORM}/${id}`, formData);
+        const response = await axios.put(`${BASE_URL_UNIFORM}/${id}`, formData, config());
         return response;
     } catch (error) {
         console.error(error);
@@ -49,7 +49,7 @@ export const update = async(formData, id) => {
 export const remove = async(id) => {
 
     try {
-        const response = await axios.delete(`${BASE_URL_UNIFORM}/${id}`);
+        const response = await axios.delete(`${BASE_URL_UNIFORM}/${id}`,config());
     } catch (error) {
         console.log(error);
     }

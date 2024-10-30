@@ -1,12 +1,16 @@
 import { UniformCardAdmin } from "./UniformCardAdmin"
 
-export const UniformListAdmin = ({uniforms, handlerSelectedUniform}) => {
+export const UniformListAdmin = ({uniforms, handlerSelectedUniform, handlerRemoveUniform}) => {
 
-    <>
-        {uniforms.map((uniform) => (<UniformCardAdmin 
-            key={uniform.id}
-            uniform={uniform}
-            handlerSelectedUniform={handlerSelectedUniform}
-        />))}
-    </>
+    return(
+
+        <>
+            {uniforms.map((uniform) => (<UniformCardAdmin 
+                key={uniform.id}
+                uniform={uniform}
+                handlerSelectedUniform={handlerSelectedUniform}
+                handlerRemoveUniform={handlerRemoveUniform}
+            />))}
+        </>
+    )
 }

@@ -5,7 +5,7 @@ import { UniformListAdmin } from './UniformListAdmin';
 import { UniformForm } from './../UniformForm';
 export const Uniform = () => {
 
-    const {getAllUniform, uniforms, initialUniformForm} = useUniform();
+    const {getAllUniform, handlerRemoveUniform, uniforms, initialUniformForm} = useUniform();
     const [uniformSelected, setUniformSelected] = useState(initialUniformForm);
     const [showFormUniform, setShowFormUniform] = useState(false);
 
@@ -18,7 +18,6 @@ export const Uniform = () => {
         setUniformSelected(uniform);
         setShowFormUniform(true);
     }
-
 
     return (
         <main className='main-uniform-admin'>
@@ -34,7 +33,7 @@ export const Uniform = () => {
                         }
                     }}
                     >
-                    {showFormSchool ? 'Ocultar formulario' : 'Nuevo uniforme'}
+                    {showFormUniform ? 'Ocultar formulario' : 'Nuevo uniforme'}
                 </button>
 
             </nav>
@@ -45,6 +44,7 @@ export const Uniform = () => {
                     <UniformListAdmin 
                         uniforms={uniforms}
                         handlerSelectedUniform={handlerSelectedUniform}
+                        handlerRemoveUniform={handlerRemoveUniform}
                     />
 
                 </div>

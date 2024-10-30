@@ -23,22 +23,20 @@ export const SchoolCardAdmin = ({school, handlerSelectedSchool}) => {
 
             <div className="content-cole"> 
 
-                {/* <div className="div-button-admin"> */}
-                    <button 
-                        type="submit"
-                        onClick={() => onSelectedSchool(school)}    
-                        >
-                        Actualizar
-                    </button>
+                <button 
+                    type="submit"
+                    onClick={() => onSelectedSchool(school)}    
+                    >
+                    Actualizar
+                </button>
 
-                    <button 
-                        type="submit"
-                        onClick={() => onSelectedSchoolById(school.id)}    
-                        >
-                        Eliminar
-                    </button>
+                <button 
+                    type="submit"
+                    onClick={() => onSelectedSchoolById(school.id)}    
+                    >
+                    Eliminar
+                </button>
 
-                {/* </div> */}
             </div>
 
 

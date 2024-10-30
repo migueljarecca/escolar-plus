@@ -36,6 +36,7 @@ export const useUniform = () => {
     };
 
     const handlerRemoveUniform = async(id) => {
+        console.log("control de uniform id remove " +id);
         await remove(id);
         dispatch(removeUniform(id));
     }

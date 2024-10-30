@@ -7,9 +7,9 @@ export const AdminDashboard = () => {
     return (
         <main className="main-admin">
           
-            <sidebar className="sidebar-admin">
+            <aside className="sidebar-admin">
                 <Sidebar />
-            </sidebar>
+            </aside>
 
             <section className="section-admin">
 

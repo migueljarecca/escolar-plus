@@ -6,6 +6,14 @@ export const UniformForm = ( { uniformSelected }) => {
 
     const { initialUniformForm, handlerAddUniform, handlerUpdateUniform } = useUniform();
     const {  getSchools, schools } = useSchool();
+    
+    const [uniformForm,  setUniformForm] = useState(initialUniformForm);
+    const [file, setFile] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
+
+    const fileInputRef = useRef();  // Crear la referencia
+
+    const { id, price, product, size, gender, schoolId } = uniformForm;
 
     useEffect(() => {
         getSchools();
@@ -13,16 +21,16 @@ export const UniformForm = ( { uniformSelected }) => {
 
     },[]);
 
-    console.log("control de colegios ", schools);
-    
-    const [uniformForm,  setUniformForm] = useState(initialUniformForm);
-    const [file, setFile] = useState(null);
-    const fileInputRef = useRef();  // Crear la referencia
-
-    const { id, price, product, size, gender, schoolId } = uniformForm;
+    console.log("control de colegios ", schools.name);
 
     useEffect(() => {
         setUniformForm(uniformSelected);
+
+        if (uniformSelected.image && uniformSelected.image.content) {
+            setImagePreview(`data:${uniformSelected.image.mime};base64,${uniformSelected.image.content}`);
+        } else {
+            setImagePreview(null); // Si no hay imagen, limpiamos la vista previa
+        }
     },[uniformSelected]);
 
     const onInputUniformChange = ({ target }) => {
@@ -34,7 +42,13 @@ export const UniformForm = ( { uniformSelected }) => {
     };
 
     const onInputFileChange = (event) => {
-        setFile(event.target.files[0]);
+        const selectedFile = setFile(event.target.files[0]);
+
+        if (selectedFile) {
+            setFile(selectedFile);
+            // Vista previa de la nueva imagen seleccionada
+            setImagePreview(URL.createObjectURL(selectedFile));
+        }
     };
 
     const onSubmitUniformChange = (event) => {
@@ -49,14 +63,19 @@ export const UniformForm = ( { uniformSelected }) => {
         formData.append('schoolId', schoolId);
 
         if (file) {
-            formData.append('file', file);
+            // Solo agregar el archivo si se selecciona uno nuevo
+            formData.append('file', file); 
+        } else if (schoolSelected.image) {
+            // Si no se selecciona, mantener la imagen existente (enviar un ID)
+            formData.append('fileId', schoolSelected.image.id); 
         }
 
         for (let [key, value] of formData.entries()) {
             console.log(key, value);
         }
 
-        if (id == 0) {
+        if (id === '') {
+            console.log("control form uniform create");
             handlerAddUniform(formData);
             
         } else {
@@ -71,7 +90,8 @@ export const UniformForm = ( { uniformSelected }) => {
 
         // Reset the file input through the DOM API using the ref
         fileInputRef.current.value = ""; 
-
+        // Limpiar la vista previa después de enviar
+        setImagePreview(null); 
     };
 
     return (
@@ -151,6 +171,13 @@ export const UniformForm = ( { uniformSelected }) => {
                     onChange={onInputUniformChange}
                 />
 
+                {/* Mostrar la previsualización de la imagen si existe */}
+                {imagePreview && (
+                    <div>
+                        <img src={imagePreview} alt="Vista previa de la imagen" style={{ width: '150px', height: '150px' }} />
+                    </div>
+                )}
+
                 <input 
                     type="file"
                     name="file"
@@ -177,10 +204,10 @@ export const UniformForm = ( { uniformSelected }) => {
                     ))}
                 </select>
 
-                <button 
+                <button
                     type="submit"
                     >
-                    Crear    
+                    {id === '' ? "Crear" : "Actualizar"}
                 </button>
 
             </form>
