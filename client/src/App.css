@@ -1432,7 +1432,7 @@ body {
 
 }
 
-/* --------------------- admin-content-user --------------- */
+/* ===================== ADMIN-CONTENT-USER  ===================== */
 
 .main-user {
   display: flex;
@@ -1459,7 +1459,7 @@ body {
   width: 100%;
 }
 
-/* --------------------- admin-content-school --------------- */
+/* ===================== ADMIN-CONTENT-SCHOOL  ===================== */
 
 .main-school-admin {
   display: flex;
@@ -1604,4 +1604,109 @@ body {
   font-weight: 400;
   margin-top: 2rem;
   cursor: pointer;
+}
+
+/* ===================== ADMIN-CONTENT-UNIFORM  ===================== */
+
+.main-uniform-admin {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-uniform-admin .nav-uniform {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0rem;
+ align-items: center;
+}
+
+.nav-uniform h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.nav-uniform button {
+  background: #28a745;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main-uniform-admin .section-uniform {
+  display: flex;
+  width: 100%;
+}
+
+.section-uniform .container-uniform-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
+  width: 100%;
+}
+
+.container-uniform-list .box-uniform-admin {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid;
+  overflow: hidden;
+  flex: 1;
+}
+
+.box-uniform-admin .figure-img-uniform{
+  padding: 1rem;
+}
+
+.figure-img-uniform img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.box-uniform-admin .div-text-uniform {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.box-uniform-admin .div-price-uniform {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.box-uniform-admin .content-uniform {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.content-uniform button:nth-child(1) {
+  background-color: #28a745;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.content-uniform button:nth-child(1):hover {
+  background-color: #218838; /* Verde más oscuro */
+}
+
+
+.content-uniform button:nth-child(2) {
+  background-color: #dc3545;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.content-uniform button:nth-child(2):hover {
+  background-color: #c82333; /* Rojo más oscuro */
 }
