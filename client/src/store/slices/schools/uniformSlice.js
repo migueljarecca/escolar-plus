@@ -38,8 +38,8 @@ export const uniformSlice = createSlice({
             ];
         },
         removeUniform: (state, action) => {
-            // state.uniforms = state.uniforms.filter(uniform => uniform.id !== action.payload);
-            state.filteredUniforms = state.filteredUniforms.filter(uni => uni.id !== action.payload);
+            state.uniforms = state.uniforms.filter(uniform => uniform.id !== action.payload);
+            // state.filteredUniforms = state.filteredUniforms.filter(uni => uni.id !== action.payload);
         },
         updateUniform: (state, action) => {
             state.uniforms = state.uniforms.map(u => {

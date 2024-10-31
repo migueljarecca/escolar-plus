@@ -92,7 +92,13 @@ public class UniformService {
 
 
             MultipartFile file = uniformDto.getFile();
-            Image img = imageService.updateImage(file, uniDb.getImage().getId());
+
+            if (file != null && !file.isEmpty()) {
+                // Si hay un archivo nuevo, actualizamos la imagen
+                Image img = imageService.updateImage(file, uniDb.getImage().getId());
+                uniDb.setImage(img);
+            }
+            // Si no hay archivo, mantenemos la imagen existente
     
             uniDb.setPrice(uniformDto.getPrice());
             uniDb.setProduct(uniformDto.getProduct());
@@ -100,7 +106,6 @@ public class UniformService {
             uniDb.setGender(uniformDto.getGender());
 
             uniDb.setSchool(school);
-            uniDb.setImage(img);
         
             Uniform uni = uniformRepository.save(uniDb);
 

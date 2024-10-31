@@ -17,11 +17,11 @@ export const UniformForm = ( { uniformSelected }) => {
 
     useEffect(() => {
         getSchools();
-    console.log("control de useeffect ");
+    // console.log("control de useeffect ");
 
     },[]);
 
-    console.log("control de colegios ", schools.name);
+    // console.log("control de colegios ", schools.name);
 
     useEffect(() => {
         setUniformForm(uniformSelected);
@@ -42,7 +42,7 @@ export const UniformForm = ( { uniformSelected }) => {
     };
 
     const onInputFileChange = (event) => {
-        const selectedFile = setFile(event.target.files[0]);
+        const selectedFile = event.target.files[0];
 
         if (selectedFile) {
             setFile(selectedFile);
@@ -65,9 +65,9 @@ export const UniformForm = ( { uniformSelected }) => {
         if (file) {
             // Solo agregar el archivo si se selecciona uno nuevo
             formData.append('file', file); 
-        } else if (schoolSelected.image) {
+        } else if (uniformSelected.image) {
             // Si no se selecciona, mantener la imagen existente (enviar un ID)
-            formData.append('fileId', schoolSelected.image.id); 
+            formData.append('fileId', uniformSelected.image.id); 
         }
 
         for (let [key, value] of formData.entries()) {
