@@ -12,27 +12,29 @@ export const UserRow = ({ id, name, lastname, email, handlerSelectUser, handlerR
     return (
         <>
             <tr>
-                <th>{id}</th>
-                <th>{name}</th>
-                <th>{lastname}</th>
-                <th>{email}</th>
-                <th>{"rol"}</th>
-                <th>
+                <td>{id}</td>
+                <td>{name}</td>
+                <td>{lastname}</td>
+                <td>{email}</td>
+                <td>{"rol"}</td>
+                <td>
                     <button
+                        className="but-update"
                         type="submit"
                         onClick={() => onSelectedUser({id, name, lastname, email}) }
                         >
                         Actualizar
                     </button>
-                </th>
-                <th>
+                </td>
+                <td>
                     <button
+                        className="but-delete"
                         type="submit"
                         onClick={() => onSelectedIdUser(id) }
                         >
                         Eliminar
                     </button>
-                </th>
+                </td>
             </tr>
         </>
     )

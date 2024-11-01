@@ -1377,30 +1377,109 @@ body {
 
 /* ===================== ADMIN-CONTENT-USER  ===================== */
 
-.main-user {
+.main-user-admin {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.main-user .div-user {
+.main-user-admin .nav-user {
   display: flex;
   justify-content: space-between;
   padding: 2rem 0rem;
-
+  align-items: center;
 }
 
-.main-user .div-user-list {
+.nav-user h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.nav-user button {
+  background: #28a745;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main-user-admin .section-user {
   display: flex;
-  
 }
 
-.main-user .container-table-user {
-  width: 100%;
+
+.container-table-user {
+  background-color: #ffffff;
+  display: flex;
 }
 
 .container-table-user table {
-  width: 100%;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
 }
+
+.container-table-user th, 
+.container-table-user td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.container-table-user th {
+  background-color: #fff;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.container-table-user td {
+  color: #555;
+  background-color: #fff;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.container-table-user tr:hover td {
+  background-color: #f1f1f1;
+}
+
+.container-table-user td .but-update {
+  background-color: #28a745;
+  color: white;
+  padding: .7rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.container-table-user td .but-update:hover {
+  background-color: #218838; 
+}
+
+.container-table-user td .but-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: .7rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
+.container-table-user td .but-delete:hover {
+  background-color: #c82333;
+}
+
+/* =================== FORM-REGISTER-USER-ADMIN  =================== */
+
+
 
 /* ===================== ADMIN-CONTENT-SCHOOL  ===================== */
 

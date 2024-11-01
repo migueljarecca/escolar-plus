@@ -6,8 +6,7 @@ export const UserList = ({ users, handlerRemoveUser, handlerSelectUser }) => {
     // console.log("control de user ", users);
 
     return (
-        <div className='container-table-user'>
-
+        <>
             <table>
                 <thead>
                     <tr>
@@ -33,6 +32,6 @@ export const UserList = ({ users, handlerRemoveUser, handlerSelectUser }) => {
                     ))}
                 </tbody>
             </table>
-        </div>
+        </>
     )
 }

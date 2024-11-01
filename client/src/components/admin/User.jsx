@@ -35,8 +35,8 @@ export const User = () => {
 
 
     return (
-        <main className="main-user">
-            <div className="div-user">
+        <main className="main-user-admin">
+            <nav className="nav-user">
                 <h2>Usuarios</h2>
                 <button 
                     onClick={() =>{ 
@@ -48,19 +48,30 @@ export const User = () => {
                     >
                     {showFormUser ? 'Ocultar formulario' : 'Nuevo usuario'}
                 </button>
-            </div>
+            </nav>
 
-            <div className="div-user-list">
-                <UserList 
-                    users={users} 
-                    handlerRemoveUser={handlerRemoveUser}
-                    handlerSelectUser={handlerSelectUser}
-                />
+            <section className="section-user">
 
-                {showFormUser &&  <UserFormAdmin userSelectedAd={userSelectedAd}/>}
-                
+                <div className="container-table-user">
+                    <UserList 
+                        users={users} 
+                        handlerRemoveUser={handlerRemoveUser}
+                        handlerSelectUser={handlerSelectUser}
+                    /> 
 
-            </div>
+                </div>
+
+                <div className='content-form-user'>
+                    {showFormUser &&  (
+                        <>
+                            {userSelectedAd.id === '' ? 'Nuevo usuario' : 'Editar usuario'}
+                            <UserFormAdmin userSelectedAd={userSelectedAd}/>
+                        </>
+                        )
+                    }
+                </div>
+
+            </section>
 
 
         </main>
