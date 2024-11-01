@@ -64,7 +64,7 @@ export const User = () => {
                 <div className='content-form-user'>
                     {showFormUser &&  (
                         <>
-                            {userSelectedAd.id === '' ? 'Nuevo usuario' : 'Editar usuario'}
+                            <h3>{userSelectedAd.id === '' ? 'Nuevo usuario' : 'Editar usuario'}</h3>
                             <UserFormAdmin userSelectedAd={userSelectedAd}/>
                         </>
                         )
