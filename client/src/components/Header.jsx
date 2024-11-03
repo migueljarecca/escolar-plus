@@ -16,19 +16,16 @@ export const Header = () => {
         const [isSticky, setIsSticky] = useState(false);
 
         const [userState, setUserState] = useState(user?.userLogged || initialUserForm);
+        const [isActiveDropdown, setIsActiveOrder] = useState(false);
 
         useEffect(() => {
             setUserState(user?.userLogged || initialUserForm);
         },[user]);
 
-        // useEffect(() => {
-        //     getSchools();
-        // },[]);
+        const handlerColegios = () => {
+            setIsActiveOrder(!isActiveDropdown);
+        }
 
-        // console.log('control header login ' +JSON.stringify(login, null, 2));
-        // console.log('control header user ' +JSON.stringify(user, null, 2));
-        // console.log('control header user ' +JSON.stringify(schools, null, 2));
-      
         const handleScroll = () => {
           const shouldBeSticky = window.scrollY > 50;
           setIsSticky(shouldBeSticky);
@@ -65,10 +62,21 @@ export const Header = () => {
 
                 <a href="/" className="logo">LOGO</a>
 
-                <nav className='nav-center'>
-                    <p>cole</p>
-                    {schools.map((item) => (<NavLink key={item.id} to={`/uniforms/${item.id}`}>{item.name}</NavLink>))}
-                </nav>
+                <div className={`dropdown-header ${isActiveDropdown ? 'active' : ''}`}>
+                    <div className="select" onClick={handlerColegios}>
+                        <span className="selected">Colegios</span>
+                        <div className={`caret ${isActiveDropdown ? 'active' : ''}`}></div>
+                    </div>
+                    <ul className={`ul-menu ${isActiveDropdown ? 'active' : ''}`}>
+                        {schools.map((item) => (
+                            <li key={item.id}>
+                                <NavLink to={`/uniforms/${item.id}`}>
+                                    {item.name}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
 
                 <div className="nav-right">
                     <div className="search-box">
