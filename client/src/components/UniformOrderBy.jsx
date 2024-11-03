@@ -4,12 +4,14 @@ import { useUniform } from "../hooks/useUniform";
 export const UniformOrderBy = ({ numUniforms }) => {
 
     const { handleFilterOrder } = useUniform();
-
-    const onInputOrderChange = (order) => {
-        handleFilterOrder(order);
-    }
-
     const [isActiveOrder, setIsActiveOrder] = useState(false); // Estado para controlar la clase "active"
+    const [selectedOption, setSelectedOption] = useState('Recientes');
+
+    const onInputOrderChange = (order, name) => {
+        handleFilterOrder(order);
+        setSelectedOption(name);
+        setIsActiveOrder(!isActiveOrder)
+    }
 
     const handleFilterClickOrder = () => {
         setIsActiveOrder(!isActiveOrder);
@@ -19,71 +21,17 @@ export const UniformOrderBy = ({ numUniforms }) => {
         <>
             <h4>{numUniforms} {numUniforms > 1 ? 'productos encontrados' : 'producto encontrado'} </h4>
 
-            <div className='order-box'>
-
-                <div className={`order-dropdown ${isActiveOrder ? 'active' : ''}`} >
-
-                    <div className="order-title" onClick={handleFilterClickOrder}>
-                        <h3>Ordenar</h3>
-                        <div className='order-icon'>
-                            <span className='left-icon'></span>
-                            <span className='right-icon'></span>
-                        </div>
-                    </div>
-            
-                    <div className="order-items">
-                        <div 
-                            className="order-button" 
-                            role="button" 
-                            >
-                                <h4 
-                                    style={{ "--i": "3" }}
-                                    onClick={()=> onInputOrderChange('price-asc')}
-                                    >
-                                    Precio, menor a mayor
-                                    <span></span>
-                                </h4>
-                        </div>
-                        <div 
-                            className="order-button" 
-                            role="button" 
-                            >
-                                <h4 
-                                    style={{ "--i": "3" }}
-                                    onClick={()=> onInputOrderChange('price-desc')}
-                                    >
-                                    Precio, mayor a menor
-                                    <span></span>
-                                </h4>
-                        </div>
-                        <div 
-                            className="order-button" 
-                            role="button"
-                            >
-                                <h4 
-                                    style={{ "--i": "1" }}
-                                    onClick={()=> onInputOrderChange('alfa-asc')}
-                                    >
-                                    Alfabéticamente, A-Z 
-                                    <span></span>
-                                </h4>
-                        </div>
-                        <div 
-                            className="order-button" 
-                            role="button" 
-                            >
-                                <h4 
-                                    style={{ "--i": "2" }}
-                                    onClick={()=> onInputOrderChange('alfa-desc')}
-                                    >
-                                    Alfabéticamente, Z-A 
-                                    <span></span>
-                                </h4>
-                        </div>
-                        
-                    </div>
-
-                </div>    
+            <div className={`dropdown-uniform ${isActiveOrder ? 'active' : ''}`}>
+                <div className="select" onClick={handleFilterClickOrder}>
+                    <span className="selected">{selectedOption}</span>
+                    <div className={`caret ${isActiveOrder ? 'active' : ''}`}></div>
+                </div>
+                <ul className={`ul-menu ${isActiveOrder ? 'active' : ''}`}>
+                    <li className="active">Recientes</li>
+                    <li onClick={() => onInputOrderChange('price-asc','Menor precio')}>Menor precio</li>
+                    <li onClick={() => onInputOrderChange('price-desc','Mayor precio')}>Mayor precio</li>
+                    <li onClick={() => onInputOrderChange('alfa-asc','Ordenar de A a Z')}>Ordenar de A a Z</li>
+                </ul>
             </div>
         </>
     )
