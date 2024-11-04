@@ -8,7 +8,9 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
 
     const [filterState, setFilterState] = useState(initialFilter);
     const [highestMayor, setHighestMayor] = useState(0);
-    // const [filterStateGender, setFilterStateGender] = useState('all');
+
+    const [isActiveCategory, setIsActiveCategory] = useState(true);
+    const [isActiveGender, setIsActiveGender] = useState(true);
 
     const { minPrice } = filterState;
 
@@ -26,10 +28,8 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
     uniqueProducts.sort();
 
     useEffect (() => {
-
         const maxPrice = Math.max(...prices);        
         setHighestMayor(maxPrice);    
-
     },[prices])
 
     const onInputPriceChange = (event) => {
@@ -54,22 +54,17 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
     }, [filterState]);
 
     const onInputGenderChange = (gender) => {
-        // setFilterStateGender(gender)
         handleFilterGender(gender);
     };
 
     // console.log('cntrol de gender ' +JSON.stringify(filterStateGender));
 
-    const [isActiveFirst, setIsActiveFirst] = useState(false); // Estado para controlar la clase "active"
-
-    const handleFilterClickFirst = () => {
-        setIsActiveFirst(!isActiveFirst);
+    const handleFilterClickCategory = () => {
+        setIsActiveCategory(!isActiveCategory);
     }
 
-    const [isActiveSecond, setIsActiveSecond] = useState(false); // Estado para controlar la clase "active"
-
-    const handleFilterClickSecond = () => {
-        setIsActiveSecond(!isActiveSecond);
+    const handleFilterClickGender = () => {
+        setIsActiveGender(!isActiveGender);
     }
 
     return (
@@ -80,63 +75,29 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
 
             <h5>Mostrar resultado por:</h5>
 
-            <div className='box'>
-
-                <div className={`dropdown-first ${isActiveFirst ? 'active' : ''}`} >
-
-                    <div className="filter-title" onClick={handleFilterClickFirst}>
-                        <h3>Categoría</h3>
-                        <div className='filter-icon'>
-                            <span className='left-icon'></span>
-                            <span className='right-icon'></span>
-                        </div>
-                    </div>
+            <div className={`dropdown-category ${isActiveCategory ? 'active' : ''}`} >
+                    
+                <div className="select" onClick={handleFilterClickCategory}>
+                    <span className="selected">Categoría</span>
+                    <div className={`caret ${isActiveCategory ? 'active' : ''}`}></div>
+                </div>
                    
-                    <div className="items">
-                        <div 
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "1" }}
-                            onClick={() => onInputCategoryChange('all')}>
-                                
-
-                            <span className='span'></span>
-                            <div className='div-span'>
-                                <span>Todos</span>
-                                {/* <span>5</span> */}
-                            </div>
-                        </div>
-
-                        {uniqueProducts.map((product, index) => (
-                        <div 
-                            key={index}
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "1" }}
-                            onClick={() => onInputCategoryChange(product)}>
-                                
-
-                            <span className='span'></span>
-                            <div className='div-span'>
-                                <span>{capitalizeWords(product)}</span>
-                                {/* <span>5</span> */}
-                            </div>
-                        </div>
-                        ))}
-                        
-                    </div>
-                </div>
+                <ul className={`ul-menu ${isActiveCategory ? 'active' : ''}`}>
+                     <li onClick={() => onInputCategoryChange('all')}>Todos</li>   
+                    {uniqueProducts.map((product, index) => (
+                        <li key={index}
+                            onClick={() => onInputCategoryChange(product)}
+                            >
+                            {capitalizeWords(product)}
+                        </li>
+                    ))}
+                </ul>
+                                           
             </div>
-
-            <h5>Filtrar por:</h5>
             
-            <div className='box'>
-                <div className="div">
-                    <h3>Precio a partir de:</h3>
-                    <h3>hasta</h3>
-                </div>
+            <div className='box-price'>
+                <p>Precio</p>
 
-                {/* <label htmlFor="price">precio</label> */}
                 <input 
                     type="range" 
                     id="price"
@@ -147,72 +108,30 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
                     />
 
                 <div className="content-span">
-                    <span>S/.{minPrice}</span>
+                    <span>S/. {minPrice}</span>
                     <span>S/. {highestMayor}</span>
                 </div>    
             </div>
-            
-            {/* {filterProd.category == 'all' ? ( */}
-                <div className='box'>
-                <div className={`dropdown-second ${isActiveSecond ? 'active' : ''}`} >
 
-                    <div className="filter-title" onClick={handleFilterClickSecond}>
-                        <h3>Género</h3>
-                        <div className='filter-icon'>
-                            <span className='left-icon'></span>
-                            <span className='right-icon'></span>
-                        </div>
-                    </div>
-
-                    <div className="items">
-                        <div 
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "1" }}
-                            onClick={()=>onInputGenderChange('all')}
-                            >
-                            
-                            <span className='span'></span>
-                            {/* <input type="checkbox" value="CASA_HELENA"/> */}
-                                <div className='div-span'>
-                                    <span>Todos</span>
-                                    {/* <span>4</span> */}
-                                </div>
-                        </div>
-
-                        {availableGenders.map((item, index) => (
-                        <div 
-                            key={index}
-                            className="filter-button" 
-                            role="button" 
-                            style={{ "--i": "1" }}
-                            onClick={()=>onInputGenderChange(item)}
-                            >
-                            
-                            <span className='span'></span>
-                            {/* <input type="checkbox" value="CASA_HELENA"/> */}
-                                <div className='div-span'>
-                                    <span>{capitalizeWords(item)}</span>
-                                    {/* <span>4</span> */}
-                                </div>
-                        </div>
-                        ))}
-                        
-                    </div>
-                                                    
+            <div className={`dropdown-gender ${isActiveGender ? 'active' : ''}`} >
+                    
+                <div className="select" onClick={handleFilterClickGender}>
+                    <span className="selected">Género</span>
+                    <div className={`caret ${isActiveGender ? 'active' : ''}`}></div>
                 </div>
-        
+                   
+                <ul className={`ul-menu ${isActiveGender ? 'active' : ''}`}>
+                     <li onClick={() => onInputGenderChange('all')}>Todos</li>   
+                    {availableGenders.map((product, index) => (
+                        <li key={index}
+                            onClick={() => onInputGenderChange(product)}
+                            >
+                            {capitalizeWords(product)}
+                        </li>
+                    ))}
+                </ul>
+                                               
             </div>
-            {/* ) : ('')
-            } */}
-            
-
-            {/* <button
-                type='submit'
-                className='sidebar-button'
-                >
-                Aplicar filtros
-            </button> */}
         </>
     )
 }

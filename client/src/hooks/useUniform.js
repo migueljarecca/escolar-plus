@@ -47,7 +47,7 @@ export const useUniform = () => {
         dispatch(loadingUniformBySchoolId(result.data));
     }
 
-    //FILTRO por producto
+    //FILTRO por categoria y precio
     const handlerFilterProduct = (filter) => {
         dispatch(filterProduct(filter));
     }

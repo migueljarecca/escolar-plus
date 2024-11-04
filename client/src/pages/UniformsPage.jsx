@@ -9,6 +9,7 @@ import { UniformOrderBy } from '../components/UniformOrderBy';
 
 export const UniformsPage = () => {
 
+    // Estado global inicial de CATEGORIA y PRECIO
     const { filterProd } = useSelector(state => state.uniforms);
     const { filterProdGender } = useSelector(state => state.uniforms);
     const { filterProdOrder } = useSelector(state => state.uniforms);
