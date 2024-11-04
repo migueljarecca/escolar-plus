@@ -1,47 +1,21 @@
 import { NavLink } from 'react-router-dom';
-import { useSchool } from '../hooks/useSchool';
 
-export const SchoolCard = ({ school, login }) => {
-
-    const { handlerRemoveSchool } = useSchool();
-
-    const onSelectedSchool = (id) => {
-        handlerRemoveSchool(id);
-    }
+export const SchoolCard = ({ school }) => {
 
     return (
 
          <div className="box-cole">
+            <h2>{`Colegio ${school.name}`}</h2>
 
-            <figure className="figure-cole">
-                <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
-            </figure>
+            <div className='content-cole'>
+                <figure className="figure-cole">
+                    <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
+                </figure>
 
-            <div className="content-cole">
-                <h2>{`Colegio ${school.name}`}</h2>
-                    {/* <h4>{school.address}</h4> */}
-                    {/* <h5>{school.image.name}</h5> */}
-
-                {
-                    login.isAdmin 
-                    ?
-                        <div className='div-button-cole'>
-                            <NavLink to={"/school/update/" + school.id}> Actualizar</NavLink>
-
-                            <button
-                                type='submit'
-                                onClick={() => onSelectedSchool(school.id)}
-                                >
-                                Eliminar
-                            </button>
-                        </div>
-                    : ''    
-                }
-                
-                        
-                <NavLink to={`/uniforms/${school.id}`} className='cole-enlace'>Ver Catálogo </NavLink>
-
-            </div>
+                <div className="link-cole">                        
+                    <NavLink to={`/uniforms/${school.id}`}>Ver Catálogo </NavLink>
+                </div>
+            </div>     
         
         </div>
             

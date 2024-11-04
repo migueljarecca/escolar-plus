@@ -32,7 +32,7 @@ body {
   background: #f7f7f7;
 }
 
-/* ===================== HEADER ==================== */
+/* ============================ HEADER ========================= */
 
 .header-article {
   display: flex;
@@ -129,7 +129,7 @@ body {
   background: #fff;
   border: 1px #fff solid;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-  border-radius: 0.5em;
+  border-radius: 0.5px;
   position: absolute;
   top: 5rem;
   left: 25%;
@@ -255,128 +255,69 @@ body {
   border-radius: 5px;
 }
 
-/* --------------- cartas del colegio -------------*/
+/* ------ cartas del colegio ---------*/
 
 .container-cole {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 25rem));
+  gap: 2rem;
   padding: 2rem 4%;
 
 }
 
 .container-cole .box-cole {
   display: flex;
-  /* width: 40rem; */
-  padding: 1rem;
-  background: #e0aaff;
+  flex-direction: column;
+  /* background: #e0aaff; */
+  background: #fff;
+
   gap: 1rem;
-  /* border: 2px solid #704bb2; */
-  /* border-radius: 10px; */
+  border: 1px #fff solid;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
   /* background: #ecf2f2; */
 }
 
-
-/* .container-cole .box-cole p {
-  color: #7d7d7d;
+.container-cole .box-cole h2 {
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+  background: #704bb2;
   font-size: 1.7rem;
-  font-weight: 400;
-} */
+  font-weight: 300;
+}
 
-.container-cole .content-cole {
+.container-cole .box-cole .content-cole {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
-  gap: 1rem;
+  /* gap: 1rem; */
+  padding: 1rem;
+
 }
 
-.container-cole .box-cole .content-cole h2 {
-  color: #242424;
-  font-size: 2.5rem;
-  font-weight: 500;
-  margin-top: .5rem;
+.box-cole .content-cole .figure-cole img {
+  width: 100%;
+  object-fit: cover;
 }
 
-.box-cole .content-cole .div-button-cole {
-  display: flex;
-  margin-top: .5rem;
-  gap: 3rem;
-}
-
-.box-cole .div-button-cole a {
-  text-decoration: none;
-  font-size: 1.7rem;
-  padding: .5rem;
-}
-
-.box-cole .div-button-cole button {
-  font-size: 1.7rem;
-  padding: .5rem;
-}
-
-.box-cole .cole-enlace {
-  margin-top: .5rem;
-  padding: .5rem;
-  font-size: 1.7rem;
-  text-decoration: none;
-  border: 2px solid #5a189a;
+.box-cole .content-cole .link-cole {
   border-radius: 3px;
   background: var(--with-color);
   cursor: pointer;
   text-align: center;
-
-  /* width: 15rem; */
-  
-}
-
-.container-cole .box-cole .figure-cole {
-  text-align: center;
-  /* background-color: #da291c; */
-}
-
-.container-cole .box-cole .figure-cole img {
-  width: 100%;
-}
-
-/* ======================= REGISTER SCHOOL PAGE ================== */
-
-.container-form-school {
-  display: flex;
-  flex-direction: column;
-  margin: 4rem 4%;
-  padding: 4rem;
-  align-items: center;
-  background: #fdfdfd;
-}
-
-.container-form-school h3 {
-  font-size: 3rem;
-  font-weight: 400;
-}
-
-.form-school {
-  display: flex;
-  flex-direction: column;
-  /* width: 30%; */
-  padding-top: 2rem;
-  gap: 1rem;
-  position: relative;
-  right: 0;
+  border: 1px solid #704bb2;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
 
 }
 
-.form-school input {
-  padding: 1rem;
-  border: 1px solid var(--line-color);
-  font-size: 1.5rem ;
-}
-
-.form-school button {
-  padding: 1rem;
+.box-cole .content-cole .link-cole a {
   font-size: 1.7rem;
+  text-decoration: none;
+  color: #242424;
   font-weight: 400;
-  margin-top: 2rem;
-  cursor: pointer;
 }
 
 /* ======================== UNIFORMS PAGE ======================== */
@@ -396,7 +337,7 @@ body {
   font-weight: 300;
 }
 
-/*---------------*/
+/*------ dropdown-nav -------*/
 
 .filter-nav-uniform .container-dropdown {
   display: flex;
@@ -500,9 +441,8 @@ body {
   display: block;
   opacity: 1;
 }
-/*---------------*/
 
-/*---------container uniform ---------*/
+/*----- container uniform -------*/
 
 .container-uniform {
   display: flex;
@@ -515,8 +455,6 @@ body {
   flex-direction: column;
   /* background: #cbdffa; */
   flex-basis: 20%;
-  position: sticky;
-  top: 0;
   align-self: flex-start;
   gap: .5rem;
   background: #fdfdfd;
@@ -533,14 +471,14 @@ body {
 
 .left-sidebar .div-cole-title h1 {
   font-size: 2rem;
+  font-weight: 500;
 }
 
 .left-sidebar h5 {
-  padding: 2rem 0;
-  font-size: 1.7rem;
-  font-weight: 400;
-  color: #242424;
-  border-bottom: 1px solid var(--line-color);
+  padding: 1rem 0;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #333333;
 }
 
 /* prueba de los filtros ------------------------ */
@@ -1629,7 +1567,7 @@ body {
   font-size: 1.7rem;
   font-weight: 300;
 }
-
+/**/
 .box-cole-admin .div-img-cole{
   padding: 1rem;
 }
