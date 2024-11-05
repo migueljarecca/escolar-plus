@@ -3,8 +3,7 @@ import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const UniformFilteredCard = ( { prod, onSelectedUniformId, onChangeWishlist,
-    isProductInWishlist, login }) => {
+export const UniformFilteredCard = ( { prod, onChangeWishlist, isProductInWishlist }) => {
 
     const { image, product, gender, size, price, id } = prod;
 
@@ -31,25 +30,7 @@ export const UniformFilteredCard = ( { prod, onSelectedUniformId, onChangeWishli
             <div className="div-price">
                 <h3>S/. {price}</h3>
             </div>
-
-            {
-                login.isAdmin
-                ?
-                    <div className="div-button">
-
-                        <NavLink to={"/uniform/update/" + id}> Actualizar</NavLink>
-                        <button
-                            type='submit'
-                            onClick={() => onSelectedUniformId(id)}
-                            >
-                            Eliminar
-                        </button>
-
-                    </div>
-                : ''    
-            }
             
-
             <FontAwesomeIcon 
                 onClick={() => onChangeWishlist(prod)} 
                 className="icon-heart"
