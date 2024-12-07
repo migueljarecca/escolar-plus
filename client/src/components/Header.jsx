@@ -70,7 +70,7 @@ export const Header = () => {
                     <ul className={`ul-menu ${isActiveDropdown ? 'active' : ''}`}>
                         {schools.map((item) => (
                             <li key={item.id}>
-                                <NavLink to={`/uniforms/${item.id}`}>
+                                <NavLink to={`/uniforms/${item.id}`} onClick={handlerColegios}>
                                     {item.name}
                                 </NavLink>
                             </li>

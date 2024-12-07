@@ -12,6 +12,9 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
     const [isActiveCategory, setIsActiveCategory] = useState(true);
     const [isActiveGender, setIsActiveGender] = useState(true);
 
+    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [selectedGender, setSelectedGender] = useState('all');
+
     const { minPrice } = filterState;
 
     const capitalizeWords = (str) => {
@@ -47,6 +50,8 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
             ...prevState,
             category: category,
         }));
+
+        setSelectedCategory(category);
     }
 
     useEffect(() => {
@@ -55,6 +60,7 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
 
     const onInputGenderChange = (gender) => {
         handleFilterGender(gender);
+        setSelectedGender(gender);
     };
 
     // console.log('cntrol de gender ' +JSON.stringify(filterStateGender));
@@ -83,10 +89,17 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
                 </div>
                    
                 <ul className={`ul-menu ${isActiveCategory ? 'active' : ''}`}>
-                     <li onClick={() => onInputCategoryChange('all')}>Todos</li>   
+                     <li 
+                        onClick={() => onInputCategoryChange('all')}
+                        className={selectedCategory === 'all' ? 'active' : ''}
+                        >
+                        Todos
+                    </li>   
                     {uniqueProducts.map((product, index) => (
-                        <li key={index}
+                        <li 
+                            key={index}
                             onClick={() => onInputCategoryChange(product)}
+                            className={selectedCategory === product ? 'active' : ''}
                             >
                             {capitalizeWords(product)}
                         </li>
@@ -121,10 +134,17 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
                 </div>
                    
                 <ul className={`ul-menu ${isActiveGender ? 'active' : ''}`}>
-                     <li onClick={() => onInputGenderChange('all')}>Todos</li>   
+                     <li                         
+                        className={selectedGender === 'all' ? 'active' : ''}
+                        onClick={() => onInputGenderChange('all')}
+                        >
+                        Todos
+                    </li>   
                     {availableGenders.map((product, index) => (
-                        <li key={index}
+                        <li 
+                            key={index}
                             onClick={() => onInputGenderChange(product)}
+                            className={selectedGender === product ? 'active' : ''}
                             >
                             {capitalizeWords(product)}
                         </li>
