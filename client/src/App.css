@@ -265,9 +265,13 @@ body {
 
 .container-cole {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(32rem, 25rem));
   gap: 2rem;
   padding: 2rem 4%;
+  
+  grid-template-columns: repeat(auto-fit, minmax(26rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
+  align-content: start;
+  grid-auto-rows: min-content;
+  height: 100%;
 
 }
 
@@ -670,8 +674,11 @@ body {
   /* background: #cbdffa; */
   flex-basis: 78%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 30rem));
   gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
+  align-content: start; /* Limita la expansión vertical */
+  grid-auto-rows: min-content; /* Evita que las filas se estiren innecesariamente */
+  height: 100%; /* Asegura que el contenedor no exceda el alto del padre */
 }
 
 .main-content .card-content {
@@ -690,7 +697,6 @@ body {
 .main-content .card-content .div-img {
   background: #fff;
   margin: auto;
-  padding: .5rem;
 }
 
 .main-content .card-content img {
@@ -699,7 +705,7 @@ body {
 }
 
 .main-content .card-content .div-text {
-  padding: .5rem;
+  padding: 0rem 1rem;
 }
 
 .main-content .card-content .div-text h2, p {
@@ -708,7 +714,7 @@ body {
 }
 
 .main-content .card-content .div-price {
-  padding: .5rem;
+  padding: 1rem;
 }
 
 .main-content .card-content .div-price h3 {
@@ -1114,6 +1120,10 @@ body {
   background: #704bb2;
 } 
 
+.nav-perfil a {
+  text-decoration: none;
+}
+
 .nav-perfil h4 {
   display: flex;
   gap: 1rem;
@@ -1444,7 +1454,7 @@ body {
 .section-school .container-school-list {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, max-content));
   width: 100%;
 }
 
