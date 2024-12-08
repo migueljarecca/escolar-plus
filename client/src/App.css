@@ -936,38 +936,69 @@ body {
   color: #6a6a6a;
 }
 
+/* ======================= PERFIL-DETAILS ================== */
+
+.section-perfil .main-perfil .perfil-details {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 1rem 5rem;
+}
+
 /* ======================= FORM-CREATE-UPDATE ================== */
 
 .container-form {
-  width: 100%;
   display: flex;
   flex-direction: column;
   margin: auto;
-  /* background: #e8ebe9; */
-  padding: 2rem 10%;
+  background: #fff;
+  border: 1px solid #fff;
+  overflow: hidden;
 }
 
 .container-form-user {
-  background-color: #e8ebe9;
+  /* background-color: #e8ebe9; */
 }
 
 .container-form h3 {
-  font-size: 3rem;
-  padding: 3rem;
+  font-size: 2rem;
+  padding: 2rem;
   text-align: center;
-  background-color: #e8ebe9;
+  background-color: #fff;
 }
 
 .container-form form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 0 20rem 3rem 20rem;
+  padding: 0 20rem 0rem 20rem;
+}
+
+.container-form form .form-user-label {
+  color: #222;
+  font-size: 1.4rem;
+  font-weight: 500;
+  /* margin-bottom: .5rem; */
 }
 
 .container-form form input {
-  font-size: 1.5rem;
-  padding: 1rem;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ced3d9;
+
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #222;
+}
+
+.container-form form input:focus {
+  outline: none;
+  border-color: #616161;
+}
+.container-form form .form-user-label-error {
+  color: #e64545;
+  font-size: 1.2rem;
 }
 
 .container-form form button {
@@ -1069,12 +1100,14 @@ body {
 .section-perfil {
   margin: 2rem 4%;
   display: flex;
+  gap: 2rem;
 }
 
 .section-perfil .nav-perfil {
   width: 30%;
-  border-right: 1px solid var(--line-color);
-  padding-left: 1rem;
+  /* border-right: 1px solid var(--line-color); */
+  padding: 1rem 2rem;
+  background: #fff;
 }
 
 .nav-perfil .div-perfil {
@@ -1109,15 +1142,16 @@ body {
 .nav-perfil h3 {
   background: #fdfdfd;
   font-size: 1.7rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1rem;
   color: #000;
   margin-top: 1rem;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 400;
+  border-radius: 5px;
 }
 
 .nav-perfil h3:hover {
-  background: #704bb2;
+  background: #e7ebf0;
 } 
 
 .nav-perfil a {
@@ -1127,34 +1161,31 @@ body {
 .nav-perfil h4 {
   display: flex;
   gap: 1rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1rem;
   margin-top: 2rem;
   background: #fdfdfd;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
 }
 
+.nav-perfil h4:hover {
+  color: #e64545;
+}
+
+.section-perfil .div-intersection {
+  border-right: 1px solid var(--line-color);
+}
+
 .section-perfil .main-perfil {
-  margin-left: 8rem;
+  /* margin-left: 8rem; */
+  width: 70%;
 }
 
 .section-perfil .main-perfil h2 {
   font-size: 2.5rem;
   font-weight: 500;
   padding-bottom: 1rem;
-}
-
-.main-perfil .main-perfil-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.main-perfil-content .content-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 .content-text h5 {

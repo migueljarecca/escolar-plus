@@ -72,12 +72,16 @@ export const Perfil = () => {
                     </h4>
                 </nav>
 
+                <div className="div-intersection">
+                    
+                </div>
+
                 <main className="main-perfil">
-                    <div className="main-perfil-content">
+                    {/* <div className="main-perfil-content"> */}
 
                         <Outlet />
                         
-                    </div>
+                    {/* </div> */}
                 </main>
             </section>
         </>

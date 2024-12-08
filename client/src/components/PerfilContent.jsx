@@ -7,11 +7,9 @@ export const PerfilContent = () => {
     if (!user) {
         return <>Ocurrió un problema</>
     }
-
-
     // console.log("cdac " + JSON.stringify(user.userLogged, 2, null))
     return(
-        <>
+        <div className="perfil-details">
             <h3>Mis datos personales</h3>
 
             <div className="content-text">
@@ -24,6 +22,6 @@ export const PerfilContent = () => {
                 <h5>Correo Electrónico:</h5>
                 <p>{user.userLogged.email}</p>
             </div>
-        </>
+        </div>
     )
 }

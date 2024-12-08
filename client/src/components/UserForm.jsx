@@ -49,40 +49,56 @@ export const UserForm = ({ userSelect }) => {
         <div className="container-form-user">
             <form  className="form-user" onSubmit={onSubmitUserChange}>
                 
+                <label htmlFor="username" className="form-user-label">Nombre</label>
                 <input 
+                    id="username"
                     type="text"
                     placeholder="Nombre"
                     name="name"
                     onChange={onInputUserChange}
                     value={name}
                 />
+                <label className="form-user-label-error">Por favor ingrese un nombre</label>
 
+
+                <label htmlFor="userlastname" className="form-user-label">Apellido</label>
                 <input 
+                    id="userlastname"
                     type="text"
                     placeholder="Apellido"
                     name="lastname"
                     onChange={onInputUserChange}
                     value={lastname}
                 />
+                <label className="form-user-label-error">Por favor ingrese un nombre</label>
 
+                <label htmlFor="useremail" className="form-user-label">Correo electrónico</label>
                 <input 
+                    id="useremail"
                     type="email"
                     placeholder="Correo Electrónico"
                     name="email"
                     onChange={onInputUserChange}
                     value={email}
                 />
+                <label className="form-user-label-error">Por favor ingrese un nombre</label>
 
                 {id > 0 
                 ? '' 
                 : 
-                <input 
-                    type="text"
-                    placeholder="Contraseña"
-                    name="password"
-                    onChange={onInputUserChange}
-                    value={password}
-                />}
+                <>
+                    <label htmlFor="userpassword" className="form-user-label">Contraseña</label>
+                    <input 
+                        id="userpassword"
+                        type="text"
+                        placeholder="Contraseña"
+                        name="password"
+                        onChange={onInputUserChange}
+                        value={password}
+                    />
+                    <label className="form-user-label-error">Por favor ingrese un nombre</label>
+                </>
+                }
                 
                 <button
                     type="submit"
