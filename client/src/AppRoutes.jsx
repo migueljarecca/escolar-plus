@@ -14,6 +14,7 @@ import { AdminDashboard } from './components/admin/AdminDashboard'
 import { User } from './components/admin/User'
 import { Schools } from './components/admin/School'
 import { Uniform } from './components/admin/Uniform'
+import { PerfilContent } from './components/PerfilContent'
 
 
 export const AppRoutes = () => {
@@ -38,18 +39,19 @@ export const AppRoutes = () => {
 
             <Route path='/user/login' element={<UserLoginPage />}></Route>
             <Route path='/user/register' element={<UserRegisterPage />}></Route>
-            <Route path='/user/update/:id' element={<UserUpdatePage />}></Route>
+            {/* <Route path='/user/update/:id' element={<UserUpdatePage />}></Route> */}
 
             <Route path='/user/update/:id' element={<UserRegisterPage />}></Route>
 
-            <Route path='/perfil' element={<Perfil />}></Route>    
+            <Route path='/perfil' element={<Perfil />}>
+                <Route path='' element={<PerfilContent />}></Route>
+                <Route path='update' element={<UserUpdatePage />}></Route>
+            </Route>    
 
             <Route path='/admin/dashboard' element={<AdminDashboard />}>
-
                 <Route path='users' element={<User />}></Route>
                 <Route path='schools' element={<Schools />}></Route>
                 <Route path='uniforms' element={<Uniform />}></Route>
-
             </Route>
 
  

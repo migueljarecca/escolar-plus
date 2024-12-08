@@ -3,7 +3,7 @@ import { Header } from "../components/Header"
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuth } from "../hooks/useAuth";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const Perfil = () => {
@@ -50,9 +50,11 @@ export const Perfil = () => {
                         </div>
                     </div>
 
-                    <h3>Mi perfil</h3>
+                    <NavLink to={''}>
+                        <h3>Mi perfil</h3>
+                    </NavLink>
 
-                    <NavLink to={'/user/update/' + userPerfil.id}>
+                    <NavLink to={'update'}>
                         <h3>Editar perfil</h3>
                     </NavLink>
 
@@ -71,21 +73,9 @@ export const Perfil = () => {
                 </nav>
 
                 <main className="main-perfil">
-                    <h2>Perfil</h2>
-
                     <div className="main-perfil-content">
-                        <h3>Mis datos personales</h3>
 
-                        <div className="content-text">
-                            <h5>Nombre:</h5>
-                            <p>{userPerfil.name}</p>
-
-                            <h5>Apellido:</h5>
-                            <p>{userPerfil.name}</p>
-
-                            <h5>Correo Electrónico:</h5>
-                            <p>{userPerfil.email}</p>
-                        </div>
+                        <Outlet />
                         
                     </div>
                 </main>
