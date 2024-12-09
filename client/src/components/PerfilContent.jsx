@@ -13,13 +13,13 @@ export const PerfilContent = () => {
             <h3>Mis datos personales</h3>
 
             <div className="content-text">
-                <h5>Nombre:</h5>
+                <h5>Nombre</h5>
                 <p>{user.userLogged.name}</p>
 
-                <h5>Apellido:</h5>
+                <h5>Apellido</h5>
                 <p>{user.userLogged.lastname}</p>
 
-                <h5>Correo Electrónico:</h5>
+                <h5>Correo Electrónico</h5>
                 <p>{user.userLogged.email}</p>
             </div>
         </div>

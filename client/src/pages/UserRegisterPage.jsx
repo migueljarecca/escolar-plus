@@ -17,11 +17,12 @@ export const UserRegisterPage = () => {
     return (
         <>
             <Header />
-            
-            <div className="container-form">
-                <h3>Registrar Usuario</h3>
+            <div className="container-register-user">
+                <div className="container-form">
+                    <h3>Registrar Usuario</h3>
 
-                <UserForm userSelect={userSelect}></UserForm>
+                    <UserForm userSelect={userSelect}></UserForm>
+                </div>
             </div>
         </>
     )

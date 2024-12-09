@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Header } from "../components/Header"
 import { SchoolList } from "../components/SchoolList"
 import { useSchool } from "../hooks/useSchool";
+import { Footer } from "../components/Footer";
 // import insignia from '/src/images/insignia.png'
 
 
@@ -31,6 +32,8 @@ export const HomePage = () => {
             <aside className="container-cole">
                 <SchoolList schools={schools}/>
             </aside>
+
+            <Footer />
 
         </>
     )

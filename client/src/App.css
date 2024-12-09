@@ -943,9 +943,40 @@ body {
   flex-direction: column;
   background: #fff;
   padding: 1rem 5rem;
+  gap: 1.5rem;
 }
 
-/* ======================= FORM-CREATE-UPDATE ================== */
+.main-perfil .perfil-details h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #333;
+}
+
+.perfil-details .content-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 30rem;
+}
+
+.perfil-details .content-text h5 {
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: #333;
+}
+
+.perfil-details .content-text p {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ced3d9;
+
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #222;
+}
+
+/* ======================= FORM-UPDATE ================== */
 
 .container-form {
   display: flex;
@@ -965,6 +996,9 @@ body {
   padding: 2rem;
   text-align: center;
   background-color: #fff;
+
+  font-weight: 400;
+  color: #333;
 }
 
 .container-form form {
@@ -976,8 +1010,8 @@ body {
 
 .container-form form .form-user-label {
   color: #222;
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 400;
   /* margin-bottom: .5rem; */
 }
 
@@ -1018,6 +1052,13 @@ body {
 .container-form form p {
   color: #e51c1f;
   font-size: 1.2rem;
+}
+
+/* ======================= FORM-REGISTER ================== */
+
+.container-register-user {
+  padding: 1.7rem 20%;
+
 }
 
 /* ======================= LOGIN-USER ================== */
@@ -1186,16 +1227,6 @@ body {
   font-size: 2.5rem;
   font-weight: 500;
   padding-bottom: 1rem;
-}
-
-.content-text h5 {
-  font-size: 1.7rem;
-  font-weight: 500;
-}
-
-.content-text p {
-  font-size: 1.5rem;
-  font-weight: 500;
 }
 
 /* ======================= ADMIN-PANEL ================== */
@@ -1778,4 +1809,13 @@ body {
   margin-top: 1rem;
   padding: 1rem;
   font-size: 1.7rem;
+}
+
+/* ============================= FOOTER ============================= */
+
+.footer {
+  display: flex;
+  background: #e3e4e6;
+  padding: 1.7rem 4%;
+  justify-content: space-between;
 }
