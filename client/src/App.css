@@ -1815,10 +1815,17 @@ body {
 
 .footer {
   display: flex;
+  flex-direction: column;
   background: #e3e4e6;
   padding: 1.7rem 4%;
-  justify-content: space-between;
   margin-top: 1rem;
+  gap: 1.5rem;
+}
+
+.footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .footer-contact {
@@ -1830,22 +1837,23 @@ body {
 .footer-contact h6 {
   font-size: 1.7rem;
   font-weight: 400;
+  margin-bottom: .5rem;
 }
 
-.footer-contact p {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-top: .5rem;
-}
 .footer-contact h5 {
   font-size: 1.5rem;
   font-weight: 400;
 }
 
-.footer-contact a {
+.footer-content .footer-contact a {
   text-decoration: none;
   font-size: 1.4rem;
   font-weight: 300;
+  color: #6a6a6a;
+}
+
+.footer-content .footer-contact a:visited {
+  color: #6a6a6a;
 }
 
 .footer .footer-social-media {
@@ -1886,4 +1894,37 @@ body {
   padding: 1rem 2rem;
   border: 1px solid #5a189a;
   border-radius: 15px;
+}
+
+.footer span {
+  border: 1px solid var(--line-color);
+}
+
+.footer .footer-design{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-design h3 {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.footer-design span {
+  font-size: 1.4rem;
+  border: none;
+  color: #6a6a6a;
+}
+
+.footer-design a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: .5rem 0;
+}
+
+.footer-design a:visited {
+  color: #6a6a6a;
 }
