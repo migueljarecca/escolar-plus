@@ -29,7 +29,8 @@ html {
 }
 
 body {
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
+  background: fff;
 }
 
 /* ============================ HEADER ========================= */
@@ -39,7 +40,7 @@ body {
   width: 100%;
   padding: 1.7rem 4%;
   justify-content: space-between;
-  border-bottom: 1px solid #c5cbc8;
+  border-bottom: 1px solid #e6ecf1;
   align-items: center;
 }
 
@@ -73,15 +74,20 @@ body {
   z-index: 5;
   justify-content: space-between;
   /* background: #7b2cbf; */
+  position: fixed;
+  background: #e6ecf1;
+  top: 0;
+  left: 0;
+  box-shadow: 0 .1rem 1rem var(--shadow-color);
 }
 
-.header.sticky {
-  background: #fdfdfd;
+/* .header.sticky {
+  background: #e6ecf1;
   box-shadow: 0 .1rem 1rem var(--shadow-color);
   position: fixed;
   top: 0;
   left: 0;
-}
+} */
 
 .header .logo {
   font-size: 2.5rem;
@@ -232,25 +238,47 @@ body {
 .container-home {
   display: flex;
   width: 100%;
-  margin-top: 8rem;
+  margin: 12rem 0 4rem 0;
   /* background-color: #e7e7e7; */
-  height: 40rem;
+  /* height: 40rem; */
   align-items: center;
+  padding: 0rem 4%;
+  height: 46rem;
+  background: #f8f8f8;
+
+  /* gap: 2rem; */
 }
 
 .container-home .div-left {
-  width: 50rem;
-  height: 38rem;
-  padding: 2rem 4%;
+  width: 35%;
+  /* height: 38rem; */
   font-size: 2rem ;
-  /* background: #fdfdfd; */
+  /* background: #f8f8f8; */
+  height: 100%;
 }
 
 .container-home .div-left h1 span {
   color: #7b2cbf;
 }
 
- .subtitle-h3 {
+.container-home .div-right {
+  width: 65%;
+  display: block;
+  height: 100%;
+  text-align: end;
+  background: #f8f8f8;
+
+}
+
+.container-home .div-right img {
+  /* display: block; */
+  object-fit: cover;
+  height: calc(100%);
+  overflow: hidden;
+  display: inline-block;
+}
+
+ /* .subtitle-h3 {
   margin: 2rem 4%;
   font-size: 2rem;
   background: #fdfdfd;
@@ -259,15 +287,28 @@ body {
   color: #6a6a6a;
   font-weight: 400;
   border-radius: 5px;
-}
+} */
 
 /* ------ cartas del colegio ---------*/
 
+.section-select-cole {
+  padding: 4rem 4%;
+  background: #e6ecf1;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-select-cole h3 {
+  font-size: 4rem;
+  font-weight: 500;
+  color: #602884;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+
+}
 .container-cole {
   display: grid;
   gap: 2rem;
-  padding: 2rem 4%;
-  
   grid-template-columns: repeat(auto-fit, minmax(26rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
   align-content: start;
   grid-auto-rows: min-content;
@@ -281,7 +322,7 @@ body {
   /* background: #e0aaff; */
   background: #fff;
 
-  gap: 1rem;
+  /* gap: 1rem; */
   border: 1px #fff solid;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -290,12 +331,15 @@ body {
 }
 
 .container-cole .box-cole h2 {
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   align-items: center;
   text-align: center;
-  background: #704bb2;
-  font-size: 1.7rem;
-  font-weight: 300;
+  /* background: #704bb2; */
+  color: #602884;
+  background: #fff;
+  
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .container-cole .box-cole .content-cole {

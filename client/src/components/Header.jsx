@@ -42,7 +42,7 @@ export const Header = () => {
 
     return (
         <>
-            <article className="header-article">
+            {/* <article className="header-article">
 
                 {login.isAuth 
                 ? ''
@@ -56,7 +56,7 @@ export const Header = () => {
                 
 
                 <h4 className='header-article-h4'>Dirección de la tienda</h4>
-            </article>
+            </article> */}
     
             <header className={`header ${isSticky ? 'sticky' : ''}`}>
 

@@ -3,6 +3,8 @@ import { Header } from "../components/Header"
 import { SchoolList } from "../components/SchoolList"
 import { useSchool } from "../hooks/useSchool";
 import { Footer } from "../components/Footer";
+
+import shop from '/src/images/shop.jpg'
 // import insignia from '/src/images/insignia.png'
 
 
@@ -23,15 +25,20 @@ export const HomePage = () => {
                          <span> RopaLap</span> hoy mismo!</h1>
                 </div>
                 <div className="div-right">
-
+                    <img src={shop} alt="Shop" />
                 </div>
             </div>
             
-            <h3 className="subtitle-h3">Elige tu colegio</h3>
+            {/* <h3 className="subtitle-h3">Elige tu colegio</h3> */}
 
-            <aside className="container-cole">
-                <SchoolList schools={schools}/>
-            </aside>
+            <div className="section-select-cole">
+                <h3 className="subtitle-h3">Elige tu colegio</h3>
+
+                <aside className="container-cole">
+                    <SchoolList schools={schools}/>
+                </aside>
+            </div>
+            
 
             <Footer />
 
