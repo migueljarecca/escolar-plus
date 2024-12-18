@@ -21,8 +21,11 @@ export const HomePage = () => {
             <Header />
             <div className="container-home">
                 <div className="div-left">
-                    <h1>¡Explora nuestra tienda y descubre la diferencia de
-                         <span> RopaLap</span> hoy mismo!</h1>
+                    <h1>Uniformes escolares</h1>
+                    <span></span>
+                    <p>Nos enorgullece ofrecer una amplia gama de uniformes cuidadosamente
+                        diseñados que combinan comodidad, durabilidad y un diseño 
+                        contemporáneo.</p>
                 </div>
                 <div className="div-right">
                     <img src={shop} alt="Shop" />

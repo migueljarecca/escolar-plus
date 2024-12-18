@@ -41,22 +41,23 @@ export const Header = () => {
         }, []);
 
     return (
-        <>
-            {/* <article className="header-article">
-
-                {login.isAuth 
-                ? ''
-                : 
+        <>  
+            {login.isAuth
+            ? ''
+            :
+            <article className="header-article">
+              
                 <div className="header-article-content">
                     <NavLink to={"/user/login"}>Inicia sesión</NavLink>
                     <span>|</span>
                     <NavLink to={"/user/register"}>Crea una cuenta</NavLink>
                 </div>
-                }
-                
 
                 <h4 className='header-article-h4'>Dirección de la tienda</h4>
-            </article> */}
+            </article>
+            
+            }
+            
     
             <header className={`header ${isSticky ? 'sticky' : ''}`}>
 
@@ -112,6 +113,9 @@ export const Header = () => {
                     </div>
                 </div>
             </header>
+
+            {/* Header placeholder para evitar el salto */}
+            {isSticky && <div className="header-placeholder"></div>}
         </>
     )
 }

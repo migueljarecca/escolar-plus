@@ -11,10 +11,11 @@ export const SchoolCard = ({ school }) => {
                 <figure className="figure-cole">
                     <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
                 </figure>
-
-                <div className="link-cole">                        
-                    <NavLink to={`/uniforms/${school.id}`}>Ver Catálogo </NavLink>
-                </div>
+                <NavLink to={`/uniforms/${school.id}`}>
+                    <div className="link-cole">                        
+                        Ver Catálogo 
+                    </div>
+                </NavLink>
             </div>     
         
         </div>
