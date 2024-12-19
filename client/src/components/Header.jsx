@@ -55,7 +55,7 @@ export const Header = () => {
     return (
         <section className='section-navigation-container'>
 
-            <div className="div-navigation-container">
+            <div className={`div-navigation-container ${hidden ? "top-navigation--hidden" : "top-navigation--visible"}`}>
             
                 {login.isAuth
                 ? ''
