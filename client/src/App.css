@@ -35,7 +35,16 @@ body {
 
 /* ============================ HEADER ========================= */
 
-.header-article {
+
+.section-navigation-container .div-navigation-container {
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
+  width: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.div-navigation-container .top-navigation {
   display: flex;
   width: 100%;
   padding: 1rem 4%;
@@ -45,55 +54,42 @@ body {
   position: relative;
   background: #7b2cbf;
 
+  transition: transform 0.6s ease-in-out;
+
 }
 
-.header-article-content {
+.top-navigation .top-navigation-content {
   display: flex;
   gap: 2rem;
   font-size: 1.5rem;
 }
 
-.header-article-content span {
+.top-navigation-content span {
   color: #c5cbc8;
 }
 
-.header-article-content a {
+.top-navigation-content a {
   text-decoration: none;
   color: #242424;
 }
 
-.header-article-h4 {
+.top-navigation-h4 {
   font-size: 1.5rem;
   font-weight: 400;
   color: #242424;
 } 
 
-.header {
+.div-navigation-container .header {
   width: 100%;
   padding: 2rem 4%;
-  background: transparent;
   display: flex;
   align-items: center;
-  z-index: 5;
   justify-content: space-between;
   background: #7b2cbf;
-  /* position: fixed; */
   /* background: #e6ecf1; */
-  /* top: 0; */
-  /* left: 0; */
   /* box-shadow: 0 .1rem 1rem var(--shadow-color);  */
 
-  transition: all 0.5s ease-in-out; /* Hace la transición suave */
-}
-
-.header.sticky {
-  /* background: #e6ecf1; */
-  box-shadow: 0 .1rem 1rem var(--shadow-color);
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  transition: all 0.5s ease-in-out; /* Hace la transición suave */
+  transition: all 0.6s ease-in-out; /* Hace la transición suave */
 }
 
 .header .logo {
@@ -244,6 +240,18 @@ body {
 .header-placeholder {
   height: 12rem; /* Ajusta esto según la altura de tu header */
   width: 100%;
+}
+
+/* Oculta la barra superior al hacer scroll */
+ .top-navigation--hidden {
+    transform: translateY(-40px);
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Vuelve a mostrar la barra superior al hacer scroll hacia arriba */
+.top-tavigation--visible {
+    transform: translateY(0px);
+    transition: transform 0.6s ease-in-out; /* Uniforme para mostrar */
 }
 
 /* ======================= HOME PAGE ========================= */
