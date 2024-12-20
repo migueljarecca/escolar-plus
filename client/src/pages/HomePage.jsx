@@ -5,6 +5,7 @@ import { useSchool } from "../hooks/useSchool";
 import { Footer } from "../components/Footer";
 
 import shop from '/src/images/shop.jpg'
+import { Suscription } from "../components/Suscription";
 // import insignia from '/src/images/insignia.png'
 
 
@@ -19,6 +20,7 @@ export const HomePage = () => {
     return (
         <>
             <Header />
+            
             <div className="container-home">
                 <div className="div-left">
                     <h1>Uniformes escolares</h1>
@@ -32,8 +34,6 @@ export const HomePage = () => {
                 </div>
             </div>
             
-            {/* <h3 className="subtitle-h3">Elige tu colegio</h3> */}
-
             <div className="section-select-cole">
                 <h3 className="subtitle-h3">Elige tu colegio</h3>
 
@@ -41,6 +41,8 @@ export const HomePage = () => {
                     <SchoolList schools={schools}/>
                 </aside>
             </div>
+
+            <Suscription />
             
 
             <Footer />

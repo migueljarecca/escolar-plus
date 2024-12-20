@@ -317,6 +317,7 @@ body {
   background: #e6ecf1;
   display: flex;
   flex-direction: column;
+
 }
 
 .section-select-cole h3 {
@@ -400,6 +401,44 @@ body {
   color: #602884;
   font-weight: 400;
 }
+
+/* ------ suscription-form ------ */
+
+.suscription-section {
+  padding: 4rem 4%;
+  background: #fdfdfd;
+  display: flex;
+  flex-direction: column;
+}
+
+.suscription-section .suscription-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.suscription-container h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  color: #602884;
+}
+
+.suscription-container p {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--header-color);
+}
+
+.suscription-container .suscription-form {
+  display: flex;
+  /* width: 50%; */
+}
+
+.suscription-form input {
+  padding: 1rem;
+}
+
 
 /* ======================== UNIFORMS PAGE ======================== */
 
