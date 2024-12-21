@@ -15,6 +15,7 @@ import { User } from './components/admin/User'
 import { Schools } from './components/admin/School'
 import { Uniform } from './components/admin/Uniform'
 import { PerfilContent } from './components/PerfilContent'
+import { AppInfo } from './pages/AppInfo'
 
 
 export const AppRoutes = () => {
@@ -53,6 +54,8 @@ export const AppRoutes = () => {
                 <Route path='schools' element={<Schools />}></Route>
                 <Route path='uniforms' element={<Uniform />}></Route>
             </Route>
+
+            <Route path='/app-info' element={<AppInfo />}></Route>
 
  
 

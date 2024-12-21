@@ -1959,9 +1959,10 @@ background: #1fcfcf;
 }
 
 .footer .footer-content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   width: 100%;
+  gap: 2rem;
 }
 
 .footer-content .footer-info {
@@ -1969,7 +1970,29 @@ background: #1fcfcf;
 }
 
 .footer-info .logo-div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-info .logo-div figure {
   height: 5rem;
+}
+
+.footer-info .logo-div p {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #242424;
+}
+
+.footer-content .footer-info .text-div {
+  margin-top: 2rem;
+}
+
+.footer-info .text-div p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #6a6a6a;
 }
 
 .footer-content .footer-contact {
@@ -2003,7 +2026,16 @@ background: #1fcfcf;
 .footer .footer-social-media {
   display: flex;
   gap: 2rem;
-  align-items: center;
+  flex-direction: column;
+}
+
+.footer-social-media h6 {
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+.footer-social-media .div {
+
 }
 
 .footer-social-media a {
@@ -2030,14 +2062,20 @@ background: #1fcfcf;
 .footer .footer-home {
   display: flex;
   align-items: end;
+  justify-content: end;
 }
 
 .footer-home button {
   font-size: 1.4rem;
   font-weight: 300;
   padding: 1rem 2rem;
-  border: 1px solid #5a189a;
+  border: 1px solid #704bb2;
   border-radius: 15px;
+}
+
+.footer-home button:hover {
+  color: #fff;
+  background: #704bb2;
 }
 
 .footer span {
@@ -2054,6 +2092,7 @@ background: #1fcfcf;
 .footer-design h3 {
   font-size: 1.4rem;
   font-weight: 300;
+  color: #6a6a6a;
 }
 
 .footer-design span {
@@ -2071,4 +2110,11 @@ background: #1fcfcf;
 
 .footer-design a:visited {
   color: #6a6a6a;
+}
+
+/* ============================= APP-INFO ============================= */
+
+.content-info {
+  margin: 16rem 4%;
+  padding: 0 18rem;
 }
