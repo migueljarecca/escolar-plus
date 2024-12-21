@@ -75,15 +75,18 @@ body {
 }
 
 .top-navigation-content a {
+  font-size: 1.5rem;
+  font-weight: 300;
   text-decoration: none;
   color: var(--header-color-text);
 }
 
+.top-navigation-content .top-navigation-h3,
 .top-navigation-h4 {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 300;
   color: var(--header-color-text);
-} 
+}
 
 .div-navigation-container .header {
   width: 100%;
@@ -98,11 +101,15 @@ body {
   transition: all 0.5s ease-out; /* Hace la transición suave */
 }
 
-.header .logo {
-  font-size: 2.5rem;
-  color: var(--header-color-text);
-  font-weight: 600;
-  text-decoration: none;
+.header .logo-div {
+  height: 4rem;
+}
+
+.logo-div img {
+  object-fit: cover;
+  height: calc(100%);
+  overflow: hidden;
+  display: inline-block;
 }
 
 .header .dropdown-header {
@@ -317,7 +324,6 @@ body {
   background: #e6ecf1;
   display: flex;
   flex-direction: column;
-
 }
 
 .section-select-cole h3 {
@@ -427,16 +433,37 @@ body {
 .suscription-container p {
   font-size: 1.7rem;
   font-weight: 400;
-  color: var(--header-color);
+  color: var(--main-color);
 }
 
 .suscription-container .suscription-form {
   display: flex;
-  /* width: 50%; */
+  width: 50rem;
 }
 
 .suscription-form input {
-  padding: 1rem;
+  padding: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  width: 100%;
+  border: none;
+  background: #e3e4e6;
+  outline: none;
+}
+
+.suscription-form button {
+  padding: 1.5rem 3rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  background-color: #27bdbd; 
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+}
+
+.suscription-form button:hover {
+background: #1fcfcf;
+
 }
 
 
@@ -1041,10 +1068,10 @@ body {
   gap: 1rem;
 }
 
-.wishlist-box .div-text h2, h3, p {
+/* .wishlist-box .div-text h2, h3, p {
   font-size: 1.7rem;
   color: #6a6a6a;
-}
+} */
 
 /* ======================= PERFIL-DETAILS ================== */
 
@@ -1927,8 +1954,7 @@ body {
   display: flex;
   flex-direction: column;
   background: #e3e4e6;
-  padding: 1.7rem 4%;
-  margin-top: 1rem;
+  padding: 4rem 4% 1rem 4%;
   gap: 1.5rem;
 }
 
@@ -1938,7 +1964,15 @@ body {
   width: 100%;
 }
 
-.footer-contact {
+.footer-content .footer-info {
+
+}
+
+.footer-info .logo-div {
+  height: 5rem;
+}
+
+.footer-content .footer-contact {
   display: flex;
   flex-direction: column;
   gap: .5rem;

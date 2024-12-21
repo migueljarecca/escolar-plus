@@ -9,6 +9,8 @@ import { useAuth } from '../hooks/useAuth'
 import { useSchool } from '../hooks/useSchool'
 import { initialUserForm } from './../store/slices/users/userSlice';
 
+import logo from '/src/images/logo.jpeg'
+
 export const Header = () => {
 
         const { login, user } = useAuth();
@@ -57,24 +59,31 @@ export const Header = () => {
 
             <div className={`div-navigation-container ${hidden ? "top-navigation--hidden" : "top-navigation--visible"}`}>
             
-                {login.isAuth
-                ? ''
-                :
+               
                 <article className={`top-navigation ${hidden ? "top-navigation--hidden" : "top-navigation--visible"}`}>
                 
                     <div className="top-navigation-content">
-                        <NavLink to={"/user/login"}>Inicia sesión</NavLink>
-                        <span>|</span>
-                        <NavLink to={"/user/register"}>Crea una cuenta</NavLink>
+                    {login.isAuth
+                    ? <h3 className='top-navigation-h3'>Hola! {userState.name}</h3>
+                    :
+                        <>
+                            <NavLink to={"/user/login"}>Inicia sesión</NavLink>
+                            <span>|</span>
+                            <NavLink to={"/user/register"}>Crea una cuenta</NavLink>
+                        </>
+                    }
                     </div>
-
                     <h4 className='top-navigation-h4'>Dirección de la tienda</h4>
                 </article>
-                }
+                
 
                 <header className="header">
 
-                    <a href="/" className="logo">LOGO</a>
+                    <div className="logo-div">
+                        <NavLink to={'/'}>
+                            <img src={logo} alt="logo" />
+                        </NavLink>
+                    </div>
 
                     <div className={`dropdown-header ${isActiveDropdown ? 'active' : ''}`}>
                         <div className="select" onClick={handlerColegios}>
@@ -103,24 +112,24 @@ export const Header = () => {
                             login.isAuth 
                             ?
                             <NavLink to={'/perfil'}>
-                                <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
-                                <span>Hola! {userState.name}</span>
+                                <FontAwesomeIcon icon={faUser}> <title>Perfil</title></FontAwesomeIcon>
+                                {/* <span>Hola! {userState.name}</span> */}
                             </NavLink> 
                             :
                             <NavLink to={'/user/login'}>
-                                <FontAwesomeIcon icon={faUser}> </FontAwesomeIcon>
-                                <span>Cuenta</span>
+                                <FontAwesomeIcon icon={faUser} title='Inicia sesión'> </FontAwesomeIcon>
+                                {/* <span>Cuenta</span> */}
                             </NavLink>
                         }   
 
                             <NavLink to={'/wishlist'}>
-                                <FontAwesomeIcon icon={faHeart}/>
-                                <span>Favoritos</span>
+                                <FontAwesomeIcon icon={faHeart} title='Favoritos'/>
+                                {/* <span>Favoritos</span> */}
                             </NavLink>
                             
                             <NavLink to={'/cart'}>
-                                <FontAwesomeIcon icon={faBagShopping}/>
-                                <span>Carrito</span>
+                                <FontAwesomeIcon icon={faBagShopping} title='Carrito'/>
+                                {/* <span>Carrito</span> */}
                             </NavLink>
                             
                         </div>

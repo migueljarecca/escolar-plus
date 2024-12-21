@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFacebookF} from '@fortawesome/free-brands-svg-icons';
 import {faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
+import logo from '/src/images/logo.jpeg'
 
 export const Footer = () => {
 
@@ -16,6 +17,19 @@ export const Footer = () => {
     return(
         <footer className='footer'>
             <div className="footer-content">
+
+                <div className="footer-info">
+                    <div className="logo-div">
+                        <img src={logo} alt="logo" />
+                    </div>
+
+                    <div className='text-div'>
+                        <p>
+                            ksjdvnjsnvdjsd
+                        </p>
+                    </div>
+
+                </div>
                 <div className="footer-contact">
                     <h6>Contactame</h6>
 
