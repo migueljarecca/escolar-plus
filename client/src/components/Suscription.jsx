@@ -10,18 +10,21 @@ export const Suscription = () => {
 
     const { email } = suscriptionForm;
 
-    const onInputEmailChange = ({target}) => {
-        const {name, value} = target;
+    const onInputEmailChange = (event) => {
+        const {name, value} = event.target;
+        
         setSuscriptionForm({
-            ...suscriptionForm,
+            ...suscriptionForm, // ayuda a preservar los estados
             [name]: value,
         })
     }
 
     const onSubmitEmailChange = (event) => {
-        event.preventDefault();
+        event.preventDefault(); //evita que se recargue la página
 
         console.log("control de email ", JSON.stringify(suscriptionForm, null, 2));
+
+        setSuscriptionForm(initilSuscriptionForm);
     }
 
     return (
@@ -35,6 +38,7 @@ export const Suscription = () => {
                 <form className="suscription-form" onSubmit={onSubmitEmailChange}>
                     <input 
                         type="email" 
+                        name="email"
                         placeholder="Ingresa tu correo electrónico"
                         value={email}
                         onChange={onInputEmailChange}

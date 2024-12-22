@@ -469,6 +469,25 @@ background: #1fcfcf;
 
 /* ======================== UNIFORMS PAGE ======================== */
 
+.list-cole-section {
+  margin: 16rem 4% 4rem 4%;
+}
+
+.list-cole-section .list-cole-container {
+  height: 20rem;
+}
+
+.list-cole-container h1 {
+  font-size: 4rem;
+  color: var(--header-color);
+  font-weight: 500;
+}
+
+.list-cole-container .list-cole-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .filter-nav-uniform {
   display: flex;
   margin: 9rem 4% 1rem 4%;
@@ -2114,7 +2133,26 @@ background: #1fcfcf;
 
 /* ============================= APP-INFO ============================= */
 
-.content-info {
-  margin: 16rem 4%;
-  padding: 0 18rem;
+.info-web-section {
+  margin: 16rem 4% 6rem 4%;
+
+}
+
+.info-web-section h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  padding: 0 16rem;
+  color: var(--header-color);
+}
+
+.info-web-section .info-web-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 4rem 16rem;
+}
+
+.info-web-content span {
+  color: var(--main-color);
+  font-weight: 500;
 }

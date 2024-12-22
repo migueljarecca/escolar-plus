@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import { useUniform } from '../hooks/useUniform';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { UniformFilteredList } from '../components/UniformFilteredList';
 import { Filters } from '../components/Filters';
 import { useSelector } from 'react-redux';
 import { UniformOrderBy } from '../components/UniformOrderBy';
+import { useSchool } from '../hooks/useSchool';
 
 export const UniformsPage = () => {
+
+    const { schools } = useSchool();
 
     // Estado global inicial de CATEGORIA y PRECIO
     const { filterProd } = useSelector(state => state.uniforms);
@@ -91,8 +94,41 @@ export const UniformsPage = () => {
         <>
             <Header />
 
-            <section>
-                
+            <section className='list-cole-section'>
+                <div className="list-cole-container">
+                    <h1>Colegios</h1>
+
+                    {
+                        schools.length > 0 ? 
+
+                            <div className="list-cole-div">
+
+                            {schools.map((school) => (
+
+                                <div className="box-cole" key={school.id}>
+
+                                <div className='content-cole'>
+                                    <figure className="figure-cole">
+                                        <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
+                                    </figure>
+                                    <NavLink to={`/uniforms/${school.id}`}>
+                                        <div className="link-cole">                        
+                                            Ver Catálogo 
+                                        </div>
+                                    </NavLink>
+                                </div>  
+                                
+                                <h2>{`Colegio ${school.name}`}</h2>
+                                
+                                </div>
+                            ))}
+
+                            </div>
+
+                        : <p>No hay escuelas registradas.</p>
+                    }
+                    
+                </div>
             </section>
 
             <nav className='filter-nav-uniform'>
