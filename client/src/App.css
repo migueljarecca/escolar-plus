@@ -485,9 +485,49 @@ background: #1fcfcf;
 
 .list-cole-container .list-cole-div {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(20rem, max-content));
+  /* grid-auto-columns: calc((100% - var(10px)*5) /6); */
+  /* grid-auto-columns: repeat(auto-fit, minmax(20rem, max-content)); */
+  align-content: start;
+  grid-auto-rows: min-content;
+  height: 100%;
+  gap: 3rem;
 }
 
+.list-cole-div .card-box-cole {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card-box-cole .content-cole {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  background: #e6eff1;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-box-cole .content-cole .figure-cole {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+}
+
+.card-box-cole .content-cole img {
+  width: 100%;
+  object-fit: cover;
+  display: block; /* Evita márgenes no deseados alrededor de la imagen */
+}
+
+.card-box-cole .content-cole h2 {
+
+}
 .filter-nav-uniform {
   display: flex;
   margin: 9rem 4% 1rem 4%;
@@ -831,6 +871,7 @@ background: #1fcfcf;
   flex-basis: 78%;
   display: grid;
   gap: 1.5rem;
+
   grid-template-columns: repeat(auto-fit, minmax(20rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
   align-content: start; /* Limita la expansión vertical */
   grid-auto-rows: min-content; /* Evita que las filas se estiren innecesariamente */
