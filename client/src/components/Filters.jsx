@@ -109,7 +109,7 @@ export const Filters = ({ productsName, prices, availableGenders }) => {
             </div>
             
             <div className='box-price'>
-                <p>Precio</p>
+                <span className="selected">Precio</span>
 
                 <input 
                     type="range" 

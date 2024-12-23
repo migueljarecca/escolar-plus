@@ -3,7 +3,6 @@ import { json, NavLink } from "react-router-dom";
 import { Header } from "../components/Header"
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist"
-import { useEffect, useState } from "react";
 
 export const Wishlist = () => {
 

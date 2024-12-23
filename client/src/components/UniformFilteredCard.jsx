@@ -19,7 +19,6 @@ export const UniformFilteredCard = ( { prod, onChangeWishlist, isProductInWishli
                 <img src={`data:${image.mime};base64,${image.content}`} alt={image.name} />
                 
                 </div>
-            </NavLink>
 
             <div className="div-text">
                 <h2>{product}</h2>
@@ -31,12 +30,16 @@ export const UniformFilteredCard = ( { prod, onChangeWishlist, isProductInWishli
                 <h3>S/. {price}</h3>
             </div>
             
+            </NavLink>
+            
             <FontAwesomeIcon 
                 onClick={() => onChangeWishlist(prod)} 
                 className="icon-heart"
                 icon={isProductInWishlist ? fasHeart : farHeart} 
             />
+
             
         </article>
+
     )
 }

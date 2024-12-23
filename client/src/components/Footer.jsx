@@ -3,7 +3,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFacebookF} from '@fortawesome/free-brands-svg-icons';
 import {faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
-import logo from '/src/images/logo.jpeg'
 import danger from '/src/images/danger.png'
 import { NavLink } from 'react-router-dom';
 

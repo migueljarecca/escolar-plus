@@ -7,6 +7,7 @@ import { Filters } from '../components/Filters';
 import { useSelector } from 'react-redux';
 import { UniformOrderBy } from '../components/UniformOrderBy';
 import { useSchool } from '../hooks/useSchool';
+import { Footer } from '../components/Footer';
 
 export const UniformsPage = () => {
 
@@ -105,22 +106,22 @@ export const UniformsPage = () => {
 
                             {schools.map((school) => (
 
-                                <div className="card-box-cole" key={school.id}>
+                                <NavLink to={`/uniforms/${school.id}`}>
 
-                                    <div className='content-cole'>
-                                        <figure className="figure-cole">
-                                            <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
-                                        </figure>
-                                        {/* <NavLink to={`/uniforms/${school.id}`}>
-                                            <div className="link-cole">                        
-                                                Ver Catálogo 
-                                            </div>
-                                        </NavLink> */}
-                                    </div>  
+                                    <div className="card-box-cole" key={school.id}>
+
+                                        <div className='content-cole'>
+                                            <figure className="figure-cole">
+                                                <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
+                                            </figure>
+                                                
+                                        </div>  
+                                        
+                                        <h2>{`Colegio ${school.name}`}</h2>
                                     
-                                    <h2>{`Colegio ${school.name}`}</h2>
-                                
-                                </div>
+                                    </div>
+                                </NavLink>
+
                             ))}
 
                             </div>
@@ -151,6 +152,8 @@ export const UniformsPage = () => {
                 </main>
             
             </div>
+
+            <Footer />
         </>
     )
 }
