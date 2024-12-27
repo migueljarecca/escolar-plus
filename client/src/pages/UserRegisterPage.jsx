@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Header } from "../components/Header";
 import { UserForm } from "../components/UserForm";
+import { Footer } from "../components/Footer";
 
 const initialUserForm = {
     id: '',
@@ -17,6 +18,7 @@ export const UserRegisterPage = () => {
     return (
         <>
             <Header />
+
             <div className="container-register-user">
                 <div className="container-form">
                     <h3>Registrar Usuario</h3>
@@ -24,6 +26,8 @@ export const UserRegisterPage = () => {
                     <UserForm userSelect={userSelect}></UserForm>
                 </div>
             </div>
+
+            <Footer />
         </>
     )
     

@@ -3,6 +3,7 @@ import { Header } from "../components/Header"
 import { useUniform } from "../hooks/useUniform"
 import { useEffect, useState } from "react";
 import { UniformDetailsCard } from "../components/UniformDetailsCard";
+import { Footer } from '../components/Footer';
 
 export const UniformDetailsPage = () => {
 
@@ -19,6 +20,8 @@ export const UniformDetailsPage = () => {
         }
     },[id]);
 
+    console.log("fghjhgfhv " + JSON.stringify(uniformDetails, null, 2))
+
     return (
         <>
             <Header />
@@ -26,6 +29,8 @@ export const UniformDetailsPage = () => {
             <section className="uniform-details">
                <UniformDetailsCard uniformDetails={uniformDetails}/>
             </section>
+
+            <Footer />
         </>
     )
 }

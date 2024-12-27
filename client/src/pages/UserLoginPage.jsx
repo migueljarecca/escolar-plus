@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Header } from "../components/Header"
 import { NavLink } from 'react-router-dom';
 import { useAuth } from "../hooks/useAuth";
+import { Footer } from "../components/Footer";
 
 
 const initialLoginForm = {
@@ -78,6 +79,8 @@ export const UserLoginPage = () => {
 
                 </div>
             </div>
+
+            <Footer />
         </>
     )
 }
