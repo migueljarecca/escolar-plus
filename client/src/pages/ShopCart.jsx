@@ -51,9 +51,21 @@ export const ShopCart = () => {
                                 )
                             )
                         ) : (
-                            <div>El carro esta vacío</div>
+                            <h5 className="article-h5">El carro esta vacío</h5>
                         )
                     }
+
+                    <div className="shop-div-a">
+                        {cart.length > 0
+                        ? 
+                            (     
+                            <NavLink to={`/uniforms/${cart[cart.length -1].school.id}`}>Continuar Comprando</NavLink>
+                            ) 
+                        :
+                            ''
+                        }
+                    </div>
+                     
                 </article>
             
                 <summary className="summary">
@@ -65,21 +77,11 @@ export const ShopCart = () => {
                         <h4>TOTAL</h4>
                         <h3>S/. {priceTotal}</h3>
                     </div>
-                    <div className="div">
-                        {cart.length > 0
-                        ? 
-                            (     
-                            <NavLink to={`/uniforms/${cart[cart.length -1].school.id}`}>Continuar Comprando</NavLink>
-                            ) 
-                        :
-                            ''
-                        }
-                        <button
-                            className="button"
-                            type="submit"
-                            >
-                            continuar
-                        </button>
+                    <div className="summary-div-a">
+                     
+                        <NavLink to={'/app-info'}>
+                            COMPRAR
+                        </NavLink>
                     </div>
                     
                 </summary>

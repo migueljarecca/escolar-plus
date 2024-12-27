@@ -1067,6 +1067,7 @@ background: #1fcfcf;
   font-size: 2.5rem;
   font-weight: 500;
   padding: 3rem 0;
+  color: var(--header-color);
 }
 
 .container-cart .main {
@@ -1081,22 +1082,23 @@ background: #1fcfcf;
   gap: 2rem;
 }
 
-.container-cart .main .article .cart-item {
+.article .article-h5 {
+  font-size: 1.5rem;
+  color: #242424;
+  font-weight: 400;
+}
+
+.article .shop-cart-item {
   display: flex;
   border: 1px solid var(--line-color);
   padding: 2rem;
   justify-content: space-between;
 }
 
-.article .div h3 {
-  font-size: 1.7rem;
-  padding-bottom: 1.5rem;
-}
-
 .article .div-img {
-  width: 8rem;
-  /* height: 10rem; */
-  background-color: #5a189a;
+  width: 6rem;
+  height: 9rem;
+  background-color: #e6e6e6;
 }
 
 .article .div-img img {
@@ -1104,11 +1106,121 @@ background: #1fcfcf;
   object-fit: cover;
 }
 
+.article .shop-details-item h3 {
+  font-size: 1.7rem;
+  color: var(--main-color);
+  font-weight: 400;
+  /* padding-bottom: 1.5rem; */
+}
+
+.article .shop-price h3 {
+  font-size: 1.7rem;
+  color: var(--main-color);
+  font-weight: 400;
+  /* padding-bottom: 1.5rem; */
+}
+
+.shop-price h4 {
+  margin-top: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #242424;
+}
+
+.article .shop-cant h3 {
+  font-size: 1.7rem;
+  color: var(--main-color);
+  font-weight: 400;
+}
+
+.shop-cant .shop-cant-div {
+  margin-top: 1rem;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #242424;
+}
+
+.shop-cant .shop-cant-div button {
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+.article .shop-subtotal h3 {
+  font-size: 1.7rem;
+  color: var(--main-color);
+  font-weight: 400;
+}
+
+.shop-subtotal h4 {
+  margin-top: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #242424;
+}
+
+.shop-cart-item .button-shop-wishlist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shop-cart-item .button-shop-wishlist button {
+  padding: .5rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+  
+
+.button-shop-wishlist button:nth-of-type(1) {
+  border: 1px solid #4a4a4a;
+  
+}
+
+.button-shop-wishlist button:nth-of-type(2) {
+  border: 1px solid var(--main-color);
+}
+
+.button-shop-wishlist button:nth-of-type(2):hover {
+  background: var(--main-color);
+  color: #fdfdfd;
+}
+
+/*--button--*/
+
+.main .article .shop-div-a {
+  display: flex; /* Centrar contenido */
+  justify-content: left;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.shop-div-a a {
+  text-decoration: none;
+  color: #fdfdfd;
+  background-color: #1fcfcf;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.7rem;
+  font-weight: 400;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.shop-div-a a:hover {
+  transform: scale(1.05);
+}
+
+/*--summary--*/
+
 .container-cart .main .summary {
   padding: 2rem;
   border: 1px solid var(--line-color);
   width: 35%;
-  height: 30rem;
+  height: 27rem;
 }
 
 .summary h2 {
@@ -1133,14 +1245,26 @@ background: #1fcfcf;
   margin-bottom: 3rem;
 }
 
-.summary .button {
-  /* margin-top: 3rem; */
-  padding: 1rem;
-  font-size: 2rem;
+.summary .summary-div-a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.summary-div-a a {
+  text-decoration: none;
+  color: #fdfdfd;
+  background-color: var(--main-color);
+  padding: 1rem 3rem;
+  border-radius: 5px;
+  font-size: 1.7rem;
   font-weight: 400;
-  width: 20rem;
-  margin: auto;
-  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.summary-div-a a:hover {
+  transform: scale(1.05);
 }
 
 /* ======================= WISHLIST PAGE ================== */
@@ -1158,31 +1282,31 @@ background: #1fcfcf;
 .section-wishlist-container .wishlist-main {
   padding: 4rem 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(38rem, max-content));
   gap: 2.5rem;
 }
 
 .wishlist-box {
   display: flex;
-  align-items: center; /* Centrar verticalmente el contenido */
-  gap: 2rem; /* Reducir el espacio entre la imagen y el texto */
-  padding: 1.5rem; /* Ajustar el padding interno */
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
   border: 1px solid var(--main-color);
-  border-radius: 8px; /* Bordes redondeados para un diseño más moderno */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra suave */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background: #fff;
 }
 
 .wishlist-box .div-img {
   flex-shrink: 0; /* Evitar que la imagen se redimensione */
-  width: 13rem; /* Reducir el tamaño de la imagen */
-  height: 20rem; /* Asegurar proporción cuadrada */
-  background: #e6e6e6; /* Cambiar a un gris más claro */
+  width: 13rem;
+  height: 20rem;
+  background: #e6e6e6;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Asegurar que la imagen no se desborde */
-  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .wishlist-box img {
@@ -1237,8 +1361,8 @@ background: #1fcfcf;
 }
 
 .section-wishlist-container .wishlist-div-a {
-  display: flex; /* Centrar contenido */
-  justify-content: center;
+  display: flex;
+  justify-content: left;
   align-items: center;
 }
 

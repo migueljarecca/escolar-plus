@@ -76,9 +76,9 @@ export const Wishlist = () => {
                     ? 
                         (     
 
-                                <NavLink to={`/uniforms/${wishlist[wishlist.length -1].school.id}` }>
-                                    Continuar Comprando
-                                </NavLink>
+                            <NavLink to={`/uniforms/${wishlist[wishlist.length -1].school.id}` }>
+                                Continuar Comprando
+                            </NavLink>
                         ) 
                     :
                         ''

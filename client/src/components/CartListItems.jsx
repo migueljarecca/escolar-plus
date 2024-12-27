@@ -13,43 +13,50 @@ export const CartListItems = ({ id, image, product, price, school, quantity, han
     const onRemoveCart = (id) => {  
         handleRemoveCart(id);
     }
-    console.log('quantity ' +quantity);
+    // console.log('quantity ' +quantity);
     
     return (
-        <div className="cart-item">
+        <div className="shop-cart-item">
             <div className="div-img">
                 <img src={`data:${image.mime};base64,${image.content}`} alt={"uniforme"} />
-                <button
-                    type="submit"
-                    onClick={()=> onClickAddWishlist({id, image, product, price, school})}
-                >
-                    añadir a favoritos
-                </button>
             </div>
-                    <div className="div">
+
+                    <div className="shop-details-item">
                         <h3>{product}</h3>
                     </div>
-                    <div className="div">
+                    <div className="shop-price">
                         <h3>precio</h3>
-                        <h3>S/. {price}</h3>
+                        <h4>S/. {price}</h4>
                     </div>
-                    <div className="div">
+                    <div className="shop-cant">
                         <h3>cantidad</h3>
-                            <button onClick={() => onIncreaseQuantity (id)}>+</button>
-                            <span>{quantity}</span>
+                        <div className="shop-cant-div">
                             <button onClick={() => onDecreaseQuantity (id)}>-</button>
-
+                            <span>{quantity}</span>
+                            <button onClick={() => onIncreaseQuantity (id)}>+</button>
+                        </div>
+                         
                     </div>
-                    <div className="div">
+                    <div className="shop-subtotal">
                         <h3>total</h3>
-                        <h3>S/. {quantity * price}</h3>
+                        <h4>S/. {quantity * price}</h4>
                     </div>
-                    <button
-                        type="submit"
-                        onClick={() => onRemoveCart(id)}
+                    <div className="button-shop-wishlist">
+                        <button
+                            type="submit"
+                            onClick={() => onRemoveCart(id)}
                         >
-                        Eliminar   
-                    </button>
+                            Eliminar   
+                        </button>
+
+                        <button
+                            type="submit"
+                            onClick={()=> onClickAddWishlist({id, image, product, price, school})}
+                        >
+                        añadir a favoritos
+                        </button>
+                    </div>
+                    
         </div>
     )
 }
