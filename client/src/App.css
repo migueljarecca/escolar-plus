@@ -334,6 +334,7 @@ body {
   padding-bottom: 2rem;
 
 }
+
 .container-cole {
   display: grid;
   gap: 2rem;
@@ -341,6 +342,10 @@ body {
   align-content: start;
   grid-auto-rows: min-content;
   height: 100%;
+}
+
+.container-cole a {
+  text-decoration: none;
 }
 
 .container-cole .box-cole {
@@ -1412,9 +1417,9 @@ background: #1fcfcf;
 }
 
 .main-perfil .perfil-details h3 {
-  font-size: 2rem;
+  font-size: 2.7rem;
   font-weight: 400;
-  color: #333;
+  color: var(--header-color);
 }
 
 .perfil-details .content-text {
@@ -1426,8 +1431,8 @@ background: #1fcfcf;
 
 .perfil-details .content-text h5 {
   font-size: 1.7rem;
-  font-weight: 300;
-  color: #333;
+  font-weight: 400;
+  color: var(--main-color);
 }
 
 .perfil-details .content-text p {
@@ -1438,24 +1443,27 @@ background: #1fcfcf;
 
   border-radius: 5px;
   box-sizing: border-box;
-  color: #222;
+  color: #242424;
 }
 
 /* ========================== FORM-REGISTER-PAGE-USER ====================== */
 
-.container-form {
-  margin: 16rem 4% 4rem 4%;
+.container-register-user {
+  margin: 16rem 20% 4rem 20%;
 }
 
 /* ========================== FORM-UPDATE-PAGE-USER ====================== */
 
+.container-form {
+  margin: 1rem 4% 4rem 4%;
+}
 
-/*---component- form-user---*/
+/*---component-form-user---*/
+
 .container-form-user {
   /* background-color: #e8ebe9; */
   display: flex;
   flex-direction: column;
-  /* margin: auto; */
   background: #fff;
   border: 1px solid #fff;
   overflow: hidden;
@@ -1500,6 +1508,7 @@ background: #1fcfcf;
   outline: none;
   border-color: #616161;
 }
+
 .container-form form .form-user-label-error {
   color: #e64545;
   font-size: 1.2rem;
@@ -1522,13 +1531,6 @@ background: #1fcfcf;
 .container-form form p {
   color: #e51c1f;
   font-size: 1.2rem;
-}
-
-/* ======================= FORM-REGISTER ================== */
-
-.container-register-user {
-  padding: 1.7rem 20%;
-
 }
 
 /* ======================= LOGIN-USER ================== */
@@ -1632,7 +1634,7 @@ font-size: 1.2rem;
 /* ======================= PERFIL ================== */
 
 .section-perfil {
-  margin: 2rem 4%;
+  margin: 16rem 4% 4rem 4%;
   display: flex;
   gap: 2rem;
 }
@@ -1641,7 +1643,6 @@ font-size: 1.2rem;
   width: 30%;
   /* border-right: 1px solid var(--line-color); */
   padding: 1rem 2rem;
-  background: #fff;
 }
 
 .nav-perfil .div-perfil {
@@ -1654,6 +1655,7 @@ font-size: 1.2rem;
   font-size: 2.5rem;
   font-weight: 500;
   padding-bottom: 1rem;
+  color: var(--header-color);
 }
 
 .nav-perfil .div-icon {
@@ -1677,7 +1679,7 @@ font-size: 1.2rem;
   background: #fdfdfd;
   font-size: 1.7rem;
   padding: 1.5rem 1rem;
-  color: #000;
+  color: #242424;
   margin-top: 1rem;
   cursor: pointer;
   font-weight: 400;
@@ -1685,7 +1687,7 @@ font-size: 1.2rem;
 }
 
 .nav-perfil h3:hover {
-  background: #e7ebf0;
+  background: #e6eff1;
 } 
 
 .nav-perfil a {
@@ -1701,10 +1703,11 @@ font-size: 1.2rem;
   font-size: 2rem;
   font-weight: 400;
   cursor: pointer;
+  columns: #242424;
 }
 
 .nav-perfil h4:hover {
-  color: #e64545;
+  color: #dd1818;
 }
 
 .section-perfil .div-intersection {
@@ -1720,6 +1723,7 @@ font-size: 1.2rem;
   font-size: 2.5rem;
   font-weight: 500;
   padding-bottom: 1rem;
+  color: var(--main-color);
 }
 
 /* ======================= ADMIN-PANEL ================== */

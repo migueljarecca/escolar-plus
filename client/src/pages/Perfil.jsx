@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuth } from "../hooks/useAuth";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Footer } from "../components/Footer";
 
 export const Perfil = () => {
 
@@ -84,6 +85,8 @@ export const Perfil = () => {
                     {/* </div> */}
                 </main>
             </section>
+
+            <Footer />
         </>
     )
 }
