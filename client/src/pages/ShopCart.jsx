@@ -21,7 +21,9 @@ export const ShopCart = () => {
         
     },[handleIncreaseQuantity, handleDecreaseQuantity]); 
 
-    // console.log('control de cart' +JSON.stringify(cart, null, 2));
+    console.log('control de cart' +JSON.stringify(cart, null, 2));
+    console.log('control de cart lenght' +JSON.stringify(cart.length, null, 2));
+
 
     return(
 

@@ -1,4 +1,5 @@
 import { useCart } from "../hooks/useCart";
+import { NavLink } from 'react-router-dom';
 
 export const UniformDetailsCard = ({ uniformDetails }) => {
 
@@ -47,6 +48,14 @@ export const UniformDetailsCard = ({ uniformDetails }) => {
                         >
                         Agregar al carrito    
                     </button>
+
+                    <div className="uniform-details-div-a">
+                     
+                     <NavLink to={'/app-info'}>
+                         COMPRAR
+                     </NavLink>
+                    </div>
+
                 </div>
                     
 

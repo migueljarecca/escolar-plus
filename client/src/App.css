@@ -1088,6 +1088,7 @@ background: #1fcfcf;
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
+  gap: 3rem;
 }
 
 .details-button-div button {
@@ -1102,9 +1103,29 @@ background: #1fcfcf;
   cursor: pointer;
 }
 
-.details-button-div button:hover {
+/* .details-button-div button:hover {
   transform: scale(1.05);
+} */
 
+.details-button-div .uniform-details-div-a {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.uniform-details-div-a a {
+  text-decoration: none;
+  color: #fdfdfd;
+  background-color: #1fcfcf;
+  padding: 1rem 8rem;
+  border-radius: 5px;
+  font-size: 1.7rem;
+  font-weight: 400;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.uniform-details-div-a a:hover {
+  transform: scale(1.05);
 }
 
 /* ======================== SHOP CART PAGE ======================== */
