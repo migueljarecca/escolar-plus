@@ -9,7 +9,7 @@ export const useSchool = () => {
     const { schools } = useSelector(state => state.schools)
     const dispatch = useDispatch();
 
-    console.log("list de cole " +JSON.stringify(schools.name, null, 2));
+    // console.log("list de cole " +JSON.stringify(schools.name, null, 2));
 
     //Funcion para traer todos los colegios
     const getSchools = async() => {

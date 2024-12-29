@@ -20,7 +20,7 @@ export const UniformDetailsPage = () => {
         }
     },[id]);
 
-    console.log("fghjhgfhv " + JSON.stringify(uniformDetails, null, 2))
+    // console.log("fghjhgfhv " + JSON.stringify(uniformDetails, null, 2))
 
     return (
         <>

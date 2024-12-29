@@ -10,11 +10,16 @@ import { useSchool } from '../hooks/useSchool'
 import { initialUserForm } from './../store/slices/users/userSlice';
 
 import logo from '/src/images/logo.jpeg'
+import { useWishlist } from '../hooks/useWishlist'
+import { useCart } from '../hooks/useCart'
 
 export const Header = () => {
 
         const { login, user } = useAuth();
         const { schools } = useSchool();
+
+        const { wishlist } = useWishlist();
+        const { cart } = useCart();
 
         const [hidden, setHidden] = useState(false); // Estado para controlar la visibilidad del banner
         const [lastScrollPosition, setLastScrollPosition] = useState(0); // Estado para almacenar la última posición de scroll
@@ -52,7 +57,7 @@ export const Header = () => {
 
         }, [lastScrollPosition]); // Dependencia para que el efecto se ejecute al cambiar la posición del scroll
       
-      
+    // console.log("dasdsd " + wishlist.length);  
 
     return (
         <section className='section-navigation-container'>
@@ -79,33 +84,36 @@ export const Header = () => {
 
                 <header className="header">
 
-                    <div className="logo-div">
-                        <NavLink to={'/'}>
-                            <img src={logo} alt="logo" />
-                        </NavLink>
-                    </div>
-
-                    <div className={`dropdown-header ${isActiveDropdown ? 'active' : ''}`}>
-                        <div className="select" onClick={handlerColegios}>
-                            <span className="selected">Colegios</span>
-                            <div className={`caret ${isActiveDropdown ? 'active' : ''}`}></div>
+                    <div className='header-left-div'>
+                        <div className="logo-div">
+                            <NavLink to={'/'}>
+                                <img src={logo} alt="logo" />
+                            </NavLink>
                         </div>
-                        <ul className={`ul-menu ${isActiveDropdown ? 'active' : ''}`}>
-                            {schools.map((item) => (
-                                <li key={item.id}>
-                                    <NavLink to={`/uniforms/${item.id}`} onClick={handlerColegios}>
-                                        {item.name}
-                                    </NavLink>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
 
+                        <div className={`dropdown-header ${isActiveDropdown ? 'active' : ''}`}>
+                            <div className="select" onClick={handlerColegios}>
+                                <span className="selected">Colegios</span>
+                                <div className={`caret ${isActiveDropdown ? 'active' : ''}`}></div>
+                            </div>
+                            <ul className={`ul-menu ${isActiveDropdown ? 'active' : ''}`}>
+                                {schools.map((item) => (
+                                    <li key={item.id}>
+                                        <NavLink to={`/uniforms/${item.id}`} onClick={handlerColegios}>
+                                            {item.name}
+                                        </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                     <div className="nav-right">
-                        <div className="search-box">
+
+                        {/* <div className="search-box">
                             <FontAwesomeIcon icon={faMagnifyingGlass}/>
                             <input type="text" placeholder="Buscar"/>
-                        </div>
+                        </div> */}
+
                         <div className='icon-box'>
 
                         {
@@ -124,12 +132,21 @@ export const Header = () => {
 
                             <NavLink to={'/wishlist'}>
                                 <FontAwesomeIcon icon={faHeart} title='Favoritos'/>
-                                {/* <span>Favoritos</span> */}
+                                {wishlist.length > 0 && (
+                                    <div className="count-div">
+                                        <span>{wishlist.length}</span>
+                                    </div>
+                                )}
+                                
                             </NavLink>
                             
                             <NavLink to={'/cart'}>
                                 <FontAwesomeIcon icon={faBagShopping} title='Carrito'/>
-                                {/* <span>Carrito</span> */}
+                                {cart.length > 0 && (
+                                    <div className="count-div">
+                                        <span>{cart.length}</span>
+                                    </div>
+                                )}
                             </NavLink>
                             
                         </div>

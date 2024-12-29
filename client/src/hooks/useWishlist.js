@@ -14,6 +14,7 @@ export const useWishlist = () => {
     const handleRemoveToWishlist = (id) => {
         dispatch(removeToWishlist(id));
     }
+    // console.log("wishlist desde hook " + wishlist.lenght);  
 
 
     return( 

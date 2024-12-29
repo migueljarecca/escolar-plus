@@ -101,6 +101,11 @@ body {
   transition: all 0.5s ease-out; /* Hace la transición suave */
 }
 
+.header .header-left-div {
+  display: flex;
+  gap: 5rem;
+}
+
 .header .logo-div {
   height: 4rem;
 }
@@ -221,33 +226,53 @@ body {
 .nav-right .search-box svg {
   font-size: 1.7rem;
   color: var(--header-color);
-  padding-right: .5rem;
+  margin-right: .5rem;
 }
+
+/*--icons-right--*/
 
 .nav-right .icon-box {
   display: flex;
   align-items: center;
+  gap: 3.5rem;
 }
 
 .nav-right .icon-box a {
   text-decoration: none;
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
+  position: relative;
+  padding: .8rem;
+
 }
 
 .nav-right .icon-box svg {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   color: var(--header-color-text);
   cursor: pointer;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /* padding-left: 2rem; */
+  /* padding-right: 2rem; */
+}
+
+.nav-right .icon-box .count-div {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: #fdfdfd;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .nav-right .icon-box span {
-  font-size: 1.7rem;
-  color: var(--header-color-text);
-  font-weight: 300;
-
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--header-color);
 }
 
 /* Oculta la barra superior al hacer scroll */
