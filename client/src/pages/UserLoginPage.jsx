@@ -3,6 +3,7 @@ import { Header } from "../components/Header"
 import { NavLink } from 'react-router-dom';
 import { useAuth } from "../hooks/useAuth";
 import { Footer } from "../components/Footer";
+import { useDispatch } from "react-redux";
 
 
 const initialLoginForm = {
@@ -10,12 +11,20 @@ const initialLoginForm = {
     password: '',
 }
 
+const initialFormErrors = {
+    email: '',
+    password: '',
+};
+
 export const UserLoginPage = () => {
 
-    const { handleLogin, errorLoginBackend } = useAuth();
+    const { handleLogin, login, errorLoginBackend, setAuthErrors } = useAuth();
     const [loginForm, setLoginForm] = useState(initialLoginForm);
+    
+    const [formErrors, setFormErrors] = useState(initialFormErrors);
   
     const { email, password } = loginForm;
+    const dispatch = useDispatch();
 
     console.log(' errors desde form ' + JSON.stringify(errorLoginBackend, null, 2));
 
@@ -24,19 +33,68 @@ export const UserLoginPage = () => {
         setLoginForm({
             ...loginForm,
             [ name ] : value
-        })
+        });
+        setFormErrors({
+            ...formErrors,
+            [name]: '', // Limpia el error del campo mientras se escribe
+        });
+
+        console.log(`Error en el campo ${name}:`, errorLoginBackend[name]);
+         
+            // Mapea las claves del estado de error del backend
+    const errorFieldMap = {
+        email: 'errorEmail',
+        password: 'errorPassword',
+    };
+
+    // Limpia errores específicos del backend mientras escribe
+    const backendErrorKey = errorFieldMap[name]; // Obtén la clave del backend asociada al campo
+    if (backendErrorKey && errorLoginBackend[backendErrorKey]) {
+        console.log('Control de ingreso --------');
+        dispatch(
+            setAuthErrors({
+                ...errorLoginBackend,
+                [backendErrorKey]: '', // Limpia solo el error del campo actual
+            })
+        );
     }
+
+    }
+
+    const validateForm = () => {
+        const errors = {};
+        if (!email.trim()) {
+            errors.email = "El correo electrónico es obligatorio.";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errors.email = "El correo electrónico no es válido.";
+        }
+        if (!password.trim()) {
+            errors.password = "La contraseña es obligatoria.";
+        } else if (password.length < 6) {
+            errors.password = "La contraseña debe tener al menos 6 caracteres.";
+        }
+        return errors;
+    };
 
     const onSubmit = async(event) => {
         event.preventDefault();
 
+        const errors = validateForm();
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            return;
+        }
+
         try {
             await handleLogin(loginForm);
 
-            setLoginForm(initialLoginForm);
             
         } catch (error) {
             console.log('error de inicio de sesion');
+        }
+
+        if (login.isAuth == true) {
+            setLoginForm(initialLoginForm);            
         }
 
     }
@@ -57,6 +115,9 @@ export const UserLoginPage = () => {
                             value={email}
                             onChange={onInputChange}
                             />
+                            {formErrors.email && <span>{formErrors.email}</span>}
+                            {errorLoginBackend.errorEmail && <span>{errorLoginBackend.errorEmail}</span>}
+   
 
                         <label>Contraseña:</label>
                         <input 
@@ -65,6 +126,9 @@ export const UserLoginPage = () => {
                             value={password}
                             onChange={onInputChange}
                             />  
+                            {formErrors.password && <span>{formErrors.password}</span>}
+                            {errorLoginBackend.errorPassword && <span>{errorLoginBackend.errorPassword}</span>}
+
 
                         <button
                             type="submit"

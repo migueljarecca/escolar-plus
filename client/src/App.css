@@ -1628,9 +1628,10 @@ background: #1fcfcf;
   border-color: #616161
 }
 
-.container-login form .form-user-label-error {
+.container-login form span {
 color: #e64545;
 font-size: 1.2rem;
+font-weight: 400;
 }
 
 .container-login form button {

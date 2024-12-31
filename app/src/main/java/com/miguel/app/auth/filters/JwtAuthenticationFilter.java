@@ -152,7 +152,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String errorMessage = "";
 
         if (failed.getMessage().equals("El correo ingresado no es válido")) {
-            errorMessage = "El correo ingresado no es válido";
+            errorMessage = "El correo ingresado no esta registrado";
         }
 
         body.put("message", "Error en la autenticacion");
