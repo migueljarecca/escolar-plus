@@ -12,10 +12,12 @@ const initialLoginForm = {
 
 export const UserLoginPage = () => {
 
-    const { handleLogin } = useAuth();
+    const { handleLogin, errorLoginBackend } = useAuth();
     const [loginForm, setLoginForm] = useState(initialLoginForm);
   
     const { email, password } = loginForm;
+
+    console.log(' errors desde form ' + JSON.stringify(errorLoginBackend, null, 2));
 
     const onInputChange = ({ target }) => {
         const {name,value} = target;

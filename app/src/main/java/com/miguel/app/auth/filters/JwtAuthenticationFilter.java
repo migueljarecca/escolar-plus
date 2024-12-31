@@ -60,6 +60,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             logger.info("email desde el request " +email);
             logger.info("password desde el request " +password);
 
+            //validamos si el correo existe
+
+            Optional<User> uOptional = userRepository.getUserByEmail(email);
+
+            if (!uOptional.isPresent()) {
+                throw new AuthenticationException("El correo ingresado no es válido") {
+                    
+                };
+            }
+
         } catch (StreamReadException e) {
             e.printStackTrace();
         } catch (DatabindException e) {
@@ -138,8 +148,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             AuthenticationException failed) throws IOException, ServletException {
 
         Map<String, Object> body = new HashMap<>();
-        body.put("message", "Erro en la autenticacion");
-        body.put("error", failed.getMessage());
+
+        String errorMessage = "";
+
+        if (failed.getMessage().equals("El correo ingresado no es válido")) {
+            errorMessage = "El correo ingresado no es válido";
+        }
+
+        body.put("message", "Error en la autenticacion");
+        body.put("errorEmail", errorMessage);
+        body.put("errorPassword", "Contraseña incorrecta");
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setStatus(401);

@@ -1,11 +1,12 @@
 import { authService } from "../services/authService"
 import { useDispatch, useSelector } from 'react-redux';
-import { onLogin, onLogout, addUser, removeUser } from "../store/slices/auth/authSlice";
+import { onLogin, onLogout, addUser, removeUser, setAuthErrors } from "../store/slices/auth/authSlice";
 import { useNavigate } from 'react-router-dom';
+
 
 export const useAuth = () => {
 
-    const { login, user } = useSelector(state => state.auth);
+    const { login, user, errorLoginBackend } = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
     // console.log('control de login' +JSON.stringify(login, null, 2));
@@ -42,7 +43,16 @@ export const useAuth = () => {
 
         } catch (error) {
             if (error.response?.status == 401) {
-                console.log('email o contraseña invalidos')
+                const errorEmail = error.response.data?.errorEmail || null;
+                const errorPassword = error.response.data?.errorPassword || null;
+
+                const errorLoginToBackend = {errorEmail: errorEmail, errorPassword:errorPassword};
+
+                dispatch(setAuthErrors(errorLoginToBackend));
+
+                console.log('email invalidos ' + errorEmail)
+                console.log('contraseña invalidos ' +errorPassword)
+
             } else {
                 throw error;
             }
@@ -68,6 +78,7 @@ export const useAuth = () => {
     return {
         login,
         user,
+        errorLoginBackend,
 
         handleLogin,
         handleLogout,

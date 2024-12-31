@@ -9,12 +9,18 @@ export const initialUser = JSON.parse(sessionStorage.getItem('user')) || {
     user: undefined
 }
 
+export const initialErrorLogin = {
+    errorEmail: '',
+    errorPassword: '',
+}
+
 export const authSlice = createSlice({
 
     name: 'auth',
     initialState: {
         login: initialLogin, 
         user: initialUser,
+        errorLoginBackend: initialErrorLogin,
     },
 
     reducers: {
@@ -29,6 +35,9 @@ export const authSlice = createSlice({
                 isAuth: false,
                 isAdmin: false,
             }
+            state.user = undefined;
+            state.errorLoginBackend = initialErrorLogin;
+
         },
         addUser: (state, action) => {
             state.user = action.payload;
@@ -38,6 +47,9 @@ export const authSlice = createSlice({
         },
         updateUser: (state, action) => {
             state.user = action.payload;
+        },
+        setAuthErrors: (state, action) => {
+            state.errorLoginBackend = action.payload;
         }
 
     }
@@ -50,5 +62,6 @@ export const {
     addUser,
     removeUser,
     updateUser,
+    setAuthErrors,
 
 } = authSlice.actions;
