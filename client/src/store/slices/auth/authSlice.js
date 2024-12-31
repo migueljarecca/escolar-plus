@@ -10,8 +10,8 @@ export const initialUser = JSON.parse(sessionStorage.getItem('user')) || {
 }
 
 export const initialErrorLogin = {
-    errorEmail: '',
-    errorPassword: '',
+    email: '',
+    password: '',
 }
 
 export const authSlice = createSlice({

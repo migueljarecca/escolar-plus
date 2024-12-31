@@ -43,15 +43,12 @@ export const useAuth = () => {
 
         } catch (error) {
             if (error.response?.status == 401) {
-                const errorEmail = error.response.data?.errorEmail || null;
-                const errorPassword = error.response.data?.errorPassword || null;
+                const email = error.response.data?.errorEmail || null;
+                const password = error.response.data?.errorPassword || null;
 
-                const errorLoginToBackend = {errorEmail: errorEmail, errorPassword:errorPassword};
+                // const errorLoginToBackend = {email: email, password:password};
 
-                dispatch(setAuthErrors(errorLoginToBackend));
-
-                console.log('email invalidos ' + errorEmail)
-                console.log('contraseña invalidos ' +errorPassword)
+                dispatch(setAuthErrors({email: email, password:password}));
 
             } else {
                 throw error;

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from "../hooks/useAuth";
 import { Footer } from "../components/Footer";
 import { useDispatch } from "react-redux";
+import { setAuthErrors } from "../store/slices/auth/authSlice";
 
 
 const initialLoginForm = {
@@ -18,7 +19,7 @@ const initialFormErrors = {
 
 export const UserLoginPage = () => {
 
-    const { handleLogin, login, errorLoginBackend, setAuthErrors } = useAuth();
+    const { handleLogin, login, errorLoginBackend } = useAuth();
     const [loginForm, setLoginForm] = useState(initialLoginForm);
     
     const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -26,7 +27,7 @@ export const UserLoginPage = () => {
     const { email, password } = loginForm;
     const dispatch = useDispatch();
 
-    console.log(' errors desde form ' + JSON.stringify(errorLoginBackend, null, 2));
+    // console.log(' errors desde form ' + JSON.stringify(errorLoginBackend, null, 2));
 
     const onInputChange = ({ target }) => {
         const {name,value} = target;
@@ -39,39 +40,33 @@ export const UserLoginPage = () => {
             [name]: '', // Limpia el error del campo mientras se escribe
         });
 
-        console.log(`Error en el campo ${name}:`, errorLoginBackend[name]);
-         
-            // Mapea las claves del estado de error del backend
-    const errorFieldMap = {
-        email: 'errorEmail',
-        password: 'errorPassword',
-    };
-
-    // Limpia errores específicos del backend mientras escribe
-    const backendErrorKey = errorFieldMap[name]; // Obtén la clave del backend asociada al campo
-    if (backendErrorKey && errorLoginBackend[backendErrorKey]) {
-        console.log('Control de ingreso --------');
-        dispatch(
-            setAuthErrors({
-                ...errorLoginBackend,
-                [backendErrorKey]: '', // Limpia solo el error del campo actual
-            })
-        );
-    }
-
+        // console.log(`Error en el campo ${name}:`, errorLoginBackend[name]);
+             
+         // Limpia errores específicos del backend
+        if (errorLoginBackend[name]) {
+            
+            dispatch(
+                setAuthErrors({
+                    ...errorLoginBackend,
+                    [name]: '', // Limpia solo el error del campo modificado
+                })
+            );
+        }
     }
 
     const validateForm = () => {
         const errors = {};
+
         if (!email.trim()) {
             errors.email = "El correo electrónico es obligatorio.";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             errors.email = "El correo electrónico no es válido.";
         }
+
         if (!password.trim()) {
             errors.password = "La contraseña es obligatoria.";
-        } else if (password.length < 6) {
-            errors.password = "La contraseña debe tener al menos 6 caracteres.";
+        // } else if (password.length < 5) {
+        //     errors.password = "La contraseña debe tener al menos 5 caracteres.";
         }
         return errors;
     };
@@ -80,6 +75,8 @@ export const UserLoginPage = () => {
         event.preventDefault();
 
         const errors = validateForm();
+
+        //se usa object porque es un objeto y no un array
         if (Object.keys(errors).length > 0) {
             setFormErrors(errors);
             return;
@@ -87,8 +84,7 @@ export const UserLoginPage = () => {
 
         try {
             await handleLogin(loginForm);
-
-            
+ 
         } catch (error) {
             console.log('error de inicio de sesion');
         }
@@ -116,7 +112,7 @@ export const UserLoginPage = () => {
                             onChange={onInputChange}
                             />
                             {formErrors.email && <span>{formErrors.email}</span>}
-                            {errorLoginBackend.errorEmail && <span>{errorLoginBackend.errorEmail}</span>}
+                            {errorLoginBackend.email && <span>{errorLoginBackend.email}</span>}
    
 
                         <label>Contraseña:</label>
@@ -127,7 +123,7 @@ export const UserLoginPage = () => {
                             onChange={onInputChange}
                             />  
                             {formErrors.password && <span>{formErrors.password}</span>}
-                            {errorLoginBackend.errorPassword && <span>{errorLoginBackend.errorPassword}</span>}
+                            {errorLoginBackend.password && <span>{errorLoginBackend.password}</span>}
 
 
                         <button
