@@ -4,8 +4,8 @@ export const PerfilContent = () => {
 
     const {user} = useAuth();
 
-    if (!user) {
-        return <>Ocurrió un problema</>
+    if (!user.userLogged) {
+        return <div>Ocurrió un problema</div>
     }
     // console.log("cdac " + JSON.stringify(user.userLogged, 2, null))
     return(

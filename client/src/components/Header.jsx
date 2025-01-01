@@ -57,7 +57,9 @@ export const Header = () => {
 
         }, [lastScrollPosition]); // Dependencia para que el efecto se ejecute al cambiar la posición del scroll
       
-    // console.log("dasdsd " + wishlist.length);  
+        // if (!userState.name) {
+        //     return <div>Cargando</div>;
+        // }
 
     return (
         <section className='section-navigation-container'>
@@ -69,7 +71,7 @@ export const Header = () => {
                 
                     <div className="top-navigation-content">
                     {login.isAuth
-                    ? <h3 className='top-navigation-h3'>Hola! {userState.name}</h3>
+                    ? <h3 className='top-navigation-h3'>Hola! {userState.name || ''}</h3>
                     :
                         <>
                             <NavLink to={"/user/login"}>Inicia sesión</NavLink>

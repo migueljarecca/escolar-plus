@@ -94,14 +94,17 @@ export const UserForm = ({ userSelect }) => {
             //Enviamos los datos del user al Hook useUsers
             await handlerAddUser(userForm);
 
-            if (Object.keys(errorRegisterBackend).length == 0) {
+            if (errorRegisterBackend.email == '') {
+
+            console.log('cpntrol de usr desde form ASO ' + JSON.stringify(userForm))
+
                 handleLogin({email: userForm.email, password: userForm.password});
 
                 setUserForm(initialUserForm);
             }       
 
-        } else {
-            console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
+        } else if (id > 0) {
+            // console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
 
             await handlerUpdateUser(userForm);
 
