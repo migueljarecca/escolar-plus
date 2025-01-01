@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.miguel.app.models.dto.UserDto;
 import com.miguel.app.models.entities.User;
+import com.miguel.app.resopitories.UserRepository;
 import com.miguel.app.services.UserService;
 
 @RestController
@@ -27,6 +28,9 @@ public class UserController {
     
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserRepository userRepository;
 
     //Traemos todos los usuarios
     @GetMapping
@@ -51,8 +55,17 @@ public class UserController {
     //Crear usuario
     @PostMapping
     public ResponseEntity<?> create(@RequestBody User user) {
-        UserDto userDb = userService.create(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userDb);
+
+        Optional<User> uOptional = userRepository.getUserByEmail(user.getEmail());
+
+        if (!uOptional.isPresent()) {
+            UserDto userDb = userService.create(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(userDb);
+        } else {
+            String errorMessage = "el correo ingresado ya esta registrado";
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
+        }
+
     }
 
     //Actualizar usuario

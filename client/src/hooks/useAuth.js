@@ -46,8 +46,6 @@ export const useAuth = () => {
                 const email = error.response.data?.errorEmail || null;
                 const password = error.response.data?.errorPassword || null;
 
-                // const errorLoginToBackend = {email: email, password:password};
-
                 dispatch(setAuthErrors({email: email, password:password}));
 
             } else {

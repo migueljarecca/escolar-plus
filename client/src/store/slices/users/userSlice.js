@@ -8,6 +8,10 @@ export const initialUserForm = {
     password: '',
 }
 
+export const initialErrorRegister = {
+    email: ''
+}
+
 export const userSlice = createSlice({
 
     name: 'users',
@@ -15,6 +19,7 @@ export const userSlice = createSlice({
         users: [],
         initialUserForm: initialUserForm,
         isLoading: true,
+        errorRegisterBackend: initialErrorRegister,
     },
 
     reducers: {
@@ -43,6 +48,9 @@ export const userSlice = createSlice({
             state.users = action.payload;
             state.isLoading = false;
         },
+        setRegisterErrors: (state, action) => {
+            state.errorRegisterBackend = action.payload;
+        }
     }
 });
 
@@ -52,5 +60,6 @@ export const {
     updateToUser,
     loadingToUsers,
     isLoading,
+    setRegisterErrors,
 
 } = userSlice.actions;

@@ -25,6 +25,7 @@ export const save = async ({name, lastname, email, password}) => {
         
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 

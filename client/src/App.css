@@ -1555,7 +1555,7 @@ background: #1fcfcf;
   border-color: #616161;
 }
 
-.container-form form .form-user-label-error {
+.container-form form span {
   color: #e64545;
   font-size: 1.2rem;
 }

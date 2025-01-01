@@ -1,12 +1,12 @@
 import { findAll, remove, save, update } from "../services/userService";
 import { useDispatch, useSelector } from 'react-redux';
-import { addToUser, loadingToUsers, removeToUser, updateToUser } from "../store/slices/users/userSlice";
+import { addToUser, loadingToUsers, removeToUser, setRegisterErrors, updateToUser } from "../store/slices/users/userSlice";
 import { useNavigate } from 'react-router-dom';
-import { addUser, updateUser } from "../store/slices/auth/authSlice";
+import { updateUser } from "../store/slices/auth/authSlice";
 
 export const useUsers = () => {
 
-    const { users, initialUserForm } = useSelector(state => state.users);
+    const { users, initialUserForm, errorRegisterBackend } = useSelector(state => state.users);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,16 +19,28 @@ export const useUsers = () => {
             dispatch(loadingToUsers(item.data));
 
         } catch (error) {
-            console.error("Error al cargar los usuarios:", error);
+            throw error;
         }
     }
 
     //Recibimos el usuario del UserForm
     //comunicacion con el userService-backend guardar
     const handlerAddUser = async (user) => {
-        const item = await save(user);
+        try {
+            const item = await save(user);    
+            navigate('/perfil');
 
-        navigate('/perfil');
+        } catch (error) {
+            if (error.response?.status == 409) {
+                const email = error.response.data || null;
+            
+                dispatch(setRegisterErrors({email:email}));
+                console.log('control de errore ' +email);
+            } else {
+                throw error;
+            }
+        }
+
     }
 
     const handlerUpdateUser = async (user) => {
@@ -64,7 +76,6 @@ export const useUsers = () => {
     }
 
     const handlerRemoveUser = (id) => {
-        console.log("control de hanldle remove ademin " + JSON.stringify(id, null, 2))
         remove(id);
         dispatch(removeToUser(id));
     }
@@ -73,6 +84,7 @@ export const useUsers = () => {
         {
             users,
             initialUserForm,
+            errorRegisterBackend,
 
             handlerAddUser,
             getUsers,

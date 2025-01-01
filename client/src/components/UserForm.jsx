@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useUsers } from "../hooks/useUsers";
 import { useAuth } from "../hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { setRegisterErrors } from "../store/slices/users/userSlice";
 
 const initialFrontErrors = {
     name: '',
@@ -11,13 +13,15 @@ const initialFrontErrors = {
 
 export const UserForm = ({ userSelect }) => {
 
-    const { initialUserForm, handlerAddUser, handlerUpdateUser } = useUsers();
+    const { initialUserForm, errorRegisterBackend, handlerAddUser, handlerUpdateUser } = useUsers();
     const { handleLogin } = useAuth();
 
     const [userForm, setUserForm] = useState(initialUserForm);
     const [frontErrors, setFrontErrors] = useState(initialFrontErrors);
 
     const {id, name, lastname, email, password} = userForm;
+
+    const dispatch = useDispatch();
 
     //Utilizamos useEffect para gatillar y actualizar con el usuario seleccionado
     useEffect(() => {
@@ -36,8 +40,15 @@ export const UserForm = ({ userSelect }) => {
 
         setFrontErrors({
             ...initialFrontErrors,
-            [name]: value
+            [name]: ''
         });
+
+        if (errorRegisterBackend[name]) {
+            dispatch(setRegisterErrors({
+                ...errorRegisterBackend,
+                [name]: ''
+            }))
+        };
     }
 
     const validateForm = () => {
@@ -83,7 +94,11 @@ export const UserForm = ({ userSelect }) => {
             //Enviamos los datos del user al Hook useUsers
             await handlerAddUser(userForm);
 
-            handleLogin({email: userForm.email, password: userForm.password});
+            if (Object.keys(errorRegisterBackend).length == 0) {
+                handleLogin({email: userForm.email, password: userForm.password});
+
+                setUserForm(initialUserForm);
+            }       
 
         } else {
             console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
@@ -92,7 +107,6 @@ export const UserForm = ({ userSelect }) => {
 
         }
 
-        setUserForm(initialUserForm);
     }
 
     return (
@@ -131,6 +145,7 @@ export const UserForm = ({ userSelect }) => {
                     value={email}
                 />
                 {frontErrors.email && <span>{frontErrors.email}</span>}
+                {errorRegisterBackend.email && <span>{errorRegisterBackend.email}</span>}
 
                 {id > 0 
                 ? '' 
