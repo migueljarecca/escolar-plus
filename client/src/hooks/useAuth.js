@@ -9,8 +9,8 @@ export const useAuth = () => {
     const { login, user, errorLoginBackend } = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
-    console.log('control de login' +JSON.stringify(login, null, 2));
-    console.log('control de login user desde hook' +JSON.stringify(user, null, 2));
+    // console.log('control de login' +JSON.stringify(login, null, 2));
+    // console.log('control de login user desde hook' +JSON.stringify(user, null, 2));
 
     const navigate = useNavigate();
 

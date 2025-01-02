@@ -22,11 +22,11 @@ export const Perfil = () => {
             navigate('/login');
         }
     },[user]);
-    console.log("conrol de user 01 " +JSON.stringify(user, null, 2))
+    // console.log("conrol de user 01 " +JSON.stringify(user, null, 2))
 
-    console.log("conrol de userrr " +JSON.stringify(userPerfil.userLogged, null, 2))
+    // console.log("conrol de userrr " +JSON.stringify(userPerfil.userLogged, null, 2))
 
-    console.log("conrol de user " +JSON.stringify(userPerfil, null, 2))
+    // console.log("conrol de user " +JSON.stringify(userPerfil, null, 2))
 
     const getFirstLetter = (name) => {
         if (name && name.length > 0) {

@@ -21,6 +21,9 @@ export const UserForm = ({ userSelect }) => {
 
     const {id, name, lastname, email, password} = userForm;
 
+    console.log('control de id ' +id);
+
+
     const dispatch = useDispatch();
 
     //Utilizamos useEffect para gatillar y actualizar con el usuario seleccionado
@@ -62,7 +65,7 @@ export const UserForm = ({ userSelect }) => {
 
         if (!lastname.trim()) {
             errors.lastname = "Por favor ingrese un apellido."
-        } else if (name.length < 3) {
+        } else if (lastname.length < 3) {
             errors.lastname = "El apellido debe tener almenos tres caracteres."
         }
 
@@ -90,27 +93,34 @@ export const UserForm = ({ userSelect }) => {
             return;
         }
         
+        console.log('cpntrol de error backend ' + JSON.stringify(errorRegisterBackend.email));
+
         if (id === '') {
             //Enviamos los datos del user al Hook useUsers
-            await handlerAddUser(userForm);
+            const result = await handlerAddUser(userForm);
 
-            if (errorRegisterBackend.email == '') {
+            if (result.success) {
 
-            console.log('cpntrol de usr desde form ASO ' + JSON.stringify(userForm))
-
-                handleLogin({email: userForm.email, password: userForm.password});
-
+                console.log('cpntrol de usr desde form ASO ' + JSON.stringify(userForm));
+        
+                await handleLogin({email: userForm.email, password: userForm.password});
+        
                 setUserForm(initialUserForm);
-            }       
 
-        } else if (id > 0) {
-            // console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
+            } else {
+                console.log('Error al registrar usuario');
+            }
+
+        } else {
+            console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
 
             await handlerUpdateUser(userForm);
 
-        }
+        }  
 
     }
+
+     
 
     return (
         <div className="container-form-user">

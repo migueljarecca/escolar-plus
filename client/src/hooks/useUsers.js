@@ -27,8 +27,9 @@ export const useUsers = () => {
     //comunicacion con el userService-backend guardar
     const handlerAddUser = async (user) => {
         try {
-            const item = await save(user);    
+            const item = await save(user);  
             navigate('/perfil');
+            return {success: true};
 
         } catch (error) {
             if (error.response?.status == 409) {
@@ -36,6 +37,8 @@ export const useUsers = () => {
             
                 dispatch(setRegisterErrors({email:email}));
                 console.log('control de errore ' +email);
+
+                return {success: false};
             } else {
                 throw error;
             }
