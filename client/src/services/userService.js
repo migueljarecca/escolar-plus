@@ -54,6 +54,7 @@ export const update = async ({id, name, lastname, email}) => {
 
     } catch (error) {
         console.log(error);
+        throw error;
     }
 }
 

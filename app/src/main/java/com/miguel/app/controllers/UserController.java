@@ -71,10 +71,18 @@ public class UserController {
     //Actualizar usuario
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody User user, @PathVariable Long id ) {
-        Optional<UserDto> userOptional = userService.update(user, id);
 
-        if (userOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(userOptional);
+        Optional<User> uOptional = userRepository.getUserByEmail(user.getEmail());
+
+        if (!uOptional.isPresent()) {
+            Optional<UserDto> userOptional = userService.update(user, id);
+            
+            if (userOptional.isPresent()) {
+                return ResponseEntity.status(HttpStatus.CREATED).body(userOptional);
+            }
+        } else {
+            String errorMessage = "el correo ingresado ya esta registrado";
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
         }
 
         return ResponseEntity.notFound().build();

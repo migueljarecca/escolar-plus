@@ -21,8 +21,9 @@ export const UserForm = ({ userSelect }) => {
 
     const {id, name, lastname, email, password} = userForm;
 
-    console.log('control de id ' +id);
-
+    console.log('control de error backend ' +JSON.stringify(errorRegisterBackend));
+    // console.log('control de user initial ' +JSON.stringify(initialUserForm, null,2));
+    // console.log('control de user form 01 ' +JSON.stringify(userForm, null,2));
 
     const dispatch = useDispatch();
 
@@ -31,6 +32,7 @@ export const UserForm = ({ userSelect }) => {
         setUserForm({
             ...userSelect,
             password: '',
+            id: userSelect?.id || ''
         })
     },[userSelect]);
 
@@ -54,26 +56,8 @@ export const UserForm = ({ userSelect }) => {
         };
     }
 
-    const validateForm = () => {
-        const errors = {};
-
-        if (!name.trim()) {
-            errors.name = "Por favor ingrese un nombre."
-        } else if (name.length < 3) {
-            errors.name = "El nombre debe tener almenos tres caracteres."
-        }
-
-        if (!lastname.trim()) {
-            errors.lastname = "Por favor ingrese un apellido."
-        } else if (lastname.length < 3) {
-            errors.lastname = "El apellido debe tener almenos tres caracteres."
-        }
-
-        if (!email.trim()) {
-            errors.email = "Por favor ingrese una correo electrónico.";
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            errors.email = "El correo electrónico no es válido.";
-        }
+    const validateCreation = () => {
+        const errors = validateForm(); 
 
         if (!password.trim()) {
             errors.password = "Por favor ingrese una contraseña.";
@@ -83,28 +67,51 @@ export const UserForm = ({ userSelect }) => {
         return errors;
     };
 
+    const validateUpdate = () => validateForm(); // Reutilizas la validación básica.
+
+    const validateForm = () => {
+        const errors = {};
+    
+        if (!name.trim()) {
+            errors.name = "Por favor ingrese un nombre.";
+        } else if (name.length < 3) {
+            errors.name = "El nombre debe tener al menos tres caracteres.";
+        }
+    
+        if (!lastname.trim()) {
+            errors.lastname = "Por favor ingrese un apellido.";
+        } else if (lastname.length < 3) {
+            errors.lastname = "El apellido debe tener al menos tres caracteres.";
+        }
+    
+        if (!email.trim()) {
+            errors.email = "Por favor ingrese un correo electrónico.";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errors.email = "El correo electrónico no es válido.";
+        }
+    
+        return errors;
+    };
+    
+
+    console.log("control de errors " +JSON.stringify(frontErrors, null,2));
+
+
     const onSubmitUserChange = async (event) => {
         event.preventDefault();
 
-        const errors = validateForm();
+        const errors = id === '' ? validateCreation() : validateUpdate();
 
         if (Object.keys(errors).length > 0) {
             setFrontErrors(errors);
             return;
         }
         
-        console.log('cpntrol de error backend ' + JSON.stringify(errorRegisterBackend.email));
-
         if (id === '') {
-            //Enviamos los datos del user al Hook useUsers
             const result = await handlerAddUser(userForm);
 
             if (result.success) {
-
-                console.log('cpntrol de usr desde form ASO ' + JSON.stringify(userForm));
-        
                 await handleLogin({email: userForm.email, password: userForm.password});
-        
                 setUserForm(initialUserForm);
 
             } else {
@@ -112,15 +119,17 @@ export const UserForm = ({ userSelect }) => {
             }
 
         } else {
-            console.log('cpntrol de usr desde form ' + JSON.stringify(userForm))
+            const result = await handlerUpdateUser(userForm);
 
-            await handlerUpdateUser(userForm);
+            if (result.success) {
+                setUserForm(initialUserForm);
 
+            } else {
+                console.log('Error al actualizar usuario');
+            }
         }  
 
     }
-
-     
 
     return (
         <div className="container-form-user">
@@ -167,7 +176,7 @@ export const UserForm = ({ userSelect }) => {
                     <label htmlFor="userpassword" className="form-user-label">Contraseña</label>
                     <input 
                         id="userpassword"
-                        type="text"
+                        type="password"
                         placeholder="Contraseña"
                         name="password"
                         onChange={onInputUserChange}
@@ -179,6 +188,7 @@ export const UserForm = ({ userSelect }) => {
                 
                 <button
                     type="submit"
+                    onClick={() => console.log("Botón presionado")}
                 >
                     {id > 0 ? 'Actualizar' : 'Crear'}
                     

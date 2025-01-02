@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserForm } from "../components/UserForm";
 import { useAuth } from "../hooks/useAuth";
+import { useUsers } from "../hooks/useUsers";
 
-const initialUserForm = {
-    id: '',
-    name: '',
-    lastname: '',
-    email: '',
-    password: '',
-}
+// const initialUserForm = {
+//     id: '',
+//     name: '',
+//     lastname: '',
+//     email: '',
+//     password: '',
+// }
 
 export const UserUpdatePage = () => {
 
     const { user } = useAuth();
-
+    const { initialUserForm } = useUsers();
     const [ userSelect, setUserSelect ] = useState(initialUserForm);
 
     const { id } = useParams();
@@ -28,11 +29,8 @@ export const UserUpdatePage = () => {
         
     },[id]);
 
-    console.log("control de usre register page " +JSON.stringify(userSelect, null, 2));
-  
     return(
         <>
-            
             <div className="container-form">
                 <h3>Editar Usuario</h3>
 

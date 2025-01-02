@@ -11,6 +11,8 @@ export const useUsers = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // console.log('control de initial user hook ' +JSON.stringify(initialUserForm, null,2));
+
     //Traemos todos los usuarios
     const getUsers = async () => {
         try {
@@ -47,25 +49,38 @@ export const useUsers = () => {
     }
 
     const handlerUpdateUser = async (user) => {
-        const item = await update(user);
-        const userLogged = {
-            id: item.data.id, 
-            name: item.data.name,
-            lastname: item.data.lastname, 
-            email: item.data.email
-        };
+        try {
+            const item = await update(user);
+        
+            const userLogged = {
+                id: item.data.id, 
+                name: item.data.name,
+                lastname: item.data.lastname, 
+                email: item.data.email
+            };
+    
+            dispatch(updateUser({userLogged:userLogged}));
+    
+            sessionStorage.setItem('user', JSON.stringify({
+                userLogged: userLogged,
+            }));
+    
+            navigate('/perfil');
+            return {success: true};
 
-        dispatch(updateUser({userLogged:userLogged}));
+        } catch (error) {
+            if (error.response?.status == 409) {
+                const email = error.response.data || null;
+            
+                dispatch(setRegisterErrors({email:email}));
+                console.log('control de errore ' +email);
 
-        sessionStorage.setItem('user', JSON.stringify({
-            userLogged: userLogged,
-        }));
-
-        // console.log("id desde useUsers " +item.data.userId);
-        // console.log("user desde useUsers " +JSON.stringify(userLogged, null, 2));
-
-
-        navigate('/perfil');
+                return {success: false};
+            } else {
+                throw error;
+            }
+        }
+        
     }
 
     const handlerAddUserFromAdmin = async (user) => {
