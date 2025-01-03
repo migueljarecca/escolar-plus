@@ -62,7 +62,7 @@ export const useAuth = () => {
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('login')
         sessionStorage.removeItem('user')
-        sessionStorage.removeItem('wishlistData')
+        sessionStorage.removeItem('wishlist')
         sessionStorage.removeItem('cartData')
 
         sessionStorage.clear

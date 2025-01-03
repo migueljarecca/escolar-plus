@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialWishlistData = JSON.parse(sessionStorage.getItem('whishlistData')) || [];
+const initialWishlistData = JSON.parse(sessionStorage.getItem('wishlist')) || [];
 
 export const wishlistSlice = createSlice({
 
@@ -16,12 +16,12 @@ export const wishlistSlice = createSlice({
                     ...action.payload
                 }       
             ]
-            sessionStorage.setItem('whishlistData', JSON.stringify(state.wishlist));
+            sessionStorage.setItem('wishlist', JSON.stringify(state.wishlist));
 
         },
         removeToWishlist: (state, action) => {
             state.wishlist = state.wishlist.filter(item => item.id !== action.payload)
-            sessionStorage.setItem('whishlistData', JSON.stringify(state.wishlist));
+            sessionStorage.setItem('wishlist', JSON.stringify(state.wishlist));
 
         }
     }
