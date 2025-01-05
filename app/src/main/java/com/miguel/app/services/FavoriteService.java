@@ -1,9 +1,11 @@
 package com.miguel.app.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.miguel.app.models.dto.FavoriteDto;
@@ -19,7 +21,8 @@ public class FavoriteService {
 
     @Autowired
     private FavoriteRepository favoriteRepository;
-    
+
+    @Transactional
     public Favorite createFavorite (FavoriteDto favoriteDto) {
 
         Favorite favori = new Favorite();
@@ -41,6 +44,7 @@ public class FavoriteService {
         return favoriteRepository.save(favori);
     }
 
+    @Transactional
     public void DeleteFavorite (Long id) {
 
         Optional<Favorite> fOptional = favoriteRepository.findById(id);
@@ -52,8 +56,17 @@ public class FavoriteService {
             favoriteRepository.deleteById(id);
 
             imageService.removeImagen(favorite.getImage().getId());
-
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Favorite> findFavoritesByUserId (Long userId) {
+        return favoriteRepository.getFavoritesByUserId(userId);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Favorite> findFavoriteById(Long id) {
+        return favoriteRepository.findById(id);
     }
 
 }

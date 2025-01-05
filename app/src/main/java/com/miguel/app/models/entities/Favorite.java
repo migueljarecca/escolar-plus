@@ -4,11 +4,12 @@ import com.miguel.app.enums.Gender;
 import com.miguel.app.enums.Product;
 import com.miguel.app.enums.Size;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 
-
+@Entity
 public class Favorite{
     
     @Id
