@@ -58,7 +58,7 @@ public class UserController {
 
         Optional<User> uOptional = userRepository.getUserByEmail(user.getEmail());
 
-        if (!uOptional.isPresent()) {
+        if (uOptional.isEmpty()) {
             UserDto userDb = userService.create(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(userDb);
         } else {
@@ -74,7 +74,7 @@ public class UserController {
 
         Optional<User> uOptional = userRepository.getUserByEmail(user.getEmail());
 
-        if (!uOptional.isPresent()) {
+        if (uOptional.isEmpty()) {
             Optional<UserDto> userOptional = userService.update(user, id);
             
             if (userOptional.isPresent()) {

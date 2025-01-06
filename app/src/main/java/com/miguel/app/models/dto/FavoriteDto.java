@@ -17,7 +17,7 @@ public class FavoriteDto {
     private Long userId;
     private Long schoolId;
 
-    MultipartFile file;
+    private MultipartFile file;
 
     public Long getId() {
         return id;
@@ -82,5 +82,6 @@ public class FavoriteDto {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
+    
     
 }

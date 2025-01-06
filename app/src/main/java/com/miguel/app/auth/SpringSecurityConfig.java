@@ -67,6 +67,12 @@ public class SpringSecurityConfig {
 
             .requestMatchers(HttpMethod.GET, "/uniforms/by-school/{id}").permitAll()
 
+            .requestMatchers(HttpMethod.GET, "/favorites").hasAnyRole("USER", "ADMIN")
+            .requestMatchers(HttpMethod.POST, "/favorites").hasAnyRole("USER", "ADMIN")
+            .requestMatchers(HttpMethod.DELETE, "/favorites/{id}").hasAnyRole("USER", "ADMIN")
+
+            .requestMatchers(HttpMethod.GET, "/favorites/by-user/{id}").hasAnyRole("USER","ADMIN")
+
             .anyRequest().authenticated())
 
             // Se agrega después de crear JwtAuthenticationFilter

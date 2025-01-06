@@ -64,7 +64,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
             Optional<User> uOptional = userRepository.getUserByEmail(email);
 
-            if (!uOptional.isPresent()) {
+            if (uOptional.isEmpty()) {
                 throw new AuthenticationException("El correo ingresado no es válido") {
                     
                 };
@@ -130,7 +130,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         Map<String, Object> body = new HashMap<>();
         body.put("token",token);
-        body.put("message", String.format("Hola %s, has iniciado sesion con exito", email)); 
+        body.put("message", "Hola %s, has iniciado sesion con exito".formatted(email)); 
         body.put("userId", userDB.getId());
         body.put("email", email);
         body.put("lastname", userDB.getLastname());

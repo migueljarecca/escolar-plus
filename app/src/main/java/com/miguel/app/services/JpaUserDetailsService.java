@@ -30,7 +30,7 @@ public class JpaUserDetailsService implements UserDetailsService{
         // SEPTIMO PASO logeamos con JPA. antes estaba de forma estática
         Optional<User> userOptional = userRepository.getUserByEmail(email);
 
-        if (!userOptional.isPresent()) {
+        if (userOptional.isEmpty()) {
             throw new UnsupportedOperationException("el useremail no existe");
         }
 

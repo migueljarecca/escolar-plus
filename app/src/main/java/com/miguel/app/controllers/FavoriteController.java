@@ -30,6 +30,10 @@ public class FavoriteController {
 
     @PostMapping
     public ResponseEntity<?> create(@ModelAttribute FavoriteDto favoriteDto) {
+
+        System.out.println("control de id " +favoriteDto.getId());
+        System.out.println("control de file " +favoriteDto.getFile().getOriginalFilename());
+        
         Favorite favorite = favoriteService.createFavorite(favoriteDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(favorite);
@@ -48,8 +52,8 @@ public class FavoriteController {
         return ResponseEntity.notFound().build();
     } 
 
-    @GetMapping("/{userId}")
-    public List<Favorite> getFavorities(@RequestParam Long userId) {
-        return favoriteService.findFavoritesByUserId(userId);
+    @GetMapping("/by-user/{id}")
+    public List<Favorite> getFavorities(@RequestParam Long id) {
+        return favoriteService.findFavoritesByUserId(id);
     }
 }

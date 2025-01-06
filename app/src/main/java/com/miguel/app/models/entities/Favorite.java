@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Favorite{
@@ -30,6 +31,7 @@ public class Favorite{
 
     private Long schoolId;
 
+    @OneToOne
     private Image image;
 
     public Favorite() {
