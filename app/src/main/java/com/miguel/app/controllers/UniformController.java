@@ -46,6 +46,7 @@ public class UniformController {
 
     @PostMapping
     public ResponseEntity<?> create(@ModelAttribute UniformDto uniformDto) {
+        System.out.println("control de uniform create " +uniformDto.getPrice());
         Uniform uniform = uniformService.createUniform(uniformDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(uniform);

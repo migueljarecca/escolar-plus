@@ -7,7 +7,6 @@ export const useCart = () => {
     const { priceTotal } = useSelector(state => state.cart);
 
     // console.log('Cart data: ' + JSON.stringify(cart,null,2));
-    console.log('total: ' + priceTotal);
     const dispatch = useDispatch();
 
     const handlerAddCart = (product) => {

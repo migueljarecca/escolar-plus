@@ -106,7 +106,7 @@ export const UniformsPage = () => {
 
                             {schools.map((school) => (
 
-                                <NavLink to={`/uniforms/${school.id}`}>
+                                <NavLink to={`/uniforms/${school.id}`} key={school.id}>
 
                                     <div className="card-box-cole" key={school.id}>
 
@@ -148,7 +148,12 @@ export const UniformsPage = () => {
                 </aside>
 
                 <main className="main-content">
-                    <UniformFilteredList filteredProducts={filteredProducts}/>
+                    {filteredProducts.length > 0 ? (
+                        <UniformFilteredList filteredProducts={filteredProducts}/>
+                    ) : (
+                        <div>No hay uniformes disponibles</div> 
+                    )}
+                    
                 </main>
             
             </div>

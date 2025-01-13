@@ -111,19 +111,15 @@ export const UniformForm = ( { uniformSelected }) => {
                     >
 
                         <option value="">Seleccionar producto</option>
-                        <option value="BLUZA_MANGA_CORTA">BLUZA MANGA CORTA</option>
-                        <option value="BLUZA_MANGA_LARGA">BLUZA MANGA LARGA</option>
-                        <option value="CAMISA_MANGA_CORTA">CAMISA MANGA CORTA</option>
-                        <option value="CAMISA_MANGA_LARGA">CAMISA MANGA LARGA</option>
+                        <option value="BLUZA">BLUZA</option>
+                        <option value="CAMISA">CAMISA</option>
                         <option value="CASACA">CASACA</option>
                         <option value="CHALECO">CHALECO</option>
                         <option value="CHOMPA">CHOMPA</option>
-                        <option value="POLO_MANGA_CORTA">POLO MANGA CORTA</option>
-                        <option value="POLO_MANGA_LARGA">POLO MANGA LARGA</option>
+                        <option value="POLO">POLO</option>
                         <option value="FALDA">FALDA</option>
                         <option value="JUMPER">JUMPER</option>
                         <option value="SHORT">SHORT</option>
-                        <option value="PANTALON_BUZO">PANTALON BUZO</option>
                         <option value="PANTALON">PANTALON</option>
 
                     </select>
@@ -143,7 +139,7 @@ export const UniformForm = ( { uniformSelected }) => {
                         <option value="NUM_12">12</option>
                         <option value="S">S</option>
                         <option value="M">M</option>
-                        <option value="X">X</option>
+                        <option value="L">L</option>
                         <option value="XL">XL</option>
 
                     </select>
