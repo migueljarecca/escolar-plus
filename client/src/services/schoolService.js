@@ -44,11 +44,10 @@ export const findAll = async() => {
 }
 
 export const update = async(formData, id) => {
-    console.log("control form school service update");
 
-    for (let pair of formData.entries()) {
-        console.log(`${pair[0]}: ${pair[1]}`);
-    }
+    // for (let pair of formData.entries()) {
+    //     console.log(`${pair[0]}: ${pair[1]}`);
+    // }
     try {
         const response = await axios.put(`${BASE_URL_SCHOOL}/${id}`, formData, config());
         return response;

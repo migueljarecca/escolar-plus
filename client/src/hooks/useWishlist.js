@@ -8,8 +8,15 @@ export const useWishlist = () => {
     const dispatch = useDispatch();
 
     const handleAddToWishlist = (item) => {
+        console.log("item " +JSON.stringify(item, null, 2));
         dispatch(addToWishlist(item));
+
+        if (!item.userId == '') {
+            console.log('gfhj basck ' +item.userId);
+        }
     }
+
+    
 
     const handleRemoveToWishlist = (id) => {
         dispatch(removeToWishlist(id));

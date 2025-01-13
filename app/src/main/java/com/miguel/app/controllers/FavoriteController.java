@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.miguel.app.models.dto.FavoriteDto;
@@ -31,8 +30,6 @@ public class FavoriteController {
     @PostMapping
     public ResponseEntity<?> create(@ModelAttribute FavoriteDto favoriteDto) {
 
-        System.out.println("control de id " +favoriteDto.getId());
-        System.out.println("control de file " +favoriteDto.getFile().getOriginalFilename());
         
         Favorite favorite = favoriteService.createFavorite(favoriteDto);
 
@@ -41,8 +38,10 @@ public class FavoriteController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
+        System.out.println("CONTROL de id " +id);
 
         Optional<Favorite> fOptional = favoriteService.findFavoriteById(id);
+        System.out.println("CONTROL de PRICE " +fOptional.get().getPrice());
 
         if (fOptional.isPresent()) {
             favoriteService.DeleteFavorite(id);
@@ -53,7 +52,7 @@ public class FavoriteController {
     } 
 
     @GetMapping("/by-user/{id}")
-    public List<Favorite> getFavorities(@RequestParam Long id) {
+    public List<Favorite> getFavorities(@PathVariable Long id) {
         return favoriteService.findFavoritesByUserId(id);
     }
 }
