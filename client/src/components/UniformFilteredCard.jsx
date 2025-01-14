@@ -2,45 +2,16 @@ import { NavLink } from "react-router-dom";
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAuth } from "../hooks/useAuth";
-import { useSchool } from "../hooks/useSchool";
-
-const transformedItem = {
-    id: '',
-    price: '',
-    product: '',
-    size: '',
-    gender: '',
-    userId: '', // Agrega el userId aquí
-    schoolId: '',
-    image: ''
-  };
 
 export const UniformFilteredCard = ( { prod, onChangeWishlist, isProductInWishlist }) => {
 
-    const { user } = useAuth(); 
-    // const { schools } = useSchool();
+    // console.log("control de iser " +user.id)
 
-    const { image, product, gender, size, price, id, school } = prod;
+    const { image, product, gender, size, price, id } = prod;
 
     if (!prod) {
         return <div>No hay información disponible.</div>;
     }
-
-    // const checkSchoolById = () => {
-
-    // }
-
-    const transformedItem = {
-        id: id,
-        price: price,
-        product: product,
-        size: size,
-        gender: gender,
-        userId: user.id, // Agrega el userId aquí
-        schoolId: school.id,
-        image: image
-      };
 
     return (
         <article className="card-content">
@@ -64,7 +35,7 @@ export const UniformFilteredCard = ( { prod, onChangeWishlist, isProductInWishli
             </NavLink>
             
             <FontAwesomeIcon 
-                onClick={() => onChangeWishlist(transformedItem)} 
+                onClick={() => onChangeWishlist(prod)} 
                 className="icon-heart"
                 icon={isProductInWishlist ? fasHeart : farHeart} 
             />

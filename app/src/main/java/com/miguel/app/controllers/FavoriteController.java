@@ -30,7 +30,12 @@ public class FavoriteController {
     @PostMapping
     public ResponseEntity<?> create(@ModelAttribute FavoriteDto favoriteDto) {
 
-        
+        System.out.println("CONTROL de id " +favoriteDto.getId());
+
+        // Procesa el archivo aquí
+        if (favoriteDto.getFile() != null) {
+            System.out.println("ARCHIVO RECIBIDO:  " + favoriteDto.getFile().getOriginalFilename());
+        }
         Favorite favorite = favoriteService.createFavorite(favoriteDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(favorite);

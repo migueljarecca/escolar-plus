@@ -4,16 +4,18 @@ import { Header } from "../components/Header"
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist"
 import { Footer } from '../components/Footer';
+import { useAuth } from "../hooks/useAuth";
 
 
 export const Wishlist = () => {
 
     const { wishlist, handleRemoveToWishlist } = useWishlist();
     const{ handlerAddCart } = useCart();
+    const { user } = useAuth();
 
     const onClickAddCart = (item) => {
         handlerAddCart(item);
-        handleRemoveToWishlist(item.id);
+        handleRemoveToWishlist({id:item.id, userId:user.userLogged.id});
     }
 
     // console.log('cpn ' +JSON.stringify(wishlist, null, 2));
@@ -46,7 +48,7 @@ export const Wishlist = () => {
 
                                     <button
                                         type="submit"
-                                        onClick={()=> handleRemoveToWishlist(item.id)}
+                                        onClick={()=> handleRemoveToWishlist({id:item.id, userId:user.userLogged.id})}
                                     >
                                         Eliminar
                                     </button>
@@ -76,7 +78,7 @@ export const Wishlist = () => {
                     ? 
                         (     
 
-                            <NavLink to={`/uniforms/${wishlist[wishlist.length -1].school.id}` }>
+                            <NavLink to={`/uniforms/${wishlist[wishlist.length -1].schoolId}` }>
                                 Continuar Comprando
                             </NavLink>
                         ) 

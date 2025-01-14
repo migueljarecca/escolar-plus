@@ -1,7 +1,7 @@
 import axios, { Axios } from "axios"
 
 
-const BASE_URL_FAVORITE = `${import.meta.env.BASE_URL_FAVORITE}/favorites`
+const BASE_URL_FAVORITE = `${import.meta.env.VITE_API_BASE_URL}/favorites`
 
 const config = () => {
     return {
@@ -14,8 +14,18 @@ const config = () => {
 // COMUNICACIÓN CON EL BACKEND
 
 //creamos un uniforme favorito
-export const save = async(formData) => {
+export const saveWishlist = async(formData) => {
     
+    // for (let pair of formData.entries()) {
+    //     if (!pair[1]) {
+    //         console.error(`Error: ${pair[0]} está vacío o indefinido`);
+    //     }
+    //     console.log(`${pair[0]}: ${pair[1]}`);
+    // }
+
+      // Verifica la URL
+    // console.log('URL:', BASE_URL_FAVORITE);
+
     try {
         const response = await axios.post(BASE_URL_FAVORITE, formData, config());
         return response;
@@ -37,7 +47,7 @@ export const findByIdUser = async(id) => {
 }
 
 //eliminamos un uniforme por id
-export const remove = async(id) => {
+export const removeFavorite = async(id) => {
 
     try {
         await axios.delete(`${BASE_URL_FAVORITE}/${id}`, config());
