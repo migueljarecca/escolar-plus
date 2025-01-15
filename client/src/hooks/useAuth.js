@@ -2,12 +2,15 @@ import { authService } from "../services/authService"
 import { useDispatch, useSelector } from 'react-redux';
 import { onLogin, onLogout, addUser, removeUser, setAuthErrors } from "../store/slices/auth/authSlice";
 import { useNavigate } from 'react-router-dom';
+import { useWishlist } from "./useWishlist";
 
 
 export const useAuth = () => {
 
     const { login, user, errorLoginBackend } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+
+    const { handleClearWishlist } = useWishlist();
 
     // console.log('control de login' +JSON.stringify(login, null, 2));
     // console.log('control de login user desde hook' +JSON.stringify(user, null, 2));
@@ -59,13 +62,16 @@ export const useAuth = () => {
     const handleLogout = () => {
         dispatch(onLogout());
         dispatch(removeUser());
-        sessionStorage.removeItem('token')
-        sessionStorage.removeItem('login')
-        sessionStorage.removeItem('user')
-        sessionStorage.removeItem('wishlist')
-        sessionStorage.removeItem('cartData')
+        // sessionStorage.removeItem('token')
+        // sessionStorage.removeItem('login')
+        // sessionStorage.removeItem('user')
+        // sessionStorage.removeItem('wishlist')
+        // sessionStorage.removeItem('cartData')
 
+        handleClearWishlist();
         sessionStorage.clear
+
+
 
         navigate('/')
     };

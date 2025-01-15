@@ -15,10 +15,12 @@ export const Wishlist = () => {
 
     const onClickAddCart = (item) => {
         handlerAddCart(item);
-        handleRemoveToWishlist({id:item.id, userId:user.userLogged.id});
+        handleRemoveToWishlist({id:item.id, userId:user?.userLogged?.id || ''});
     }
 
     // console.log('cpn ' +JSON.stringify(wishlist, null, 2));
+    console.log('API response page:', wishlist);
+
    
     return(
         <>
@@ -48,7 +50,7 @@ export const Wishlist = () => {
 
                                     <button
                                         type="submit"
-                                        onClick={()=> handleRemoveToWishlist({id:item.id, userId:user.userLogged.id})}
+                                        onClick={()=> handleRemoveToWishlist({id:item.id, userId:user?.userLogged?.id || ''})}
                                     >
                                         Eliminar
                                     </button>

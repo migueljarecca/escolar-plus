@@ -6,12 +6,15 @@ import { useAuth } from "../hooks/useAuth";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
+import { useWishlist } from "../hooks/useWishlist";
 
 export const Perfil = () => {
 
     const { login, user, handleLogout } = useAuth();
 
     const [userPerfil, setUserPerfil] = useState(user); 
+    const { getFavorites } = useWishlist();
+    
 
     const navigate = useNavigate();
 
@@ -22,6 +25,13 @@ export const Perfil = () => {
             navigate('/login');
         }
     },[user]);
+
+    useEffect(() => {
+        if (user?.userLogged?.id) {
+            getFavorites(user.userLogged.id);            
+        }
+    },[user]);
+
     // console.log("conrol de user 01 " +JSON.stringify(user, null, 2))
 
     // console.log("conrol de userrr " +JSON.stringify(userPerfil.userLogged, null, 2))

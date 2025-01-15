@@ -6,16 +6,29 @@ import { Footer } from "../components/Footer";
 
 import shop from '/src/images/shop.jpg'
 import { Suscription } from "../components/Suscription";
+import { useWishlist } from "../hooks/useWishlist";
+import { useAuth } from "../hooks/useAuth";
 // import insignia from '/src/images/insignia.png'
 
 
 export const HomePage = () => {
 
     const { getSchools, schools } = useSchool();
+    const { getFavorites } = useWishlist();
+    const { user } = useAuth();
 
     useEffect(() => {
         getSchools();
+        // console.log('control de home id ' +user.userLogged.id)
     },[]);
+
+    useEffect(() => {
+        if (user?.userLogged?.id) {
+            getFavorites(user.userLogged.id);            
+        }
+    },[user]);
+
+    // console.log('control desde home user ' +JSON.stringify(user, null, 2))
 
     return (
         <>

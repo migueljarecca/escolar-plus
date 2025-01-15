@@ -3,16 +3,6 @@ import { useUniform } from '../hooks/useUniform';
 import { useWishlist } from '../hooks/useWishlist';
 import { UniformFilteredCard } from './UniformFilteredCard';
 
-const favItem = {
-    id: '',
-    price: '',
-    product: '',
-    size: '',
-    gender: '',
-    userId: '', // Agrega el userId aquí
-    schoolId: '',
-    image: ''
-  };
 
 export const UniformFilteredList = ( { filteredProducts }) => {
 
@@ -29,6 +19,9 @@ export const UniformFilteredList = ( { filteredProducts }) => {
     } 
 
     const onChangeWishlist = (item) => {
+
+        const userId = user?.userLogged?.id || '';
+
         if (checkProductInWishlist(item)) {
             handleRemoveToWishlist({id: item.id, userId: user.userLogged.id});
 
@@ -40,7 +33,7 @@ export const UniformFilteredList = ( { filteredProducts }) => {
             product: item.product,
             size: item.size,
             gender: item.gender,
-            userId: user.userLogged.id, // Agrega el userId aquí
+            userId: userId,
             schoolId: item.school.id,
             image: item.image
         };

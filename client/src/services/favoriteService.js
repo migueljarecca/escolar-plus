@@ -37,11 +37,15 @@ export const saveWishlist = async(formData) => {
 }
 
 //tramemos los uniformes favoritos por el id de usuario
-export const findByIdUser = async(id) => {
+export const findByIdUserFavorites = async(id) => {
+    console.log('control de services id ' +`${BASE_URL_FAVORITE}/by-user/${id}`)
+
     try {
         const response = await axios.get(`${BASE_URL_FAVORITE}/by-user/${id}`, config());
+
         return response;
     } catch (error) {
+        console.log(error);
         throw error;
     }
 }

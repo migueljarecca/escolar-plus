@@ -6,7 +6,7 @@ export const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
 }
 
 export const initialUser = JSON.parse(sessionStorage.getItem('user')) || {
-    user: undefined
+    userLogged: null
 }
 
 export const initialErrorLogin = {
@@ -35,7 +35,7 @@ export const authSlice = createSlice({
                 isAuth: false,
                 isAdmin: false,
             }
-            state.user = undefined;
+            state.user = {userLogged: null};
             state.errorLoginBackend = initialErrorLogin;
 
         },
