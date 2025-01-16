@@ -18,6 +18,7 @@ import com.miguel.app.models.dto.FavoriteDto;
 import com.miguel.app.models.entities.Favorite;
 import com.miguel.app.services.FavoriteService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/favorites")
@@ -39,6 +40,15 @@ public class FavoriteController {
         Favorite favorite = favoriteService.createFavorite(favoriteDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(favorite);
+    }
+
+    @PostMapping("/add-favorites")
+    public ResponseEntity<List<Favorite>> addFavorites(@RequestBody List<FavoriteDto> favoriteDtos) {
+        
+        List<Favorite> savedFavorites = favoriteService.saveFavorites(favoriteDtos);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedFavorites);
+        
     }
 
     @DeleteMapping("/{id}")

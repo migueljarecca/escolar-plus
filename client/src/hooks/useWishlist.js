@@ -10,7 +10,7 @@ export const useWishlist = () => {
     const dispatch = useDispatch();
 
     const getFavorites = async(id) => {
-        
+
         try {
             const result = await findByIdUserFavorites(id);
 
@@ -20,7 +20,7 @@ export const useWishlist = () => {
             const mergedWishlist = [
                 ...wishlist,
                 ...formattedResult.filter(
-                    (backendItem) => !wishlist.some((localItem)=>localItem.id ===backendItem.id)
+                    (backendItem) => !wishlist.some((localItem)=>localItem.id === backendItem.id)
                 ),
             ];
 
