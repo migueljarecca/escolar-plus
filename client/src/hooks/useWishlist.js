@@ -10,16 +10,29 @@ export const useWishlist = () => {
     const dispatch = useDispatch();
 
     const getFavorites = async(id) => {
-        console.log('control de hook id ' +id)
+        
         try {
             const result = await findByIdUserFavorites(id);
 
             const formattedResult = Object.values(result.data || {});
-    console.log('API response:', formattedResult);
 
-                if (JSON.stringify(wishlist) !== JSON.stringify(formattedResult)) {
-                    dispatch(loadingToWishlist(formattedResult));
-                }
+            //Mesclar las listas eliminando duplicados
+            const mergedWishlist = [
+                ...wishlist,
+                ...formattedResult.filter(
+                    (backendItem) => !wishlist.some((localItem)=>localItem.id ===backendItem.id)
+                ),
+            ];
+
+            //Actualizar el estado si hay cambios
+            if (JSON.stringify(wishlist) !== JSON.stringify(mergedWishlist)) {
+                dispatch(loadingToWishlist(mergedWishlist));
+            }
+
+            console.log('Lista actual:', wishlist);
+            console.log('Datos del backend:', formattedResult);
+            console.log('Lista combinada:', mergedWishlist);
+
                     
         } catch (error) {
             console.error(error);
