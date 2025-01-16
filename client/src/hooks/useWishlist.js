@@ -15,9 +15,10 @@ export const useWishlist = () => {
             const result = await findByIdUserFavorites(id);
 
             const formattedResult = Object.values(result.data || {});
+    console.log('API response:', formattedResult);
 
                 if (JSON.stringify(wishlist) !== JSON.stringify(formattedResult)) {
-                    dispatch(loadingToWishlist({...formattedResult}));
+                    dispatch(loadingToWishlist(formattedResult));
                 }
                     
         } catch (error) {

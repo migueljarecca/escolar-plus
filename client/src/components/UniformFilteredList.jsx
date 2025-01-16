@@ -23,7 +23,7 @@ export const UniformFilteredList = ( { filteredProducts }) => {
         const userId = user?.userLogged?.id || '';
 
         if (checkProductInWishlist(item)) {
-            handleRemoveToWishlist({id: item.id, userId: user.userLogged.id});
+            handleRemoveToWishlist({id: item.id, userId: user?.userLogged?.id});
 
         } else {
 
