@@ -43,28 +43,33 @@ public class FavoriteController {
     }
 
     @PostMapping(value = "/add-favorites", consumes = "multipart/form-data")
-public ResponseEntity<?> addFavorites(
-        @ModelAttribute FavoriteListDto favoriteListDto) {
+    public ResponseEntity<?> addFavorites(@ModelAttribute FavoriteListDto favoriteListDto) {
 
     List<FavoriteDto> favorites = favoriteListDto.getFavorites();
 
+    List<Favorite> savedFavorites = favoriteService.saveFavorites(favorites);
+    //     System.out.println("CONTROL DE INGRESO A LISTA DE favoritos response");
+
+    //     return ResponseEntity.status(HttpStatus.CREATED).body(savedFavorites);
+        
+
     // Log para confirmar el tamaño de la lista
-    System.out.println("Número de favoritos recibidos: " + favorites.size());
+    // System.out.println("Número de favoritos recibidos: " + favorites.size());
 
-    for (int i = 0; i < favorites.size(); i++) {
-        FavoriteDto favorite = favorites.get(i);
-        System.out.println("Favorito #" + (i + 1));
-        System.out.println("ID: " + favorite.getId());
-        System.out.println("Precio: " + favorite.getPrice());
-        System.out.println("Producto: " + favorite.getProduct());
-        System.out.println("Tamaño: " + favorite.getSize());
-        System.out.println("Género: " + favorite.getGender());
-        System.out.println("Usuario: " + favorite.getUserId());
-        System.out.println("Escuela: " + favorite.getSchoolId());
-        System.out.println("Archivo: " + favorite.getFile().getOriginalFilename());
-    }
+    // for (int i = 0; i < favorites.size(); i++) {
+    //     FavoriteDto favorite = favorites.get(i);
+    //     System.out.println("Favorito #" + (i + 1));
+    //     System.out.println("ID: " + favorite.getId());
+    //     System.out.println("Precio: " + favorite.getPrice());
+    //     System.out.println("Producto: " + favorite.getProduct());
+    //     System.out.println("Tamaño: " + favorite.getSize());
+    //     System.out.println("Género: " + favorite.getGender());
+    //     System.out.println("Usuario: " + favorite.getUserId());
+    //     System.out.println("Escuela: " + favorite.getSchoolId());
+    //     System.out.println("Archivo: " + favorite.getFile().getOriginalFilename());
+    // }
 
-    return ResponseEntity.ok("Favoritos recibidos correctamente");
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedFavorites);
 }
 
 

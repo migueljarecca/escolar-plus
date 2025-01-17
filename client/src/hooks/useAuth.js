@@ -62,14 +62,14 @@ export const useAuth = () => {
     const handleLogout = () => {
         dispatch(onLogout());
         dispatch(removeUser());
-        // sessionStorage.removeItem('token')
-        // sessionStorage.removeItem('login')
-        // sessionStorage.removeItem('user')
-        // sessionStorage.removeItem('wishlist')
-        // sessionStorage.removeItem('cartData')
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('login')
+        sessionStorage.removeItem('user')
+        sessionStorage.removeItem('wishlist')
+        sessionStorage.removeItem('cartData')
 
         handleClearWishlist();
-        sessionStorage.clear
+        // sessionStorage.clear
 
 
 

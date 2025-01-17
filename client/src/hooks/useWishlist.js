@@ -16,7 +16,7 @@ export const useWishlist = () => {
 
             const formattedResult = Object.values(result.data || {});
 
-            //Mesclar las listas eliminando duplicados
+            //Mesclar las listas de favoritos eliminando duplicados
             const mergedWishlist = [
                 ...wishlist,
                 ...formattedResult.filter(
@@ -40,8 +40,6 @@ export const useWishlist = () => {
 
             //Insertamos los ítems locales en el backend
             if (newItems.length > 0) {
-                // console.log('paso por new items ++++: ' +JSON.stringify(newItems, null, 2));
-
                 await saveMissingItems(newItems, id);
             }
                     
@@ -75,8 +73,8 @@ export const useWishlist = () => {
         try {
 
             const result = await saveFavorites(formData);
-
             console.log('Nuevos ítems guardados en el backend:', result.data);
+
         } catch (error) {
             console.error('Error al guardar nuevos ítems:', error);
         }
@@ -104,13 +102,10 @@ export const useWishlist = () => {
         }
 
         if (!favItem.userId == '') {
-            console.log('gfhj basck ' +favItem.userId);
-
             try {
                 const result = await saveWishlist(formData);
 
                 dispatch(addToWishlist({...result.data}));
-                // console.log("item " +JSON.stringify(response.data, null, 2));
 
             } catch (error) {
                 throw error;

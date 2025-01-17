@@ -22,11 +22,14 @@ export const HomePage = () => {
         // console.log('control de home id ' +user.userLogged.id)
     },[]);
 
+    let hasFetchedFavorites = false;
+
     useEffect(() => {
-        if (user?.userLogged?.id) {
-            getFavorites(user.userLogged.id);            
+        if (user?.userLogged?.id && !hasFetchedFavorites) {
+            getFavorites(user.userLogged.id); 
+            hasFetchedFavorites = true;
         }
-    },[user]);
+    },[]);
 
     // console.log('control desde home user ' +JSON.stringify(user, null, 2))
 
