@@ -36,9 +36,28 @@ export const saveWishlist = async(formData) => {
     }
 }
 
+//guardamos favoritos en una lista
+export const saveFavorites = async(formData) => {
+    console.log('control de services ' +`${BASE_URL_FAVORITE}/add-favorites`)
+
+    for (let pair of formData.entries()) {
+        if (!pair[1]) {
+            console.error(`Error: ${pair[0]} está vacío o indefinido`);
+        }
+        console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
+    try {
+        const response = await axios.post(`${BASE_URL_FAVORITE}/add-favorites`, formData, config());
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 //tramemos los uniformes favoritos por el id de usuario
 export const findByIdUserFavorites = async(id) => {
-    console.log('control de services id ' +`${BASE_URL_FAVORITE}/by-user/${id}`)
 
     try {
         const response = await axios.get(`${BASE_URL_FAVORITE}/by-user/${id}`, config());

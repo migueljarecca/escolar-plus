@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.miguel.app.models.dto.FavoriteDto;
+import com.miguel.app.models.dto.FavoriteListDto;
 import com.miguel.app.models.entities.Favorite;
 import com.miguel.app.services.FavoriteService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/favorites")
@@ -42,14 +42,48 @@ public class FavoriteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(favorite);
     }
 
-    @PostMapping("/add-favorites")
-    public ResponseEntity<List<Favorite>> addFavorites(@RequestBody List<FavoriteDto> favoriteDtos) {
-        
-        List<Favorite> savedFavorites = favoriteService.saveFavorites(favoriteDtos);
+    @PostMapping(value = "/add-favorites", consumes = "multipart/form-data")
+public ResponseEntity<?> addFavorites(
+        @ModelAttribute FavoriteListDto favoriteListDto) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedFavorites);
-        
+    List<FavoriteDto> favorites = favoriteListDto.getFavorites();
+
+    // Log para confirmar el tamaño de la lista
+    System.out.println("Número de favoritos recibidos: " + favorites.size());
+
+    for (int i = 0; i < favorites.size(); i++) {
+        FavoriteDto favorite = favorites.get(i);
+        System.out.println("Favorito #" + (i + 1));
+        System.out.println("ID: " + favorite.getId());
+        System.out.println("Precio: " + favorite.getPrice());
+        System.out.println("Producto: " + favorite.getProduct());
+        System.out.println("Tamaño: " + favorite.getSize());
+        System.out.println("Género: " + favorite.getGender());
+        System.out.println("Usuario: " + favorite.getUserId());
+        System.out.println("Escuela: " + favorite.getSchoolId());
+        System.out.println("Archivo: " + favorite.getFile().getOriginalFilename());
     }
+
+    return ResponseEntity.ok("Favoritos recibidos correctamente");
+}
+
+
+    // @PostMapping("/add-favorites")
+    // public ResponseEntity<List<Favorite>> addFavorites(@ModelAttribute List<FavoriteDto> favoriteDtos) {
+    //     System.out.println("CONTROL DE INGRESO A LISTA DE FAVORITOS ");
+
+    //     for (FavoriteDto favorite : favoriteDtos) {
+    //         System.out.println("Procesando favorito: " + favorite.getProduct());
+    //         System.out.println("Archivo recibido: " + favorite.getFile().getOriginalFilename());
+    //     }
+
+        
+    //     List<Favorite> savedFavorites = favoriteService.saveFavorites(favoriteDtos);
+    //     System.out.println("CONTROL DE INGRESO A LISTA DE favoritos response");
+
+    //     return ResponseEntity.status(HttpStatus.CREATED).body(savedFavorites);
+        
+    // }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {

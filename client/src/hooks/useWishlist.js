@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { addToWishlist, clearWishlist, loadingToWishlist, removeToWishlist } from "../store/slices/wishlist/wishlistSlice";
-import { findByIdUserFavorites, removeFavorite, saveWishlist } from "../services/favoriteService";
+import { findByIdUserFavorites, removeFavorite, saveFavorites, saveWishlist } from "../services/favoriteService";
 
 export const useWishlist = () => {
     
@@ -33,11 +33,54 @@ export const useWishlist = () => {
             console.log('Datos del backend:', formattedResult);
             console.log('Lista combinada:', mergedWishlist);
 
+            //Filtramos los items locales que no estan en el backend
+            const newItems = wishlist.filter(
+                (localItem) => !formattedResult.some((backendItem) => backendItem.id === localItem.id)
+            );
+
+            //Insertamos los ítems locales en el backend
+            if (newItems.length > 0) {
+                // console.log('paso por new items ++++: ' +JSON.stringify(newItems, null, 2));
+
+                await saveMissingItems(newItems, id);
+            }
                     
         } catch (error) {
             console.error(error);
         }
     }
+
+    // Función auxiliar para guardar ítems que no están en el backend
+    const saveMissingItems = async (items, id) => {
+        
+        const formData = new FormData();
+
+        // Agregar cada objeto del array al FormData
+        items.forEach((item, index) => {
+            // Agregar campos simples
+            formData.append(`favorites[${index}].id`, item.id);
+            formData.append(`favorites[${index}].price`, item.price);
+            formData.append(`favorites[${index}].product`, item.product);
+            formData.append(`favorites[${index}].size`, item.size);
+            formData.append(`favorites[${index}].gender`, item.gender);
+            formData.append(`favorites[${index}].userId`, id);
+            formData.append(`favorites[${index}].schoolId`, item.schoolId);
+
+            // Agregar archivo (convertir base64 a Blob si es necesario)
+            const fileBlob = base64ToBlob(item.image.content, item.image.mime);
+            const file = new File([fileBlob], item.image.name, { type: item.image.mime });
+            formData.append(`favorites[${index}].file`, file);
+        });
+
+        try {
+
+            const result = await saveFavorites(formData);
+
+            console.log('Nuevos ítems guardados en el backend:', result.data);
+        } catch (error) {
+            console.error('Error al guardar nuevos ítems:', error);
+        }
+    };
 
     const handleAddToWishlist = async(favItem) => {
 
@@ -100,7 +143,8 @@ export const useWishlist = () => {
     function base64ToBlob(base64, mime) {
         const byteCharacters = atob(base64);
         const byteNumbers = new Array(byteCharacters.length).fill(null).map((_, i) => byteCharacters.charCodeAt(i));
-        const byteArray = new Uint8Array(byteNumbers);            return new Blob([byteArray], { type: mime });
+        const byteArray = new Uint8Array(byteNumbers);            
+        return new Blob([byteArray], { type: mime });
     }
 
     return( 
