@@ -14,7 +14,7 @@ import com.miguel.app.models.entities.Favorite;
 public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
 
     @Query("SELECT u FROM Favorite u WHERE u.userId = :userId")
-    public List<Favorite> getFavoritesByUserId (@Param("userId")Long userId);
+    public List<Favorite> getFavoritesByUserId(@Param("userId") Long userId);
 
     @Query("SELECT u FROM Favorite u WHERE u.id = :id")
     public Optional<Favorite> findById(@Param("id") Long id);

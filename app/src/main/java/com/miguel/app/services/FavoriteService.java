@@ -24,7 +24,7 @@ public class FavoriteService {
     private FavoriteRepository favoriteRepository;
 
     @Transactional
-    public Favorite createFavorite (FavoriteDto favoriteDto) {
+    public Favorite createFavorite(FavoriteDto favoriteDto) {
 
         Favorite favori = new Favorite();
 
