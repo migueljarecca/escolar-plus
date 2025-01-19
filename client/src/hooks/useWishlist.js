@@ -105,6 +105,16 @@ export const useWishlist = () => {
             try {
                 const result = await saveWishlist(formData);
 
+                if (result.ok) {
+                    // Si la petición fue exitosa
+                    const data = await result.json(); // Si el backend devuelve JSON
+                    console.log("Éxito:", data);
+                  } 
+                //   else {
+                    // Si la petición no fue exitosa pero tampoco genera un error de red
+                    // console.error("Error en la respuesta del servidor:", result.status);
+                //   }
+
                 dispatch(addToWishlist({...result.data}));
 
             } catch (error) {

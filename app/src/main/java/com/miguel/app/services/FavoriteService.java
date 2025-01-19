@@ -23,6 +23,11 @@ public class FavoriteService {
     @Autowired
     private FavoriteRepository favoriteRepository;
 
+    @Transactional(readOnly = true)
+    public List<Favorite> findFavoritesByUserId (Long userId) {
+        return favoriteRepository.getFavoritesByUserId(userId);
+    }
+
     @Transactional
     public Favorite createFavorite(FavoriteDto favoriteDto) {
 
@@ -90,11 +95,6 @@ public class FavoriteService {
 
             imageService.removeImagen(favorite.getImage().getId());
         }
-    }
-
-    @Transactional(readOnly = true)
-    public List<Favorite> findFavoritesByUserId (Long userId) {
-        return favoriteRepository.getFavoritesByUserId(userId);
     }
 
     @Transactional(readOnly = true)
