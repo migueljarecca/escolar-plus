@@ -1,9 +1,28 @@
+import { useAuth } from "../hooks/useAuth";
 import { useCart } from "../hooks/useCart";
-import { NavLink } from 'react-router-dom';
 
 export const UniformDetailsCard = ({ uniformDetails }) => {
 
     const { handlerAddCart } = useCart();
+    const { user } = useAuth();
+
+    const onAddCart = (uniformDetails) => {
+
+        const userId = user?.userLogged?.id || '';
+
+        const cartItem = {
+            id: uniformDetails.id,
+            price: uniformDetails.price,
+            product: uniformDetails.product,
+            size: uniformDetails.size,
+            gender: uniformDetails.gender,
+            userId: userId,
+            schoolId: uniformDetails.school.id,
+            image: uniformDetails.image
+        };
+        
+        handlerAddCart(cartItem);
+    }
 
     if (!uniformDetails) {
         return <div>No hay información disponible.</div>;
@@ -44,7 +63,7 @@ export const UniformDetailsCard = ({ uniformDetails }) => {
                 <div className="details-button-div">
                     <button
                         type="submit"
-                        onClick={() => handlerAddCart(uniformDetails)}
+                        onClick={() => onAddCart(uniformDetails)}
                         >
                         Agregar al carrito    
                     </button>
