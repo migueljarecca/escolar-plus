@@ -29,9 +29,9 @@ export const useWishlist = () => {
                 dispatch(loadingToWishlist(mergedWishlist));
             }
 
-            console.log('Lista actual:', wishlist);
-            console.log('Datos del backend:', formattedResult);
-            console.log('Lista combinada:', mergedWishlist);
+            // console.log('Lista actual:', wishlist);
+            // console.log('Datos del backend:', formattedResult);
+            // console.log('Lista combinada:', mergedWishlist);
 
             //Filtramos los items locales que no estan en el backend
             const newItems = wishlist.filter(
@@ -127,8 +127,6 @@ export const useWishlist = () => {
     }
 
     const handleRemoveToWishlist = async(ids) => {
-    console.log("wishlist desde hook id " + ids.id);  
-    console.log("wishlist desde hook idUser" + ids.userId);  
 
         if (!ids.userId == '') {
             await removeFavorite(ids.id);

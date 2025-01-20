@@ -1,15 +1,88 @@
 import { useDispatch, useSelector } from "react-redux"
-import { addToCart, calculateTotal, removeCart, updateDecreaseQuantity, updateIncreaseQuantity } from "../store/slices/cart/cartSlice";
-import { saveCartItem } from "../services/cartItemServie";
+import { addToCart, calculateTotal, clearCart, loadingToCart, removeCart, updateDecreaseQuantity, updateIncreaseQuantity } from "../store/slices/cart/cartSlice";
+import { findByIdUserCartItems, removeCartItem, saveCartItem, saveCartItemsList } from "../services/cartItemServie";
 
 export const useCart = () => {
 
     const { cart } = useSelector(state => state.cart);
     const { priceTotal } = useSelector(state => state.cart);
 
-    // console.log('Cart data: ' + JSON.stringify(cart,null,2));
+    // console.log('Cart data: ' ,cart);
     const dispatch = useDispatch();
 
+    const getCartItems = async(id) => {
+
+        try {
+            const response = await findByIdUserCartItems(id);
+
+            const formattedResult = Object.values(response.data || {});
+
+            //Mesclar las listas de favoritos eliminando duplicados
+            const merged = [
+                ...cart,
+                ...formattedResult.filter(
+                    (backendItem) => !cart.some((localItem) => localItem.id == backendItem.id)
+                )
+            ]
+            
+            //Actualizar el estado si hay cambios
+            if (JSON.stringify(cart) !== JSON.stringify(merged)) {
+                dispatch(loadingToCart(merged));
+            }
+
+            console.log('Lista actual:', cart);
+            console.log('Datos del backend:', formattedResult);
+            console.log('Lista combinada:', merged);
+
+            //Filtramos los items locales que no estan en el backend
+            const newItems = cart.filter(
+                    (localItem) => !formattedResult.some((backendItem) => backendItem.id == localItem.id) 
+            );
+            
+            //Insertamos los ítems locales en el backend
+            if (newItems.length > 0) {
+                await saveMissingItems(newItems, id);
+            }
+
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+
+    }
+
+    // Función auxiliar para guardar ítems que no están en el backend
+    const saveMissingItems = async(items, id) => {
+
+        const formData = new FormData();
+
+        // Agregar cada objeto del array al FormData
+        items.forEach((item, index) => {
+            // Agregar campos simples
+            formData.append(`cartItem[${index}].id`, item.id);
+            formData.append(`cartItem[${index}].price`, item.price);
+            formData.append(`cartItem[${index}].product`, item.product);
+            formData.append(`cartItem[${index}].size`, item.size);
+            formData.append(`cartItem[${index}].gender`, item.gender);
+            formData.append(`cartItem[${index}].userId`, id);
+            formData.append(`cartItem[${index}].schoolId`, item.schoolId);
+
+            // Agregar archivo (convertir base64 a Blob si es necesario)
+            const fileBlob = base64ToBlob(item.image.content, item.image.mime);
+            const file = new File([fileBlob], item.image.name, { type: item.image.mime });
+            formData.append(`cartItem[${index}].file`, file);
+        });
+
+        try {
+            const response = await saveCartItemsList(formData); 
+            console.log('Nuevos ítems guardados en el backend:', response.data);
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+
+    //Insertamos un item cart al backend
     const handlerAddCart = async(cartItem) => {
 
         const formData = new FormData();
@@ -33,19 +106,34 @@ export const useCart = () => {
 
         if (!cartItem.userId == '') {
             try {
-                const response = await saveCartItem(cartItem); 
+                const response = await saveCartItem(formData);
+                dispatch(addToCart({...response.data}));
+
             } catch (error) {
-                
+                throw error;
             }
+
         } else {
-            
+            dispatch(addToCart(cartItem));
         }
 
-        dispatch(addToCart(product));
     }
 
-    const handleRemoveCart = (id) => {
-        dispatch(removeCart(id));
+    const handleRemoveCart = async(ids) => {
+        console.log("usecart desde hook id " + ids.id);  
+        console.log("usecart desde hook idUser" + ids.userId);  
+    
+        if (!ids.userId == '') {
+            await removeCartItem(ids.id);
+            dispatch(removeCart(ids.id));
+        } else {
+            dispatch(removeCart(ids.id));
+        }
+    }
+    
+    //limpia el estado global de reducer
+    const handleClearCart = () => {
+        dispatch(clearCart());
     }
 
     const HandleCalculateTotal = () => {
@@ -67,14 +155,16 @@ export const useCart = () => {
         const byteArray = new Uint8Array(byteNumbers);            
         return new Blob([byteArray], { type: mime });
     }
-    
+
     return (
         {
             cart,
             priceTotal,
 
+            getCartItems,
             handlerAddCart,
             handleRemoveCart,
+            handleClearCart,
             HandleCalculateTotal,
             handleIncreaseQuantity,
             handleDecreaseQuantity,

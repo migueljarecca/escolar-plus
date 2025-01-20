@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.miguel.app.models.dto.CartItemDto;
+import com.miguel.app.models.dto.CartItemListDto;
 import com.miguel.app.models.entities.CartItem;
 import com.miguel.app.services.CartItemService;
 
@@ -35,9 +36,11 @@ public class CartItemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saveCartItem);
     }
 
-    @PostMapping("/add-cart-item")
-    public ResponseEntity<?> addCartItem(@ModelAttribute List<CartItemDto> cartItemDtos) {
+    @PostMapping(value ="/add-cart-item", consumes = "multipart/form-data")
+    public ResponseEntity<?> addCartItem(@ModelAttribute CartItemListDto cartItemListDtos) {
         System.out.println("CONTROL DE INGRESO A LISTA DE favoritos response");
+
+        List<CartItemDto> cartItemDtos = cartItemListDtos.getCartItemDtos();   
 
         for (int i = 0; i < cartItemDtos.size(); i++) {
             CartItemDto cartItemDto = cartItemDtos.get(i);

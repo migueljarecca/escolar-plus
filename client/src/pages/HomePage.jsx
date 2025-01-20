@@ -8,6 +8,7 @@ import shop from '/src/images/shop.jpg'
 import { Suscription } from "../components/Suscription";
 import { useWishlist } from "../hooks/useWishlist";
 import { useAuth } from "../hooks/useAuth";
+import { useCart } from "../hooks/useCart";
 // import insignia from '/src/images/insignia.png'
 
 
@@ -15,6 +16,7 @@ export const HomePage = () => {
 
     const { getSchools, schools } = useSchool();
     const { getFavorites } = useWishlist();
+    const { getCartItems } = useCart();
     const { user } = useAuth();
 
     useEffect(() => {
@@ -28,6 +30,15 @@ export const HomePage = () => {
         if (user?.userLogged?.id && !hasFetchedFavorites) {
             getFavorites(user.userLogged.id); 
             hasFetchedFavorites = true;
+        }
+    },[]);
+
+    let hasFetchedCart = false;
+
+    useEffect(() => {
+        if (user?.userLogged?.id && !hasFetchedCart) {
+            getCartItems(user.userLogged.id); 
+            hasFetchedCart = true;
         }
     },[]);
 

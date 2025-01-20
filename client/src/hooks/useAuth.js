@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onLogin, onLogout, addUser, removeUser, setAuthErrors } from "../store/slices/auth/authSlice";
 import { useNavigate } from 'react-router-dom';
 import { useWishlist } from "./useWishlist";
+import { useCart } from "./useCart";
 
 
 export const useAuth = () => {
@@ -11,6 +12,7 @@ export const useAuth = () => {
     const dispatch = useDispatch();
 
     const { handleClearWishlist } = useWishlist();
+    const { handleClearCart } = useCart();
 
     // console.log('control de login' +JSON.stringify(login, null, 2));
     // console.log('control de login user desde hook' +JSON.stringify(user, null, 2));
@@ -42,7 +44,7 @@ export const useAuth = () => {
             }));
     
             sessionStorage.setItem('token', `Bearer ${token}`)
-            navigate('/perfil');
+            navigate('/');
 
         } catch (error) {
             if (error.response?.status == 401) {
@@ -69,6 +71,7 @@ export const useAuth = () => {
         sessionStorage.removeItem('cartData')
 
         handleClearWishlist();
+        handleClearCart();
         // sessionStorage.clear
 
 

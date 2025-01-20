@@ -48,8 +48,6 @@ export const cartSlice = createSlice ({
         },
         clearCart: (state) => {
             state.cart = [];
-            sessionStorage.setItem('cartData', JSON.stringify(state.cart));
-
         },
         calculateTotal: (state) => {
             state.priceTotal = state.cart.map(items => items.price * items.quantity)
@@ -87,6 +85,10 @@ export const cartSlice = createSlice ({
                 return item;
             }).filter(item => item !== null)
         },
+        loadingToCart: (state, action) => {
+            state.cart = action.payload;
+            sessionStorage.setItem('carData', JSON.stringify(action.payload));
+        }
     }
 });
 
@@ -94,6 +96,7 @@ export const {
     addToCart,
     clearCart,
     removeCart,
+    loadingToCart,
     calculateTotal,
     updateIncreaseQuantity,
     updateDecreaseQuantity,

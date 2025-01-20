@@ -1,6 +1,6 @@
 
 export const CartListItems = ({ id, image, product, price, school, quantity, handleRemoveCart, 
-    handleIncreaseQuantity, handleDecreaseQuantity, onClickAddWishlist }) => {
+    handleIncreaseQuantity, handleDecreaseQuantity, onClickAddWishlist, userId }) => {
 
     const onIncreaseQuantity = (id) => {
         handleIncreaseQuantity(id);
@@ -44,7 +44,7 @@ export const CartListItems = ({ id, image, product, price, school, quantity, han
                     <div className="button-shop-wishlist">
                         <button
                             type="submit"
-                            onClick={() => onRemoveCart(id)}
+                            onClick={() => onRemoveCart({id:id, userId:userId})}
                         >
                             Eliminar   
                         </button>

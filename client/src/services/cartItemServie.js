@@ -16,6 +16,13 @@ const config = () => {
 export const saveCartItem = async(formData) => {
     console.log('control de services ' +`${BASE_URL_CART}`);
 
+     for (let pair of formData.entries()) {
+        if (!pair[1]) {
+            console.error(`Error: ${pair[0]} está vacío o indefinido`);
+        }
+        console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
     try {
         const response = await axios.post(BASE_URL_CART, formData, config());
         return response;   
@@ -28,6 +35,13 @@ export const saveCartItem = async(formData) => {
 export const saveCartItemsList = async(formData) => {
     console.log('control de services ' +`${BASE_URL_CART}/add-cart-item`);
 
+    for (let pair of formData.entries()) {
+        if (!pair[1]) {
+            console.error(`Error: ${pair[0]} está vacío o indefinido`);
+        }
+        console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
     try {
         const response = await axios.post(`${BASE_URL_CART}/add-cart-item`, formData, config());
         return response;
@@ -38,9 +52,11 @@ export const saveCartItemsList = async(formData) => {
 }
 
 export const findByIdUserCartItems = async(id) => {
+    console.log('control de services ' +`${BASE_URL_CART}/${id}`);
 
     try {
-        const response = await axios.get(`${BASE_URL_CART}/${id}`, config());
+        const response = await axios.get(`${BASE_URL_CART}/by-user/${id}`, config());
+        return response;
     } catch (error) {
         console.log(error);
         throw error;
@@ -48,7 +64,7 @@ export const findByIdUserCartItems = async(id) => {
 }
 
 export const removeCartItem = async(id) => {
-    // console.log('control de services ' +`${BASE_URL_FAVORITE}/add-favorites`)
+    console.log('control de services ' +`${BASE_URL_CART}/${id}`);
 
     try {
         await axios.delete(`${BASE_URL_CART}/${id}`, config());

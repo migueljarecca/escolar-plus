@@ -1,5 +1,6 @@
 import { useAuth } from "../hooks/useAuth";
 import { useCart } from "../hooks/useCart";
+import { NavLink } from "react-router-dom";
 
 export const UniformDetailsCard = ({ uniformDetails }) => {
 

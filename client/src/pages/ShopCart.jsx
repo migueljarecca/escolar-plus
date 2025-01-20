@@ -3,11 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { CartListItems } from "../components/CartListItems";
 import { useEffect, useState } from "react";
 import { useWishlist } from "../hooks/useWishlist";
+import { useAuth } from "../hooks/useAuth";
 
 export const ShopCart = () => {
 
     const { cart, priceTotal, handleRemoveCart, HandleCalculateTotal, 
         handleIncreaseQuantity, handleDecreaseQuantity } = useCart();
+
+    const { user } = useAuth();    
 
     const { handleAddToWishlist } = useWishlist();
     
@@ -21,7 +24,7 @@ export const ShopCart = () => {
         
     },[handleIncreaseQuantity, handleDecreaseQuantity]); 
 
-    console.log('control de cart' +JSON.stringify(cart, null, 2));
+    console.log('control de cart' ,cart);
     console.log('control de cart lenght' +JSON.stringify(cart.length, null, 2));
 
 
@@ -49,6 +52,7 @@ export const ShopCart = () => {
                                         handleIncreaseQuantity={handleIncreaseQuantity}
                                         handleDecreaseQuantity={handleDecreaseQuantity}
                                         onClickAddWishlist={onClickAddWishlist}
+                                        userId={user?.userLogged?.id}
                                     />
                                 )
                             )
@@ -61,7 +65,7 @@ export const ShopCart = () => {
                         {cart.length > 0
                         ? 
                             (     
-                            <NavLink to={`/uniforms/${cart[cart.length -1].school.id}`}>Continuar Comprando</NavLink>
+                            <NavLink to={`/uniforms/${cart[cart.length -1].schoolId}`}>Continuar Comprando</NavLink>
                             ) 
                         :
                             ''
