@@ -86,7 +86,11 @@ export const cartSlice = createSlice ({
             }).filter(item => item !== null)
         },
         loadingToCart: (state, action) => {
-            state.cart = action.payload;
+            state.cart = action.payload.map((item) => ({
+                ...item,
+                quantity: 1
+            }))
+
             sessionStorage.setItem('carData', JSON.stringify(action.payload));
         }
     }

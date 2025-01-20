@@ -37,8 +37,13 @@ public class CartItemController {
     }
 
     @PostMapping(value ="/add-cart-item", consumes = "multipart/form-data")
-    public ResponseEntity<?> addCartItem(@ModelAttribute CartItemListDto cartItemListDtos) {
+    public ResponseEntity<?> addCartItems(@ModelAttribute CartItemListDto cartItemListDtos) {
         System.out.println("CONTROL DE INGRESO A LISTA DE favoritos response");
+
+
+    if (cartItemListDtos == null || cartItemListDtos.getCartItemDtos() == null) {
+        return ResponseEntity.badRequest().body("No se recibieron datos.");
+    }
 
         List<CartItemDto> cartItemDtos = cartItemListDtos.getCartItemDtos();   
 

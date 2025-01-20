@@ -1,5 +1,5 @@
 
-export const CartListItems = ({ id, image, product, price, school, quantity, handleRemoveCart, 
+export const CartListItems = ({ id, price, product, size, gender, schoolId, image, quantity, handleRemoveCart, 
     handleIncreaseQuantity, handleDecreaseQuantity, onClickAddWishlist, userId }) => {
 
     const onIncreaseQuantity = (id) => {
@@ -51,7 +51,7 @@ export const CartListItems = ({ id, image, product, price, school, quantity, han
 
                         <button
                             type="submit"
-                            onClick={()=> onClickAddWishlist({id, image, product, price, school})}
+                            onClick={()=> onClickAddWishlist({id, price, product, size, gender, schoolId, image})}
                         >
                         añadir a favoritos
                         </button>

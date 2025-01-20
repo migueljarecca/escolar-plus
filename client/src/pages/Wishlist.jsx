@@ -14,7 +14,21 @@ export const Wishlist = () => {
     const { user } = useAuth();
 
     const onClickAddCart = (item) => {
-        handlerAddCart(item);
+
+        const userId = user?.userLogged?.id || '';
+
+        const favItem = {
+            id: item.id,
+            price: item.price,
+            product: item.product,
+            size: item.size,
+            gender: item.gender,
+            userId: userId,
+            schoolId: item.schoolId,
+            image: item.image
+        };
+
+        handlerAddCart(favItem);
         handleRemoveToWishlist({id:item.id, userId:user?.userLogged?.id || ''});
     }
 

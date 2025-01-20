@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { addToWishlist, clearWishlist, loadingToWishlist, removeToWishlist } from "../store/slices/wishlist/wishlistSlice";
 import { findByIdUserFavorites, removeFavorite, saveFavorites, saveWishlist } from "../services/favoriteService";
+import { saveCartItemsList } from "../services/cartItemServie";
 
 export const useWishlist = () => {
     

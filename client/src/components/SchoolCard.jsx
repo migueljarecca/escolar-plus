@@ -13,11 +13,11 @@ export const SchoolCard = ({ school }) => {
                     <figure className="figure-cole">
                         <img src={`data:${school.image.mime};base64,${school.image.content}`} alt={school.image.name} />
                     </figure>
-                    <NavLink to={`/uniforms/${school.id}`}>
+                    {/* <NavLink to={`/uniforms/${school.id}`}> */}
                         <div className="link-cole">                        
                             Ver Catálogo 
                         </div>
-                    </NavLink>
+                    {/* </NavLink> */}
                 </div>     
             
             </div>

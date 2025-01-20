@@ -59,23 +59,23 @@ export const useCart = () => {
         // Agregar cada objeto del array al FormData
         items.forEach((item, index) => {
             // Agregar campos simples
-            formData.append(`cartItem[${index}].id`, item.id);
-            formData.append(`cartItem[${index}].price`, item.price);
-            formData.append(`cartItem[${index}].product`, item.product);
-            formData.append(`cartItem[${index}].size`, item.size);
-            formData.append(`cartItem[${index}].gender`, item.gender);
-            formData.append(`cartItem[${index}].userId`, id);
-            formData.append(`cartItem[${index}].schoolId`, item.schoolId);
+            formData.append(`cartItemDtos[${index}].id`, item.id);
+            formData.append(`cartItemDtos[${index}].price`, item.price);
+            formData.append(`cartItemDtos[${index}].product`, item.product);
+            formData.append(`cartItemDtos[${index}].size`, item.size);
+            formData.append(`cartItemDtos[${index}].gender`, item.gender);
+            formData.append(`cartItemDtos[${index}].userId`, id);
+            formData.append(`cartItemDtos[${index}].schoolId`, item.schoolId);
 
             // Agregar archivo (convertir base64 a Blob si es necesario)
             const fileBlob = base64ToBlob(item.image.content, item.image.mime);
             const file = new File([fileBlob], item.image.name, { type: item.image.mime });
-            formData.append(`cartItem[${index}].file`, file);
+            formData.append(`cartItemDtos[${index}].file`, file);
         });
 
         try {
             const response = await saveCartItemsList(formData); 
-            console.log('Nuevos ítems guardados en el backend:', response.data);
+            console.log('Nuevos ítems cart guardados en el backend:', response.data);
         } catch (error) {
             console.log(error);
             throw error;

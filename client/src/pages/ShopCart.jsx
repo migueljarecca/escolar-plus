@@ -1,7 +1,7 @@
 import { useCart } from "../hooks/useCart"
 import { NavLink } from 'react-router-dom';
 import { CartListItems } from "../components/CartListItems";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useWishlist } from "../hooks/useWishlist";
 import { useAuth } from "../hooks/useAuth";
 
@@ -15,8 +15,22 @@ export const ShopCart = () => {
     const { handleAddToWishlist } = useWishlist();
     
     const onClickAddWishlist = (item) => {
-        handleAddToWishlist(item);//falta colegio
-        handleRemoveCart(item.id);
+
+        const userId = user?.userLogged?.id || '';
+
+        const favItem = {
+            id: item.id,
+            price: item.price,
+            product: item.product,
+            size: item.size,
+            gender: item.gender,
+            userId: userId,
+            schoolId: item.schoolId,
+            image: item.image
+        };
+
+        handleAddToWishlist(favItem);
+        handleRemoveCart({id:item.id, userId:userId});
     }
 
     useEffect(() => {
@@ -38,15 +52,17 @@ export const ShopCart = () => {
                
                 <article className="article">
                     {cart && cart.length > 0 ? (
-                            cart.map(({ id, product, price, image, quantity, school }) =>
+                            cart.map(({ id, price, product, size, gender, schoolId, image, quantity }) =>
                                 (
                                     <CartListItems 
                                         key={id}
                                         id={id}
-                                        product={product}
                                         price={price}
+                                        product={product}
+                                        size={size}
+                                        gender={gender}
+                                        schoolId={schoolId}
                                         image={image}
-                                        school={school}
                                         quantity={quantity}
                                         handleRemoveCart={handleRemoveCart}
                                         handleIncreaseQuantity={handleIncreaseQuantity}

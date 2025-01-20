@@ -45,6 +45,10 @@ public class FavoriteController {
     @PostMapping(value = "/add-favorites", consumes = "multipart/form-data")
     public ResponseEntity<?> addFavorites(@ModelAttribute FavoriteListDto favoriteListDto) {
 
+        if (favoriteListDto == null || favoriteListDto.getFavorites() == null) {
+            return ResponseEntity.badRequest().body("No se recibieron datos de favoritos front.");
+        }
+
     List<FavoriteDto> favorites = favoriteListDto.getFavorites();
 
     List<Favorite> savedFavorites = favoriteService.saveFavorites(favorites);
