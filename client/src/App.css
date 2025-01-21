@@ -8,21 +8,45 @@
 }
 
 :root {
-  --with-color: #fdfdfd;
-  --main-color: #704bb2;
 
-  --header-color: #602884;
-  --header-color-text: #fdfdfd;
+  /* Colores de fondo */
+  --bg-green: #008a00;
+  --bg-gray-soft: #eaeaea;
+  --bg-white: #fdfdfd;
+  --bg-light-gray: #f9f9f9;
 
-  --bg-color: hsl(230, 50%, 90%);
-  --body--white-color: hsl(0, 0%, 100%);
-  --body-color: hsl(230, 100%, 96%);
-  --container-color: hsl(230, 100%, 97%);
+  /* Colores de texto */
+  --text-white: #ffffff;
+  --text-green: #038203;
+  --text-black: #1c1c1c;
+  --text-green-soft: #1a5336;
 
-  --shadow-color: rgba(0, 0, 0, .2);
+  /* Botones */
+  --bg-btn-orange: #e37609;
+
+  /* Nuevos valores sugeridos */
+  --text-gray: #666666;        /* Para textos secundarios */
+  --border-color: #dcdcdc;     /* Bordes suaves */
+  --hover-green: #007700;      /* Verde para hover */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra suave */
+ 
+  --line-color: #c5cbc8;
+
+  /* Alertas*/
+   --red: #e74c3c;  
+
+  /* --header-color: #602884; */
+  /* --header-color-text: #fdfdfd; */
+
+  /* --bg-color: hsl(230, 50%, 90%); */
+  /* --body--white-color: hsl(0, 0%, 100%); */
+  /* --body-color: hsl(230, 100%, 96%); */
+  /* --container-color: hsl(230, 100%, 97%); */
+
+  /* --shadow-color: rgba(0, 0, 0, .2); */
 
   /*-----------------*/
-  --line-color: #c5cbc8;
+  /* --line-color: #c5cbc8; */
 
 }
 
@@ -32,12 +56,10 @@ html {
 }
 
 body {
-  /* background: #f7f7f7; */
-  background: fff;
+  background: #fff;
 }
 
 /* ============================ HEADER ========================= */
-
 
 .section-navigation-container .div-navigation-container {
   position: fixed;
@@ -45,7 +67,7 @@ body {
   z-index: 1000;
   width: 100%;
   transition: transform 0.5s ease-out;
-  background:  var(--header-color);
+  /* background:  var(--header-color); */
   /* background: #6C757D; */
 
 }
@@ -55,10 +77,10 @@ body {
   width: 100%;
   padding: 1rem 4%;
   justify-content: space-between;
-  border-bottom: 1px solid var(--header-color-text);
+  border-bottom: 1px solid var(--body-white-color);
   align-items: center;
   position: relative;
-  /* background: #7b2cbf; */
+  background: var(--bg-green-color);
 
   transition: transform 0.5s ease-out;
 
@@ -71,21 +93,21 @@ body {
 }
 
 .top-navigation-content span {
-  color: var(--header-color-text);
+  color: var(--text-white-color);
 }
 
 .top-navigation-content a {
   font-size: 1.5rem;
   font-weight: 300;
   text-decoration: none;
-  color: var(--header-color-text);
+  color: var(--text-white-color);
 }
 
 .top-navigation-content .top-navigation-h3,
 .top-navigation-h4 {
   font-size: 1.5rem;
   font-weight: 300;
-  color: var(--header-color-text);
+  color: var(-);
 }
 
 .div-navigation-container .header {
@@ -94,9 +116,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--body-white-color);
   /* background: #7b2cbf; */
   /* background: #e6ecf1; */
-  /* box-shadow: 0 .1rem 1rem var(--shadow-color);  */
+  box-shadow: 0 .1rem 1rem var(--shadow-color); 
 
   transition: all 0.5s ease-out; /* Hace la transición suave */
 }
@@ -134,7 +157,7 @@ body {
 .dropdown-header .selected {
   font-size: 1.7rem;
   font-weight: 300;
-  color: var(--header-color-text);
+  color: var(--text-green-color);
 }
 
 .dropdown-header .caret {
@@ -142,7 +165,7 @@ body {
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid var(--header-color-text);
+  border-top: 6px solid var(--text-green-color);
   transition: 0.3s;
 }
 
@@ -153,7 +176,7 @@ body {
 .dropdown-header .ul-menu {
   list-style: none;
   padding: 0.2em 0.5em;
-  background: #fdfdfd;
+  background: var(--body-white-color);
   border: 1px #fdfdfd solid;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -190,7 +213,7 @@ body {
 }
 
 .dropdown-header .ul-menu li:hover {
-  background: #e6eff1;
+  background: var(--body-light-color);
 }
 
 .dropdown-header .ul-menu.active  {
@@ -363,7 +386,7 @@ body {
 .container-cole {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(26rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
+  grid-template-columns: repeat(auto-fit, minmax(32rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
   align-content: start;
   grid-auto-rows: min-content;
   height: 100%;
@@ -424,18 +447,14 @@ body {
   border-radius: 5px;
   margin-top: 1rem;
   padding: 1rem 2rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+
 }
 
 .box-cole .content-cole .link-cole:hover {
   background: #704bb2;
   color: #fff;
-}
-
-.box-cole .content-cole a {
-  font-size: 1.7rem;
-  text-decoration: none;
-  color: #602884;
-  font-weight: 400;
 }
 
 /* ------ suscription-form ------ */
