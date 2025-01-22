@@ -27,7 +27,6 @@ export const Footer = () => {
                         <p>Aviso importante!</p>
                     </div>
 
-
                     <div className='text-div'>
                         <p>
                             Este e-commerce es un proyecto demostrativo. No está 

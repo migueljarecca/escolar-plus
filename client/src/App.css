@@ -13,7 +13,7 @@
   --bg-green: #008a00;
   --bg-gray-soft: #eaeaea;
   --bg-white: #fdfdfd;
-  --bg-light-gray: #f9f9f9;
+  --bg-light-gray: #f0f0f0;
 
   /* Colores de texto */
   --text-white: #ffffff;
@@ -64,7 +64,7 @@ body {
   border-bottom: 1px solid var(--body-white-color);
   align-items: center;
   position: relative;
-  background: var(--bg-green);
+  background: var(--bg-white);
 
   transition: transform 0.5s ease-out;
 
@@ -77,21 +77,21 @@ body {
 }
 
 .top-navigation-content span {
-  color: var(--text-white);
+  color: var(--text-green);
 }
 
 .top-navigation-content a {
   font-size: 1.5rem;
   font-weight: 300;
   text-decoration: none;
-  color: var(--text-white);
+  color: var(--text-green);
 }
 
 .top-navigation-content .top-navigation-h3,
 .top-navigation-h4 {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--text-white);
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--text-green);
 }
 
 .div-navigation-container .header {
@@ -100,7 +100,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--bg-white);
+  background: var(--bg-green);
   box-shadow: 0 .1rem 1rem var(--shadow-color); 
 
   transition: all 0.5s ease-out; /* Hace la transición suave */
@@ -139,7 +139,7 @@ body {
 .dropdown-header .selected {
   font-size: 2rem;
   font-weight: 400;
-  color: var(--text-green);
+  color: var(--text-white);
 }
 
 .dropdown-header .caret {
@@ -147,7 +147,7 @@ body {
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid var(--text-green);
+  border-top: 6px solid var(--text-white);
   transition: 0.3s;
 }
 
@@ -164,7 +164,7 @@ body {
   border-radius: 5px;
   position: absolute;
   top: 5rem;
-  left: 25%;
+  left: 18%;
   width: 150%;
   transform: translateX(-50%);
   opacity: 0;
@@ -251,7 +251,7 @@ body {
 
 .nav-right .icon-box svg {
   font-size: 2.6rem;
-  color: var(--text-green);
+  color: var(--text-white);
   cursor: pointer;
 }
 
@@ -1109,7 +1109,7 @@ body {
 
 .container-cart .main {
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .container-cart .main .article {
@@ -2427,6 +2427,11 @@ font-weight: 400;
   color: var(--text-green);
 }
 
+.footer-social-media div {
+  display: flex;
+  gap: 2rem;
+}
+
 .footer-social-media a {
   display: inline-flex;
   justify-content: center;
@@ -2513,7 +2518,6 @@ font-weight: 400;
 
 .info-web-section {
   margin: 16rem 4% 6rem 4%;
-
 }
 
 .info-web-section h1 {

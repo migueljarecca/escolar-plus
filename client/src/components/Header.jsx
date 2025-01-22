@@ -57,9 +57,6 @@ export const Header = () => {
 
         }, [lastScrollPosition]); // Dependencia para que el efecto se ejecute al cambiar la posición del scroll
       
-        // if (!userState.name) {
-        //     return <div>Cargando</div>;
-        // }
 
     return (
         <section className='section-navigation-container'>
@@ -93,21 +90,26 @@ export const Header = () => {
                             </NavLink>
                         </div>
 
-                        <div className={`dropdown-header ${isActiveDropdown ? 'active' : ''}`}>
-                            <div className="select" onClick={handlerColegios}>
-                                <span className="selected">Colegios</span>
-                                <div className={`caret ${isActiveDropdown ? 'active' : ''}`}></div>
+                        {schools && schools.length > 0 ? 
+
+                            <div className={"dropdown-header"}>
+                                <div className="select" onClick={handlerColegios}>
+                                    <span className="selected">Colegios</span>
+                                    <div className={`caret ${isActiveDropdown ? 'active' : ''}`}></div>
+                                </div>
+                                <ul className={`ul-menu ${isActiveDropdown ? 'active' : ''}`}>
+                                    {schools.map((item) => (
+                                        <li key={item.id}>
+                                            <NavLink to={`/uniforms/${item.id}`} onClick={handlerColegios}>
+                                                {item.name}
+                                            </NavLink>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-                            <ul className={`ul-menu ${isActiveDropdown ? 'active' : ''}`}>
-                                {schools.map((item) => (
-                                    <li key={item.id}>
-                                        <NavLink to={`/uniforms/${item.id}`} onClick={handlerColegios}>
-                                            {item.name}
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        : ''
+                        }     
+
                     </div>
                     <div className="nav-right">
 
