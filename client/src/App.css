@@ -24,29 +24,16 @@
   /* Botones */
   --bg-btn-orange: #e37609;
 
-  /* Nuevos valores sugeridos */
-  --text-gray: #666666;        /* Para textos secundarios */
-  --border-color: #dcdcdc;     /* Bordes suaves */
-  --hover-green: #007700;      /* Verde para hover */
-  --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra suave */
+  /* Otros */
+  --text-gray: #666666;
+  --border-color: #dcdcdc;
+  --hover-green: #007700;
+  --shadow-color: rgba(0, 0, 0, 0.1);
  
   --line-color: #c5cbc8;
 
   /* Alertas*/
    --red: #e74c3c;  
-
-  /* --header-color: #602884; */
-  /* --header-color-text: #fdfdfd; */
-
-  /* --bg-color: hsl(230, 50%, 90%); */
-  /* --body--white-color: hsl(0, 0%, 100%); */
-  /* --body-color: hsl(230, 100%, 96%); */
-  /* --container-color: hsl(230, 100%, 97%); */
-
-  /* --shadow-color: rgba(0, 0, 0, .2); */
-
-  /*-----------------*/
-  /* --line-color: #c5cbc8; */
 
 }
 
@@ -141,17 +128,17 @@ body {
 }  
 
 .dropdown-header .select {
-  color: var(--text-green);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   cursor: pointer;
+  
 }
 
 .dropdown-header .selected {
-  font-size: 1.7rem;
-  font-weight: 300;
+  font-size: 2rem;
+  font-weight: 400;
   color: var(--text-green);
 }
 
@@ -1436,28 +1423,30 @@ body {
 .section-perfil .main-perfil .perfil-details {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: var(--bg-white);
   padding: 1rem 5rem;
   gap: 1.5rem;
 }
 
 .main-perfil .perfil-details h3 {
-  font-size: 2.7rem;
+  font-size: 4rem;
   font-weight: 400;
-  color: var(--header-color);
+  color: var(--text-green-soft);
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .perfil-details .content-text {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 30rem;
 }
 
 .perfil-details .content-text h5 {
   font-size: 1.7rem;
   font-weight: 400;
-  color: var(--main-color);
+  color: var(--text-green);
 }
 
 .perfil-details .content-text p {
@@ -1486,36 +1475,34 @@ body {
 /*---component-form-user---*/
 
 .container-form-user {
-  /* background-color: #e8ebe9; */
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 1px solid #fff;
+  background: var(--bg-white);
+  border: 1px solid var(--bg-white);
   overflow: hidden;
 }
 
 .container-form h3 {
   font-size: 4rem;
-  /* padding: 2rem; */
   text-align: center;
-  background-color: #fff;
+  background-color: var(--bg-white);
 
   font-weight: 400;
-  color: var(--header-color);
+  color: var(--text-green-soft);
+  margin-bottom: 2rem;
 }
 
 .container-form form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5em;
   padding: 0 10rem 0rem 10rem;
 }
 
 .container-form form .form-user-label {
-  color: #222;
+  color: var(--text-green);
   font-size: 1.5rem;
   font-weight: 400;
-  /* margin-bottom: .5rem; */
 }
 
 .container-form form input {
@@ -1541,16 +1528,17 @@ body {
 
 .container-form form button {
   font-size: 2rem;
-  color: #fdfdfd;
-  margin: 2rem auto;
+  color: var(--text-white);
+  margin: 3rem auto 2rem auto;
   padding: 1rem 5rem;
   border: none;
-  background-color: #1fcfcf;
+  background-color: var(--bg-green);
   border-radius: 4px;
 }
 
 .container-form form button:hover {
   cursor: pointer;
+  background-color: var(--hover-green);
 } 
 
 .container-form form p {
@@ -1563,7 +1551,7 @@ body {
 .section-login {
   display: flex;
   margin: 16rem 10% 4rem 10%;
-  background-color: #e8ebe9;
+  background-color: var(--bg-white);
 }
 
 .container-login {
@@ -1577,7 +1565,7 @@ body {
   font-size: 4rem;
   padding: 3rem;
   text-align: center;
-  color: var(--header-color);
+  color: var(--text-green-soft);
   font-weight: 500;
 }
 
@@ -1615,16 +1603,17 @@ font-weight: 400;
 
 .container-login form button {
   font-size: 2rem;
-  color: #fdfdfd;
+  color: var(--text-white);
   margin: 2rem auto;
   padding: 1rem 5rem;
   border: none;
-  background-color: #1fcfcf;
+  background-color: var(--bg-green);
   border-radius: 4px;
 }
 
 .container-login form button:hover {
   cursor: pointer;
+  background-color: var(--hover-green);
 } 
 
 .container-register {
@@ -1636,23 +1625,23 @@ font-weight: 400;
 
 .container-register h3 {
   font-size: 3rem;
-  color: var(--header-color);
+  color: var(--text-green);
   font-weight: 400;
 }
 
 .container-register p {
   font-size: 2rem;
   padding: 2rem 0;
-  color: #242424;
+  color: var(--text-black);
   font-weight: 400;
 }
 
 .container-register a {
   margin: 2rem auto;
   font-size: 2rem;
-  color: var(--main-color);
+  color: var(--text-green);
   padding: 1rem 5rem;
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--text-green);
   border-radius: 4px;
   text-decoration: none;
 }
@@ -1667,7 +1656,6 @@ font-weight: 400;
 
 .section-perfil .nav-perfil {
   width: 30%;
-  /* border-right: 1px solid var(--line-color); */
   padding: 1rem 2rem;
 }
 
@@ -1681,14 +1669,15 @@ font-weight: 400;
   font-size: 2.5rem;
   font-weight: 500;
   padding-bottom: 1rem;
-  color: var(--header-color);
+  color: var(--text-green);
+  margin-bottom: 2rem;
 }
 
 .nav-perfil .div-icon {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: #7b2cbf;
+  background: var(--bg-gray-soft);
   display: grid;
   place-items: center;
   margin-bottom: 2.5rem;
@@ -1697,15 +1686,15 @@ font-weight: 400;
 
 .nav-perfil .div-icon span {
   font-size: 5rem;
-  color: #fdfdfd;
+  color: var(--text-green);
   position: absolute;
 }
 
 .nav-perfil h3 {
-  background: #fdfdfd;
+  background: var(--bg-white);
   font-size: 1.7rem;
   padding: 1.5rem 1rem;
-  color: #242424;
+  color: var(--text-black);
   margin-top: 1rem;
   cursor: pointer;
   font-weight: 400;
@@ -1713,7 +1702,7 @@ font-weight: 400;
 }
 
 .nav-perfil h3:hover {
-  background: #e6eff1;
+  background: var(--bg-gray-soft);
 } 
 
 .nav-perfil a {
@@ -1725,7 +1714,7 @@ font-weight: 400;
   gap: 1rem;
   padding: 1.5rem 1rem;
   margin-top: 2rem;
-  background: #fdfdfd;
+  background: var(--bg-white);
   font-size: 2rem;
   font-weight: 400;
   cursor: pointer;
@@ -1741,7 +1730,6 @@ font-weight: 400;
 }
 
 .section-perfil .main-perfil {
-  /* margin-left: 8rem; */
   width: 70%;
 }
 
@@ -1761,7 +1749,7 @@ font-weight: 400;
 .main-admin .sidebar-admin {
   display: flex;
   flex-direction: column;
-  background: #6a6a6a;
+  background: var(--bg-gray-soft);
   flex-basis: 20%;
   position: sticky;
   top: 0;
@@ -1778,6 +1766,7 @@ font-weight: 400;
 .sidebar-admin .top-menu a {
   text-decoration: none;
   font-size: 2rem;
+  color: var(--text-green-soft);
 }
 
 .sidebar-admin .top-menu svg {
@@ -1789,12 +1778,26 @@ font-weight: 400;
   display: flex;
   flex-direction: column;
   padding: 1rem 2rem;
-  gap: 2.5rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+.sidebar-admin .nav-menu a {
+  text-decoration: none;
 }
 
 .sidebar-admin .nav-menu div {
   display: flex;
   gap: 1rem;
+  padding: .7rem 0;
+  align-items: center;
+  text-align: center;
+}
+
+.sidebar-admin .nav-menu div:hover {
+  background: var(--bg-light-gray);
+  border-radius: 8px;
+  border: 1px solid var(--bg-gray-soft);
 }
 
 .sidebar-admin .nav-menu div .menu-div-icon {
@@ -1803,11 +1806,13 @@ font-weight: 400;
 
 .sidebar-admin .nav-menu div svg {
   font-size: 1.7rem;
+  color: var(--bg-green);
 }
 
-.sidebar-admin .nav-menu div a {
+.sidebar-admin .nav-menu div span {
   font-size: 1.7rem;
-  text-decoration: none;
+  color: var(--text-black);
+  font-weight: 400;
 }
 
 /* ======================= ADMIN-HEADER ================== */
@@ -1816,13 +1821,12 @@ font-weight: 400;
   display: flex;
   flex-direction: column;
   width: 100%;
-
 }
 
 .section-admin .header-admin {
   display: flex;
   align-items: center;
-  background: red;
+  background: var(--bg-green);
   padding: 2rem 2rem;
   position: sticky;
   top: 0;
@@ -1839,15 +1843,20 @@ font-weight: 400;
   text-decoration: none;
   font-size: 1.7rem;
   font-weight: 300;
+  color: var(--text-white);
 }
 
 .header-admin nav svg {
   margin-right: 2rem;
+  counter-reset: var(--text-white);
 }
 
 .header-admin nav h4 {
   font-size: 1.7rem;
-  font-size: 300;
+  font-weight: 300;
+  color: var(--text-white);
+  cursor: pointer;
+
 }
 
 /* ======================= ADMIN-CONTETN ================== */
@@ -1855,7 +1864,6 @@ font-weight: 400;
 .div-content {
   display: flex;
   padding: 0 2rem;
-
 }
 
 /* ===================== ADMIN-CONTENT-USER  ===================== */

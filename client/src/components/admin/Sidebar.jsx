@@ -17,35 +17,42 @@ export const Sidebar = () => {
             </div>    
 
             <nav className="nav-menu">
-
-                <div>
-                    <div className="menu-div-icon">
-                        <FontAwesomeIcon icon={faGauge}/>
+                <NavLink to={'/admin/dashboard'}>
+                    <div>
+                        <div className="menu-div-icon">
+                            <FontAwesomeIcon icon={faGauge}/>
+                        </div>
+                        <span>Dashboard</span>
                     </div>
-                    <NavLink to={'/admin/dashboard'}>Dashboard</NavLink>
-                </div>
+                </NavLink>
                 
-                <div>
-                    <div className="menu-div-icon">
-                        <FontAwesomeIcon icon={faUser}/>
+                <NavLink to={'users'}>
+                    <div>
+                        <div className="menu-div-icon">
+                            <FontAwesomeIcon icon={faUser}/>
+                        </div>
+                        <span>Usuario</span>
                     </div>
-                    <NavLink to={'users'}>Usuario</NavLink>
-                </div>
-
-                <div>
-                    <div className="menu-div-icon">
-                        <FontAwesomeIcon icon={faSchool}/>
+                </NavLink>
+                
+                <NavLink to={'schools'}>
+                    <div>
+                        <div className="menu-div-icon">
+                            <FontAwesomeIcon icon={faSchool}/>
+                        </div>
+                        <span>Colegio</span>
                     </div>
-                    <NavLink to={'schools'}>Colegio</NavLink>
-                </div>
-
-                <div>
-                    <div className="menu-div-icon">
-                        <FontAwesomeIcon icon={faShirt}/>
+                </NavLink>
+                
+                <NavLink to={'uniforms'}>
+                    <div>
+                        <div className="menu-div-icon">
+                            <FontAwesomeIcon icon={faShirt}/>
+                        </div>
+                        <span>Uniforme</span>
                     </div>
-                    <NavLink to={'uniforms'}>Uniforme</NavLink>
+                </NavLink>
 
-                </div>
             </nav>
 
         </section>
