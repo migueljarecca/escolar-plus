@@ -61,7 +61,7 @@ body {
   width: 100%;
   padding: 1rem 4%;
   justify-content: space-between;
-  border-bottom: 1px solid var(--body-white-color);
+  border-bottom: 1px solid var(--bg-white);
   align-items: center;
   position: relative;
   background: var(--bg-white);
@@ -279,7 +279,7 @@ body {
 
 /* Oculta la barra superior al hacer scroll */
  .top-navigation--hidden {
-    transform: translateY(-3.9rem);
+    transform: translateY(-4.1rem);
     transition: transform 0.5s ease-out;
 }
 
@@ -360,10 +360,12 @@ body {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(32rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
+  justify-content: center;
   align-content: start;
   grid-auto-rows: min-content;
   height: 100%;
 }
+
 
 .container-cole a {
   text-decoration: none;
