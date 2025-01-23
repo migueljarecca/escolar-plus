@@ -33,7 +33,7 @@ export const Suscription = () => {
             <div className="suscription-container">
 
                 <h1>¡Únete a nuestra lista y descubre ofertas exclusivas!</h1>
-                <p>Únete a nuestra lista y obten un 15% en tu primera compra</p>
+                <p>Únete a nuestra lista y obten un 15% de descuento en tu primera compra</p>
 
                 <form className="suscription-form" onSubmit={onSubmitEmailChange}>
                     <input 

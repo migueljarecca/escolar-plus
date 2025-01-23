@@ -1308,6 +1308,7 @@ body {
 
 .section-wishlist-container {
   margin: 16rem 4% 4rem 4%;
+  min-height: 60vh;
 }
 
 .section-wishlist-container .wishlist-title {
@@ -2516,25 +2517,78 @@ font-weight: 400;
 
 /* ============================= APP-INFO ============================= */
 
-.info-web-section {
-  margin: 16rem 4% 6rem 4%;
+.warning-app-section {
+  margin: 16rem 4% 4rem 4%;
 }
 
-.info-web-section h1 {
+.warning-app-section h2 {
   font-size: 4rem;
-  font-weight: 500;
+  font-weight: 400;
   padding: 0 16rem;
-  color: var(--header-color);
+  color: var(--text-green-soft);
 }
 
-.info-web-section .info-web-content {
+.warning-app-section .warning-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 4rem 16rem 0 16rem;
+}
+
+.warning-app-section .warning-div p {
+ color: var(--text-gray);
+ font-size: 1.7rem;
+ font-weight: 400;
+}
+
+.warning-app-section span {
+  color: var(--text-green);
+  font-weight: 500;
+}
+
+.knowledge-app-section {
+  margin: 4rem 4% 6rem 4%;
+}
+
+.knowledge-app-section h2 {
+  font-size: 4rem;
+  font-weight: 400;
+  padding: 0 16rem;
+  color: var(--text-green-soft);
+}
+
+.knowledge-app-section .knowledge-ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 4rem 16rem;
+  list-style: none;
+
 }
 
-.info-web-content span {
-  color: var(--main-color);
+.knowledge-li strong {
+  color: var(--text-green);
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.knowledge-ul .knowledge-li ul {
+  list-style: none;
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.knowledge-li ul li {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--text-gray);
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.knowledge-li ul li span {
+  color: var(--text-green);
   font-weight: 500;
 }
+
