@@ -69,7 +69,7 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 - Node.js (v16 o superior)
 - JDK 17
-- IntelliJ IDEA o cualquier editor compatible con Java
+- Visual Studio Code o cualquier editor compatible con Java
 
 ### Pasos
 
@@ -103,6 +103,13 @@ La aplicación estará disponible en: `http://localhost:5173`
 1. Abrir el proyecto en tu IDE (Visual Studio Code u otro).
 2. Ejecutar la clase principal del proyecto `Application.java`.
 3. El backend estará disponible en: `http://localhost:8080`
+
+#### 4. Crear la base de datos en MySql
+
+```sql
+-- Crear la base de datos 
+CREATE DATABASE db_uniform;
+```
 
 ---
 
