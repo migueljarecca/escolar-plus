@@ -32,19 +32,19 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 1. **Página principal**:
    - Muestra productos destacados y categorías.
-      (./screenshot/pagina-principal.png)
+      ![Página Principal](./screenshot/pagina-principal.png)
 
 2. **Sistema de filtros**:
    - Filtra por categoría, precio.
-      (./screenshot/filtros.png)
+      ![Filtros](./screenshot/filtros.png)
 
 3. **Sistema de favoritos**:
    - Lista de favoritos.
-      (./screenshot/favoritos.png)
+      ![Favoritos](./screenshot/favoritos.png)
 
 4. **Carrito de compras**:
    - Agrega, elimina o modifica productos en tiempo real.
-      (./screenshot/carrito.png)
+      ![Carrito](./screenshot/carrito.png)
 
 ---
 
