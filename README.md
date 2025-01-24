@@ -32,20 +32,19 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 1. **Página principal**:
    - Muestra productos destacados y categorías.
-      ![Página Principal](./screenshot/página-principal.png)
+      (./screenshot/pagina-principal.png)
 
-2. **Carrito de compras**:
-   - Agrega, elimina o modifica productos en tiempo real.
-      ![Carrito de compras](./screenshot/carrito.png)
-
-3. **Sistema de filtros**:
+2. **Sistema de filtros**:
    - Filtra por categoría, precio.
-      ![Sistema de filtros](./screenshots/filtros.png)
+      (./screenshot/filtros.png)
 
 3. **Sistema de favoritos**:
    - Lista de favoritos.
-      ![Sistema de favoritos](./screenshots/favoritos.png)
+      (./screenshot/favoritos.png)
 
+4. **Carrito de compras**:
+   - Agrega, elimina o modifica productos en tiempo real.
+      (./screenshot/carrito.png)
 
 ---
 
@@ -101,7 +100,7 @@ La aplicación estará disponible en: `http://localhost:5173`
 
 #### 3. Configuración del Backend
 
-1. Abrir el proyecto en tu IDE (IntelliJ IDEA u otro).
+1. Abrir el proyecto en tu IDE (Visual Studio Code u otro).
 2. Ejecutar la clase principal del proyecto `Application.java`.
 3. El backend estará disponible en: `http://localhost:8080`
 
