@@ -30,17 +30,15 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 ## Capturas de Pantalla
 
-| página principal | filtros |
+| **página principal** | **filtros** |
 | ---------------- | ------- |
-| <img src="./screenshot/pagina-principal.png" style="width: 100%;" alt="Página Principal" /> | <img src="./screenshot/filtros.png" style="width: 100%;" alt="Filtros" /> |
+| <img src="./screenshot/pagina-principal.webp" style="width: 100%;" alt="página principal" /> | <img src="./screenshot/filtros.webp" style="width: 100%;" alt="filtros" /> |
 
-| favoritos | carrito |
-| ---------------- | ------- |
-| <img src="./screenshot/favoritos.png" style="width: 100%;" alt="Página Principal" /> | <img src="./screenshot/carrito.png" style="width: 100%;" alt="Filtros" /> |
+| **favoritos** | **carrito** |
+| <img src="./screenshot/favoritos.webp" style="width: 100%;" alt="favoritos" /> | <img src="./screenshot/carrito.webp" style="width: 100%;" alt="carrito" /> |
 
-| sesión | administrador |
-| ---------------- | ------- |
-| <img src="./screenshot/sesion.png" style="width: 100%;" alt="Página Principal" /> | <img src="./screenshot/administrador.png" style="width: 100%;" alt="Filtros" /> |
+| **sesión** | **administrador** |
+| <img src="./screenshot/sesion.webp" style="width: 100%;" alt="sesión" /> | <img src="./screenshot/administrador.webp" style="width: 100%;" alt="administrador" /> |
 
 ---
 
@@ -98,7 +96,7 @@ $ cd client
 # Instalar dependencias
 $ npm install
 
-#Por favor crea un archivo .env en la raiz del proyecto para definir las variables de entorno requeridas.
+#Por favor crea un archivo .env en la raiz del proyecto para definir las variables de entorno
 $ VITE_API_BASE_URL=http://localhost:8080 
 
 # Ejecutar la aplicación
@@ -107,7 +105,7 @@ $ npm start
 
 La aplicación estará disponible en: `http://localhost:5173`
 
-#### 3. Crear la base de datos en MySql
+#### 3. Crea la base de datos en MySql
 
 ```sql
 -- Crear la base de datos 
