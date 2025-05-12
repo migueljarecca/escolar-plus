@@ -32,20 +32,12 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 | página principal | filtros |
 | ---------------- | ------- |
-| <div align="center"><img src="./screenshot/pagina-principal.png"/></div> | <div align="center"><img src="./screenshot/filtros.png" width="500"/></div> |
+| <img src="./screenshot/pagina-principal.png" style="width: 100%;" alt="Página Principal" /> | <img src="./screenshot/filtros.png" style="width: 100%;" alt="Filtros" /> |
 
+| favoritos | carrito |
+| ---------------- | ------- |
+| <img src="./screenshot/favoritos.png" style="width: 100%;" alt="Página Principal" /> | <img src="./screenshot/carrito.png" style="width: 100%;" alt="Filtros" /> |
 
-1. **Página principal**:
-      ![Página Principal](./screenshot/pagina-principal.png)
-
-2. **Sistema de filtros**:
-      ![Filtros](./screenshot/filtros.png)
-
-3. **Sistema de favoritos**:
-      ![Favoritos](./screenshot/favoritos.png)
-
-4. **Carrito de compras**:
-      ![Carrito](./screenshot/carrito.png)
 
 ---
 
