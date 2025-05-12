@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import { useUniform } from '../hooks/useUniform';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { UniformFilteredList } from '../components/UniformFilteredList';
 import { Filters } from '../components/Filters';
 import { useSelector } from 'react-redux';
@@ -22,12 +22,18 @@ export const UniformsPage = () => {
     
     const { id } = useParams();
 
+    const {pathname} = useLocation();
+    
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        },[pathname]);
+
     //traer todos los uniformes realacionado a un colegio   
     useEffect(() => {
         if (id) {
             uniformBySchoolId(id);         
         }
-    },[id]); 
+    },[id]);
 
     //Filtramos los uniformes por precio y categoría
     const filterProducts = (filteredUniforms) => {

@@ -46,7 +46,8 @@ body {
   background: #fdfdfd;
 }
 
-/* ============================ HEADER ========================= */
+/*header*/
+/*==============================================================*/
 
 .section-navigation-container .div-navigation-container {
   position: fixed;
@@ -294,7 +295,7 @@ body {
 .container-home {
   display: flex;
   width: 100%;
-  margin: 16rem 0 4rem 0;
+  margin: 18rem 0 4rem 0;
   align-items: center;
   padding: 0rem 4%;
   height: 45rem;
@@ -359,6 +360,7 @@ body {
 .container-cole {
   display: grid;
   gap: 2rem;
+  margin-top: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(32rem, max-content)); /* Ancho fijo de 20rem, sin expansión */
   justify-content: center;
   align-content: start;
@@ -376,7 +378,6 @@ body {
   flex-direction: column;
   background: var(--bg-white);
 
-  /* box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1); */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -429,7 +430,7 @@ body {
 /* ------ suscription-form ------ */
 
 .suscription-section {
-  padding: 4rem 4%;
+  padding: 8rem 4%;
   background: var(--bg-white);
   display: flex;
   flex-direction: column;
@@ -546,7 +547,7 @@ body {
 .card-box-cole .content-cole img {
   width: 100%;
   object-fit: cover;
-  display: block; /* Evita márgenes no deseados alrededor de la imagen */
+  display: block;
 }
 
 .list-cole-div .card-box-cole h2 {
@@ -984,6 +985,7 @@ body {
 .uniform-details {
   display: flex;
   margin: 16rem 4% 4rem 4%;
+  padding: 2rem 0;
 }
 
 .uniform-details .container-image-elem1 {
@@ -1427,7 +1429,7 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--bg-white);
-  padding: 1rem 5rem;
+  padding: 4rem 5rem;
   gap: 1.5rem;
 }
 
@@ -1466,7 +1468,7 @@ body {
 /* ========================== FORM-REGISTER-PAGE-USER ====================== */
 
 .container-register-user {
-  margin: 16rem 20% 4rem 20%;
+  margin: 18rem 20% 4rem 20%;
 }
 
 /* ========================== FORM-UPDATE-PAGE-USER ====================== */
@@ -1553,7 +1555,7 @@ body {
 
 .section-login {
   display: flex;
-  margin: 16rem 10% 4rem 10%;
+  margin: 18rem 10% 8rem 10%;
   background-color: var(--bg-white);
 }
 
@@ -1652,14 +1654,14 @@ font-weight: 400;
 /* ======================= PERFIL ================== */
 
 .section-perfil {
-  margin: 16rem 4% 4rem 4%;
+  margin: 18rem 4% 4rem 4%;
   display: flex;
   gap: 2rem;
 }
 
 .section-perfil .nav-perfil {
   width: 30%;
-  padding: 1rem 2rem;
+  padding: 4rem 2rem;
 }
 
 .nav-perfil .div-perfil {

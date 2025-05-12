@@ -2,14 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import {faUser} from '@fortawesome/free-regular-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useSchool } from '../hooks/useSchool'
 import { initialUserForm } from './../store/slices/users/userSlice';
 
-import logo from '/src/images/logo.jpeg'
+import logo from '/src/images/logo.png'
 import { useWishlist } from '../hooks/useWishlist'
 import { useCart } from '../hooks/useCart'
 

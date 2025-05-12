@@ -5,6 +5,9 @@ import { useSchool } from "../hooks/useSchool";
 import { Footer } from "../components/Footer";
 
 import shop from '/src/images/shop.jpg'
+import shop_2 from '/src/images/shop-2.png'
+import dos from '/src/images/dos.png'
+
 import { Suscription } from "../components/Suscription";
 import { useWishlist } from "../hooks/useWishlist";
 import { useAuth } from "../hooks/useAuth";
@@ -57,7 +60,7 @@ export const HomePage = () => {
                         contemporáneo.</p>
                 </div>
                 <div className="div-right">
-                    <img src={shop} alt="Shop" />
+                    <img src={dos} alt="Shop" />
                 </div>
             </div>
             

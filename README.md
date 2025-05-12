@@ -30,20 +30,21 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 ## Capturas de Pantalla
 
+| página principal | filtros |
+| ---------------- | ------- |
+| <div align="center"><img src="./screenshot/pagina-principal.png"/></div> | <div align="center"><img src="./screenshot/filtros.png" width="500"/></div> |
+
+
 1. **Página principal**:
-   - Muestra productos destacados y categorías.
       ![Página Principal](./screenshot/pagina-principal.png)
 
 2. **Sistema de filtros**:
-   - Filtra por categoría, precio.
       ![Filtros](./screenshot/filtros.png)
 
 3. **Sistema de favoritos**:
-   - Lista de favoritos.
       ![Favoritos](./screenshot/favoritos.png)
 
 4. **Carrito de compras**:
-   - Agrega, elimina o modifica productos en tiempo real.
       ![Carrito](./screenshot/carrito.png)
 
 ---
@@ -54,7 +55,7 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
   - React
   - Redux Toolkit
   - React Router
-  - CSS Modules
+  - CSS
 
 - **Backend**:
   - Java (Spring Boot)
@@ -122,7 +123,6 @@ Desarrollado por **Miguel Jarecca** como parte de un proyecto de aprendizaje en 
 ## Contacto
 
 Para más información o preguntas:
-- **Email**: miguel.jarecca@gmail.com
 - **LinkedIn**: [Miguel Jarecca - LinkedIn](https://www.linkedin.com/in/migueljarecca/)
 - **GitHub**: [Miguel Jarecca - GitHub](https://github.com/MiguelJarecca)
 - **Portafolio**: [Miguel Jarecca - Portafolio](https://migueljarecca.github.io/portafolio-miguel/)
