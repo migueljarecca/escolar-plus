@@ -30,14 +30,16 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 ## Capturas de Pantalla
 
-| **página principal** | **filtros** |
+| página principal | filtros |
 | ---------------- | ------- |
 | <img src="./screenshot/pagina-principal.webp" style="width: 100%;" alt="página principal" /> | <img src="./screenshot/filtros.webp" style="width: 100%;" alt="filtros" /> |
 
-| **favoritos** | **carrito** |
+| favoritos | carrito |
+| --------- | ------- |
 | <img src="./screenshot/favoritos.webp" style="width: 100%;" alt="favoritos" /> | <img src="./screenshot/carrito.webp" style="width: 100%;" alt="carrito" /> |
 
-| **sesión** | **administrador** |
+| sesión | administrador |
+| ------ | ------------- |
 | <img src="./screenshot/sesion.webp" style="width: 100%;" alt="sesión" /> | <img src="./screenshot/administrador.webp" style="width: 100%;" alt="administrador" /> |
 
 ---
