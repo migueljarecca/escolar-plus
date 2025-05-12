@@ -38,6 +38,9 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 | ---------------- | ------- |
 | <img src="./screenshot/favoritos.png" style="width: 100%;" alt="Página Principal" /> | <img src="./screenshot/carrito.png" style="width: 100%;" alt="Filtros" /> |
 
+| sesión | administrador |
+| ---------------- | ------- |
+| <img src="./screenshot/sesion.png" style="width: 100%;" alt="Página Principal" /> | <img src="./screenshot/administrador.png" style="width: 100%;" alt="Filtros" /> |
 
 ---
 
@@ -56,6 +59,16 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 ---
 
+## Estructura del proyecto
+
+```bash
+escolar-plus/
+├── client/ # Aplicación React
+└── app/ # API REST con Spring Boot
+```
+
+---
+
 ## Cómo Ejecutar el Proyecto Localmente
 
 ### Requisitos Previos
@@ -70,10 +83,10 @@ Este es un proyecto de e-commerce desarrollado con **React** para el frontend y 
 
 ```bash
 # Clonar este proyecto en tu máquina local
-$ git clone https://github.com/MiguelJarecca/App-cole-uniform.git
+$ git clone https://github.com/migueljarecca/escolar-plus.git
 
 # Navegar al directorio del proyecto
-$ cd App-cole-uniform
+$ cd escolar-plus
 ```
 
 #### 2. Configuración del Frontend
@@ -85,24 +98,45 @@ $ cd client
 # Instalar dependencias
 $ npm install
 
+#Por favor crea un archivo .env en la raiz del proyecto para definir las variables de entorno requeridas.
+$ VITE_API_BASE_URL=http://localhost:8080 
+
 # Ejecutar la aplicación
 $ npm start
 ```
 
 La aplicación estará disponible en: `http://localhost:5173`
 
-#### 3. Configuración del Backend
+#### 3. Crear la base de datos en MySql
+
+```sql
+-- Crear la base de datos 
+CREATE DATABASE IF NOT EXISTS db_uniform;
+
+-- Insertar roles por defecto
+INSERT INTO roles (id, name) VALUES
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER');
+
+-- Crear usuario "admin"
+INSERT INTO users (username, password, email)
+VALUES ('admin', '$2a$10$kTfYk6O0UZ5fCZT15hD1eOYz7GeiOZq09sbsyhJ3nG9I1jFY0UZIa', 'admin@gmail.com');
+
+-- Asignar roles al usuario "admin"
+INSERT INTO users_roles (user_id, role_id) VALUES
+(1, 1), -- ROLE_ADMIN
+(1, 2); -- ROLE_USER
+```
+
+##### Datos de acceso predeterminados 
+- **gmail:** `admin@gmail.com`
+- **contraseña:** `admin123`
+
+#### 4. Configuración del Backend
 
 1. Abrir el proyecto en tu IDE (Visual Studio Code u otro).
 2. Ejecutar la clase principal del proyecto `Application.java`.
 3. El backend estará disponible en: `http://localhost:8080`
-
-#### 4. Crear la base de datos en MySql
-
-```sql
--- Crear la base de datos 
-CREATE DATABASE db_uniform;
-```
 
 ---
 
@@ -116,7 +150,7 @@ Desarrollado por **Miguel Jarecca** como parte de un proyecto de aprendizaje en 
 
 Para más información o preguntas:
 - **LinkedIn**: [Miguel Jarecca - LinkedIn](https://www.linkedin.com/in/migueljarecca/)
-- **GitHub**: [Miguel Jarecca - GitHub](https://github.com/MiguelJarecca)
+- **GitHub**: [Miguel Jarecca - GitHub](https://github.com/migueljarecca)
 - **Portafolio**: [Miguel Jarecca - Portafolio](https://migueljarecca.github.io/portafolio-miguel/)
 
 ---
